@@ -22,6 +22,12 @@ const Css = {
       borderRight: `1px solid ${scheme}`,
     };
   },
+  openIcon:(removeDefaultStyle?: boolean) => {
+    if(removeDefaultStyle) return {}
+    return {
+      cursor: "pointer",
+    }
+  },
   item: (
     removeDefaultStyle?: boolean,
     colorScheme: ColorScheme = "background"
@@ -173,7 +179,7 @@ function SideBar({
           </div>
 
           {hasChildren && !collapsed && (
-            <span aria-expanded={open}>{open ? "▾" : "▸"}</span>
+            <span style={Css.openIcon(removeDefaultStyle)} aria-expanded={open}>{open ? <Icon icon="mdi-chevron-down"/>:  <Icon icon="mdi-chevron-right"/>}</span>
           )}
         </div>
 
