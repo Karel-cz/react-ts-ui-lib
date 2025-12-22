@@ -15,6 +15,7 @@ const Css = {
     const scheme = colors[colorScheme];
 
     return {
+      backgroundColor: scheme.color,
       width: 260,
       minHeight: "100vh",
       padding: "8px",
@@ -48,7 +49,6 @@ const Css = {
       cursor: "pointer",
       userSelect: "none",
       color: textColor,
-      border: "1px solid transparent",
       borderColor: "white",
     };
   },

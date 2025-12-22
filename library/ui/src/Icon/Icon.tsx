@@ -44,7 +44,6 @@ function Icon({
   if (!icon) return null;
   if (typeof icon !== "string") return null;
 
-  console.log(icon)
 
   const camelCaseName = icon.replace(/-([a-z])/g, (_, c) => c.toUpperCase());
   const path = (mdiIcons as Record<string, string>)[camelCaseName];
@@ -53,8 +52,6 @@ function Icon({
     console.warn(`Icon "${icon}" not found!`);
     return null;
   }
-
-  console.log(icon, path)
 
   //@@viewOff:private
 
