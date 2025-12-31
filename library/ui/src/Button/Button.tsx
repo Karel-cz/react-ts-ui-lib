@@ -72,8 +72,8 @@ const Css = {
     const scheme = schemeColors[colorScheme as ColorScheme];
 
     return {
+      cursor: "pointer",
       background: scheme.dark,
-      transform: "translateY(-1px)",
     };
   },
 

@@ -23,11 +23,11 @@ const Css = {
       borderRight: `1px solid ${scheme}`,
     };
   },
-  openIcon:(removeDefaultStyle?: boolean) => {
-    if(removeDefaultStyle) return {}
+  openIcon: (removeDefaultStyle?: boolean) => {
+    if (removeDefaultStyle) return {};
     return {
       cursor: "pointer",
-    }
+    };
   },
   item: (
     removeDefaultStyle?: boolean,
@@ -88,11 +88,11 @@ const isHidden = (item?: SideBarItem) => !!(item && item.hidden);
 //@@viewOn:propTypes
 export type SideBarItem = {
   title: string;
-  icon?: string; 
+  icon?: string;
   onClick?: (e?: React.MouseEvent) => void;
   hidden?: boolean;
   itemList?: SideBarItem[];
-  defaultExpandedItem?: boolean; 
+  defaultExpandedItem?: boolean;
 };
 
 export type SideBarProps = {
@@ -102,7 +102,7 @@ export type SideBarProps = {
   tooltip?: string;
   label?: string;
   onItemClick?: (item: SideBarItem, e?: React.MouseEvent) => void;
-  collapsed?: boolean; 
+  collapsed?: boolean;
   colorScheme?: ColorScheme;
 };
 //@@viewOff:propTypes
@@ -179,13 +179,21 @@ function SideBar({
           </div>
 
           {hasChildren && !collapsed && (
-            <span style={Css.openIcon(removeDefaultStyle)} aria-expanded={open}>{open ? <Icon icon="mdi-chevron-down"/>:  <Icon icon="mdi-chevron-right"/>}</span>
+            <span style={Css.openIcon(removeDefaultStyle)} aria-expanded={open}>
+              {open ? (
+                <Icon icon="mdi-chevron-down" />
+              ) : (
+                <Icon icon="mdi-chevron-right" />
+              )}
+            </span>
           )}
         </div>
 
         {hasChildren && open && (
           <div style={Css.nested(removeDefaultStyle)}>
-            {item.itemList?.map((child, i) => renderItem(child, i, key))}
+            {item.itemList?.map((child?: SideBarItem, i?: number | undefined) =>
+              renderItem(child, i, key)
+            )}
           </div>
         )}
       </div>
@@ -194,7 +202,7 @@ function SideBar({
 
   return (
     <nav style={Css.container(removeDefaultStyle, colorScheme)}>
-      {itemList?.map((item, i) => renderItem(item, i))}
+      {itemList?.map((item?: SideBarItem, i?: number) => renderItem(item, i))}
     </nav>
   );
 }
