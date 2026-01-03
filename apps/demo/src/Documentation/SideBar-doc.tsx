@@ -1,5 +1,6 @@
 //@@viewOn:imports
-import { Documentation, SideBar as UiSideBar, SideBarTypeScheme, SideBarItem } from "@react-ts-ui-lib/ui";
+import { Documentation, SideBar as UiSideBar, SideBarTypeScheme } from "@react-ts-ui-lib/ui";
+import type { SideBarItem } from "@react-ts-ui-lib/ui";
 //@@viewOff:imports
 
 //@@viewOn:constants

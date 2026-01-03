@@ -129,7 +129,7 @@ export const SideBarTypeScheme = {
     name: "On item click",
     description: "Callback when an item is clicked; receives item and event.",
     required: false,
-    type: undefined as (item: SideBarItem, e?: React.MouseEvent) => void,
+    type: (undefined as unknown) as (item: SideBarItem, e?: React.MouseEvent) => void,
   },
   collapsed: {
     name: "Collapsed",
@@ -181,7 +181,9 @@ function SideBar({
         }
       });
     };
-    collectDefaultExpanded(itemList);
+    if (Array.isArray(itemList) && itemList.length > 0) {
+      collectDefaultExpanded(itemList);
+    }
     return initialMap;
   });
 
