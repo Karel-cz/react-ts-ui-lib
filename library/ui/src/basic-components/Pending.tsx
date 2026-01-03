@@ -1,11 +1,22 @@
 //@@viewOn:imports
-import { getColorScheme } from "../tools/colors";
+import { type ColorScheme, getColorScheme } from "../tools/colors";
 //@@viewOff:imports
 
 //@@viewOn:constants
 //@@viewOff:constants
 
 //@@viewOn:css
+const Css = {
+  // accept ColorScheme and darkMode so color mapping works as expected
+  pending: (colorScheme: ColorScheme, darkMode = true) => {
+    const scheme = getColorScheme(colorScheme, darkMode);
+
+    return {
+      display: "block",
+      color: scheme.color,
+    };
+  },
+};
 //@@viewOff:css
 
 //@@viewOn:helpers
@@ -37,17 +48,24 @@ export const PendingTypeScheme = {
     required: false,
     type: true as boolean,
   },
+  colorScheme: {
+    name: "colorScheme",
+    description: "Use dark mode palette when true.",
+    required: false,
+    type: "primary" as ColorScheme,
+  }
 };
 
 export type PendingProps = { [K in keyof typeof PendingTypeScheme]?: (typeof PendingTypeScheme)[K]["type"] };
 //@@viewOff:propTypes
 
-const Pending = ({ className, type = "circular", size = 18, darkMode = true }: PendingProps) => {
+const Pending = ({ className, type = "circular", size = 18, darkMode = true, colorScheme = "primary" }: PendingProps) => {
   const mutedScheme = getColorScheme("muted", darkMode);
-  const textScheme = getColorScheme("text", darkMode);
-  
+  // use the provided colorScheme for the foreground so e.g. "primary" actually appears
+  const scheme = getColorScheme(colorScheme as ColorScheme, darkMode);
+
   const strokeBackground = mutedScheme.color;
-  const strokeForeground = textScheme.color;
+  const strokeForeground = scheme.color;
 
   if (type === "horizontal") {
     // horizontal track with moving foreground bar inside (light track, darker moving bar)
@@ -55,7 +73,6 @@ const Pending = ({ className, type = "circular", size = 18, darkMode = true }: P
     const height = Math.max(6, Math.floor(size / 4));
     const innerWidth = Math.max(12, Math.floor(trackWidth * 0.28));
     const startX = -innerWidth;
-    const endX = trackWidth;
 
     //@@viewOn:render
     return (
@@ -67,7 +84,7 @@ const Pending = ({ className, type = "circular", size = 18, darkMode = true }: P
         aria-hidden={true}
         focusable={false}
         className={className}
-        style={{ display: "block" }}
+        style={Css.pending(colorScheme as ColorScheme, darkMode)}
       >
         <rect
           x={0}
@@ -88,7 +105,7 @@ const Pending = ({ className, type = "circular", size = 18, darkMode = true }: P
         >
           <animate
             attributeName="x"
-            values={`${startX};${endX};${startX}`}
+            values={`${startX};${trackWidth};${startX}`}
             dur="1.2s"
             repeatCount="indefinite"
           />
@@ -107,7 +124,7 @@ const Pending = ({ className, type = "circular", size = 18, darkMode = true }: P
       aria-hidden={true}
       focusable={false}
       className={className}
-      style={{ display: "block" }}
+      style={Css.pending(colorScheme as ColorScheme, darkMode)}
     >
       <circle
         cx="12"
