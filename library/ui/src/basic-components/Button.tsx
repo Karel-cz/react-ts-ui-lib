@@ -8,6 +8,7 @@ import {
   getSignificanceColor,
 } from "../tools/colors";
 import { getRadiusValue, type RadiusToken } from "../tools/radius";
+import { getButtonSize, type SizeToken } from "../tools/size";
 import Pending from "./Pending";
 import Icon from "./Icon";
 //@@viewOff:imports
@@ -24,7 +25,10 @@ const Css = {
     borderRadiusValue?: number,
     isDisabled?: boolean,
     hover?: boolean,
-    hoverBackground?: string
+    hoverBackground?: string,
+    padding?: string,
+    fontSize?: number,
+    width?: string
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -34,13 +38,15 @@ const Css = {
       display: "inline-flex",
       alignItems: "center",
       justifyContent: "center",
-      padding: "0.5rem 1rem",
+      padding: padding,
       border: "none",
       borderRadius: borderRadiusValue,
       background: hover && !isDisabled ? hoverBackground : background,
       color: textColor,
       cursor: isDisabled ? "not-allowed" : "pointer",
       fontWeight: 600,
+      fontSize: fontSize,
+      width: width,
       transition:
         "transform 120ms ease, background 160ms ease, color 160ms ease",
       outline: "none",
@@ -50,10 +56,11 @@ const Css = {
   },
 
   content: (isPending?: boolean): React.CSSProperties => ({
-    visibility: isPending ? "hidden" : "visible",
+    opacity: isPending ? 0 : 1,
     display: "inline-flex",
     alignItems: "center",
     gap: "0.5rem",
+    padding: isPending ? 10 : 0,
   }),
 
   spinnerContainer: (): React.CSSProperties => ({
@@ -143,6 +150,12 @@ export const ButtonTypeScheme = {
     required: false,
     type: "md" as RadiusToken,
   },
+  size: {
+    name: "size",
+    description: "Button size token (xs, sm, md, lg, xl).",
+    required: false,
+    type: "md" as SizeToken,
+  },
   removeDefaultStyle: {
     name: "removeDefaultStyle",
     description:
@@ -201,6 +214,7 @@ const Button = ({
   colorScheme = "primary",
   significance = "common",
   borderRadius = "md",
+  size = "md",
   onClick,
   icon = "",
   iconPosition = "left",
@@ -219,6 +233,9 @@ const Button = ({
   const background = isDisabled ? disabledBg : scheme.color;
   const textColor = isDisabled ? disabledText : scheme.textColor;
   const borderRadiusValue = getRadiusValue(borderRadius);
+
+  const buttonSize = getButtonSize(size);
+  const iconSize = buttonSize.iconSize;
 
   // Hover background - use darker variant of colorScheme
   const primaryDarkScheme = getColorScheme("primaryDark", darkMode);
@@ -252,7 +269,10 @@ const Button = ({
         borderRadiusValue,
         isDisabled,
         hover,
-        hoverBackground
+        hoverBackground,
+        buttonSize.padding,
+        buttonSize.fontSize,
+        buttonSize.width
       )}
       type={type}
       title={tooltip}
@@ -265,9 +285,9 @@ const Button = ({
       onClick={onClick}
     >
       <span style={Css.content(isPending)}>
-        {iconPosition === "left" && <Icon icon={icon} />}
+        {iconPosition === "left" && <Icon icon={icon} size={iconSize} />}
         {content}
-        {iconPosition === "right" && <Icon icon={icon} />}
+        {iconPosition === "right" && <Icon icon={icon} size={iconSize} />}
       </span>
       {isPending && (
         <span style={Css.spinnerContainer()}>

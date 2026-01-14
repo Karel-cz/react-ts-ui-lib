@@ -3,6 +3,7 @@
 import React from "react";
 import { getColorScheme, getSignificanceColor, type ColorScheme, type Significance } from "../tools/colors";
 import { getRadiusValue, type RadiusToken } from "../tools/radius";
+import { getBadgeSize, type SizeToken } from "../tools/size";
 import Icon from "./Icon";
 //@@viewOff:imports
 
@@ -19,7 +20,11 @@ const Css = {
     clickable?: boolean,
     disabled?: boolean,
     disabledBg?: string,
-    baseSchemeColor?: string
+    baseSchemeColor?: string,
+    padding?: string,
+    fontSize?: number,
+    gap?: number,
+    width?: string
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -28,18 +33,19 @@ const Css = {
     return {
       display: "inline-flex",
       alignItems: "center",
-      gap: 6,
-      padding: "2px 8px",
+      gap: gap,
+      padding: padding,
       background,
       color: textColor,
       borderRadius: borderRadiusValue,
-      fontSize: 12,
-      lineHeight: "16px",
+      fontSize: fontSize,
+      lineHeight: `${(fontSize || 12) + 4}px`,
       fontWeight: 600,
       cursor: clickable ? "pointer" : "default",
       userSelect: "none",
       border: `1px solid ${disabled ? disabledBg : baseSchemeColor}`,
       opacity: disabled ? 0.65 : 1,
+      width: width,
     };
   },
 };
@@ -85,6 +91,12 @@ export const BadgeTypeScheme = {
     description: "Předdefinované zaoblení (xs, sm, md, lg, full).",
     required: false,
     type: "md" as RadiusToken,
+  },
+  size: {
+    name: "size",
+    description: "Badge size token (xs, sm, md, lg, xl).",
+    required: false,
+    type: "md" as SizeToken,
   },
   onClick: {
     name: "onClick",
@@ -149,6 +161,7 @@ const Badge = ({
   colorScheme = "primary",
   significance = "common",
   borderRadius = "md",
+  size = "md",
   onClick,
   disabled = false,
   hidden = false,
@@ -171,6 +184,9 @@ const Badge = ({
   const textColor = disabled ? disabledText : scheme.textColor;
   const borderRadiusValue = getRadiusValue(borderRadius);
 
+  const badgeSize = getBadgeSize(size);
+  const iconSize = badgeSize.iconSize;
+
   const clickable = !!onClick && !disabled;
   const content = children ?? label;
   //@@viewOff:private
@@ -191,10 +207,14 @@ const Badge = ({
         clickable,
         disabled,
         disabledBg,
-        baseScheme.color
+        baseScheme.color,
+        badgeSize.padding,
+        badgeSize.fontSize,
+        badgeSize.gap,
+        badgeSize.width
       )}
     >
-      {icon && <Icon icon={icon} size={0.75} darkMode={darkMode} />}
+      {icon && <Icon icon={icon} size={iconSize} darkMode={darkMode} />}
       {content}
     </span>
   );

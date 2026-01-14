@@ -68,6 +68,22 @@ const ButtonDoc = () => {
       ],
     },
     {
+      category: "Size",
+      itemList: [
+        { label: "xs", components: <Button label="XS" size="xs" /> },
+        { label: "sm", components: <Button label="SM" size="sm" /> },
+        { label: "md", components: <Button label="MD" size="md" /> },
+        { label: "lg", components: <Button label="LG" size="lg" /> },
+        { label: "xl", components: <Button label="XL" size="xl" /> },
+        { label: "full", components: <Button label="Full Width" size="full" /> },
+        { label: "xs + icon", components: <Button label="XS" size="xs" icon="mdi-check" /> },
+        { label: "md + icon", components: <Button label="MD" size="md" icon="mdi-check" /> },
+        { label: "xl + icon", components: <Button label="XL" size="xl" icon="mdi-check" /> },
+        { label: "md + pending", components: <Button label="Loading" size="md" isPending /> },
+        { label: "lg + pending", components: <Button label="Loading" size="lg" isPending /> },
+      ],
+    },
+    {
       category: "Border radius & print",
       itemList: [
         { label: "rounded", components: <Button label="Rounded" borderRadius="lg" /> },

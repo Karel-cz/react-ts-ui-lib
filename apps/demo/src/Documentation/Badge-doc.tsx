@@ -31,6 +31,16 @@ const BadgeDoc = () => {
       ],
     },
     {
+      category: "Size",
+      itemList: [
+        { label: "xs", components: <Badge label="XS" size="xs" /> },
+        { label: "sm", components: <Badge label="SM" size="sm" /> },
+        { label: "md", components: <Badge label="MD" size="md" /> },
+        { label: "lg", components: <Badge label="LG" size="lg" /> },
+        { label: "xl", components: <Badge label="XL" size="xl" /> },
+      ],
+    },
+    {
       category: "Icon",
       itemList: [
         { label: "icon left", components: <Badge label="With icon" icon="mdi-check" colorScheme="success" /> },

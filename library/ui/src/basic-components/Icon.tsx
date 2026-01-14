@@ -2,6 +2,7 @@
 //@@viewOn:imports
 import { Icon as MdiIcon } from "@mdi/react";
 import * as mdiIcons from "@mdi/js";
+import { getIconSize, type SizeToken } from "../tools/size";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -23,9 +24,9 @@ export const IconTypeScheme = {
   },
   size: {
     name: "size",
-    description: "Icon size; can be a number (em) or string (CSS size).",
+    description: "Icon size token (xs, sm, md, lg, xl) or number (em) for custom size.",
     required: false,
-    type: 1 as number | string,
+    type: ("md" as SizeToken) as SizeToken | number,
   },
   color: {
     name: "color",
@@ -77,12 +78,16 @@ export const IconTypeScheme = {
   },
 };
 
-export type IconProps = { [K in keyof typeof IconTypeScheme]?: (typeof IconTypeScheme)[K]["type"] };
+export type IconProps = {
+  [K in keyof typeof IconTypeScheme]?: (typeof IconTypeScheme)[K]["type"];
+} & {
+  size?: SizeToken | number;
+};
 //@@viewOff:propTypes
 
 function Icon({
   icon = "mdi-close",
-  size = 1,
+  size = "md",
   color = "white",
   className,
   onClick,
@@ -104,6 +109,9 @@ function Icon({
     return null;
   }
 
+  const iconSize =
+    typeof size === "number" ? size : getIconSize(size as SizeToken).size;
+
   //@@viewOff:private
 
   //@@viewOn:render
@@ -120,7 +128,7 @@ function Icon({
     >
       <MdiIcon
         path={path}
-        size={size}
+        size={iconSize}
         color={darkMode ? color : "black"}
         style={removeDefaultStyle ? {} : { display: "flex" }}
       />

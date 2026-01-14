@@ -31,19 +31,21 @@ const PendingDoc = () => {
     {
       category: "Size",
       itemList: [
-        { label: "12px", components: <UiPending size={12} /> },
-        { label: "24px", components: <UiPending size={24} /> },
-        { label: "36px", components: <UiPending size={36} /> },
+        { label: "xs", components: <UiPending size="xs" /> },
+        { label: "sm", components: <UiPending size="sm" /> },
+        { label: "md", components: <UiPending size="md" /> },
+        { label: "lg", components: <UiPending size="lg" /> },
+        { label: "xl", components: <UiPending size="xl" /> },
       ],
     },
     {
       category: "Color Scheme",
       itemList: [
-        { label: "primary", components: <UiPending colorScheme={"primary"} size={36} /> },
-        { label: "warning", components: <UiPending colorScheme={"warning"}  size={36}/> },
-        { label: "info", components: <UiPending colorScheme={"info"}  size={36}/> },
-        { label: "danger", components: <UiPending colorScheme={"danger"} size={36}/> },
-        { label: "success", components: <UiPending colorScheme={"success"} size={36}/> },
+        { label: "primary", components: <UiPending colorScheme={"primary"} size="lg" /> },
+        { label: "warning", components: <UiPending colorScheme={"warning"} size="lg" /> },
+        { label: "info", components: <UiPending colorScheme={"info"} size="lg" /> },
+        { label: "danger", components: <UiPending colorScheme={"danger"} size="lg" /> },
+        { label: "success", components: <UiPending colorScheme={"success"} size="lg" /> },
       ],
     },
     {

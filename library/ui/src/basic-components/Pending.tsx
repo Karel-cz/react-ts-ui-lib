@@ -1,5 +1,7 @@
+/* eslint-disable react-refresh/only-export-components */
 //@@viewOn:imports
 import { type ColorScheme, getColorScheme } from "../tools/colors";
+import { getPendingSize, type SizeToken } from "../tools/size";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -12,8 +14,9 @@ const Css = {
     const scheme = getColorScheme(colorScheme, darkMode);
 
     return {
-      display: "block",
+      display: "inline-block",
       color: scheme.color,
+      lineHeight: 0,
     };
   },
 };
@@ -38,9 +41,9 @@ export const PendingTypeScheme = {
   },
   size: {
     name: "size",
-    description: "Base size in pixels (affects dimensions).",
+    description: "Pending size token (xs, sm, md, lg, xl).",
     required: false,
-    type: 18 as number,
+    type: "sm" as SizeToken,
   },
   darkMode: {
     name: "darkMode",
@@ -59,7 +62,9 @@ export const PendingTypeScheme = {
 export type PendingProps = { [K in keyof typeof PendingTypeScheme]?: (typeof PendingTypeScheme)[K]["type"] };
 //@@viewOff:propTypes
 
-const Pending = ({ className, type = "circular", size = 18, darkMode = true, colorScheme = "primary" }: PendingProps) => {
+const Pending = ({ className, type = "circular", size = "sm", darkMode = true, colorScheme = "primary" }: PendingProps) => {
+  const pendingSize = getPendingSize(size as SizeToken).size;
+  
   const mutedScheme = getColorScheme("muted", darkMode);
   // use the provided colorScheme for the foreground so e.g. "primary" actually appears
   const scheme = getColorScheme(colorScheme as ColorScheme, darkMode);
@@ -69,8 +74,8 @@ const Pending = ({ className, type = "circular", size = 18, darkMode = true, col
 
   if (type === "horizontal") {
     // horizontal track with moving foreground bar inside (light track, darker moving bar)
-    const trackWidth = Math.max(48, size * 4);
-    const height = Math.max(6, Math.floor(size / 4));
+    const trackWidth = Math.max(48, pendingSize * 4);
+    const height = Math.max(6, Math.floor(pendingSize / 4));
     const innerWidth = Math.max(12, Math.floor(trackWidth * 0.28));
     const startX = -innerWidth;
 
@@ -117,8 +122,8 @@ const Pending = ({ className, type = "circular", size = 18, darkMode = true, col
   // default circular spinner
   return (
     <svg
-      width={size}
-      height={size}
+      width={pendingSize}
+      height={pendingSize}
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden={true}
