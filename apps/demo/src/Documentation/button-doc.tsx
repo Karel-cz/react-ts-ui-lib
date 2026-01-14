@@ -60,6 +60,21 @@ const ButtonDoc = () => {
       ],
     },
     {
+      category: "Significance",
+      itemList: [
+        { label: "common", components: <Button label="Common" colorScheme="primary" significance="common" /> },
+        { label: "highlighted", components: <Button label="Highlighted" colorScheme="primary" significance="highlighted" /> },
+        { label: "distinct", components: <Button label="Distinct" colorScheme="primary" significance="distinct" /> },
+      ],
+    },
+    {
+      category: "Border radius & print",
+      itemList: [
+        { label: "rounded", components: <Button label="Rounded" borderRadius="lg" /> },
+        { label: "pill noPrint", components: <Button label="Pill noPrint" borderRadius="full" noPrint /> },
+      ],
+    },
+    {
       category: "Tooltip",
       itemList: [
         { label: "tooltip", components: <Button label="Hover me" tooltip="Native tooltip" /> },

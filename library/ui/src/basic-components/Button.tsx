@@ -1,6 +1,13 @@
+/* eslint-disable react-refresh/only-export-components */
 //@@viewOn:imports
 import React, { useState } from "react";
-import { type ColorScheme, getColorScheme } from "../tools/colors";
+import {
+  type ColorScheme,
+  type Significance,
+  getColorScheme,
+  getSignificanceColor,
+} from "../tools/colors";
+import { getRadiusValue, type RadiusToken } from "../tools/radius";
 import Pending from "./Pending";
 import Icon from "./Icon";
 //@@viewOff:imports
@@ -12,36 +19,16 @@ import Icon from "./Icon";
 const Css = {
   button: (
     removeDefaultStyle?: boolean,
-    disabled?: boolean,
-    pending?: boolean,
-    colorScheme: ColorScheme = "primary",
-    darkMode = true
+    background?: string,
+    textColor?: string,
+    borderRadiusValue?: number,
+    isDisabled?: boolean,
+    hover?: boolean,
+    hoverBackground?: string
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
     }
-
-    const primaryScheme = getColorScheme("primary", darkMode);
-    const successScheme = getColorScheme("success", darkMode);
-    const dangerScheme = getColorScheme("danger", darkMode);
-    const warningScheme = getColorScheme("warning", darkMode);
-    const infoScheme = getColorScheme("info", darkMode);
-    const surfaceScheme = getColorScheme("surface", darkMode);
-    const mutedScheme = getColorScheme("muted", darkMode);
-
-    const schemeMap: Record<string, typeof primaryScheme> = {
-      primary: primaryScheme,
-      success: successScheme,
-      danger: dangerScheme,
-      warning: warningScheme,
-      info: infoScheme,
-    };
-
-    const scheme = schemeMap[colorScheme as string];
-
-    const isDisabled = disabled || pending;
-    const background = isDisabled ? surfaceScheme.color : scheme.color;
-    const textColor = isDisabled ? mutedScheme.color : scheme.textColor;
 
     return {
       display: "inline-flex",
@@ -49,8 +36,8 @@ const Css = {
       justifyContent: "center",
       padding: "0.5rem 1rem",
       border: "none",
-      borderRadius: 8,
-      background: background,
+      borderRadius: borderRadiusValue,
+      background: hover && !isDisabled ? hoverBackground : background,
       color: textColor,
       cursor: isDisabled ? "not-allowed" : "pointer",
       fontWeight: 600,
@@ -60,51 +47,6 @@ const Css = {
       WebkitTapHighlightColor: "transparent",
       position: "relative",
     };
-  },
-
-  buttonHover: (
-    removeDefaultStyle?: boolean,
-    disabled?: boolean,
-    pending?: boolean,
-    colorScheme: ColorScheme = "primary",
-    darkMode = true
-  ): React.CSSProperties => {
-    if (removeDefaultStyle || disabled || pending) {
-      return {};
-    }
-
-    const primaryDarkScheme = getColorScheme("primaryDark", darkMode);
-    const successDarkScheme = getColorScheme("successDark", darkMode);
-    const dangerDarkScheme = getColorScheme("dangerDark", darkMode);
-    const warningDarkScheme = getColorScheme("warningDark", darkMode);
-    const infoDarkScheme = getColorScheme("infoDark", darkMode);
-
-    const schemeMap: Record<string, typeof primaryDarkScheme> = {
-      primary: primaryDarkScheme,
-      success: successDarkScheme,
-      danger: dangerDarkScheme,
-      warning: warningDarkScheme,
-      info: infoDarkScheme,
-    };
-
-    const scheme = schemeMap[colorScheme as string];
-
-    return {
-      cursor: "pointer",
-      background: scheme.color,
-    };
-  },
-
-  buttonFocus: (
-    removeDefaultStyle?: boolean,
-    disabled?: boolean,
-    pending?: boolean
-  ): React.CSSProperties => {
-    if (removeDefaultStyle || disabled || pending) {
-      return {};
-    }
-
-    return {};
   },
 
   content: (isPending?: boolean): React.CSSProperties => ({
@@ -155,6 +97,13 @@ export const ButtonTypeScheme = {
     required: false,
     type: "primary" as ColorScheme,
   },
+  significance: {
+    name: "significance",
+    description:
+      "Controls visual intensity of the button: common (default), highlighted, distinct.",
+    required: false,
+    type: "common" as Significance,
+  },
   icon: {
     name: "icon",
     description: "Name of mdi icon rendered inside the button.",
@@ -179,7 +128,7 @@ export const ButtonTypeScheme = {
     name: "onClick",
     description: "Triggered when the user clicks the button.",
     required: false,
-    type: undefined as (e: React.MouseEvent<HTMLButtonElement>) => void,
+    type: (undefined as unknown) as (e: React.MouseEvent<HTMLButtonElement>) => void,
   },
   className: {
     name: "className",
@@ -187,6 +136,12 @@ export const ButtonTypeScheme = {
       "Additional CSS class names applied to the root button element.",
     required: false,
     type: "" as string,
+  },
+  borderRadius: {
+    name: "borderRadius",
+    description: "Predefined border radius token (xs, sm, md, lg, full).",
+    required: false,
+    type: "md" as RadiusToken,
   },
   removeDefaultStyle: {
     name: "removeDefaultStyle",
@@ -221,6 +176,12 @@ export const ButtonTypeScheme = {
     required: false,
     type: false as boolean,
   },
+  noPrint: {
+    name: "noPrint",
+    description: "Hides the button when printing (adds no-print class).",
+    required: false,
+    type: false as boolean,
+  },
 };
 
 export type ButtonProps = {
@@ -238,44 +199,61 @@ const Button = ({
   tooltip,
   isPending = false,
   colorScheme = "primary",
+  significance = "common",
+  borderRadius = "md",
   onClick,
   icon = "",
   iconPosition = "left",
   darkMode = true,
+  noPrint = false,
 }: ButtonProps) => {
   //@@viewOn:private
   const [hover, setHover] = useState(false);
-  const [focus, setFocus] = useState(false);
+
+  const scheme = getSignificanceColor(colorScheme, significance, darkMode);
+
+  const disabledBg = getColorScheme("surface", darkMode).color;
+  const disabledText = getColorScheme("muted", darkMode).color;
 
   const isDisabled = disabled || isPending;
+  const background = isDisabled ? disabledBg : scheme.color;
+  const textColor = isDisabled ? disabledText : scheme.textColor;
+  const borderRadiusValue = getRadiusValue(borderRadius);
 
+  // Hover background - use darker variant of colorScheme
+  const primaryDarkScheme = getColorScheme("primaryDark", darkMode);
+  const successDarkScheme = getColorScheme("successDark", darkMode);
+  const dangerDarkScheme = getColorScheme("dangerDark", darkMode);
+  const warningDarkScheme = getColorScheme("warningDark", darkMode);
+  const infoDarkScheme = getColorScheme("infoDark", darkMode);
+
+  const hoverSchemeMap: Record<string, typeof primaryDarkScheme> = {
+    primary: primaryDarkScheme,
+    success: successDarkScheme,
+    danger: dangerDarkScheme,
+    warning: warningDarkScheme,
+    info: infoDarkScheme,
+  };
+
+  const hoverBackground = hoverSchemeMap[colorScheme as string]?.color || background;
+
+  const content = children || label;
   //@@viewOff:private
+
   //@@viewOn:render
   return (
     <button
       disabled={isDisabled}
-      className={className}
-      style={{
-        ...Css.button(
-          removeDefaultStyle,
-          disabled,
-          isPending,
-          colorScheme,
-          darkMode
-        ),
-        ...(hover && !isDisabled
-          ? Css.buttonHover(
-              removeDefaultStyle,
-              disabled,
-              isPending,
-              colorScheme,
-              darkMode
-            )
-          : {}),
-        ...(focus && !isDisabled
-          ? Css.buttonFocus(removeDefaultStyle, disabled, isPending)
-          : {}),
-      }}
+      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
+      style={Css.button(
+        removeDefaultStyle,
+        background,
+        textColor,
+        borderRadiusValue,
+        isDisabled,
+        hover,
+        hoverBackground
+      )}
       type={type}
       title={tooltip}
       aria-label={
@@ -284,13 +262,11 @@ const Button = ({
       aria-busy={isPending || undefined}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      onFocus={() => setFocus(true)}
-      onBlur={() => setFocus(false)}
       onClick={onClick}
     >
       <span style={Css.content(isPending)}>
         {iconPosition === "left" && <Icon icon={icon} />}
-        {children || label}
+        {content}
         {iconPosition === "right" && <Icon icon={icon} />}
       </span>
       {isPending && (

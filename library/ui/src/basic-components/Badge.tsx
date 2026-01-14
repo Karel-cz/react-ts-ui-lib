@@ -6,6 +6,48 @@ import { getRadiusValue, type RadiusToken } from "../tools/radius";
 import Icon from "./Icon";
 //@@viewOff:imports
 
+//@@viewOn:constants
+//@@viewOff:constants
+
+//@@viewOn:css
+const Css = {
+  badge: (
+    removeDefaultStyle?: boolean,
+    background?: string,
+    textColor?: string,
+    borderRadiusValue?: number,
+    clickable?: boolean,
+    disabled?: boolean,
+    disabledBg?: string,
+    baseSchemeColor?: string
+  ): React.CSSProperties => {
+    if (removeDefaultStyle) {
+      return {};
+    }
+
+    return {
+      display: "inline-flex",
+      alignItems: "center",
+      gap: 6,
+      padding: "2px 8px",
+      background,
+      color: textColor,
+      borderRadius: borderRadiusValue,
+      fontSize: 12,
+      lineHeight: "16px",
+      fontWeight: 600,
+      cursor: clickable ? "pointer" : "default",
+      userSelect: "none",
+      border: `1px solid ${disabled ? disabledBg : baseSchemeColor}`,
+      opacity: disabled ? 0.65 : 1,
+    };
+  },
+};
+//@@viewOff:css
+
+//@@viewOn:helpers
+//@@viewOff:helpers
+
 //@@viewOn:propTypes
 export const BadgeTypeScheme = {
   children: {
@@ -38,8 +80,8 @@ export const BadgeTypeScheme = {
     required: false,
     type: "common" as Significance,
   },
-  radius: {
-    name: "radius",
+  borderRadius: {
+    name: "borderRadius",
     description: "Předdefinované zaoblení (xs, sm, md, lg, full).",
     required: false,
     type: "md" as RadiusToken,
@@ -106,7 +148,7 @@ const Badge = ({
   icon = "",
   colorScheme = "primary",
   significance = "common",
-  radius = "md",
+  borderRadius = "md",
   onClick,
   disabled = false,
   hidden = false,
@@ -127,7 +169,7 @@ const Badge = ({
 
   const background = disabled ? disabledBg : scheme.color;
   const textColor = disabled ? disabledText : scheme.textColor;
-  const borderRadius = getRadiusValue(radius);
+  const borderRadiusValue = getRadiusValue(borderRadius);
 
   const clickable = !!onClick && !disabled;
   const content = children ?? label;
@@ -141,26 +183,16 @@ const Badge = ({
       role={clickable ? "button" : undefined}
       aria-disabled={disabled || undefined}
       title={tooltip}
-      style={
-        removeDefaultStyle
-          ? undefined
-          : {
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              padding: "2px 8px",
-              background,
-              color: textColor,
-              borderRadius,
-              fontSize: 12,
-              lineHeight: "16px",
-              fontWeight: 600,
-              cursor: clickable ? "pointer" : "default",
-              userSelect: "none",
-              border: `1px solid ${disabled ? disabledBg : baseScheme.color}`,
-              opacity: disabled ? 0.65 : 1,
-            }
-      }
+      style={Css.badge(
+        removeDefaultStyle,
+        background,
+        textColor,
+        borderRadiusValue,
+        clickable,
+        disabled,
+        disabledBg,
+        baseScheme.color
+      )}
     >
       {icon && <Icon icon={icon} size={0.75} darkMode={darkMode} />}
       {content}
