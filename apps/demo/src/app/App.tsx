@@ -6,6 +6,7 @@ import type { SideBarItem } from "@react-ts-ui-lib/ui";
 import routeList from "./tools/RouteList";
 import { Navbar, Button } from "@react-ts-ui-lib/ui";
 import { useTheme } from "./context/ThemeContext";
+import { useLanguage } from "./context/LanguageContext";
 
 //@@viewOff:imports
 
@@ -13,6 +14,11 @@ import { useTheme } from "./context/ThemeContext";
 const LOGO = "React TypeScript Lib";
 const SUNNY = "mdi-white-balance-sunny";
 const MOON = "mdi-moon-waxing-crescent";
+
+const LANGUAGE_MAP = {
+  en: "EN",
+  cz: "CU",
+};
 //@@viewOff:constants
 
 //@@viewOn:css
@@ -42,22 +48,25 @@ const getThemeStyles = (darkMode: boolean): React.CSSProperties => {
 function App() {
   //@@viewOn:private
   const { darkMode, setDarkMode } = useTheme();
+  const { language, setLanguage } = useLanguage();
   const [selectedItem, setSelectedItem] = useState<SideBarItem | null>(
     routeList[0]
   );
 
   const RightContent = () => {
     return (
-      <Button
-        icon={!darkMode ? SUNNY : MOON}
-        onClick={() => setDarkMode(!darkMode)}
-      />
+      <>
+        <Button
+        size="sm"
+          icon={!darkMode ? SUNNY : MOON}
+          onClick={() => setDarkMode(!darkMode)}
+        />
+        <Button  onClick={() => setLanguage(language === "en" ? "cz" : "en")}>
+          {LANGUAGE_MAP[language as keyof typeof LANGUAGE_MAP]}
+        </Button>
+      </>
     );
   };
-
-  //@@viewOff:private
-
-  //@@viewOn:render
   return (
     <div
       style={{
