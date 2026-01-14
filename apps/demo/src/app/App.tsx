@@ -17,7 +17,7 @@ const MOON = "mdi-moon-waxing-crescent";
 
 const LANGUAGE_MAP = {
   en: "EN",
-  cz: "CU",
+  cz: "CZ",
 };
 //@@viewOff:constants
 
