@@ -1,0 +1,331 @@
+{
+  "badge": {
+    "title": "Badge Component",
+    "props": {
+      "children": {
+        "description": "Content of badge (text or custom node).",
+        "required": "false"
+      },
+      "label": {
+        "description": "Text content of badge (if children is not provided).",
+        "required": "false"
+      },
+      "icon": {
+        "description": "MDI icon name, renders internal Icon component.",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Color scheme of badge (primary, success, danger, warning, info).",
+        "required": "false"
+      },
+      "significance": {
+        "description": "Color intensity: common (default), highlighted, distinct.",
+        "required": "false"
+      },
+      "borderRadius": {
+        "description": "Predefined border radius (xs, sm, md, lg, full).",
+        "required": "false"
+      },
+      "size": {
+        "description": "Badge size token (xs, sm, md, lg, xl).",
+        "required": "false"
+      },
+      "onClick": {
+        "description": "Click handler for badge.",
+        "required": "false"
+      },
+      "disabled": {
+        "description": "Disables interactions and changes appearance.",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "If true, badge will not be rendered.",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Hides badge when printing (adds no-print className).",
+        "required": "false"
+      },
+      "className": {
+        "description": "Additional className for wrapper.",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Native tooltip on hover.",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Uses dark color scheme.",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "No default styles (keeps only content).",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "colorScheme": "Color scheme",
+      "significance": "Significance",
+      "size": "Size",
+      "icon": "Icon",
+      "states": "States"
+    },
+    "examples": {
+      "primary": "Primary",
+      "success": "Success",
+      "danger": "Danger",
+      "warning": "Warning",
+      "info": "Info",
+      "common": "Common",
+      "highlighted": "Highlighted",
+      "distinct": "Distinct",
+      "xs": "XS",
+      "sm": "SM",
+      "md": "MD",
+      "lg": "LG",
+      "xl": "XL",
+      "iconLeft": "icon left",
+      "alert": "Alert",
+      "disabled": "disabled",
+      "noPrint": "noPrint",
+      "onClick": "onClick",
+      "withIcon": "With icon",
+      "clickMe": "Click me",
+      "noPrintTooltip": "Hidden when printing"
+    }
+  },
+  "button": {
+    "title": "Button Component",
+    "props": {
+      "children": { "description": "Content rendered inside the button (text, icons, custom nodes).", "required": "false" },
+      "disabled": { "description": "Prevents interaction and visually disables the button.", "required": "false" },
+      "loading": { "description": "Alias for pending state – indicates that an async action is running.", "required": "false" },
+      "colorScheme": { "description": "Determines visual look of the button based on predefined color palette (primary, success, danger…).", "required": "false" },
+      "significance": { "description": "Controls visual intensity of the button: common (default), highlighted, distinct.", "required": "false" },
+      "icon": { "description": "Name of mdi icon rendered inside the button.", "required": "false" },
+      "iconPosition": { "description": "Controls whether icon is rendered on the left or right side of the content.", "required": "false" },
+      "label": { "description": "Simple text alternative to children – useful for easy text buttons or accessibility.", "required": "false" },
+      "onClick": { "description": "Triggered when the user clicks the button.", "required": "false" },
+      "className": { "description": "Additional CSS class names applied to the root button element.", "required": "false" },
+      "borderRadius": { "description": "Predefined border radius token (xs, sm, md, lg, full).", "required": "false" },
+      "size": { "description": "Button size token (xs, sm, md, lg, xl).", "required": "false" },
+      "removeDefaultStyle": { "description": "Disables built-in styling and leaves only raw button element for full customization.", "required": "false" },
+      "tooltip": { "description": "Browser default tooltip shown when hovering over the button.", "required": "false" },
+      "type": { "description": "Native button type (button, submit, reset).", "required": "false" },
+      "darkMode": { "description": "Renders the button using dark mode palette (affects colorScheme behavior).", "required": "false" },
+      "isPending": { "description": "Shows loading spinner and blocks interactions. Content becomes visually hidden.", "required": "false" },
+      "noPrint": { "description": "Hides the button when printing (adds no-print class).", "required": "false" }
+    },
+    "categories": {
+      "colorScheme": "Color scheme",
+      "state": "State",
+      "content": "Content",
+      "icons": "Icons",
+      "styling": "Styling",
+      "significance": "Significance",
+      "size": "Size",
+      "borderRadius": "Border radius & print",
+      "tooltip": "Tooltip"
+    },
+    "examples": {
+      "primary": "Primary",
+      "success": "Success",
+      "danger": "Danger",
+      "warning": "Warning",
+      "info": "Info",
+      "default": "Default",
+      "disabled": "Disabled",
+      "pending": "Pending",
+      "label": "label",
+      "labelOnly": "Label only",
+      "children": "children",
+      "customChildren": "Custom children",
+      "left": "left",
+      "right": "right",
+      "leftIcon": "Left icon",
+      "rightIcon": "Right icon",
+      "noDefault": "no default",
+      "rawButton": "Raw button",
+      "common": "Common",
+      "highlighted": "Highlighted",
+      "distinct": "Distinct",
+      "xs": "XS",
+      "sm": "SM",
+      "md": "MD",
+      "lg": "LG",
+      "xl": "XL",
+      "full": "full",
+      "fullWidth": "Full Width",
+      "xsIcon": "xs + icon",
+      "mdIcon": "md + icon",
+      "xlIcon": "xl + icon",
+      "mdPending": "md + pending",
+      "lgPending": "lg + pending",
+      "loading": "Loading",
+      "rounded": "Rounded",
+      "pillNoPrint": "pill noPrint",
+      "tooltip": "tooltip",
+      "hoverMe": "Hover me",
+      "nativeTooltip": "Native tooltip"
+    }
+  },
+  "icon": {
+    "title": "Icon Component",
+    "props": {
+      "icon": { "description": "Name of the Material Design Icon (mdi-*) to render.", "required": "false" },
+      "size": { "description": "Icon size token (xs, sm, md, lg, xl) or number (em) for custom size.", "required": "false" },
+      "color": { "description": "Icon color (CSS color value).", "required": "false" },
+      "className": { "description": "Additional class names for the wrapper span.", "required": "false" },
+      "onClick": { "description": "Click handler for the icon wrapper.", "required": "false" },
+      "removeDefaultStyle": { "description": "Render without default layout styles.", "required": "false" },
+      "hidden": { "description": "If true, the icon is not rendered.", "required": "false" },
+      "label": { "description": "Optional text label displayed next to the icon.", "required": "false" },
+      "tooltip": { "description": "Browser tooltip shown on hover.", "required": "false" },
+      "darkMode": { "description": "Use dark mode palette when true.", "required": "false" }
+    },
+    "categories": {
+      "size": "Size",
+      "basic": "Basic",
+      "icons": "Icons",
+      "states": "States",
+      "darkMode": "Dark mode"
+    },
+    "examples": {
+      "xs": "xs",
+      "sm": "sm",
+      "md": "md",
+      "lg": "lg",
+      "xl": "xl",
+      "custom": "custom",
+      "default": "default",
+      "red": "red",
+      "label": "label",
+      "info": "Info",
+      "tooltip": "tooltip",
+      "help": "Help",
+      "check": "check",
+      "heart": "heart",
+      "star": "star",
+      "alert": "alert",
+      "information": "information",
+      "close": "close",
+      "onClick": "onClick",
+      "hidden": "hidden",
+      "removeDefaultStyle": "removeDefaultStyle",
+      "dark": "dark",
+      "light": "light"
+    }
+  },
+  "pending": {
+    "title": "Pending Component",
+    "props": {
+      "className": { "description": "Additional CSS class names for the SVG element.", "required": "false" },
+      "type": { "description": "Spinner style: circular or horizontal bar.", "required": "false" },
+      "size": { "description": "Pending size token (xs, sm, md, lg, xl).", "required": "false" },
+      "darkMode": { "description": "Use dark mode palette when true.", "required": "false" },
+      "colorScheme": { "description": "Color scheme for the spinner.", "required": "false" }
+    },
+    "categories": {
+      "type": "Type",
+      "size": "Size",
+      "colorScheme": "Color Scheme",
+      "darkMode": "Dark mode"
+    },
+    "examples": {
+      "circular": "circular",
+      "horizontal": "horizontal",
+      "xs": "xs",
+      "sm": "sm",
+      "md": "md",
+      "lg": "lg",
+      "xl": "xl",
+      "primary": "primary",
+      "warning": "warning",
+      "info": "info",
+      "danger": "danger",
+      "success": "success",
+      "dark": "dark",
+      "light": "light"
+    }
+  },
+  "navbar": {
+    "title": "Navbar Component",
+    "props": {
+      "logo": { "description": "Content rendered in the left section; string or custom node.", "required": "false" },
+      "centerContent": { "description": "Content placed in the centered section of the navbar.", "required": "false" },
+      "rightContent": { "description": "Content placed in the right section (e.g., actions).", "required": "false" },
+      "onLogoClick": { "description": "Callback fired when the logo is clicked.", "required": "false" },
+      "removeDefaultStyle": { "description": "Disables built-in styling for container, logo, and buttons.", "required": "false" },
+      "colorScheme": { "description": "Background and text colors based on theme palette.", "required": "false" },
+      "darkMode": { "description": "Use dark mode palette when true.", "required": "false" }
+    },
+    "categories": {
+      "layout": "Layout",
+      "colorScheme": "Color scheme",
+      "darkMode": "Dark mode",
+      "styling": "Styling"
+    },
+    "examples": {
+      "logoString": "logo string",
+      "customLogo": "custom logo",
+      "center": "Center",
+      "background": "background",
+      "surface": "surface",
+      "dark": "dark",
+      "light": "light",
+      "raw": "raw"
+    }
+  },
+  "sidebar": {
+    "title": "SideBar Component",
+    "props": {
+      "itemList": { "description": "Top-level items to render in the sidebar (can be nested).", "required": "true" },
+      "className": { "description": "Additional class names for the container.", "required": "false" },
+      "removeDefaultStyle": { "description": "Disables built-in container and item styling.", "required": "false" },
+      "tooltip": { "description": "Optional tooltip on the container (native title).", "required": "false" },
+      "label": { "description": "Optional label text for the container.", "required": "false" },
+      "onItemClick": { "description": "Callback when an item is clicked; receives item and event.", "required": "false" },
+      "collapsed": { "description": "Whether the sidebar is collapsed.", "required": "false" },
+      "colorScheme": { "description": "Background and text colors based on theme palette.", "required": "false" },
+      "darkMode": { "description": "Use dark mode palette when true.", "required": "false" }
+    },
+    "categories": {
+      "basic": "Basic",
+      "styling": "Styling"
+    },
+    "examples": {
+      "default": "default",
+      "light": "light",
+      "raw": "raw",
+      "dashboard": "Dashboard",
+      "settings": "Settings",
+      "profile": "Profile",
+      "security": "Security"
+    },
+    "routes": {
+      "home": "Home",
+      "documentation": "Documentation",
+      "profile": "Profile",
+      "contributors": "Contributors",
+      "aboutApplication": "About Application"
+    },
+    "components": {
+      "button": "Button",
+      "icon": "Icon",
+      "pending": "Pending",
+      "sidebar": "SideBar",
+      "navbar": "Navbar",
+      "badge": "Badge"
+    }
+  },
+  "documentation": {
+    "propTypes": {
+      "title": "Prop Types",
+      "name": "Name",
+      "description": "Description",
+      "required": "Required",
+      "yes": "Yes",
+      "no": "No"
+    }
+  }
+}

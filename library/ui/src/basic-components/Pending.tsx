@@ -26,40 +26,22 @@ const Css = {
 //@@viewOff:helpers
 
 //@@viewOn:propTypes
-export const PendingTypeScheme = {
-  className: {
-    name: "className",
-    description: "Additional CSS class names for the SVG element.",
-    required: false,
-    type: "" as string,
-  },
-  type: {
-    name: "type",
-    description: "Spinner style: circular or horizontal bar.",
-    required: false,
-    type: "circular" as "circular" | "horizontal",
-  },
-  size: {
-    name: "size",
-    description: "Pending size token (xs, sm, md, lg, xl).",
-    required: false,
-    type: "sm" as SizeToken,
-  },
-  darkMode: {
-    name: "darkMode",
-    description: "Use dark mode palette when true.",
-    required: false,
-    type: true as boolean,
-  },
-  colorScheme: {
-    name: "colorScheme",
-    description: "Use dark mode palette when true.",
-    required: false,
-    type: "primary" as ColorScheme,
-  }
+export type PendingProps = {
+  className?: string;
+  type?: "circular" | "horizontal";
+  size?: SizeToken;
+  darkMode?: boolean;
+  colorScheme?: ColorScheme;
 };
 
-export type PendingProps = { [K in keyof typeof PendingTypeScheme]?: (typeof PendingTypeScheme)[K]["type"] };
+// Const array for runtime prop extraction in documentation
+export const PENDING_PROP_NAMES = [
+  "className",
+  "type",
+  "size",
+  "darkMode",
+  "colorScheme",
+] as const;
 //@@viewOff:propTypes
 
 const Pending = ({ className, type = "circular", size = "sm", darkMode = true, colorScheme = "primary" }: PendingProps) => {

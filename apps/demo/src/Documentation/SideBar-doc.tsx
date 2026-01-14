@@ -1,49 +1,40 @@
 //@@viewOn:imports
-import { Documentation, SideBar as UiSideBar, SideBarTypeScheme } from "@react-ts-ui-lib/ui";
+import { Documentation, SIDEBAR_PROP_NAMES, SideBar as UiSideBar } from "@react-ts-ui-lib/ui";
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
+import { useTranslation } from "../i18n/useTranslation";
+import { getPropsWithTranslations } from "../i18n/getPropsWithTranslations";
 //@@viewOff:imports
 
-//@@viewOn:constants
-const TITLE = "SideBar Component";
-//@@viewOff:constants
-
-//@@viewOn:css
-//@@viewOff:css
-
-//@@viewOn:helpers
-//@@viewOff:helpers
-
-//@@viewOn:propTypes
-//@@viewOff:propTypes
-
+//@@viewOn:component
 const SideBarDoc = () => {
   //@@viewOn:private
-  const propTypesList = Object.values(SideBarTypeScheme);
+  const { t } = useTranslation();
+  const propTypesList = getPropsWithTranslations("sidebar", SIDEBAR_PROP_NAMES, t);
 
   const items: SideBarItem[] = [
-    { title: "Dashboard", icon: "mdi-view-dashboard" },
+    { title: t("sidebar.examples.dashboard"), icon: "mdi-view-dashboard" },
     {
-      title: "Settings",
+      title: t("sidebar.examples.settings"),
       icon: "mdi-cog",
       itemList: [
-        { title: "Profile", icon: "mdi-account" },
-        { title: "Security", icon: "mdi-shield-lock" },
+        { title: t("sidebar.examples.profile"), icon: "mdi-account" },
+        { title: t("sidebar.examples.security"), icon: "mdi-shield-lock" },
       ],
     },
   ];
 
   const componentList = [
     {
-      category: "Basic",
+      category: t("sidebar.categories.basic"),
       itemList: [
-        { label: "default", components: <UiSideBar itemList={items} /> },
-        { label: "light", components: <UiSideBar itemList={items} darkMode={false} /> },
+        { label: t("sidebar.examples.default"), components: <UiSideBar itemList={items} /> },
+        { label: t("sidebar.examples.light"), components: <UiSideBar itemList={items} darkMode={false} /> },
       ],
     },
     {
-      category: "Styling",
+      category: t("sidebar.categories.styling"),
       itemList: [
-        { label: "raw", components: <UiSideBar itemList={items} removeDefaultStyle /> },
+        { label: t("sidebar.examples.raw"), components: <UiSideBar itemList={items} removeDefaultStyle /> },
       ],
     },
   ];
@@ -52,11 +43,22 @@ const SideBarDoc = () => {
   //@@viewOn:render
   return (
     <div>
-      <Documentation title={TITLE} propTypesList={propTypesList} componentList={componentList} />
+      <Documentation
+        title={t("sidebar.title")}
+        propTypesList={propTypesList}
+        componentList={componentList}
+        propTypesTitle={t("documentation.propTypes.title")}
+        propTypesNameLabel={t("documentation.propTypes.name")}
+        propTypesDescriptionLabel={t("documentation.propTypes.description")}
+        propTypesRequiredLabel={t("documentation.propTypes.required")}
+        propTypesYes={t("documentation.propTypes.yes")}
+        propTypesNo={t("documentation.propTypes.no")}
+      />
     </div>
   );
   //@@viewOff:render
 };
+//@@viewOff:component
 
 //@@viewOn:exports
 export { SideBarDoc as SideBar };

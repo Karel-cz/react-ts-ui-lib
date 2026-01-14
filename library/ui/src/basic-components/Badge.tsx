@@ -55,102 +55,42 @@ const Css = {
 //@@viewOff:helpers
 
 //@@viewOn:propTypes
-export const BadgeTypeScheme = {
-  children: {
-    name: "children",
-    description: "Obsah badge (text nebo vlastní node).",
-    required: false,
-    type: undefined as React.ReactNode,
-  },
-  label: {
-    name: "label",
-    description: "Textový obsah badge (pokud není children).",
-    required: false,
-    type: "" as string,
-  },
-  icon: {
-    name: "icon",
-    description: "Název MDI ikony, renderuje interní Icon komponentu.",
-    required: false,
-    type: "" as string,
-  },
-  colorScheme: {
-    name: "colorScheme",
-    description: "Barevné schéma badge (primary, success, danger, warning, info).",
-    required: false,
-    type: "primary" as ColorScheme,
-  },
-  significance: {
-    name: "significance",
-    description: "Intenzita barvy: common (default), highlighted, distinct.",
-    required: false,
-    type: "common" as Significance,
-  },
-  borderRadius: {
-    name: "borderRadius",
-    description: "Předdefinované zaoblení (xs, sm, md, lg, full).",
-    required: false,
-    type: "md" as RadiusToken,
-  },
-  size: {
-    name: "size",
-    description: "Badge size token (xs, sm, md, lg, xl).",
-    required: false,
-    type: "md" as SizeToken,
-  },
-  onClick: {
-    name: "onClick",
-    description: "Click handler pro badge.",
-    required: false,
-    type: (undefined as unknown) as React.MouseEventHandler<HTMLSpanElement>,
-  },
-  disabled: {
-    name: "disabled",
-    description: "Vypne interakce a změní vzhled.",
-    required: false,
-    type: false as boolean,
-  },
-  hidden: {
-    name: "hidden",
-    description: "Pokud true, badge se nevyrenderuje.",
-    required: false,
-    type: false as boolean,
-  },
-  noPrint: {
-    name: "noPrint",
-    description: "Skryje badge při tisku (přidá className no-print).",
-    required: false,
-    type: false as boolean,
-  },
-  className: {
-    name: "className",
-    description: "Dodatečné className pro wrapper.",
-    required: false,
-    type: "" as string,
-  },
-  tooltip: {
-    name: "tooltip",
-    description: "Native tooltip při hoveru.",
-    required: false,
-    type: "" as string,
-  },
-  darkMode: {
-    name: "darkMode",
-    description: "Použije tmavé schéma barev.",
-    required: false,
-    type: true as boolean,
-  },
-  removeDefaultStyle: {
-    name: "removeDefaultStyle",
-    description: "Bez defaultních stylů (ponechá jen obsah).",
-    required: false,
-    type: false as boolean,
-  },
+export type BadgeProps = {
+  children?: React.ReactNode;
+  label?: string;
+  icon?: string;
+  colorScheme?: ColorScheme;
+  significance?: Significance;
+  borderRadius?: RadiusToken;
+  size?: SizeToken;
+  onClick?: React.MouseEventHandler<HTMLSpanElement>;
+  disabled?: boolean;
+  hidden?: boolean;
+  noPrint?: boolean;
+  className?: string;
+  tooltip?: string;
+  darkMode?: boolean;
+  removeDefaultStyle?: boolean;
 };
 
-export type BadgeProps = {
-  [K in keyof typeof BadgeTypeScheme]?: (typeof BadgeTypeScheme)[K]["type"];
-};
+// Const array for runtime prop extraction in documentation
+export const BADGE_PROP_NAMES = [
+  "children",
+  "label",
+  "icon",
+  "colorScheme",
+  "significance",
+  "borderRadius",
+  "size",
+  "onClick",
+  "disabled",
+  "hidden",
+  "noPrint",
+  "className",
+  "tooltip",
+  "darkMode",
+  "removeDefaultStyle",
+] as const;
 //@@viewOff:propTypes
 
 //@@viewOn:component

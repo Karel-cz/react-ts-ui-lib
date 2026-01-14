@@ -1,16 +1,16 @@
-import { componentList } from "./ComponentList";
+import type { SideBarItem } from "@react-ts-ui-lib/ui";
+import { getComponentList } from "./ComponentList";
 
-const routeList = [
-  { title: "Home", icon: "mdi-home" },
+export const getRouteList = (t: (key: string) => string): SideBarItem[] => [
+  { title: t("sidebar.routes.home"), icon: "mdi-home", key: "Home" },
   {
-    title: "Documentation",
+    title: t("sidebar.routes.documentation"),
     icon: "mdi-home",
     defaultExpandedItem: true,
-    itemList: componentList,
+    key: "Documentation",
+    itemList: getComponentList(t),
   },
-  { title: "Profile", icon: "mdi-account" },
-  { title: "Contributors", icon: "mdi-cog" },
-  { title: "About Application", icon: "mdi-cog" },
+  { title: t("sidebar.routes.profile"), icon: "mdi-account", key: "Profile" },
+  { title: t("sidebar.routes.contributors"), icon: "mdi-cog", key: "Contributors" },
+  { title: t("sidebar.routes.aboutApplication"), icon: "mdi-cog", key: "AboutApplication" },
 ];
-
-export default routeList;

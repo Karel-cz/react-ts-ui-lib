@@ -76,130 +76,48 @@ const Css = {
 //@@viewOff:helpers
 
 //@@viewOn:propTypes
-export const ButtonTypeScheme = {
-  children: {
-    name: "children",
-    required: false,
-    description:
-      "Content rendered inside the button (text, icons, custom nodes).",
-    type: undefined as React.ReactNode,
-  },
-  disabled: {
-    name: "disabled",
-    required: false,
-    description: "Prevents interaction and visually disables the button.",
-    type: false as boolean,
-  },
-  loading: {
-    name: "loading",
-    description:
-      "Alias for pending state – indicates that an async action is running.",
-    required: false,
-    type: false as boolean,
-  },
-  colorScheme: {
-    name: "colorScheme",
-    description:
-      "Determines visual look of the button based on predefined color palette (primary, success, danger…).",
-    required: false,
-    type: "primary" as ColorScheme,
-  },
-  significance: {
-    name: "significance",
-    description:
-      "Controls visual intensity of the button: common (default), highlighted, distinct.",
-    required: false,
-    type: "common" as Significance,
-  },
-  icon: {
-    name: "icon",
-    description: "Name of mdi icon rendered inside the button.",
-    required: false,
-    type: "" as string,
-  },
-  iconPosition: {
-    name: "iconPosition",
-    description:
-      "Controls whether icon is rendered on the left or right side of the content.",
-    required: false,
-    type: "undefined" as "left" | "right",
-  },
-  label: {
-    name: "label",
-    description:
-      "Simple text alternative to children – useful for easy text buttons or accessibility.",
-    required: false,
-    type: "" as string,
-  },
-  onClick: {
-    name: "onClick",
-    description: "Triggered when the user clicks the button.",
-    required: false,
-    type: (undefined as unknown) as (e: React.MouseEvent<HTMLButtonElement>) => void,
-  },
-  className: {
-    name: "className",
-    description:
-      "Additional CSS class names applied to the root button element.",
-    required: false,
-    type: "" as string,
-  },
-  borderRadius: {
-    name: "borderRadius",
-    description: "Predefined border radius token (xs, sm, md, lg, full).",
-    required: false,
-    type: "md" as RadiusToken,
-  },
-  size: {
-    name: "size",
-    description: "Button size token (xs, sm, md, lg, xl).",
-    required: false,
-    type: "md" as SizeToken,
-  },
-  removeDefaultStyle: {
-    name: "removeDefaultStyle",
-    description:
-      "Disables built-in styling and leaves only raw button element for full customization.",
-    required: false,
-    type: false as boolean,
-  },
-  tooltip: {
-    name: "tooltip",
-    description: "Browser default tooltip shown when hovering over the button.",
-    required: false,
-    type: "" as string,
-  },
-  type: {
-    name: "type",
-    description: "Native button type (button, submit, reset).",
-    required: false,
-    type: "" as "button" | "submit" | "reset",
-  },
-  darkMode: {
-    name: "darkMode",
-    description:
-      "Renders the button using dark mode palette (affects colorScheme behavior).",
-    required: false,
-    type: true as boolean,
-  },
-  isPending: {
-    name: "isPending",
-    description:
-      "Shows loading spinner and blocks interactions. Content becomes visually hidden.",
-    required: false,
-    type: false as boolean,
-  },
-  noPrint: {
-    name: "noPrint",
-    description: "Hides the button when printing (adds no-print class).",
-    required: false,
-    type: false as boolean,
-  },
+export type ButtonProps = {
+  children?: React.ReactNode;
+  disabled?: boolean;
+  loading?: boolean;
+  colorScheme?: ColorScheme;
+  significance?: Significance;
+  icon?: string;
+  iconPosition?: "left" | "right";
+  label?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  className?: string;
+  borderRadius?: RadiusToken;
+  size?: SizeToken;
+  removeDefaultStyle?: boolean;
+  tooltip?: string;
+  type?: "button" | "submit" | "reset";
+  darkMode?: boolean;
+  isPending?: boolean;
+  noPrint?: boolean;
 };
 
-export type ButtonProps = {
-  [K in keyof typeof ButtonTypeScheme]?: (typeof ButtonTypeScheme)[K]["type"];
-};
+// Const array for runtime prop extraction in documentation
+export const BUTTON_PROP_NAMES = [
+  "children",
+  "disabled",
+  "loading",
+  "colorScheme",
+  "significance",
+  "icon",
+  "iconPosition",
+  "label",
+  "onClick",
+  "className",
+  "borderRadius",
+  "size",
+  "removeDefaultStyle",
+  "tooltip",
+  "type",
+  "darkMode",
+  "isPending",
+  "noPrint",
+] as const;
 //@@viewOff:propTypes
 
 const Button = ({

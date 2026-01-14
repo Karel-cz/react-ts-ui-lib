@@ -71,52 +71,26 @@ const Css = {
 //@@viewOff:css
 
 //@@viewOn:propTypes
-export const NavbarTypeScheme = {
-  logo: {
-    name: "logo",
-    description: "Content rendered in the left section; string or custom node.",
-    required: false,
-    type: "LOGO" as string | ReactNode,
-  },
-  centerContent: {
-    name: "centerContent",
-    description: "Content placed in the centered section of the navbar.",
-    required: false,
-    type: undefined as ReactNode,
-  },
-  rightContent: {
-    name: "rightContent",
-    description: "Content placed in the right section (e.g., actions).",
-    required: false,
-    type: undefined as ReactNode,
-  },
-  onLogoClick: {
-    name: "onLogoClick",
-    description: "Callback fired when the logo is clicked.",
-    required: false,
-    type: undefined as () => void,
-  },
-  removeDefaultStyle: {
-    name: "removeDefaultStyle",
-    description: "Disables built-in styling for container, logo, and buttons.",
-    required: false,
-    type: false as boolean,
-  },
-  colorScheme: {
-    name: "colorScheme",
-    description: "Background and text colors based on theme palette.",
-    required: false,
-    type: "background" as ColorScheme,
-  },
-  darkMode: {
-    name: "darkMode",
-    description: "Use dark mode palette when true.",
-    required: false,
-    type: true as boolean,
-  },
+export type NavbarProps = {
+  logo?: string | ReactNode;
+  centerContent?: ReactNode;
+  rightContent?: ReactNode;
+  onLogoClick?: () => void;
+  removeDefaultStyle?: boolean;
+  colorScheme?: ColorScheme;
+  darkMode?: boolean;
 };
 
-export type NavbarProps = { [K in keyof typeof NavbarTypeScheme]?: (typeof NavbarTypeScheme)[K]["type"] };
+// Const array for runtime prop extraction in documentation
+export const NAVBAR_PROP_NAMES = [
+  "logo",
+  "centerContent",
+  "rightContent",
+  "onLogoClick",
+  "removeDefaultStyle",
+  "colorScheme",
+  "darkMode",
+] as const;
 //@@viewOff:propTypes
 
 //@@viewOn:render

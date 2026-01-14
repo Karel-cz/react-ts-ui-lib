@@ -4,17 +4,16 @@ export { Pending } from "./basic-components/Pending";
 export { Icon } from "./basic-components/Icon";
 export { SideBar } from "./basic-components/SideBar";
 export { Navbar } from "./basic-components/Navbar";
-export { Documentation } from "./basic-components/Documentation";
+export { Documentation } from "./basic-components/documentation";
 export { Badge } from "./basic-components/Badge";
 
-// Prop Schemes (for docs)
-export { ButtonTypeScheme } from "./basic-components/Button";
-export { IconTypeScheme } from "./basic-components/Icon";
-export { NavbarTypeScheme } from "./basic-components/Navbar";
-export { PendingTypeScheme } from "./basic-components/Pending";
-export { SideBarTypeScheme } from "./basic-components/SideBar";
-export { DocumentationTypeScheme } from "./basic-components/Documentation";
-export { BadgeTypeScheme } from "./basic-components/Badge";
+// Prop Names (for docs)
+export { BUTTON_PROP_NAMES } from "./basic-components/Button";
+export { ICON_PROP_NAMES } from "./basic-components/Icon";
+export { NAVBAR_PROP_NAMES } from "./basic-components/Navbar";
+export { PENDING_PROP_NAMES } from "./basic-components/Pending";
+export { SIDEBAR_PROP_NAMES } from "./basic-components/SideBar";
+export { BADGE_PROP_NAMES } from "./basic-components/Badge";
 
 // Types
 export type { PendingProps } from "./basic-components/Pending";

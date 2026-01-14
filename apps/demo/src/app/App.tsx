@@ -1,12 +1,13 @@
 //@@viewOn:imports
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import LeftMenu from "./LeftMenu";
 import Content from "./Content";
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
-import routeList from "./tools/RouteList";
+import { getRouteList } from "./tools/RouteList";
 import { Navbar, Button } from "@react-ts-ui-lib/ui";
 import { useTheme } from "./context/ThemeContext";
 import { useLanguage } from "./context/LanguageContext";
+import { useTranslation } from "../i18n/useTranslation";
 
 //@@viewOff:imports
 
@@ -15,7 +16,7 @@ const LOGO = "React TypeScript Lib";
 const SUNNY = "mdi-white-balance-sunny";
 const MOON = "mdi-moon-waxing-crescent";
 
-const LANGUAGE_MAP = {
+const LANGUAGE_MAP: Record<string, string> = {
   en: "EN",
   cz: "CZ",
 };
@@ -49,8 +50,10 @@ function App() {
   //@@viewOn:private
   const { darkMode, setDarkMode } = useTheme();
   const { language, setLanguage } = useLanguage();
-  const [selectedItem, setSelectedItem] = useState<SideBarItem | null>(
-    routeList[0]
+  const { t } = useTranslation();
+  const routeList = useMemo(() => getRouteList(t), [t]);
+  const [selectedItem, setSelectedItem] = useState<SideBarItem | null>(() => 
+    routeList.length > 0 ? routeList[0] : null
   );
 
   const RightContent = () => {

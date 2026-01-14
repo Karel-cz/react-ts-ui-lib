@@ -1,113 +1,113 @@
 //@@viewOn:imports
-import { Documentation, ButtonTypeScheme, Button } from "@react-ts-ui-lib/ui";
+import { Documentation, BUTTON_PROP_NAMES, Button } from "@react-ts-ui-lib/ui";
+import { useTranslation } from "../i18n/useTranslation";
+import { getPropsWithTranslations } from "../i18n/getPropsWithTranslations";
 //@@viewOff:imports
 
-//@@viewOn:constants
-const TITLE = "Button Component";
-//@@viewOff:constants
-
-//@@viewOn:css
-//@@viewOff:css
-
-//@@viewOn:helpers
-//@@viewOff:helpers
-
-//@@viewOn:propTypes
-//@@viewOff:propTypes
-
+//@@viewOn:component
 const ButtonDoc = () => {
   //@@viewOn:private
-  const propTypesList = Object.values(ButtonTypeScheme);
-
+  const { t } = useTranslation();
+  const propTypesList = getPropsWithTranslations("button", BUTTON_PROP_NAMES, t);
 
   const componentList = [
     {
-      category: "Color scheme",
+      category: t("button.categories.colorScheme"),
       itemList: [
-        { label: "primary", components: <Button label="Primary" colorScheme="primary" /> },
-        { label: "success", components: <Button label="Success" colorScheme="success" /> },
-        { label: "danger", components: <Button label="Danger" colorScheme="danger" /> },
-        { label: "warning", components: <Button label="Warning" colorScheme="warning" /> },
-        { label: "info", components: <Button label="Info" colorScheme="info" /> },
+        { label: t("button.examples.primary"), components: <Button label={t("button.examples.primary")} colorScheme="primary" /> },
+        { label: t("button.examples.success"), components: <Button label={t("button.examples.success")} colorScheme="success" /> },
+        { label: t("button.examples.danger"), components: <Button label={t("button.examples.danger")} colorScheme="danger" /> },
+        { label: t("button.examples.warning"), components: <Button label={t("button.examples.warning")} colorScheme="warning" /> },
+        { label: t("button.examples.info"), components: <Button label={t("button.examples.info")} colorScheme="info" /> },
       ],
     },
     {
-      category: "State",
+      category: t("button.categories.state"),
       itemList: [
-        { label: "default", components: <Button label="Default" /> },
-        { label: "disabled", components: <Button label="Disabled" disabled /> },
-        { label: "pending", components: <Button label="Pending" isPending /> },
+        { label: t("button.examples.default"), components: <Button label={t("button.examples.default")} /> },
+        { label: t("button.examples.disabled"), components: <Button label={t("button.examples.disabled")} disabled /> },
+        { label: t("button.examples.pending"), components: <Button label={t("button.examples.pending")} isPending /> },
       ],
     },
     {
-      category: "Content",
+      category: t("button.categories.content"),
       itemList: [
-        { label: "label", components: <Button label="Label only" /> },
-        { label: "children", components: <Button><span><strong>Custom</strong> children</span></Button> },
+        { label: t("button.examples.label"), components: <Button label={t("button.examples.labelOnly")} /> },
+        { label: t("button.examples.children"), components: <Button><span><strong>{t("button.examples.customChildren")}</strong></span></Button> },
       ],
     },
     {
-      category: "Icons",
+      category: t("button.categories.icons"),
       itemList: [
-        { label: "left", components: <Button label="Left icon" icon="mdi-check" iconPosition="left" /> },
-        { label: "right", components: <Button label="Right icon" icon="mdi-check" iconPosition="right" /> },
+        { label: t("button.examples.left"), components: <Button label={t("button.examples.leftIcon")} icon="mdi-check" iconPosition="left" /> },
+        { label: t("button.examples.right"), components: <Button label={t("button.examples.rightIcon")} icon="mdi-check" iconPosition="right" /> },
       ],
     },
     {
-      category: "Styling",
+      category: t("button.categories.styling"),
       itemList: [
-        { label: "no default", components: <Button label="Raw button" removeDefaultStyle /> },
+        { label: t("button.examples.noDefault"), components: <Button label={t("button.examples.rawButton")} removeDefaultStyle /> },
       ],
     },
     {
-      category: "Significance",
+      category: t("button.categories.significance"),
       itemList: [
-        { label: "common", components: <Button label="Common" colorScheme="primary" significance="common" /> },
-        { label: "highlighted", components: <Button label="Highlighted" colorScheme="primary" significance="highlighted" /> },
-        { label: "distinct", components: <Button label="Distinct" colorScheme="primary" significance="distinct" /> },
+        { label: t("button.examples.common"), components: <Button label={t("button.examples.common")} colorScheme="primary" significance="common" /> },
+        { label: t("button.examples.highlighted"), components: <Button label={t("button.examples.highlighted")} colorScheme="primary" significance="highlighted" /> },
+        { label: t("button.examples.distinct"), components: <Button label={t("button.examples.distinct")} colorScheme="primary" significance="distinct" /> },
       ],
     },
     {
-      category: "Size",
+      category: t("button.categories.size"),
       itemList: [
-        { label: "xs", components: <Button label="XS" size="xs" /> },
-        { label: "sm", components: <Button label="SM" size="sm" /> },
-        { label: "md", components: <Button label="MD" size="md" /> },
-        { label: "lg", components: <Button label="LG" size="lg" /> },
-        { label: "xl", components: <Button label="XL" size="xl" /> },
-        { label: "full", components: <Button label="Full Width" size="full" /> },
-        { label: "xs + icon", components: <Button label="XS" size="xs" icon="mdi-check" /> },
-        { label: "md + icon", components: <Button label="MD" size="md" icon="mdi-check" /> },
-        { label: "xl + icon", components: <Button label="XL" size="xl" icon="mdi-check" /> },
-        { label: "md + pending", components: <Button label="Loading" size="md" isPending /> },
-        { label: "lg + pending", components: <Button label="Loading" size="lg" isPending /> },
+        { label: t("button.examples.xs"), components: <Button label={t("button.examples.xs")} size="xs" /> },
+        { label: t("button.examples.sm"), components: <Button label={t("button.examples.sm")} size="sm" /> },
+        { label: t("button.examples.md"), components: <Button label={t("button.examples.md")} size="md" /> },
+        { label: t("button.examples.lg"), components: <Button label={t("button.examples.lg")} size="lg" /> },
+        { label: t("button.examples.xl"), components: <Button label={t("button.examples.xl")} size="xl" /> },
+        { label: t("button.examples.full"), components: <Button label={t("button.examples.fullWidth")} size="full" /> },
+        { label: t("button.examples.xsIcon"), components: <Button label={t("button.examples.xs")} size="xs" icon="mdi-check" /> },
+        { label: t("button.examples.mdIcon"), components: <Button label={t("button.examples.md")} size="md" icon="mdi-check" /> },
+        { label: t("button.examples.xlIcon"), components: <Button label={t("button.examples.xl")} size="xl" icon="mdi-check" /> },
+        { label: t("button.examples.mdPending"), components: <Button label={t("button.examples.loading")} size="md" isPending /> },
+        { label: t("button.examples.lgPending"), components: <Button label={t("button.examples.loading")} size="lg" isPending /> },
       ],
     },
     {
-      category: "Border radius & print",
+      category: t("button.categories.borderRadius"),
       itemList: [
-        { label: "rounded", components: <Button label="Rounded" borderRadius="lg" /> },
-        { label: "pill noPrint", components: <Button label="Pill noPrint" borderRadius="full" noPrint /> },
+        { label: t("button.examples.rounded"), components: <Button label={t("button.examples.rounded")} borderRadius="lg" /> },
+        { label: t("button.examples.pillNoPrint"), components: <Button label={t("button.examples.pillNoPrint")} borderRadius="full" noPrint /> },
       ],
     },
     {
-      category: "Tooltip",
+      category: t("button.categories.tooltip"),
       itemList: [
-        { label: "tooltip", components: <Button label="Hover me" tooltip="Native tooltip" /> },
+        { label: t("button.examples.tooltip"), components: <Button label={t("button.examples.hoverMe")} tooltip={t("button.examples.nativeTooltip")} /> },
       ],
     },
   ];
-
   //@@viewOff:private
 
   //@@viewOn:render
   return (
     <div>
-      <Documentation title={TITLE} propTypesList={propTypesList} componentList={componentList} />
+      <Documentation
+        title={t("button.title")}
+        propTypesList={propTypesList}
+        componentList={componentList}
+        propTypesTitle={t("documentation.propTypes.title")}
+        propTypesNameLabel={t("documentation.propTypes.name")}
+        propTypesDescriptionLabel={t("documentation.propTypes.description")}
+        propTypesRequiredLabel={t("documentation.propTypes.required")}
+        propTypesYes={t("documentation.propTypes.yes")}
+        propTypesNo={t("documentation.propTypes.no")}
+      />
     </div>
   );
   //@@viewOff:render
 };
+//@@viewOff:component
 
 //@@viewOn:exports
 export { ButtonDoc };

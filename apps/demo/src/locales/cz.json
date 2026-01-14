@@ -1,0 +1,331 @@
+{
+  "badge": {
+    "title": "Badge Komponenta",
+    "props": {
+      "children": {
+        "description": "Obsah badge (text nebo vlastní node).",
+        "required": "false"
+      },
+      "label": {
+        "description": "Textový obsah badge (pokud není children).",
+        "required": "false"
+      },
+      "icon": {
+        "description": "Název MDI ikony, renderuje interní Icon komponentu.",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Barevné schéma badge (primary, success, danger, warning, info).",
+        "required": "false"
+      },
+      "significance": {
+        "description": "Intenzita barvy: common (default), highlighted, distinct.",
+        "required": "false"
+      },
+      "borderRadius": {
+        "description": "Předdefinované zaoblení (xs, sm, md, lg, full).",
+        "required": "false"
+      },
+      "size": {
+        "description": "Badge size token (xs, sm, md, lg, xl).",
+        "required": "false"
+      },
+      "onClick": {
+        "description": "Click handler pro badge.",
+        "required": "false"
+      },
+      "disabled": {
+        "description": "Vypne interakce a změní vzhled.",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "Pokud true, badge se nevyrenderuje.",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Skryje badge při tisku (přidá className no-print).",
+        "required": "false"
+      },
+      "className": {
+        "description": "Dodatečné className pro wrapper.",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Native tooltip při hoveru.",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Použije tmavé schéma barev.",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Bez defaultních stylů (ponechá jen obsah).",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "colorScheme": "Barevné schéma",
+      "significance": "Významnost",
+      "size": "Velikost",
+      "icon": "Ikona",
+      "states": "Stavy"
+    },
+    "examples": {
+      "primary": "Primary",
+      "success": "Success",
+      "danger": "Danger",
+      "warning": "Warning",
+      "info": "Info",
+      "common": "Common",
+      "highlighted": "Highlighted",
+      "distinct": "Distinct",
+      "xs": "XS",
+      "sm": "SM",
+      "md": "MD",
+      "lg": "LG",
+      "xl": "XL",
+      "iconLeft": "ikona vlevo",
+      "alert": "Upozornění",
+      "disabled": "zakázáno",
+      "noPrint": "noPrint",
+      "onClick": "onClick",
+      "withIcon": "S ikonou",
+      "clickMe": "Klikni na mě",
+      "noPrintTooltip": "Skryto při tisku"
+    }
+  },
+  "button": {
+    "title": "Button Komponenta",
+    "props": {
+      "children": { "description": "Obsah renderovaný uvnitř tlačítka (text, ikony, vlastní node).", "required": "false" },
+      "disabled": { "description": "Zabrání interakci a vizuálně deaktivuje tlačítko.", "required": "false" },
+      "loading": { "description": "Alias pro pending stav – indikuje, že běží asynchronní akce.", "required": "false" },
+      "colorScheme": { "description": "Určuje vizuální vzhled tlačítka na základě předdefinované barevné palety (primary, success, danger…).", "required": "false" },
+      "significance": { "description": "Ovládá vizuální intenzitu tlačítka: common (default), highlighted, distinct.", "required": "false" },
+      "icon": { "description": "Název mdi ikony renderované uvnitř tlačítka.", "required": "false" },
+      "iconPosition": { "description": "Ovládá, zda je ikona renderována na levé nebo pravé straně obsahu.", "required": "false" },
+      "label": { "description": "Jednoduchá textová alternativa k children – užitečné pro snadná textová tlačítka nebo přístupnost.", "required": "false" },
+      "onClick": { "description": "Spuštěno, když uživatel klikne na tlačítko.", "required": "false" },
+      "className": { "description": "Dodatečné CSS třídy aplikované na root button element.", "required": "false" },
+      "borderRadius": { "description": "Předdefinovaný border radius token (xs, sm, md, lg, full).", "required": "false" },
+      "size": { "description": "Button size token (xs, sm, md, lg, xl).", "required": "false" },
+      "removeDefaultStyle": { "description": "Vypne vestavěné styly a ponechá pouze surový button element pro plnou přizpůsobitelnost.", "required": "false" },
+      "tooltip": { "description": "Výchozí tooltip prohlížeče zobrazený při najetí na tlačítko.", "required": "false" },
+      "type": { "description": "Nativní typ tlačítka (button, submit, reset).", "required": "false" },
+      "darkMode": { "description": "Renderuje tlačítko pomocí tmavé palety barev (ovlivňuje chování colorScheme).", "required": "false" },
+      "isPending": { "description": "Zobrazí loading spinner a zablokuje interakce. Obsah se vizuálně skryje.", "required": "false" },
+      "noPrint": { "description": "Skryje tlačítko při tisku (přidá třídu no-print).", "required": "false" }
+    },
+    "categories": {
+      "colorScheme": "Barevné schéma",
+      "state": "Stav",
+      "content": "Obsah",
+      "icons": "Ikony",
+      "styling": "Styling",
+      "significance": "Významnost",
+      "size": "Velikost",
+      "borderRadius": "Zaoblení & tisk",
+      "tooltip": "Tooltip"
+    },
+    "examples": {
+      "primary": "Primary",
+      "success": "Success",
+      "danger": "Danger",
+      "warning": "Warning",
+      "info": "Info",
+      "default": "Výchozí",
+      "disabled": "Zakázáno",
+      "pending": "Čeká",
+      "label": "label",
+      "labelOnly": "Pouze label",
+      "children": "children",
+      "customChildren": "Vlastní children",
+      "left": "vlevo",
+      "right": "vpravo",
+      "leftIcon": "Ikona vlevo",
+      "rightIcon": "Ikona vpravo",
+      "noDefault": "bez default",
+      "rawButton": "Surové tlačítko",
+      "common": "Common",
+      "highlighted": "Highlighted",
+      "distinct": "Distinct",
+      "xs": "XS",
+      "sm": "SM",
+      "md": "MD",
+      "lg": "LG",
+      "xl": "XL",
+      "full": "full",
+      "fullWidth": "Plná šířka",
+      "xsIcon": "xs + ikona",
+      "mdIcon": "md + ikona",
+      "xlIcon": "xl + ikona",
+      "mdPending": "md + čeká",
+      "lgPending": "lg + čeká",
+      "loading": "Načítání",
+      "rounded": "Zaoblené",
+      "pillNoPrint": "pilulka noPrint",
+      "tooltip": "tooltip",
+      "hoverMe": "Najetí",
+      "nativeTooltip": "Nativní tooltip"
+    }
+  },
+  "icon": {
+    "title": "Icon Komponenta",
+    "props": {
+      "icon": { "description": "Název Material Design Icon (mdi-*) k renderování.", "required": "false" },
+      "size": { "description": "Icon size token (xs, sm, md, lg, xl) nebo číslo (em) pro vlastní velikost.", "required": "false" },
+      "color": { "description": "Barva ikony (CSS color hodnota).", "required": "false" },
+      "className": { "description": "Dodatečné třídy pro wrapper span.", "required": "false" },
+      "onClick": { "description": "Click handler pro wrapper ikony.", "required": "false" },
+      "removeDefaultStyle": { "description": "Render bez výchozích layout stylů.", "required": "false" },
+      "hidden": { "description": "Pokud true, ikona se nevyrenderuje.", "required": "false" },
+      "label": { "description": "Volitelný textový label zobrazený vedle ikony.", "required": "false" },
+      "tooltip": { "description": "Tooltip prohlížeče zobrazený při najetí.", "required": "false" },
+      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "required": "false" }
+    },
+    "categories": {
+      "size": "Velikost",
+      "basic": "Základní",
+      "icons": "Ikony",
+      "states": "Stavy",
+      "darkMode": "Tmavý režim"
+    },
+    "examples": {
+      "xs": "xs",
+      "sm": "sm",
+      "md": "md",
+      "lg": "lg",
+      "xl": "xl",
+      "custom": "vlastní",
+      "default": "výchozí",
+      "red": "červená",
+      "label": "label",
+      "info": "Info",
+      "tooltip": "tooltip",
+      "help": "Nápověda",
+      "check": "check",
+      "heart": "heart",
+      "star": "star",
+      "alert": "alert",
+      "information": "information",
+      "close": "close",
+      "onClick": "onClick",
+      "hidden": "skryto",
+      "removeDefaultStyle": "removeDefaultStyle",
+      "dark": "tmavý",
+      "light": "světlý"
+    }
+  },
+  "pending": {
+    "title": "Pending Komponenta",
+    "props": {
+      "className": { "description": "Dodatečné CSS třídy pro SVG element.", "required": "false" },
+      "type": { "description": "Styl spinneru: circular nebo horizontal bar.", "required": "false" },
+      "size": { "description": "Pending size token (xs, sm, md, lg, xl).", "required": "false" },
+      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "required": "false" },
+      "colorScheme": { "description": "Barevné schéma pro spinner.", "required": "false" }
+    },
+    "categories": {
+      "type": "Typ",
+      "size": "Velikost",
+      "colorScheme": "Barevné schéma",
+      "darkMode": "Tmavý režim"
+    },
+    "examples": {
+      "circular": "kruhový",
+      "horizontal": "horizontální",
+      "xs": "xs",
+      "sm": "sm",
+      "md": "md",
+      "lg": "lg",
+      "xl": "xl",
+      "primary": "primary",
+      "warning": "warning",
+      "info": "info",
+      "danger": "danger",
+      "success": "success",
+      "dark": "tmavý",
+      "light": "světlý"
+    }
+  },
+  "navbar": {
+    "title": "Navbar Komponenta",
+    "props": {
+      "logo": { "description": "Obsah renderovaný v levé sekci; string nebo vlastní node.", "required": "false" },
+      "centerContent": { "description": "Obsah umístěný ve střední sekci navbaru.", "required": "false" },
+      "rightContent": { "description": "Obsah umístěný v pravé sekci (např. akce).", "required": "false" },
+      "onLogoClick": { "description": "Callback spuštěný při kliknutí na logo.", "required": "false" },
+      "removeDefaultStyle": { "description": "Vypne vestavěné styly pro container, logo a tlačítka.", "required": "false" },
+      "colorScheme": { "description": "Barvy pozadí a textu na základě palety tématu.", "required": "false" },
+      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "required": "false" }
+    },
+    "categories": {
+      "layout": "Rozložení",
+      "colorScheme": "Barevné schéma",
+      "darkMode": "Tmavý režim",
+      "styling": "Styling"
+    },
+    "examples": {
+      "logoString": "logo string",
+      "customLogo": "vlastní logo",
+      "center": "Střed",
+      "background": "background",
+      "surface": "surface",
+      "dark": "tmavý",
+      "light": "světlý",
+      "raw": "surový"
+    }
+  },
+  "sidebar": {
+    "title": "SideBar Komponenta",
+    "props": {
+      "itemList": { "description": "Položky nejvyšší úrovně k renderování v sidebaru (mohou být vnořené).", "required": "true" },
+      "className": { "description": "Dodatečné třídy pro container.", "required": "false" },
+      "removeDefaultStyle": { "description": "Vypne vestavěné styly pro container a položky.", "required": "false" },
+      "tooltip": { "description": "Volitelný tooltip na containeru (nativní title).", "required": "false" },
+      "label": { "description": "Volitelný textový label pro container.", "required": "false" },
+      "onItemClick": { "description": "Callback při kliknutí na položku; přijímá položku a event.", "required": "false" },
+      "collapsed": { "description": "Zda je sidebar sbalený.", "required": "false" },
+      "colorScheme": { "description": "Barvy pozadí a textu na základě palety tématu.", "required": "false" },
+      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "required": "false" }
+    },
+    "categories": {
+      "basic": "Základní",
+      "styling": "Styling"
+    },
+    "examples": {
+      "default": "výchozí",
+      "light": "světlý",
+      "raw": "surový",
+      "dashboard": "Dashboard",
+      "settings": "Nastavení",
+      "profile": "Profil",
+      "security": "Zabezpečení"
+    },
+    "routes": {
+      "home": "Domů",
+      "documentation": "Dokumentace",
+      "profile": "Profil",
+      "contributors": "Přispěvatelé",
+      "aboutApplication": "O aplikaci"
+    },
+    "components": {
+      "button": "Button",
+      "icon": "Icon",
+      "pending": "Pending",
+      "sidebar": "SideBar",
+      "navbar": "Navbar",
+      "badge": "Badge"
+    }
+  },
+  "documentation": {
+    "propTypes": {
+      "title": "Prop Types",
+      "name": "Název",
+      "description": "Popis",
+      "required": "Povinné",
+      "yes": "Ano",
+      "no": "Ne"
+    }
+  }
+}

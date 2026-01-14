@@ -26,7 +26,8 @@ const Content = ({ selectedItem }: ContentProps) => {
     return <div>Select a component from the menu.</div>;
   }
 
-  const Component = componentMap[selectedItem.title];
+  const mapKey = selectedItem.key || selectedItem.title;
+  const Component = componentMap[mapKey];
   //@@viewOff:private
 
   //@@viewOn:render

@@ -1,58 +1,48 @@
 //@@viewOn:imports
-import React from "react";
-import { Documentation, Pending as UiPending, PendingTypeScheme } from "@react-ts-ui-lib/ui";
+import { Documentation, PENDING_PROP_NAMES, Pending as UiPending } from "@react-ts-ui-lib/ui";
+import { useTranslation } from "../i18n/useTranslation";
+import { getPropsWithTranslations } from "../i18n/getPropsWithTranslations";
 //@@viewOff:imports
 
-//@@viewOn:constants
-const TITLE = "Pending Component";
-//@@viewOff:constants
-
-//@@viewOn:css
-//@@viewOff:css
-
-//@@viewOn:helpers
-//@@viewOff:helpers
-
-//@@viewOn:propTypes
-//@@viewOff:propTypes
-
+//@@viewOn:component
 const PendingDoc = () => {
   //@@viewOn:private
-  const propTypesList = Object.values(PendingTypeScheme);
+  const { t } = useTranslation();
+  const propTypesList = getPropsWithTranslations("pending", PENDING_PROP_NAMES, t);
 
   const componentList = [
     {
-      category: "Type",
+      category: t("pending.categories.type"),
       itemList: [
-        { label: "circular", components: <UiPending type="circular" /> },
-        { label: "horizontal", components: <UiPending type="horizontal" /> },
+        { label: t("pending.examples.circular"), components: <UiPending type="circular" /> },
+        { label: t("pending.examples.horizontal"), components: <UiPending type="horizontal" /> },
       ],
     },
     {
-      category: "Size",
+      category: t("pending.categories.size"),
       itemList: [
-        { label: "xs", components: <UiPending size="xs" /> },
-        { label: "sm", components: <UiPending size="sm" /> },
-        { label: "md", components: <UiPending size="md" /> },
-        { label: "lg", components: <UiPending size="lg" /> },
-        { label: "xl", components: <UiPending size="xl" /> },
+        { label: t("pending.examples.xs"), components: <UiPending size="xs" /> },
+        { label: t("pending.examples.sm"), components: <UiPending size="sm" /> },
+        { label: t("pending.examples.md"), components: <UiPending size="md" /> },
+        { label: t("pending.examples.lg"), components: <UiPending size="lg" /> },
+        { label: t("pending.examples.xl"), components: <UiPending size="xl" /> },
       ],
     },
     {
-      category: "Color Scheme",
+      category: t("pending.categories.colorScheme"),
       itemList: [
-        { label: "primary", components: <UiPending colorScheme={"primary"} size="lg" /> },
-        { label: "warning", components: <UiPending colorScheme={"warning"} size="lg" /> },
-        { label: "info", components: <UiPending colorScheme={"info"} size="lg" /> },
-        { label: "danger", components: <UiPending colorScheme={"danger"} size="lg" /> },
-        { label: "success", components: <UiPending colorScheme={"success"} size="lg" /> },
+        { label: t("pending.examples.primary"), components: <UiPending colorScheme={"primary"} size="lg" /> },
+        { label: t("pending.examples.warning"), components: <UiPending colorScheme={"warning"} size="lg" /> },
+        { label: t("pending.examples.info"), components: <UiPending colorScheme={"info"} size="lg" /> },
+        { label: t("pending.examples.danger"), components: <UiPending colorScheme={"danger"} size="lg" /> },
+        { label: t("pending.examples.success"), components: <UiPending colorScheme={"success"} size="lg" /> },
       ],
     },
     {
-      category: "Dark mode",
+      category: t("pending.categories.darkMode"),
       itemList: [
-        { label: "dark", components: <UiPending darkMode /> },
-        { label: "light", components: <UiPending darkMode={false} /> },
+        { label: t("pending.examples.dark"), components: <UiPending darkMode /> },
+        { label: t("pending.examples.light"), components: <UiPending darkMode={false} /> },
       ],
     },
   ];
@@ -61,11 +51,22 @@ const PendingDoc = () => {
   //@@viewOn:render
   return (
     <div>
-      <Documentation title={TITLE} propTypesList={propTypesList} componentList={componentList} />
+      <Documentation
+        title={t("pending.title")}
+        propTypesList={propTypesList}
+        componentList={componentList}
+        propTypesTitle={t("documentation.propTypes.title")}
+        propTypesNameLabel={t("documentation.propTypes.name")}
+        propTypesDescriptionLabel={t("documentation.propTypes.description")}
+        propTypesRequiredLabel={t("documentation.propTypes.required")}
+        propTypesYes={t("documentation.propTypes.yes")}
+        propTypesNo={t("documentation.propTypes.no")}
+      />
     </div>
   );
   //@@viewOff:render
 };
+//@@viewOff:component
 
 //@@viewOn:exports
 export { PendingDoc as Pending };

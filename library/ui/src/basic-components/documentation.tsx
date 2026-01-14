@@ -102,6 +102,13 @@ export const DocumentationTypeScheme = {
 
 export type DocumentationProps = {
   [K in keyof typeof DocumentationTypeScheme]?: (typeof DocumentationTypeScheme)[K]["type"]
+} & {
+  propTypesTitle?: string;
+  propTypesNameLabel?: string;
+  propTypesDescriptionLabel?: string;
+  propTypesRequiredLabel?: string;
+  propTypesYes?: string;
+  propTypesNo?: string;
 };
 //@@viewOff:propTypes
 
@@ -109,6 +116,12 @@ const Documentation = ({
   title,
   propTypesList,
   componentList,
+  propTypesTitle = "Prop Types",
+  propTypesNameLabel = "Name",
+  propTypesDescriptionLabel = "Description",
+  propTypesRequiredLabel = "Required",
+  propTypesYes = "Yes",
+  propTypesNo = "No",
 }: DocumentationProps) => {
   //@@viewOn:private
   //@@viewOff:private
@@ -138,20 +151,20 @@ const Documentation = ({
 
        {propTypesList && propTypesList.length > 0 && (
         <section style={Css.section}>
-          <h2>Prop Types</h2>
+          <h2>{propTypesTitle}</h2>
           <table style={Css.table}>
             <thead></thead>
             <tr>
-              <th style={Css.th}>Name</th>
-              <th style={Css.th}>Description</th>
-              <th style={Css.th}>Required</th>
+              <th style={Css.th}>{propTypesNameLabel}</th>
+              <th style={Css.th}>{propTypesDescriptionLabel}</th>
+              <th style={Css.th}>{propTypesRequiredLabel}</th>
             </tr>
             <tbody></tbody>
             {propTypesList.map((propType: any, index: number) => (
               <tr key={index}>
                 <td style={Css.td}>{propType.name}</td>
                 <td style={Css.td}>{propType.description}</td>
-                <td style={Css.td}>{propType.required ? "Yes" : "No"}</td>
+                <td style={Css.td}>{propType.required ? propTypesYes : propTypesNo}</td>
               </tr>
             ))}
           </table>

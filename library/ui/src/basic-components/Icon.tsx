@@ -15,74 +15,32 @@ import { getIconSize, type SizeToken } from "../tools/size";
 //@@viewOff:helpers
 
 //@@viewOn:propTypes
-export const IconTypeScheme = {
-  icon: {
-    name: "icon",
-    description: "Name of the Material Design Icon (mdi-*) to render.",
-    required: false,
-    type: "mdi-close" as string,
-  },
-  size: {
-    name: "size",
-    description: "Icon size token (xs, sm, md, lg, xl) or number (em) for custom size.",
-    required: false,
-    type: ("md" as SizeToken) as SizeToken | number,
-  },
-  color: {
-    name: "color",
-    description: "Icon color (CSS color value).",
-    required: false,
-    type: "white" as string,
-  },
-  className: {
-    name: "className",
-    description: "Additional class names for the wrapper span.",
-    required: false,
-    type: "" as string,
-  },
-  onClick: {
-    name: "onClick",
-    description: "Click handler for the icon wrapper.",
-    required: false,
-    type: (undefined as unknown) as React.MouseEventHandler<HTMLSpanElement>,
-  },
-  removeDefaultStyle: {
-    name: "removeDefaultStyle",
-    description: "Render without default layout styles.",
-    required: false,
-    type: false as boolean,
-  },
-  hidden: {
-    name: "hidden",
-    description: "If true, the icon is not rendered.",
-    required: false,
-    type: false as boolean,
-  },
-  label: {
-    name: "label",
-    description: "Optional text label displayed next to the icon.",
-    required: false,
-    type: "" as string,
-  },
-  tooltip: {
-    name: "tooltip",
-    description: "Browser tooltip shown on hover.",
-    required: false,
-    type: "" as string,
-  },
-  darkMode: {
-    name: "darkMode",
-    description: "Use dark mode palette when true.",
-    required: false,
-    type: true as boolean,
-  },
+export type IconProps = {
+  icon?: string;
+  size?: SizeToken | number;
+  color?: string;
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLSpanElement>;
+  removeDefaultStyle?: boolean;
+  hidden?: boolean;
+  label?: string;
+  tooltip?: string;
+  darkMode?: boolean;
 };
 
-export type IconProps = {
-  [K in keyof typeof IconTypeScheme]?: (typeof IconTypeScheme)[K]["type"];
-} & {
-  size?: SizeToken | number;
-};
+// Const array for runtime prop extraction in documentation
+export const ICON_PROP_NAMES = [
+  "icon",
+  "size",
+  "color",
+  "className",
+  "onClick",
+  "removeDefaultStyle",
+  "hidden",
+  "label",
+  "tooltip",
+  "darkMode",
+] as const;
 //@@viewOff:propTypes
 
 function Icon({

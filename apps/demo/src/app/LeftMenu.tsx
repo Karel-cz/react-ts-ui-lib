@@ -2,7 +2,8 @@
 import React from "react";
 import { SideBar } from "@react-ts-ui-lib/ui";
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
-import routeList from "../app/tools/RouteList.ts";
+import { getRouteList } from "../app/tools/RouteList.ts";
+import { useTranslation } from "../i18n/useTranslation";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -23,6 +24,9 @@ type LeftMenuPropTypes = {
 
 const LeftMenu = ({ setSelectedItem, darkMode }: LeftMenuPropTypes) => {
   //@@viewOn:private
+  const { t } = useTranslation();
+  const routeList = getRouteList(t);
+  
   const handleItemClick = (item: SideBarItem) => {
     setSelectedItem(item);
   };

@@ -1,24 +1,14 @@
 //@@viewOn:imports
-import React from "react";
-import { Documentation, Navbar as UiNavbar, NavbarTypeScheme, Icon, Button } from "@react-ts-ui-lib/ui";
+import { Documentation, NAVBAR_PROP_NAMES, Navbar as UiNavbar, Icon, Button } from "@react-ts-ui-lib/ui";
+import { useTranslation } from "../i18n/useTranslation";
+import { getPropsWithTranslations } from "../i18n/getPropsWithTranslations";
 //@@viewOff:imports
 
-//@@viewOn:constants
-const TITLE = "Navbar Component";
-//@@viewOff:constants
-
-//@@viewOn:css
-//@@viewOff:css
-
-//@@viewOn:helpers
-//@@viewOff:helpers
-
-//@@viewOn:propTypes
-//@@viewOff:propTypes
-
+//@@viewOn:component
 const NavbarDoc = () => {
   //@@viewOn:private
-  const propTypesList = Object.values(NavbarTypeScheme);
+  const { t } = useTranslation();
+  const propTypesList = getPropsWithTranslations("navbar", NAVBAR_PROP_NAMES, t);
 
   const commonRight = (
     <>
@@ -29,18 +19,18 @@ const NavbarDoc = () => {
 
   const componentList = [
     {
-      category: "Layout",
+      category: t("navbar.categories.layout"),
       itemList: [
         {
-          label: "logo string",
+          label: t("navbar.examples.logoString"),
           components: <UiNavbar logo="LOGO" rightContent={commonRight} />,
         },
         {
-          label: "custom logo",
+          label: t("navbar.examples.customLogo"),
           components: (
             <UiNavbar
               logo={<span style={{ fontWeight: 700 }}>MyApp</span>}
-              centerContent={<Button label="Center" />}
+              centerContent={<Button label={t("navbar.examples.center")} />}
               rightContent={commonRight}
             />
           ),
@@ -48,23 +38,23 @@ const NavbarDoc = () => {
       ],
     },
     {
-      category: "Color scheme",
+      category: t("navbar.categories.colorScheme"),
       itemList: [
-        { label: "background", components: <UiNavbar colorScheme="background" /> },
-        { label: "surface", components: <UiNavbar colorScheme="surface" /> },
+        { label: t("navbar.examples.background"), components: <UiNavbar colorScheme="background" /> },
+        { label: t("navbar.examples.surface"), components: <UiNavbar colorScheme="surface" /> },
       ],
     },
     {
-      category: "Dark mode",
+      category: t("navbar.categories.darkMode"),
       itemList: [
-        { label: "dark", components: <UiNavbar darkMode /> },
-        { label: "light", components: <UiNavbar darkMode={false} /> },
+        { label: t("navbar.examples.dark"), components: <UiNavbar darkMode /> },
+        { label: t("navbar.examples.light"), components: <UiNavbar darkMode={false} /> },
       ],
     },
     {
-      category: "Styling",
+      category: t("navbar.categories.styling"),
       itemList: [
-        { label: "raw", components: <UiNavbar removeDefaultStyle /> },
+        { label: t("navbar.examples.raw"), components: <UiNavbar removeDefaultStyle /> },
       ],
     },
   ];
@@ -73,11 +63,22 @@ const NavbarDoc = () => {
   //@@viewOn:render
   return (
     <div>
-      <Documentation title={TITLE} propTypesList={propTypesList} componentList={componentList} />
+      <Documentation
+        title={t("navbar.title")}
+        propTypesList={propTypesList}
+        componentList={componentList}
+        propTypesTitle={t("documentation.propTypes.title")}
+        propTypesNameLabel={t("documentation.propTypes.name")}
+        propTypesDescriptionLabel={t("documentation.propTypes.description")}
+        propTypesRequiredLabel={t("documentation.propTypes.required")}
+        propTypesYes={t("documentation.propTypes.yes")}
+        propTypesNo={t("documentation.propTypes.no")}
+      />
     </div>
   );
   //@@viewOff:render
 };
+//@@viewOff:component
 
 //@@viewOn:exports
 export { NavbarDoc as Navbar };
