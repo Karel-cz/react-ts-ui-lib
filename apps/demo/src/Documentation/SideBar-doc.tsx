@@ -3,11 +3,13 @@ import { Documentation, SIDEBAR_PROP_NAMES, SideBar as UiSideBar } from "@react-
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../i18n/useTranslation";
 import { getPropsWithTranslations } from "../i18n/getPropsWithTranslations";
+import { useTheme } from "../app/context/ThemeContext";
 //@@viewOff:imports
 
 //@@viewOn:component
 const SideBarDoc = () => {
   //@@viewOn:private
+  const { darkMode } = useTheme();
   const { t } = useTranslation();
   const propTypesList = getPropsWithTranslations("sidebar", SIDEBAR_PROP_NAMES, t);
 
@@ -50,9 +52,11 @@ const SideBarDoc = () => {
         propTypesTitle={t("documentation.propTypes.title")}
         propTypesNameLabel={t("documentation.propTypes.name")}
         propTypesDescriptionLabel={t("documentation.propTypes.description")}
+        propTypesTypeLabel={t("documentation.propTypes.type")}
         propTypesRequiredLabel={t("documentation.propTypes.required")}
         propTypesYes={t("documentation.propTypes.yes")}
         propTypesNo={t("documentation.propTypes.no")}
+        darkMode={darkMode}
       />
     </div>
   );

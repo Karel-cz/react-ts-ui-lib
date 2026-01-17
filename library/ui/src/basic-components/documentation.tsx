@@ -1,5 +1,6 @@
 //@@viewOn:imports
 import React from "react";
+import Block from "./Block";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -24,18 +25,6 @@ const Css = {
     borderBottom: "1px solid #eee",
     padding: "8px",
     verticalAlign: "middle",
-  } as React.CSSProperties,
-  block: {
-    marginTop: 16,
-    padding: 16,
-    borderRadius: 10,
-    border: "1px solid #e5e7eb",
-    background: "transparent",
-  } as React.CSSProperties,
-  blockTitle: {
-    margin: "0 0 8px",
-    fontSize: 16,
-    fontWeight: 600,
   } as React.CSSProperties,
   itemsGrid: {
     display: "flex",
@@ -84,7 +73,7 @@ export const DocumentationTypeScheme = {
     name: "propTypesList",
     description: "Array of prop-type meta objects to render in the Prop Types table.",
     required: false,
-    type: [] as Array<{ name: string; description?: string; required?: boolean }>,
+    type: [] as Array<{ name: string; description?: string; type?: string; required?: boolean }>,
   },
   componentList: {
     name: "componentList",
@@ -106,9 +95,11 @@ export type DocumentationProps = {
   propTypesTitle?: string;
   propTypesNameLabel?: string;
   propTypesDescriptionLabel?: string;
+  propTypesTypeLabel?: string;
   propTypesRequiredLabel?: string;
   propTypesYes?: string;
   propTypesNo?: string;
+  darkMode?: boolean;
 };
 //@@viewOff:propTypes
 
@@ -119,9 +110,11 @@ const Documentation = ({
   propTypesTitle = "Prop Types",
   propTypesNameLabel = "Name",
   propTypesDescriptionLabel = "Description",
+  propTypesTypeLabel = "Type",
   propTypesRequiredLabel = "Required",
   propTypesYes = "Yes",
   propTypesNo = "No",
+  darkMode = true,
 }: DocumentationProps) => {
   //@@viewOn:private
   //@@viewOff:private
@@ -134,8 +127,7 @@ const Documentation = ({
        {componentList && componentList.length > 0 && (
         <section style={Css.section}>
           {componentList.map((group, gi) => (
-            <div key={gi} style={Css.block}>
-              <h3 style={Css.blockTitle}>{group.category}</h3>
+            <Block key={gi} card="full" header={group.category} darkMode={darkMode}>
               <div style={Css.itemsGrid}>
                 {group.itemList.map((item, ii) => (
                   <div key={ii} style={Css.itemCard}>
@@ -144,7 +136,7 @@ const Documentation = ({
                   </div>
                 ))}
               </div>
-            </div>
+            </Block>
           ))}
         </section>
       )}
@@ -157,13 +149,15 @@ const Documentation = ({
             <tr>
               <th style={Css.th}>{propTypesNameLabel}</th>
               <th style={Css.th}>{propTypesDescriptionLabel}</th>
+              <th style={Css.th}>{propTypesTypeLabel}</th>
               <th style={Css.th}>{propTypesRequiredLabel}</th>
             </tr>
             <tbody></tbody>
-            {propTypesList.map((propType: any, index: number) => (
+            {propTypesList.map((propType, index: number) => (
               <tr key={index}>
                 <td style={Css.td}>{propType.name}</td>
                 <td style={Css.td}>{propType.description}</td>
+                <td style={Css.td}>{propType.type}</td>
                 <td style={Css.td}>{propType.required ? propTypesYes : propTypesNo}</td>
               </tr>
             ))}

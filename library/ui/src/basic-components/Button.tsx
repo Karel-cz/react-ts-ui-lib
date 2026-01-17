@@ -60,7 +60,7 @@ const Css = {
     display: "inline-flex",
     alignItems: "center",
     gap: "0.5rem",
-    padding: isPending ? 10 : 0,
+    padding: isPending ? 2 : 0,
   }),
 
   spinnerContainer: (): React.CSSProperties => ({
@@ -209,7 +209,7 @@ const Button = ({
       </span>
       {isPending && (
         <span style={Css.spinnerContainer()}>
-          <Pending darkMode={darkMode} />
+          <Pending darkMode={darkMode} size={"xs"}/>
         </span>
       )}
     </button>

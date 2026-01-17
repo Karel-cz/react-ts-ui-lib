@@ -72,9 +72,11 @@ const IconDoc = () => {
         propTypesTitle={t("documentation.propTypes.title")}
         propTypesNameLabel={t("documentation.propTypes.name")}
         propTypesDescriptionLabel={t("documentation.propTypes.description")}
+        propTypesTypeLabel={t("documentation.propTypes.type")}
         propTypesRequiredLabel={t("documentation.propTypes.required")}
         propTypesYes={t("documentation.propTypes.yes")}
         propTypesNo={t("documentation.propTypes.no")}
+        darkMode={darkMode}
       />
     </div>
   );

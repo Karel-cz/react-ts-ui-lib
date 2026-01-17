@@ -1,8 +1,7 @@
 //@@viewOn:imports
 import React, { useState } from "react";
 import Icon from "./Icon";
-import { type ColorScheme } from "../tools/colors";
-import { getColorScheme } from "../tools/colors";
+import { type ColorScheme, getColorScheme, getBorderColor } from "../tools/colors";
 //@@viewOff:imports
 
 //@@viewOn:css
@@ -14,9 +13,7 @@ const Css = {
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
-
-    // Border color: light in dark mode, dark in light mode
-    const borderColor = darkMode ? "#374151" : "#e5e7eb";
+    const borderColor = getBorderColor(darkMode);
 
     return {
       backgroundColor: scheme.color,

@@ -7,4 +7,5 @@ export const getComponentList = (t: (key: string) => string): SideBarItem[] => [
   { title: t("sidebar.components.sidebar"), icon: "mdi-menu-close", key: "SideBar" },
   { title: t("sidebar.components.navbar"), icon: "mdi-menu", key: "Navbar" },
   { title: t("sidebar.components.badge"), icon: "mdi-label", key: "Badge" },
+  { title: t("sidebar.components.block"), icon: "mdi-view-dashboard", key: "Block" },
 ];

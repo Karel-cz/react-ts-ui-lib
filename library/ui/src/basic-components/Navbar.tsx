@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import React from "react";
 import type { ReactNode } from "react";
-import { type ColorScheme, getColorScheme } from "../tools/colors";
+import { type ColorScheme, getColorScheme, getBorderColor } from "../tools/colors";
 //@@viewOff:imports
 
 //@@viewOn:css
@@ -9,13 +9,12 @@ const Css = {
   container: (
     removeDefaultStyle?: boolean,
     colorScheme: ColorScheme = "background",
-    darkMode = true
+    darkMode = true,
+    sticky?: boolean
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
-
-    // Border color: light in dark mode, dark in light mode
-    const borderColor = darkMode ? "#374151" : "#e5e7eb";
+    const borderColor = getBorderColor(darkMode);
 
     return {
       display: "flex",
@@ -28,6 +27,13 @@ const Css = {
       boxSizing: "border-box",
       minWidth: "100%",
       color: scheme.textColor,
+      ...(sticky
+        ? {
+            position: "sticky",
+            top: 0,
+            zIndex: 1000,
+          }
+        : {}),
     };
   },
 
@@ -79,6 +85,7 @@ export type NavbarProps = {
   removeDefaultStyle?: boolean;
   colorScheme?: ColorScheme;
   darkMode?: boolean;
+  sticky?: boolean;
 };
 
 // Const array for runtime prop extraction in documentation
@@ -90,6 +97,7 @@ export const NAVBAR_PROP_NAMES = [
   "removeDefaultStyle",
   "colorScheme",
   "darkMode",
+  "sticky",
 ] as const;
 //@@viewOff:propTypes
 
@@ -102,9 +110,10 @@ function Navbar({
   removeDefaultStyle = false,
   colorScheme = "background",
   darkMode = true,
+  sticky = false,
 }: NavbarProps) {
   return (
-    <header style={Css.container(removeDefaultStyle, colorScheme, darkMode)}>
+    <header style={Css.container(removeDefaultStyle, colorScheme, darkMode, sticky)}>
       {/* LEFT – LOGO */}
       <div style={Css.section("left")}>
         <div

@@ -2,11 +2,13 @@
 import { Documentation, PENDING_PROP_NAMES, Pending as UiPending } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../i18n/useTranslation";
 import { getPropsWithTranslations } from "../i18n/getPropsWithTranslations";
+import { useTheme } from "../app/context/ThemeContext";
 //@@viewOff:imports
 
 //@@viewOn:component
 const PendingDoc = () => {
   //@@viewOn:private
+  const { darkMode } = useTheme();
   const { t } = useTranslation();
   const propTypesList = getPropsWithTranslations("pending", PENDING_PROP_NAMES, t);
 
@@ -58,9 +60,11 @@ const PendingDoc = () => {
         propTypesTitle={t("documentation.propTypes.title")}
         propTypesNameLabel={t("documentation.propTypes.name")}
         propTypesDescriptionLabel={t("documentation.propTypes.description")}
+        propTypesTypeLabel={t("documentation.propTypes.type")}
         propTypesRequiredLabel={t("documentation.propTypes.required")}
         propTypesYes={t("documentation.propTypes.yes")}
         propTypesNo={t("documentation.propTypes.no")}
+        darkMode={darkMode}
       />
     </div>
   );

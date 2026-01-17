@@ -12,7 +12,7 @@ const COLORS = {
 
   // Dark theme colors
   darkBg: "#1b1d1fff",
-  darkSurface: "#111827",
+  darkSurface: "#1f2937",
   darkText: "#e6eef8",
   darkBorder: "#374151",
   darkMuted: "#9ca3af",
@@ -291,7 +291,7 @@ export const getColorScheme = (colorScheme: ColorScheme, darkMode: boolean) => {
 };
 
 // Significance handling
-export type Significance = "common" | "highlighted" | "distinct";
+export type Significance = "common" | "highlighted" | "distinct" | "subdued";
 
 const hexToRgba = (hex: string, alpha: number) => {
   const sanitized = hex.replace("#", "");
@@ -324,11 +324,57 @@ export const getSignificanceColor = (
     return getColorScheme(mappedScheme, darkMode);
   }
 
-  // distinct
+  if (significance === "distinct") {
+    const baseScheme = getColorScheme(colorScheme, darkMode);
+    return {
+      color: hexToRgba(baseScheme.color, 0.2),
+      textColor: baseScheme.color,
+      key: baseScheme.key,
+    } as ColorEntry;
+  }
+
   const baseScheme = getColorScheme(colorScheme, darkMode);
   return {
-    color: hexToRgba(baseScheme.color, 0.2),
-    textColor: baseScheme.color,
+    color: hexToRgba(baseScheme.color, 0.1),
+    textColor: darkMode ? COLORS.darkMuted : COLORS.lightMuted,
     key: baseScheme.key,
   } as ColorEntry;
+};
+
+// Border utilities
+export const getBorderColor = (darkMode: boolean = true): string => {
+  return darkMode ? COLORS.darkBorder : COLORS.lightBorder;
+};
+
+export const getBorder = (
+  darkMode: boolean = true,
+  width: number = 1,
+  side?: "top" | "right" | "bottom" | "left"
+): string => {
+  const color = getBorderColor(darkMode);
+  const borderValue = `${width}px solid ${color}`;
+  
+  if (side) {
+    return borderValue;
+  }
+  
+  return borderValue;
+};
+
+export const getBorderStyle = (
+  darkMode: boolean = true,
+  width: number = 1,
+  side?: "top" | "right" | "bottom" | "left"
+): React.CSSProperties => {
+  const borderValue = getBorder(darkMode, width, side);
+  
+  if (side) {
+    return {
+      [`border${side.charAt(0).toUpperCase() + side.slice(1)}`]: borderValue,
+    } as React.CSSProperties;
+  }
+  
+  return {
+    border: borderValue,
+  };
 };

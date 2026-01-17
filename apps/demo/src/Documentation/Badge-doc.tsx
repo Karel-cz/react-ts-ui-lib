@@ -2,11 +2,13 @@
 import { Documentation, BADGE_PROP_NAMES, Badge } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../i18n/useTranslation";
 import { getPropsWithTranslations } from "../i18n/getPropsWithTranslations";
+import { useTheme } from "../app/context/ThemeContext";
 //@@viewOff:imports
 
 //@@viewOn:component
 const BadgeDoc = () => {
   //@@viewOn:private
+  const { darkMode } = useTheme();
   const { t } = useTranslation();
   const propTypesList = getPropsWithTranslations("badge", BADGE_PROP_NAMES, t);
 
@@ -67,9 +69,11 @@ const BadgeDoc = () => {
         propTypesTitle={t("documentation.propTypes.title")}
         propTypesNameLabel={t("documentation.propTypes.name")}
         propTypesDescriptionLabel={t("documentation.propTypes.description")}
+        propTypesTypeLabel={t("documentation.propTypes.type")}
         propTypesRequiredLabel={t("documentation.propTypes.required")}
         propTypesYes={t("documentation.propTypes.yes")}
         propTypesNo={t("documentation.propTypes.no")}
+        darkMode={darkMode}
       />
     </div>
   );

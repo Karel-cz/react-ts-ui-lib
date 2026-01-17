@@ -4,62 +4,77 @@
     "props": {
       "children": {
         "description": "Content of badge (text or custom node).",
+        "type": "ReactNode",
         "required": "false"
       },
       "label": {
         "description": "Text content of badge (if children is not provided).",
+        "type": "string",
         "required": "false"
       },
       "icon": {
         "description": "MDI icon name, renders internal Icon component.",
+        "type": "string",
         "required": "false"
       },
       "colorScheme": {
         "description": "Color scheme of badge (primary, success, danger, warning, info).",
+        "type": "string",
         "required": "false"
       },
       "significance": {
         "description": "Color intensity: common (default), highlighted, distinct.",
+        "type": "string",
         "required": "false"
       },
       "borderRadius": {
         "description": "Predefined border radius (xs, sm, md, lg, full).",
+        "type": "string",
         "required": "false"
       },
       "size": {
         "description": "Badge size token (xs, sm, md, lg, xl).",
+        "type": "string",
         "required": "false"
       },
       "onClick": {
         "description": "Click handler for badge.",
+        "type": "function",
         "required": "false"
       },
       "disabled": {
         "description": "Disables interactions and changes appearance.",
+        "type": "boolean",
         "required": "false"
       },
       "hidden": {
         "description": "If true, badge will not be rendered.",
+        "type": "boolean",
         "required": "false"
       },
       "noPrint": {
         "description": "Hides badge when printing (adds no-print className).",
+        "type": "boolean",
         "required": "false"
       },
       "className": {
         "description": "Additional className for wrapper.",
+        "type": "string",
         "required": "false"
       },
       "tooltip": {
         "description": "Native tooltip on hover.",
+        "type": "string",
         "required": "false"
       },
       "darkMode": {
         "description": "Uses dark color scheme.",
+        "type": "boolean",
         "required": "false"
       },
       "removeDefaultStyle": {
         "description": "No default styles (keeps only content).",
+        "type": "boolean",
         "required": "false"
       }
     },
@@ -97,24 +112,24 @@
   "button": {
     "title": "Button Component",
     "props": {
-      "children": { "description": "Content rendered inside the button (text, icons, custom nodes).", "required": "false" },
-      "disabled": { "description": "Prevents interaction and visually disables the button.", "required": "false" },
-      "loading": { "description": "Alias for pending state – indicates that an async action is running.", "required": "false" },
-      "colorScheme": { "description": "Determines visual look of the button based on predefined color palette (primary, success, danger…).", "required": "false" },
-      "significance": { "description": "Controls visual intensity of the button: common (default), highlighted, distinct.", "required": "false" },
-      "icon": { "description": "Name of mdi icon rendered inside the button.", "required": "false" },
-      "iconPosition": { "description": "Controls whether icon is rendered on the left or right side of the content.", "required": "false" },
-      "label": { "description": "Simple text alternative to children – useful for easy text buttons or accessibility.", "required": "false" },
-      "onClick": { "description": "Triggered when the user clicks the button.", "required": "false" },
-      "className": { "description": "Additional CSS class names applied to the root button element.", "required": "false" },
-      "borderRadius": { "description": "Predefined border radius token (xs, sm, md, lg, full).", "required": "false" },
-      "size": { "description": "Button size token (xs, sm, md, lg, xl).", "required": "false" },
-      "removeDefaultStyle": { "description": "Disables built-in styling and leaves only raw button element for full customization.", "required": "false" },
-      "tooltip": { "description": "Browser default tooltip shown when hovering over the button.", "required": "false" },
-      "type": { "description": "Native button type (button, submit, reset).", "required": "false" },
-      "darkMode": { "description": "Renders the button using dark mode palette (affects colorScheme behavior).", "required": "false" },
-      "isPending": { "description": "Shows loading spinner and blocks interactions. Content becomes visually hidden.", "required": "false" },
-      "noPrint": { "description": "Hides the button when printing (adds no-print class).", "required": "false" }
+      "children": { "description": "Content rendered inside the button (text, icons, custom nodes).", "type": "ReactNode", "required": "false" },
+      "disabled": { "description": "Prevents interaction and visually disables the button.", "type": "boolean", "required": "false" },
+      "loading": { "description": "Alias for pending state – indicates that an async action is running.", "type": "boolean", "required": "false" },
+      "colorScheme": { "description": "Determines visual look of the button based on predefined color palette (primary, success, danger…).", "type": "string", "required": "false" },
+      "significance": { "description": "Controls visual intensity of the button: common (default), highlighted, distinct.", "type": "string", "required": "false" },
+      "icon": { "description": "Name of mdi icon rendered inside the button.", "type": "string", "required": "false" },
+      "iconPosition": { "description": "Controls whether icon is rendered on the left or right side of the content.", "type": "string", "required": "false" },
+      "label": { "description": "Simple text alternative to children – useful for easy text buttons or accessibility.", "type": "string", "required": "false" },
+      "onClick": { "description": "Triggered when the user clicks the button.", "type": "function", "required": "false" },
+      "className": { "description": "Additional CSS class names applied to the root button element.", "type": "string", "required": "false" },
+      "borderRadius": { "description": "Predefined border radius token (xs, sm, md, lg, full).", "type": "string", "required": "false" },
+      "size": { "description": "Button size token (xs, sm, md, lg, xl).", "type": "string", "required": "false" },
+      "removeDefaultStyle": { "description": "Disables built-in styling and leaves only raw button element for full customization.", "type": "boolean", "required": "false" },
+      "tooltip": { "description": "Browser default tooltip shown when hovering over the button.", "type": "string", "required": "false" },
+      "type": { "description": "Native button type (button, submit, reset).", "type": "string", "required": "false" },
+      "darkMode": { "description": "Renders the button using dark mode palette (affects colorScheme behavior).", "type": "boolean", "required": "false" },
+      "isPending": { "description": "Shows loading spinner and blocks interactions. Content becomes visually hidden.", "type": "boolean", "required": "false" },
+      "noPrint": { "description": "Hides the button when printing (adds no-print class).", "type": "boolean", "required": "false" }
     },
     "categories": {
       "colorScheme": "Color scheme",
@@ -172,16 +187,16 @@
   "icon": {
     "title": "Icon Component",
     "props": {
-      "icon": { "description": "Name of the Material Design Icon (mdi-*) to render.", "required": "false" },
-      "size": { "description": "Icon size token (xs, sm, md, lg, xl) or number (em) for custom size.", "required": "false" },
-      "color": { "description": "Icon color (CSS color value).", "required": "false" },
-      "className": { "description": "Additional class names for the wrapper span.", "required": "false" },
-      "onClick": { "description": "Click handler for the icon wrapper.", "required": "false" },
-      "removeDefaultStyle": { "description": "Render without default layout styles.", "required": "false" },
-      "hidden": { "description": "If true, the icon is not rendered.", "required": "false" },
-      "label": { "description": "Optional text label displayed next to the icon.", "required": "false" },
-      "tooltip": { "description": "Browser tooltip shown on hover.", "required": "false" },
-      "darkMode": { "description": "Use dark mode palette when true.", "required": "false" }
+      "icon": { "description": "Name of the Material Design Icon (mdi-*) to render.", "type": "string", "required": "false" },
+      "size": { "description": "Icon size token (xs, sm, md, lg, xl) or number (em) for custom size.", "type": "string | number", "required": "false" },
+      "color": { "description": "Icon color (CSS color value).", "type": "string", "required": "false" },
+      "className": { "description": "Additional class names for the wrapper span.", "type": "string", "required": "false" },
+      "onClick": { "description": "Click handler for the icon wrapper.", "type": "function", "required": "false" },
+      "removeDefaultStyle": { "description": "Render without default layout styles.", "type": "boolean", "required": "false" },
+      "hidden": { "description": "If true, the icon is not rendered.", "type": "boolean", "required": "false" },
+      "label": { "description": "Optional text label displayed next to the icon.", "type": "string", "required": "false" },
+      "tooltip": { "description": "Browser tooltip shown on hover.", "type": "string", "required": "false" },
+      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" }
     },
     "categories": {
       "size": "Size",
@@ -219,11 +234,11 @@
   "pending": {
     "title": "Pending Component",
     "props": {
-      "className": { "description": "Additional CSS class names for the SVG element.", "required": "false" },
-      "type": { "description": "Spinner style: circular or horizontal bar.", "required": "false" },
-      "size": { "description": "Pending size token (xs, sm, md, lg, xl).", "required": "false" },
-      "darkMode": { "description": "Use dark mode palette when true.", "required": "false" },
-      "colorScheme": { "description": "Color scheme for the spinner.", "required": "false" }
+      "className": { "description": "Additional CSS class names for the SVG element.", "type": "string", "required": "false" },
+      "type": { "description": "Spinner style: circular or horizontal bar.", "type": "string", "required": "false" },
+      "size": { "description": "Pending size token (xs, sm, md, lg, xl).", "type": "string", "required": "false" },
+      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" },
+      "colorScheme": { "description": "Color scheme for the spinner.", "type": "string", "required": "false" }
     },
     "categories": {
       "type": "Type",
@@ -251,19 +266,22 @@
   "navbar": {
     "title": "Navbar Component",
     "props": {
-      "logo": { "description": "Content rendered in the left section; string or custom node.", "required": "false" },
-      "centerContent": { "description": "Content placed in the centered section of the navbar.", "required": "false" },
-      "rightContent": { "description": "Content placed in the right section (e.g., actions).", "required": "false" },
-      "onLogoClick": { "description": "Callback fired when the logo is clicked.", "required": "false" },
-      "removeDefaultStyle": { "description": "Disables built-in styling for container, logo, and buttons.", "required": "false" },
-      "colorScheme": { "description": "Background and text colors based on theme palette.", "required": "false" },
-      "darkMode": { "description": "Use dark mode palette when true.", "required": "false" }
+      "logo": { "description": "Content rendered in the left section; string or custom node.", "type": "string | ReactNode", "required": "false" },
+      "centerContent": { "description": "Content placed in the centered section of the navbar.", "type": "ReactNode", "required": "false" },
+      "rightContent": { "description": "Content placed in the right section (e.g., actions).", "type": "ReactNode", "required": "false" },
+      "onLogoClick": { "description": "Callback fired when the logo is clicked.", "type": "function", "required": "false" },
+      "removeDefaultStyle": { "description": "Disables built-in styling for container, logo, and buttons.", "type": "boolean", "required": "false" },
+      "colorScheme": { "description": "Background and text colors based on theme palette.", "type": "string", "required": "false" },
+      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" },
+      "sticky": { "description": "If true, navbar will stick to the top when scrolling.", "type": "boolean", "required": "false" },
+      "sticky": { "description": "If true, navbar will stick to the top when scrolling.", "type": "boolean", "required": "false" }
     },
     "categories": {
       "layout": "Layout",
       "colorScheme": "Color scheme",
       "darkMode": "Dark mode",
-      "styling": "Styling"
+      "styling": "Styling",
+      "sticky": "Sticky"
     },
     "examples": {
       "logoString": "logo string",
@@ -273,21 +291,22 @@
       "surface": "surface",
       "dark": "dark",
       "light": "light",
-      "raw": "raw"
+      "raw": "raw",
+      "sticky": "Sticky"
     }
   },
   "sidebar": {
     "title": "SideBar Component",
     "props": {
-      "itemList": { "description": "Top-level items to render in the sidebar (can be nested).", "required": "true" },
-      "className": { "description": "Additional class names for the container.", "required": "false" },
-      "removeDefaultStyle": { "description": "Disables built-in container and item styling.", "required": "false" },
-      "tooltip": { "description": "Optional tooltip on the container (native title).", "required": "false" },
-      "label": { "description": "Optional label text for the container.", "required": "false" },
-      "onItemClick": { "description": "Callback when an item is clicked; receives item and event.", "required": "false" },
-      "collapsed": { "description": "Whether the sidebar is collapsed.", "required": "false" },
-      "colorScheme": { "description": "Background and text colors based on theme palette.", "required": "false" },
-      "darkMode": { "description": "Use dark mode palette when true.", "required": "false" }
+      "itemList": { "description": "Top-level items to render in the sidebar (can be nested).", "type": "array", "required": "true" },
+      "className": { "description": "Additional class names for the container.", "type": "string", "required": "false" },
+      "removeDefaultStyle": { "description": "Disables built-in container and item styling.", "type": "boolean", "required": "false" },
+      "tooltip": { "description": "Optional tooltip on the container (native title).", "type": "string", "required": "false" },
+      "label": { "description": "Optional label text for the container.", "type": "string", "required": "false" },
+      "onItemClick": { "description": "Callback when an item is clicked; receives item and event.", "type": "function", "required": "false" },
+      "collapsed": { "description": "Whether the sidebar is collapsed.", "type": "boolean", "required": "false" },
+      "colorScheme": { "description": "Background and text colors based on theme palette.", "type": "string", "required": "false" },
+      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" }
     },
     "categories": {
       "basic": "Basic",
@@ -315,7 +334,153 @@
       "pending": "Pending",
       "sidebar": "SideBar",
       "navbar": "Navbar",
-      "badge": "Badge"
+      "badge": "Badge",
+      "block": "Block"
+    }
+  },
+  "block": {
+    "title": "Block Component",
+    "props": {
+      "children": {
+        "description": "Main content of the block.",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "card": {
+        "description": "Card type: none (no shadow), full (shadow around whole component), content (shadow only around content and footer).",
+        "type": "string",
+        "required": "false"
+      },
+      "ActionList": {
+        "description": "Array of components displayed in the top right corner.",
+        "type": "ReactNode[]",
+        "required": "false"
+      },
+      "header": {
+        "description": "Text or component displayed in the top left corner.",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "headerSeparator": {
+        "description": "Shows separator line between header and content.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "footer": {
+        "description": "Footer content (React node).",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "info": {
+        "description": "If provided, shows info icon with popover on click.",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "collapsible": {
+        "description": "Makes content collapsible with toggle button in header.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "height": {
+        "description": "Height of the component (string or number).",
+        "type": "string | number",
+        "required": "false"
+      },
+      "minHeight": {
+        "description": "Minimum height of the component (string or number).",
+        "type": "string | number",
+        "required": "false"
+      },
+      "maxHeight": {
+        "description": "Maximum height of the component (string or number).",
+        "type": "string | number",
+        "required": "false"
+      },
+      "borderRadius": {
+        "description": "Border radius token (xs, sm, md, lg, full).",
+        "type": "string",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Color scheme from theme palette.",
+        "type": "string",
+        "required": "false"
+      },
+      "significance": {
+        "description": "Visual significance: common, highlighted, distinct, subdued.",
+        "type": "string",
+        "required": "false"
+      },
+      "maxWidth": {
+        "description": "Maximum width of the component (string or number).",
+        "type": "string | number",
+        "required": "false"
+      },
+      "className": {
+        "description": "Additional CSS class names.",
+        "type": "string",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Removes default styling.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "If true, component is not rendered.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Hides component when printing.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Uses dark mode color palette.",
+        "type": "boolean",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "card": "Card Types",
+      "header": "Header",
+      "actionList": "Action List",
+      "footer": "Footer",
+      "info": "Info",
+      "collapsible": "Collapsible",
+      "colorScheme": "Color Scheme",
+      "significance": "Significance",
+      "borderRadius": "Border Radius",
+      "sizing": "Sizing",
+      "darkMode": "Dark Mode"
+    },
+    "examples": {
+      "none": "None",
+      "full": "Full",
+      "content": "Content",
+      "withHeader": "With Header",
+      "withSeparator": "With Separator",
+      "withActions": "With Actions",
+      "withFooter": "With Footer",
+      "withInfo": "With Info",
+      "collapsible": "Collapsible",
+      "surface": "Surface",
+      "primary": "Primary",
+      "success": "Success",
+      "common": "Common",
+      "highlighted": "Highlighted",
+      "distinct": "Distinct",
+      "subdued": "Subdued",
+      "xs": "XS",
+      "sm": "SM",
+      "md": "MD",
+      "lg": "LG",
+      "full": "Full",
+      "maxWidth": "Max Width",
+      "height": "Height",
+      "dark": "Dark",
+      "light": "Light"
     }
   },
   "documentation": {
@@ -323,6 +488,7 @@
       "title": "Prop Types",
       "name": "Name",
       "description": "Description",
+      "type": "Type",
       "required": "Required",
       "yes": "Yes",
       "no": "No"

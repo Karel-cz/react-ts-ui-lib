@@ -2,11 +2,13 @@
 import { Documentation, NAVBAR_PROP_NAMES, Navbar as UiNavbar, Icon, Button } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../i18n/useTranslation";
 import { getPropsWithTranslations } from "../i18n/getPropsWithTranslations";
+import { useTheme } from "../app/context/ThemeContext";
 //@@viewOff:imports
 
 //@@viewOn:component
 const NavbarDoc = () => {
   //@@viewOn:private
+  const { darkMode } = useTheme();
   const { t } = useTranslation();
   const propTypesList = getPropsWithTranslations("navbar", NAVBAR_PROP_NAMES, t);
 
@@ -23,7 +25,7 @@ const NavbarDoc = () => {
       itemList: [
         {
           label: t("navbar.examples.logoString"),
-          components: <UiNavbar logo="LOGO" rightContent={commonRight} />,
+          components: <UiNavbar logo="LOGO" rightContent={commonRight} darkMode={darkMode} />,
         },
         {
           label: t("navbar.examples.customLogo"),
@@ -32,6 +34,7 @@ const NavbarDoc = () => {
               logo={<span style={{ fontWeight: 700 }}>MyApp</span>}
               centerContent={<Button label={t("navbar.examples.center")} />}
               rightContent={commonRight}
+              darkMode={darkMode}
             />
           ),
         },
@@ -40,8 +43,8 @@ const NavbarDoc = () => {
     {
       category: t("navbar.categories.colorScheme"),
       itemList: [
-        { label: t("navbar.examples.background"), components: <UiNavbar colorScheme="background" /> },
-        { label: t("navbar.examples.surface"), components: <UiNavbar colorScheme="surface" /> },
+        { label: t("navbar.examples.background"), components: <UiNavbar colorScheme="background" darkMode={darkMode} /> },
+        { label: t("navbar.examples.surface"), components: <UiNavbar colorScheme="surface" darkMode={darkMode} /> },
       ],
     },
     {
@@ -54,7 +57,25 @@ const NavbarDoc = () => {
     {
       category: t("navbar.categories.styling"),
       itemList: [
-        { label: t("navbar.examples.raw"), components: <UiNavbar removeDefaultStyle /> },
+        { label: t("navbar.examples.raw"), components: <UiNavbar removeDefaultStyle darkMode={darkMode} /> },
+      ],
+    },
+    {
+      category: t("navbar.categories.sticky"),
+      itemList: [
+        { 
+          label: t("navbar.examples.sticky"), 
+          components: (
+            <div style={{ height: 200, overflow: "auto", border: "1px solid #ccc", padding: 16 }}>
+              <UiNavbar logo="Sticky Navbar" sticky darkMode={darkMode} />
+              <div style={{ height: 400, padding: 16 }}>
+                <p>Scroll down to see the navbar stick to the top</p>
+                <p>Content here...</p>
+                <p>More content...</p>
+              </div>
+            </div>
+          ) 
+        },
       ],
     },
   ];
@@ -70,9 +91,11 @@ const NavbarDoc = () => {
         propTypesTitle={t("documentation.propTypes.title")}
         propTypesNameLabel={t("documentation.propTypes.name")}
         propTypesDescriptionLabel={t("documentation.propTypes.description")}
+        propTypesTypeLabel={t("documentation.propTypes.type")}
         propTypesRequiredLabel={t("documentation.propTypes.required")}
         propTypesYes={t("documentation.propTypes.yes")}
         propTypesNo={t("documentation.propTypes.no")}
+        darkMode={darkMode}
       />
     </div>
   );

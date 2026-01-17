@@ -79,7 +79,7 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <Navbar logo={LOGO} darkMode={darkMode} rightContent={RightContent()} />
+      <Navbar sticky={true} logo={LOGO} darkMode={darkMode} rightContent={RightContent()} />
       <div style={{ display: "flex", flex: 1 }}>
         <LeftMenu setSelectedItem={setSelectedItem} darkMode={darkMode} />
         <div style={{ flex: 1, padding: "20px", overflow: "auto" }}>
