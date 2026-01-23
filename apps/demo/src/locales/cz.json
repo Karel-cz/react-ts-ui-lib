@@ -273,14 +273,19 @@
       "removeDefaultStyle": { "description": "Vypne vestavěné styly pro container, logo a tlačítka.", "type": "boolean", "required": "false" },
       "colorScheme": { "description": "Barvy pozadí a textu na základě palety tématu.", "type": "string", "required": "false" },
       "darkMode": { "description": "Použije tmavou paletu barev, když true.", "type": "boolean", "required": "false" },
-      "sticky": { "description": "Pokud true, navbar se přilepí k horní části při scrollování.", "type": "boolean", "required": "false" }
+      "sticky": { "description": "Pokud true, navbar se přilepí k horní části při scrollování.", "type": "boolean", "required": "false" },
+      "onHamburgerClick": { "description": "Callback spuštěný při kliknutí na hamburger menu tlačítko.", "type": "function", "required": "false" },
+      "showHamburger": { "description": "Manuálně ovládá viditelnost hamburger menu. Pokud není poskytnuto, automaticky se zobrazí na mobilu (< 768px).", "type": "boolean", "required": "false" },
+      "hamburgerOpen": { "description": "Ovládá stav otevření/zavření hamburger menu (ovlivňuje ikonu: menu/zavřít).", "type": "boolean", "required": "false" },
+      "mobileBreakpoint": { "description": "Breakpoint v pixelech pro detekci mobilního zařízení (výchozí: 768).", "type": "number", "required": "false" }
     },
     "categories": {
       "layout": "Rozložení",
       "colorScheme": "Barevné schéma",
       "darkMode": "Tmavý režim",
       "styling": "Styling",
-      "sticky": "Sticky"
+      "sticky": "Sticky",
+      "mobile": "Mobilní"
     },
     "examples": {
       "logoString": "logo string",
@@ -291,7 +296,8 @@
       "dark": "tmavý",
       "light": "světlý",
       "raw": "surový",
-      "sticky": "Sticky"
+      "sticky": "Sticky",
+      "hamburger": "Hamburger menu"
     }
   },
   "sidebar": {
@@ -305,11 +311,17 @@
       "onItemClick": { "description": "Callback při kliknutí na položku; přijímá položku a event.", "type": "function", "required": "false" },
       "collapsed": { "description": "Zda je sidebar sbalený.", "type": "boolean", "required": "false" },
       "colorScheme": { "description": "Barvy pozadí a textu na základě palety tématu.", "type": "string", "required": "false" },
-      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "type": "boolean", "required": "false" }
+      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "type": "boolean", "required": "false" },
+      "selectedItem": { "description": "Aktuálně vybraná položka pro zvýraznění.", "type": "SideBarItem | null", "required": "false" },
+      "mobileMode": { "description": "Aktivuje mobilní režim s overlay a fixed positioning.", "type": "boolean", "required": "false" },
+      "isOpen": { "description": "Ovládá stav otevření/zavření sidebaru v mobilním režimu.", "type": "boolean", "required": "false" },
+      "onClose": { "description": "Callback spuštěný, když se má sidebar zavřít (např. klik na overlay nebo položku).", "type": "function", "required": "false" },
+      "navbarHeight": { "description": "Výška navbaru pro správné umístění v mobilním režimu (výchozí: 64).", "type": "number", "required": "false" }
     },
     "categories": {
       "basic": "Základní",
-      "styling": "Styling"
+      "styling": "Styling",
+      "mobile": "Mobilní"
     },
     "examples": {
       "default": "výchozí",
@@ -318,7 +330,10 @@
       "dashboard": "Dashboard",
       "settings": "Nastavení",
       "profile": "Profil",
-      "security": "Zabezpečení"
+      "security": "Zabezpečení",
+      "mobile": "Mobilní režim",
+      "mobileOpen": "Mobilní otevřený",
+      "mobileClosed": "Mobilní zavřený"
     },
     "routes": {
       "home": "Domů",

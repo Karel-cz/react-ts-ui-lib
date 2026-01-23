@@ -1,7 +1,8 @@
 //@@viewOn:imports
-import React from "react";
+import React, { useState, useEffect } from "react";
 import type { ReactNode } from "react";
 import { type ColorScheme, getColorScheme, getBorderColor, getRgbaFromScheme } from "../tools/colors";
+import Icon from "./Icon";
 //@@viewOff:imports
 
 //@@viewOn:css
@@ -77,6 +78,18 @@ const Css = {
       alignItems: "center",
     };
   },
+
+  hamburgerButton: (removeDefaultStyle?: boolean): React.CSSProperties => {
+    if (removeDefaultStyle) return {};
+    return {
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "center",
+      padding: "8px",
+      borderRadius: "4px",
+      transition: "background-color 0.2s ease",
+    };
+  },
 };
 //@@viewOff:css
 
@@ -90,6 +103,10 @@ export type NavbarProps = {
   colorScheme?: ColorScheme;
   darkMode?: boolean;
   sticky?: boolean;
+  onHamburgerClick?: () => void;
+  showHamburger?: boolean;
+  hamburgerOpen?: boolean;
+  mobileBreakpoint?: number;
 };
 
 // Const array for runtime prop extraction in documentation
@@ -102,6 +119,10 @@ export const NAVBAR_PROP_NAMES = [
   "colorScheme",
   "darkMode",
   "sticky",
+  "onHamburgerClick",
+  "showHamburger",
+  "hamburgerOpen",
+  "mobileBreakpoint",
 ] as const;
 //@@viewOff:propTypes
 
@@ -115,11 +136,61 @@ function Navbar({
   colorScheme = "surface",
   darkMode = true,
   sticky = false,
+  onHamburgerClick,
+  showHamburger,
+  hamburgerOpen = false,
+  mobileBreakpoint = 768,
 }: NavbarProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < mobileBreakpoint);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, [mobileBreakpoint]);
+
+  const shouldShowHamburger = showHamburger !== undefined ? showHamburger : isMobile;
+
+  const handleHamburgerClick = () => {
+    if (onHamburgerClick) {
+      onHamburgerClick();
+    }
+  };
+
+  const hamburgerIcon = hamburgerOpen ? "mdi-close" : "mdi-menu";
+
   return (
     <header style={Css.container(removeDefaultStyle, colorScheme, darkMode, sticky)}>
-      {/* LEFT – LOGO */}
+      {/* LEFT – HAMBURGER + LOGO */}
       <div style={Css.section("left")}>
+        {shouldShowHamburger && onHamburgerClick && (
+          <div
+            style={Css.hamburgerButton(removeDefaultStyle)}
+            onClick={handleHamburgerClick}
+            onMouseEnter={(e) => {
+              if (!removeDefaultStyle) {
+                const scheme = getColorScheme(colorScheme, darkMode);
+                e.currentTarget.style.backgroundColor = darkMode
+                  ? "rgba(255, 255, 255, 0.1)"
+                  : "rgba(0, 0, 0, 0.05)";
+              }
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.backgroundColor = "transparent";
+            }}
+          >
+            <Icon
+              icon={hamburgerIcon}
+              size="md"
+              color={darkMode ? "white" : "black"}
+              darkMode={darkMode}
+            />
+          </div>
+        )}
         <div
           style={Css.logo(removeDefaultStyle, colorScheme, darkMode)}
           onClick={onLogoClick}
@@ -137,7 +208,14 @@ function Navbar({
       </div>
 
       {/* CENTER */}
-      <div style={Css.section("center")}>{centerContent}</div>
+      <div
+        style={{
+          ...Css.section("center"),
+          display: isMobile && shouldShowHamburger ? "none" : "flex",
+        }}
+      >
+        {centerContent}
+      </div>
 
       {/* RIGHT – ACTIONS */}
       <div style={Css.section("right")}>{rightContent}</div>

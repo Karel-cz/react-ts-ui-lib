@@ -1,4 +1,5 @@
 //@@viewOn:imports
+import { useState } from "react";
 import { Documentation, NAVBAR_PROP_NAMES, Navbar as UiNavbar, Icon, Button } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../i18n/useTranslation";
 import { getPropsWithTranslations } from "../i18n/getPropsWithTranslations";
@@ -11,6 +12,7 @@ const NavbarDoc = () => {
   const { darkMode } = useTheme();
   const { t } = useTranslation();
   const propTypesList = getPropsWithTranslations("navbar", NAVBAR_PROP_NAMES, t);
+  const [hamburgerOpen, setHamburgerOpen] = useState(false);
 
   const commonRight = (
     <>
@@ -74,6 +76,24 @@ const NavbarDoc = () => {
                 <p>More content...</p>
               </div>
             </div>
+          ) 
+        },
+      ],
+    },
+    {
+      category: t("navbar.categories.mobile"),
+      itemList: [
+        { 
+          label: t("navbar.examples.hamburger"), 
+          components: (
+            <UiNavbar 
+              logo="MyApp" 
+              rightContent={commonRight}
+              darkMode={darkMode}
+              onHamburgerClick={() => setHamburgerOpen(!hamburgerOpen)}
+              hamburgerOpen={hamburgerOpen}
+              showHamburger={true}
+            />
           ) 
         },
       ],

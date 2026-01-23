@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import React from "react";
+import React, { useMemo } from "react";
 import { SideBar } from "@react-ts-ui-lib/ui";
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
 import { getRouteList } from "../app/tools/RouteList.ts";
@@ -20,16 +20,38 @@ type LeftMenuPropTypes = {
   setSelectedItem: React.Dispatch<React.SetStateAction<SideBarItem | null>>;
   selectedItem: SideBarItem | null;
   darkMode?: boolean;
+  mobileMode?: boolean;
+  isOpen?: boolean;
+  onClose?: () => void;
+  navbarHeight?: number;
 };
 //@@viewOff:propTypes
 
-const LeftMenu = ({ setSelectedItem, selectedItem, darkMode }: LeftMenuPropTypes) => {
+const LeftMenu = ({ 
+  setSelectedItem, 
+  selectedItem, 
+  darkMode,
+  mobileMode,
+  isOpen,
+  onClose,
+  navbarHeight,
+}: LeftMenuPropTypes) => {
   //@@viewOn:private
   const { t } = useTranslation();
-  const routeList = getRouteList(t);
+  const routeList = useMemo(() => getRouteList(t), [t]);
   
   const handleItemClick = (item: SideBarItem) => {
-    setSelectedItem(item);
+    // Vytvořit nový objekt bez itemList, aby se nepřenášel itemList z selectedItem
+    const cleanItem: SideBarItem = {
+      title: item.title,
+      icon: item.icon,
+      key: item.key,
+      onClick: item.onClick,
+      hidden: item.hidden,
+      defaultExpandedItem: item.defaultExpandedItem,
+      // NEPŘENÁŠET itemList - to by mohlo způsobit problémy
+    };
+    setSelectedItem(cleanItem);
   };
   //@@viewOff:private
 
@@ -40,6 +62,10 @@ const LeftMenu = ({ setSelectedItem, selectedItem, darkMode }: LeftMenuPropTypes
       onItemClick={handleItemClick}
       darkMode={darkMode}
       selectedItem={selectedItem}
+      mobileMode={mobileMode}
+      isOpen={isOpen}
+      onClose={onClose}
+      navbarHeight={navbarHeight}
     />
   );
   //@@viewOff:render

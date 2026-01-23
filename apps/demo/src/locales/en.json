@@ -274,14 +274,18 @@
       "colorScheme": { "description": "Background and text colors based on theme palette.", "type": "string", "required": "false" },
       "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" },
       "sticky": { "description": "If true, navbar will stick to the top when scrolling.", "type": "boolean", "required": "false" },
-      "sticky": { "description": "If true, navbar will stick to the top when scrolling.", "type": "boolean", "required": "false" }
+      "onHamburgerClick": { "description": "Callback fired when the hamburger menu button is clicked.", "type": "function", "required": "false" },
+      "showHamburger": { "description": "Manually control hamburger menu visibility. If not provided, automatically shows on mobile (< 768px).", "type": "boolean", "required": "false" },
+      "hamburgerOpen": { "description": "Controls the open/closed state of the hamburger menu (affects icon: menu/close).", "type": "boolean", "required": "false" },
+      "mobileBreakpoint": { "description": "Breakpoint in pixels for mobile detection (default: 768).", "type": "number", "required": "false" }
     },
     "categories": {
       "layout": "Layout",
       "colorScheme": "Color scheme",
       "darkMode": "Dark mode",
       "styling": "Styling",
-      "sticky": "Sticky"
+      "sticky": "Sticky",
+      "mobile": "Mobile"
     },
     "examples": {
       "logoString": "logo string",
@@ -292,7 +296,8 @@
       "dark": "dark",
       "light": "light",
       "raw": "raw",
-      "sticky": "Sticky"
+      "sticky": "Sticky",
+      "hamburger": "Hamburger menu"
     }
   },
   "sidebar": {
@@ -306,11 +311,17 @@
       "onItemClick": { "description": "Callback when an item is clicked; receives item and event.", "type": "function", "required": "false" },
       "collapsed": { "description": "Whether the sidebar is collapsed.", "type": "boolean", "required": "false" },
       "colorScheme": { "description": "Background and text colors based on theme palette.", "type": "string", "required": "false" },
-      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" }
+      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" },
+      "selectedItem": { "description": "Currently selected item to highlight.", "type": "SideBarItem | null", "required": "false" },
+      "mobileMode": { "description": "Activates mobile mode with overlay and fixed positioning.", "type": "boolean", "required": "false" },
+      "isOpen": { "description": "Controls the open/closed state of the sidebar in mobile mode.", "type": "boolean", "required": "false" },
+      "onClose": { "description": "Callback fired when the sidebar should close (e.g., overlay click or item click).", "type": "function", "required": "false" },
+      "navbarHeight": { "description": "Height of the navbar for proper positioning in mobile mode (default: 64).", "type": "number", "required": "false" }
     },
     "categories": {
       "basic": "Basic",
-      "styling": "Styling"
+      "styling": "Styling",
+      "mobile": "Mobile"
     },
     "examples": {
       "default": "default",
@@ -319,7 +330,10 @@
       "dashboard": "Dashboard",
       "settings": "Settings",
       "profile": "Profile",
-      "security": "Security"
+      "security": "Security",
+      "mobile": "Mobile mode",
+      "mobileOpen": "Mobile open",
+      "mobileClosed": "Mobile closed"
     },
     "routes": {
       "home": "Home",

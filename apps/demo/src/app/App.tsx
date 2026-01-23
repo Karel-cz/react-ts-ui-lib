@@ -9,6 +9,7 @@ import { useTheme } from "./context/ThemeContext";
 import { useLanguage } from "./context/LanguageContext";
 import { useTranslation } from "../i18n/useTranslation";
 import { getColorScheme } from "@react-ts-ui-lib/ui";
+//@@viewOff:imports
 
 //@@viewOff:imports
 
@@ -51,7 +52,11 @@ function App() {
   const [selectedItem, setSelectedItem] = useState<SideBarItem | null>(() => 
     routeList.length > 0 ? routeList[0] : null
   );
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
+
+  console.log(routeList)
   useEffect(() => {
     const backgroundScheme = getColorScheme("background", darkMode);
     document.body.style.backgroundColor = backgroundScheme.color;
@@ -67,6 +72,19 @@ function App() {
     };
   }, [darkMode]);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   const RightContent = () => {
     return (
       <>
@@ -81,6 +99,21 @@ function App() {
       </>
     );
   };
+
+  const handleHamburgerClick = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const handleSetSelectedItem: React.Dispatch<React.SetStateAction<SideBarItem | null>> = (item) => {
+    const actualItem = typeof item === 'function' ? item(selectedItem) : item;
+    setSelectedItem(actualItem);
+    if (isMobile) {
+      setIsMobileMenuOpen(false);
+    }
+  };
+  //@@viewOff:private
+
+  //@@viewOn:render
   return (
     <div
       style={{
@@ -90,9 +123,24 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <Navbar sticky={true} logo={LOGO} darkMode={darkMode} rightContent={RightContent()} />
+      <Navbar 
+        sticky={true} 
+        logo={LOGO} 
+        darkMode={darkMode} 
+        rightContent={RightContent()}
+        onHamburgerClick={handleHamburgerClick}
+        hamburgerOpen={isMobileMenuOpen}
+      />
       <div style={{ display: "flex", flex: 1 }}>
-        <LeftMenu setSelectedItem={setSelectedItem} selectedItem={selectedItem} darkMode={darkMode} />
+        <LeftMenu 
+          setSelectedItem={handleSetSelectedItem} 
+          selectedItem={selectedItem} 
+          darkMode={darkMode}
+          mobileMode={isMobile}
+          isOpen={isMobileMenuOpen}
+          onClose={() => setIsMobileMenuOpen(false)}
+          navbarHeight={64}
+        />
         <div style={{ flex: 1, padding: "32px", overflow: "auto", maxWidth: "100%" }}>
           <Content selectedItem={selectedItem} />
         </div>

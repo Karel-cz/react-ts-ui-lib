@@ -9,19 +9,42 @@ const Css = {
   container: (
     removeDefaultStyle?: boolean,
     colorScheme: ColorScheme = "background",
-    darkMode = true
+    darkMode = true,
+    mobileMode?: boolean,
+    isOpen?: boolean,
+    navbarHeight?: number
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
     const borderColor = getBorderColor(darkMode);
 
-    return {
+    const baseStyle: React.CSSProperties = {
       backgroundColor: scheme.color,
       width: 280,
-      minHeight: "100vh",
       padding: "12px",
       boxSizing: "border-box",
       borderRight: `1px solid ${borderColor}`,
+    };
+
+    if (mobileMode) {
+      return {
+        ...baseStyle,
+        position: "fixed",
+        top: navbarHeight || 64,
+        left: 0,
+        bottom: 0,
+        minHeight: "auto",
+        height: `calc(100vh - ${navbarHeight || 64}px)`,
+        zIndex: 1000,
+        transition: "transform 0.3s ease",
+        transform: isOpen ? "translateX(0)" : "translateX(-100%)",
+        overflowY: "auto",
+      };
+    }
+
+    return {
+      ...baseStyle,
+      minHeight: "100vh",
     };
   },
   openIcon: (removeDefaultStyle?: boolean) => {
@@ -137,6 +160,10 @@ export type SideBarProps = {
   colorScheme?: ColorScheme;
   darkMode?: boolean;
   selectedItem?: SideBarItem | null;
+  mobileMode?: boolean;
+  isOpen?: boolean;
+  onClose?: () => void;
+  navbarHeight?: number;
 };
 
 // Const array for runtime prop extraction in documentation
@@ -150,6 +177,10 @@ export const SIDEBAR_PROP_NAMES = [
   "collapsed",
   "colorScheme",
   "darkMode",
+  "mobileMode",
+  "isOpen",
+  "onClose",
+  "navbarHeight",
 ] as const;
 //@@viewOff:propTypes
 
@@ -163,6 +194,10 @@ function SideBar({
   colorScheme = "surface",
   darkMode = true,
   selectedItem,
+  mobileMode = false,
+  isOpen = false,
+  onClose,
+  navbarHeight = 64,
 }: SideBarProps) {
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const [openMap, setOpenMap] = useState<Record<string, boolean>>(() => {
@@ -195,6 +230,10 @@ function SideBar({
   const handleItemClick = (item: SideBarItem, e?: React.MouseEvent) => {
     if (item.onClick) item.onClick(e);
     if (onItemClick) onItemClick(item, e);
+    // Zavřít menu při kliknutí na item v mobilním režimu
+    if (mobileMode && onClose) {
+      onClose();
+    }
   };
 
   const isItemSelected = (item: SideBarItem): boolean => {
@@ -266,11 +305,28 @@ function SideBar({
   };
 
   return (
-    <nav
-      style={Css.container(removeDefaultStyle, colorScheme, darkMode)}
-    >
-      {itemList?.map((item?: SideBarItem, i?: number) => renderItem(item, i))}
-    </nav>
+    <>
+      {/* Overlay pro mobilní režim */}
+      {mobileMode && isOpen && onClose && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 999,
+          }}
+          onClick={onClose}
+        />
+      )}
+      <nav
+        style={Css.container(removeDefaultStyle, colorScheme, darkMode, mobileMode, isOpen, navbarHeight)}
+      >
+        {itemList?.map((item?: SideBarItem, i?: number) => renderItem(item, i))}
+      </nav>
+    </>
   );
 }
 //@@viewOff:render
