@@ -1,9 +1,5 @@
 //@@viewOn:imports
-<<<<<<< HEAD
-import { Pendin, getBorderColor } from "@react-ts-ui-lib/ui";
-=======
 import { Pending, getBorderColor } from "@react-ts-ui-lib/ui";
->>>>>>> 99cee5b (bug: fix crashing screen)
 import { useEffect, useState } from "react";
 import { useTheme } from "./context/ThemeContext";
 //@@viewOff:imports
