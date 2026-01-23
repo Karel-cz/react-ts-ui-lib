@@ -18,11 +18,12 @@ import { useTranslation } from "../i18n/useTranslation";
 //@@viewOn:propTypes
 type LeftMenuPropTypes = {
   setSelectedItem: React.Dispatch<React.SetStateAction<SideBarItem | null>>;
+  selectedItem: SideBarItem | null;
   darkMode?: boolean;
 };
 //@@viewOff:propTypes
 
-const LeftMenu = ({ setSelectedItem, darkMode }: LeftMenuPropTypes) => {
+const LeftMenu = ({ setSelectedItem, selectedItem, darkMode }: LeftMenuPropTypes) => {
   //@@viewOn:private
   const { t } = useTranslation();
   const routeList = getRouteList(t);
@@ -38,6 +39,7 @@ const LeftMenu = ({ setSelectedItem, darkMode }: LeftMenuPropTypes) => {
       itemList={routeList}
       onItemClick={handleItemClick}
       darkMode={darkMode}
+      selectedItem={selectedItem}
     />
   );
   //@@viewOff:render

@@ -26,14 +26,14 @@ const LANGUAGE_MAP: Record<string, string> = {
 const getThemeStyles = (darkMode: boolean): React.CSSProperties => {
   if (darkMode) {
     return {
-      backgroundColor: "#1b1d1fff",
-      color: "#e6eef8",
+      backgroundColor: "#0d1117",
+      color: "#c9d1d9",
       transition: "background-color 0.2s ease, color 0.2s ease",
     };
   } else {
     return {
-      backgroundColor: "#f4f6f8",
-      color: "#0b1220",
+      backgroundColor: "#ffffff",
+      color: "#24292f",
       transition: "background-color 0.2s ease, color 0.2s ease",
     };
   }
@@ -81,8 +81,8 @@ function App() {
     >
       <Navbar sticky={true} logo={LOGO} darkMode={darkMode} rightContent={RightContent()} />
       <div style={{ display: "flex", flex: 1 }}>
-        <LeftMenu setSelectedItem={setSelectedItem} darkMode={darkMode} />
-        <div style={{ flex: 1, padding: "20px", overflow: "auto" }}>
+        <LeftMenu setSelectedItem={setSelectedItem} selectedItem={selectedItem} darkMode={darkMode} />
+        <div style={{ flex: 1, padding: "32px", overflow: "auto", maxWidth: "100%" }}>
           <Content selectedItem={selectedItem} />
         </div>
       </div>

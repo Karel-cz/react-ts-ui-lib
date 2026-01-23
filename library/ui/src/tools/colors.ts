@@ -4,54 +4,54 @@ type ColorEntry = {
   key: string;
 };
 
-// Common colors used across themes
+// Common colors used across themes - GitHub-inspired palette
 const COLORS = {
   // Whites & Transparent
   white: "#ffffff",
   transparent: "transparent",
 
-  // Dark theme colors
-  darkBg: "#1b1d1fff",
-  darkSurface: "#1f2937",
-  darkText: "#e6eef8",
-  darkBorder: "#374151",
-  darkMuted: "#9ca3af",
+  // Dark theme colors (GitHub dark mode)
+  darkBg: "#0d1117",
+  darkSurface: "#161b22",
+  darkText: "#c9d1d9",
+  darkBorder: "#30363d",
+  darkMuted: "#8b949e",
 
-  // Light theme colors
-  lightBg: "#eeeef3",
-  lightSurface: "#ffffff",
-  lightText: "#0b1220",
-  lightBorder: "#e5e7eb",
-  lightMuted: "#6b7280",
+  // Light theme colors (GitHub light mode)
+  lightBg: "#ffffff",
+  lightSurface: "#f6f8fa",
+  lightText: "#24292f",
+  lightBorder: "#d0d7de",
+  lightMuted: "#656d76",
 
-  // Primary colors
-  primary: "#2563eb",
-  primaryHover: "#1d4ed8",
-  primaryDark: "#1e40af",
+  // Primary colors (GitHub blue)
+  primary: "#0969da",
+  primaryHover: "#0860ca",
+  primaryDark: "#0550ae",
 
-  // Info colors
-  infoDark: "#06b6d4",
-  infoDarkVariant: "#0891b2",
-  infoLight: "#0ea5a4",
-  infoLightVariant: "#0284c7",
+  // Info colors (GitHub blue variants)
+  infoDark: "#58a6ff",
+  infoDarkVariant: "#4493f8",
+  infoLight: "#0969da",
+  infoLightVariant: "#0860ca",
 
-  // Success colors
-  success: "#16a34a",
-  successDark: "#15803d",
+  // Success colors (GitHub green)
+  success: "#1a7f37",
+  successDark: "#238636",
 
-  // Danger colors
-  dangerDark: "#ef4444",
-  dangerDarkVariant: "#dc2626",
-  dangerLight: "#dc2626",
-  dangerLightVariant: "#b91c1c",
+  // Danger colors (GitHub red)
+  dangerDark: "#f85149",
+  dangerDarkVariant: "#da3633",
+  dangerLight: "#cf222e",
+  dangerLightVariant: "#a40e26",
 
-  // Warning colors
-  warning: "#f59e0b",
-  warningDark: "#d97706",
+  // Warning colors (GitHub orange/yellow)
+  warning: "#9a6700",
+  warningDark: "#bf8700",
 
-  // Shadow colors
-  shadowDark: "rgba(2,6,23,0.08)",
-  shadowLight: "rgba(2,6,23,0.06)",
+  // Shadow colors (GitHub shadows)
+  shadowDark: "rgba(1,4,9,0.15)",
+  shadowLight: "rgba(27,31,36,0.15)",
 } as const;
 
 const dark = {
@@ -68,24 +68,24 @@ const dark = {
     key: "surface" as const,
   },
 
-  // Primary action color (buttons, links)
+  // Primary action color (buttons, links) - GitHub dark mode
   primary: {
-    color: COLORS.primary,
+    color: COLORS.infoDark,
     textColor: COLORS.white,
     key: "primary" as const,
   },
   primaryHover: {
-    color: COLORS.primaryHover,
+    color: COLORS.infoDarkVariant,
     textColor: COLORS.white,
     key: "primaryHover" as const,
   },
   primaryDark: {
-    color: COLORS.primaryDark,
+    color: "#1f6feb",
     textColor: COLORS.white,
     key: "primaryDark" as const,
   },
 
-  // Informational / accent
+  // Informational / accent (GitHub dark mode)
   info: {
     color: COLORS.infoDark,
     textColor: COLORS.white,
@@ -97,14 +97,14 @@ const dark = {
     key: "infoDark" as const,
   },
 
-  // Status colors
+  // Status colors (GitHub dark mode)
   success: {
-    color: COLORS.success,
+    color: COLORS.successDark,
     textColor: COLORS.white,
     key: "success" as const,
   },
   successDark: {
-    color: COLORS.successDark,
+    color: "#2ea043",
     textColor: COLORS.white,
     key: "successDark" as const,
   },
@@ -119,12 +119,12 @@ const dark = {
     key: "dangerDark" as const,
   },
   warning: {
-    color: COLORS.warning,
+    color: "#d29922",
     textColor: COLORS.white,
     key: "warning" as const,
   },
   warningDark: {
-    color: COLORS.warningDark,
+    color: "#bb8009",
     textColor: COLORS.white,
     key: "warningDark" as const,
   },
@@ -201,7 +201,7 @@ const light = {
     key: "success" as const,
   },
   successDark: {
-    color: COLORS.successDark,
+    color: "#1a7f37",
     textColor: COLORS.white,
     key: "successDark" as const,
   },
@@ -221,7 +221,7 @@ const light = {
     key: "warning" as const,
   },
   warningDark: {
-    color: COLORS.warningDark,
+    color: "#7c2d12",
     textColor: COLORS.white,
     key: "warningDark" as const,
   },

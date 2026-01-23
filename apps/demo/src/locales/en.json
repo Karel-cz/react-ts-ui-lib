@@ -493,5 +493,28 @@
       "yes": "Yes",
       "no": "No"
     }
+  },
+  "documentationPage": {
+    "title": "Documentation",
+    "description": "Welcome to the component documentation. Here you can find detailed information about all available components in this UI library.",
+    "instructions": "To view documentation for a specific component, simply expand the Documentation section in the left menu and click on the component you're interested in."
+  },
+  "aboutApplication": {
+    "title": "About Application",
+    "about": {
+      "title": "About",
+      "description": "This is a React TypeScript UI component library demo application. It showcases various reusable UI components that can be used in your projects."
+    },
+    "features": {
+      "title": "Features",
+      "feature1": "Modern and responsive UI components",
+      "feature2": "Full TypeScript support",
+      "feature3": "Dark mode support",
+      "feature4": "Comprehensive documentation"
+    },
+    "technology": {
+      "title": "Technology",
+      "description": "Built with React, TypeScript, and modern web technologies. All components are designed to be accessible, customizable, and easy to use."
+    }
   }
 }

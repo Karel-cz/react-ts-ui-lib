@@ -343,13 +343,20 @@ const Block = ({
     ? (darkMode ? "rgba(255, 255, 255, 0.1)" : "rgba(0, 0, 0, 0.1)")
     : getBorderColor(darkMode);
 
-  const background = scheme.color;
+  // Lehce odlišná barva pro Block - jemnější odstín než background
+  let background = scheme.color;
+  if (colorScheme === "background" || colorScheme === "surface") {
+    background = darkMode 
+      ? "#161b22"  // Lehce světlejší než hlavní background
+      : "#f6f8fa"; // Lehce tmavší než hlavní background
+  }
+
   const textColor = scheme.textColor;
   const borderRadiusValue = getRadiusValue(borderRadius);
 
   const shadow = darkMode
-    ? `0 2px 8px ${shadowScheme.color}`
-    : `0 1px 3px ${shadowScheme.color}`;
+    ? `0 1px 3px rgba(1, 4, 9, 0.12), 0 8px 24px rgba(1, 4, 9, 0.08)`
+    : `0 1px 3px rgba(27, 31, 36, 0.12), 0 8px 24px rgba(27, 31, 36, 0.08)`;
 
   const hasHeader = header || ActionList || info || collapsible;
 

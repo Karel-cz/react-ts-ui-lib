@@ -20,18 +20,20 @@ const Css = {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
-      height: 56,
-      padding: "0 16px",
+      height: 64,
+      padding: "0 24px",
       backgroundColor: scheme.color,
       borderBottom: `1px solid ${borderColor}`,
       boxSizing: "border-box",
       minWidth: "100%",
       color: scheme.textColor,
+      backdropFilter: sticky ? "blur(12px) saturate(180%)" : undefined,
       ...(sticky
         ? {
             position: "sticky",
             top: 0,
             zIndex: 1000,
+            backgroundColor: darkMode ? "rgba(13, 17, 23, 0.8)" : "rgba(255, 255, 255, 0.8)",
           }
         : {}),
     };
@@ -40,7 +42,7 @@ const Css = {
   section: (align: "left" | "center" | "right"): React.CSSProperties => ({
     display: "flex",
     alignItems: "center",
-    gap: 12,
+    gap: 16,
     flex: align === "center" ? 1 : undefined,
     justifyContent:
       align === "center"
@@ -58,10 +60,12 @@ const Css = {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
     return {
-      fontSize: 18,
+      fontSize: 20,
       fontWeight: 600,
       color: scheme.textColor,
       cursor: "pointer",
+      transition: "opacity 0.2s ease",
+      letterSpacing: "-0.01em",
     };
   },
 
@@ -119,6 +123,14 @@ function Navbar({
         <div
           style={Css.logo(removeDefaultStyle, colorScheme, darkMode)}
           onClick={onLogoClick}
+          onMouseEnter={(e) => {
+            if (onLogoClick) {
+              e.currentTarget.style.opacity = "0.8";
+            }
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.opacity = "1";
+          }}
         >
           {logo}
         </div>

@@ -17,9 +17,9 @@ const Css = {
 
     return {
       backgroundColor: scheme.color,
-      width: 260,
+      width: 280,
       minHeight: "100vh",
-      padding: "8px",
+      padding: "12px",
       boxSizing: "border-box",
       borderRight: `1px solid ${borderColor}`,
     };
@@ -33,45 +33,69 @@ const Css = {
   item: (
     removeDefaultStyle?: boolean,
     colorScheme: ColorScheme = "background",
-    darkMode = true
+    darkMode = true,
+    isActive?: boolean,
+    isHovered?: boolean
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
 
     const scheme = getColorScheme(colorScheme, darkMode);
-
-    return {
+    
+    const baseStyle: React.CSSProperties = {
       display: "flex",
       alignItems: "center",
-      gap: 8,
-      padding: "8px 10px",
-      borderRadius: 6,
+      gap: 10,
+      padding: "10px 12px",
+      borderRadius: 8,
       cursor: "pointer",
       userSelect: "none",
       color: scheme.textColor,
-      borderColor: "white",
+      transition: "all 0.15s ease",
+      fontSize: 14,
     };
+
+    if (isActive) {
+      return {
+        ...baseStyle,
+        backgroundColor: darkMode ? "rgba(88, 166, 255, 0.15)" : "rgba(9, 105, 218, 0.1)",
+        color: darkMode ? "#58a6ff" : "#0969da",
+        fontWeight: 500,
+      };
+    }
+
+    if (isHovered) {
+      return {
+        ...baseStyle,
+        backgroundColor: darkMode ? "rgba(110, 118, 129, 0.1)" : "rgba(208, 215, 222, 0.5)",
+      };
+    }
+
+    return baseStyle;
   },
 
   nested: (removeDefaultStyle?: boolean): React.CSSProperties => {
     if (removeDefaultStyle) return {};
     return {
-      paddingLeft: 12,
+      paddingLeft: 20,
       display: "flex",
       flexDirection: "column",
-      gap: 4,
+      gap: 2,
+      marginTop: 4,
     };
   },
   title: (
     removeDefaultStyle?: boolean,
     colorScheme: ColorScheme = "background",
-    darkMode = true
+    darkMode = true,
+    isActive?: boolean
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
 
     return {
       fontSize: 14,
-      color: scheme.textColor,
+      color: isActive ? (darkMode ? "#58a6ff" : "#0969da") : scheme.textColor,
+      fontWeight: isActive ? 500 : 400,
     };
   },
 };
@@ -102,6 +126,7 @@ export type SideBarProps = {
   collapsed?: boolean;
   colorScheme?: ColorScheme;
   darkMode?: boolean;
+  selectedItem?: SideBarItem | null;
 };
 
 // Const array for runtime prop extraction in documentation
@@ -127,7 +152,9 @@ function SideBar({
   collapsed = false,
   colorScheme = "background",
   darkMode = true,
+  selectedItem,
 }: SideBarProps) {
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
   const [openMap, setOpenMap] = useState<Record<string, boolean>>(() => {
     const initialMap: Record<string, boolean> = {};
     const collectDefaultExpanded = (items: SideBarItem[], parentKey = "") => {
@@ -160,12 +187,20 @@ function SideBar({
     if (onItemClick) onItemClick(item, e);
   };
 
+  const isItemSelected = (item: SideBarItem): boolean => {
+    if (!selectedItem) return false;
+    return (selectedItem.key && item.key === selectedItem.key) || 
+           (selectedItem.title === item.title && !selectedItem.key && !item.key);
+  };
+
   const renderItem = (item: SideBarItem | undefined, index: number | undefined, parentKey = "") => {
     if (!item || index === undefined || isHidden(item)) return null;
     const key = parentKey ? `${parentKey}-${index}` : `${index}`;
     const hasChildren =
       Array.isArray(item.itemList) && item.itemList.length > 0;
     const open = !!openMap[key];
+    const isActive = isItemSelected(item);
+    const isHovered = hoveredKey === key;
 
     return (
       <div key={key}>
@@ -176,9 +211,11 @@ function SideBar({
             if (hasChildren) toggleOpen(key);
             handleItemClick(item, e);
           }}
+          onMouseEnter={() => setHoveredKey(key)}
+          onMouseLeave={() => setHoveredKey(null)}
           className={className}
           style={{
-            ...Css.item(removeDefaultStyle, colorScheme, darkMode),
+            ...Css.item(removeDefaultStyle, colorScheme, darkMode, isActive, isHovered),
             ...(hasChildren ? { justifyContent: "space-between" } : {}),
           }}
           title={item.title}
@@ -189,7 +226,7 @@ function SideBar({
             ) : null}
             {!collapsed && (
               <span
-                style={Css.title(removeDefaultStyle, colorScheme, darkMode)}
+                style={Css.title(removeDefaultStyle, colorScheme, darkMode, isActive)}
               >
                 {item.title}
               </span>

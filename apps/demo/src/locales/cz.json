@@ -490,5 +490,28 @@
       "yes": "Ano",
       "no": "Ne"
     }
+  },
+  "documentationPage": {
+    "title": "Dokumentace",
+    "description": "Vítejte v dokumentaci komponent. Zde najdete podrobné informace o všech dostupných komponentách v této UI knihovně.",
+    "instructions": "Pro zobrazení dokumentace konkrétní komponenty jednoduše rozklikněte sekci Dokumentace v levém menu a klikněte na komponentu, která vás zajímá."
+  },
+  "aboutApplication": {
+    "title": "O aplikaci",
+    "about": {
+      "title": "O aplikaci",
+      "description": "Toto je demo aplikace React TypeScript UI komponentové knihovny. Představuje různé znovupoužitelné UI komponenty, které můžete použít ve svých projektech."
+    },
+    "features": {
+      "title": "Funkce",
+      "feature1": "Moderní a responzivní UI komponenty",
+      "feature2": "Plná podpora TypeScriptu",
+      "feature3": "Podpora tmavého režimu",
+      "feature4": "Komplexní dokumentace"
+    },
+    "technology": {
+      "title": "Technologie",
+      "description": "Vytvořeno pomocí Reactu, TypeScriptu a moderních webových technologií. Všechny komponenty jsou navrženy tak, aby byly přístupné, přizpůsobitelné a snadno použitelné."
+    }
   }
 }
