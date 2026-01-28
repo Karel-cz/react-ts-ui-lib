@@ -29,7 +29,7 @@ const Css = {
     maxWidth?: string | number,
     cardType?: "none" | "full",
     borderColor?: string,
-    padding?: number
+    padding?: number,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -69,7 +69,7 @@ const Css = {
   header: (
     removeDefaultStyle?: boolean,
     padding?: number,
-    cardType?: "none" | "full"
+    cardType?: "none" | "full",
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -121,7 +121,7 @@ const Css = {
 
   headerSeparator: (
     removeDefaultStyle?: boolean,
-    borderColor?: string
+    borderColor?: string,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -138,7 +138,7 @@ const Css = {
 
   contentWrapper: (
     removeDefaultStyle?: boolean,
-    isCollapsed?: boolean
+    isCollapsed?: boolean,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -156,7 +156,7 @@ const Css = {
   content: (
     removeDefaultStyle?: boolean,
     padding?: number,
-    cardType?: "none" | "full"
+    cardType?: "none" | "full",
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -170,7 +170,6 @@ const Css = {
 
     return {};
   },
-
 
   collapsibleButton: (): React.CSSProperties => ({
     cursor: "pointer",
@@ -194,7 +193,7 @@ const Css = {
     textColor?: string,
     borderRadiusValue?: number,
     shadow?: string,
-    borderColor?: string
+    borderColor?: string,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -332,7 +331,7 @@ const Block = ({
 
   const scheme = getSignificanceColor(colorScheme, significance, darkMode);
   const shadowScheme = getColorScheme("shadow", darkMode);
-  
+
   const borderColor = getBorderColor(darkMode);
 
   let background = scheme.color;
@@ -388,7 +387,7 @@ const Block = ({
         formatUnit(maxWidth),
         card,
         borderColor,
-        padding
+        padding,
       )}
     >
       {hasHeader && (
@@ -416,7 +415,14 @@ const Block = ({
           </div>
           <div style={Css.headerRight()}>
             {ActionList && ActionList.length > 0 && (
-              <div style={{ display: "flex", alignItems: "center", gap: 8, flexShrink: 0 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: 8,
+                  flexShrink: 0,
+                }}
+              >
                 {ActionList.map((action, index) => (
                   <React.Fragment key={index}>{action}</React.Fragment>
                 ))}
@@ -439,7 +445,7 @@ const Block = ({
                       textColor,
                       borderRadiusValue,
                       shadow,
-                      borderColor
+                      borderColor,
                     )}
                   >
                     {info}
@@ -452,18 +458,13 @@ const Block = ({
       )}
 
       {hasHeader && headerSeparator && (
-        <hr
-          style={Css.headerSeparator(
-            removeDefaultStyle,
-            borderColor
-          )}
-        />
+        <hr style={Css.headerSeparator(removeDefaultStyle, borderColor)} />
       )}
 
       <div
         style={Css.contentWrapper(
           removeDefaultStyle,
-          collapsible && isCollapsed
+          collapsible && isCollapsed,
         )}
       >
         <div style={Css.content(removeDefaultStyle, padding, card)}>

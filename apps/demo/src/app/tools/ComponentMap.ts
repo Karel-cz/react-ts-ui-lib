@@ -2,18 +2,47 @@ import React from "react";
 
 const componentMap: { [key: string]: React.LazyExoticComponent<React.FC> } = {
   //Routes
-  Documentation: React.lazy(() => import("../Documentation")),
+  BasicComponents: React.lazy(() => import("../BasicComponents")),
+  Utilities: React.lazy(() => import("../Utilities")),
   Contributors: React.lazy(() => import("../Contributions")),
   AboutApplication: React.lazy(() => import("../AboutApplication")),
 
   //Components
-  SideBar: React.lazy(() => import("../../Documentation/SideBar-doc")),
-  Pending: React.lazy(() => import("../../Documentation/Pending-doc")),
-  Icon: React.lazy(() => import("../../Documentation/Icon-doc")),
-  Button: React.lazy(() => import("../../Documentation/button-doc")),
-  Navbar: React.lazy(() => import("../../Documentation/Navbar-doc")),
-  Badge: React.lazy(() => import("../../Documentation/Badge-doc")),
-  Block: React.lazy(() => import("../../Documentation/Block-doc")),
+  SideBar: React.lazy(
+    () => import("../../documentation/basic-components/SideBarDoc"),
+  ),
+  Pending: React.lazy(
+    () => import("../../documentation/basic-components/PendingDoc"),
+  ),
+  Icon: React.lazy(
+    () => import("../../documentation/basic-components/IconDoc"),
+  ),
+  Button: React.lazy(
+    () => import("../../documentation/basic-components/ButtonDoc"),
+  ),
+  Navbar: React.lazy(
+    () => import("../../documentation/basic-components/NavbarDoc"),
+  ),
+  Badge: React.lazy(
+    () => import("../../documentation/basic-components/BadgeDoc"),
+  ),
+  Block: React.lazy(
+    () => import("../../documentation/basic-components/BlockDoc"),
+  ),
+  Number: React.lazy(
+    () => import("../../documentation/basic-components/NumberDoc"),
+  ),
+  Input: React.lazy(
+    () => import("../../documentation/basic-components/InputDoc"),
+  ),
+
+  //Utilities
+  CopyToClipboard: React.lazy(
+    () => import("../../documentation/utilities/CopyToClipboardDoc"),
+  ),
+  GetMostFrequentValue: React.lazy(
+    () => import("../../documentation/utilities/GetMostFrequentValueDoc"),
+  ),
 };
 
 export { componentMap };

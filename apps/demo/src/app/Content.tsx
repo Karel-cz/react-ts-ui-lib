@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import React, { Suspense } from "react";
 import { Pending, type SideBarItem } from "@react-ts-ui-lib/ui";
-import componentMap from "./tools/ComponentMap";
+import componentMap from "./tools/componentMap";
 
 //@@viewOff:imports
 

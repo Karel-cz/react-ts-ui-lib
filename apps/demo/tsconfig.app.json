@@ -20,7 +20,8 @@
     /* Path mapping for monorepo */
     "baseUrl": ".",
     "paths": {
-      "@react-ts-ui-lib/ui": ["../../library/ui/src/index.ts"]
+      "@react-ts-ui-lib/ui": ["../../library/ui/src/index.ts"],
+      "@react-ts-ui-lib/utilities": ["../../library/utilities/index.ts"]
     },
 
     /* Linting */

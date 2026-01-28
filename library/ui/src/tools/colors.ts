@@ -31,7 +31,7 @@ const COLORS = {
   primaryDark: "#0550ae",
 
   // Info colors (GitHub blue variants)
-  infoDark: "#58a6ff",
+  infoDark: "#2083f4",
   infoDarkVariant: "#4493f8",
   infoLight: "#0969da",
   infoLightVariant: "#0860ca",
@@ -155,7 +155,7 @@ const dark = {
     textColor: COLORS.transparent,
     key: "shadow" as const,
   },
-  
+
   // Utility colors
   white: {
     color: COLORS.white,
@@ -260,7 +260,7 @@ const light = {
     textColor: COLORS.transparent,
     key: "shadow" as const,
   },
-  
+
   // Utility colors
   white: {
     color: COLORS.white,
@@ -332,7 +332,7 @@ const highlightedMap: Partial<Record<ColorScheme, ColorScheme>> = {
 export const getSignificanceColor = (
   colorScheme: ColorScheme,
   significance: Significance = "common",
-  darkMode: boolean = true
+  darkMode: boolean = true,
 ) => {
   if (significance === "common") {
     return getColorScheme(colorScheme, darkMode);
@@ -368,31 +368,31 @@ export const getBorderColor = (darkMode: boolean = true): string => {
 export const getBorder = (
   darkMode: boolean = true,
   width: number = 1,
-  side?: "top" | "right" | "bottom" | "left"
+  side?: "top" | "right" | "bottom" | "left",
 ): string => {
   const color = getBorderColor(darkMode);
   const borderValue = `${width}px solid ${color}`;
-  
+
   if (side) {
     return borderValue;
   }
-  
+
   return borderValue;
 };
 
 export const getBorderStyle = (
   darkMode: boolean = true,
   width: number = 1,
-  side?: "top" | "right" | "bottom" | "left"
+  side?: "top" | "right" | "bottom" | "left",
 ): React.CSSProperties => {
   const borderValue = getBorder(darkMode, width, side);
-  
+
   if (side) {
     return {
       [`border${side.charAt(0).toUpperCase() + side.slice(1)}`]: borderValue,
     } as React.CSSProperties;
   }
-  
+
   return {
     border: borderValue,
   };
@@ -411,7 +411,7 @@ export const hexToRgba = (hex: string, alpha: number): string => {
 export const getRgbaFromScheme = (
   colorScheme: ColorScheme,
   darkMode: boolean,
-  alpha: number
+  alpha: number,
 ): string => {
   const scheme = getColorScheme(colorScheme, darkMode);
   return hexToRgba(scheme.color, alpha);

@@ -2,7 +2,7 @@
 import React, { useMemo } from "react";
 import { SideBar } from "@react-ts-ui-lib/ui";
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
-import { getRouteList } from "../app/tools/RouteList.ts";
+import { getRouteList } from "../app/tools/routeList";
 import { useTranslation } from "../i18n/useTranslation";
 //@@viewOff:imports
 
@@ -27,9 +27,9 @@ type LeftMenuPropTypes = {
 };
 //@@viewOff:propTypes
 
-const LeftMenu = ({ 
-  setSelectedItem, 
-  selectedItem, 
+const LeftMenu = ({
+  setSelectedItem,
+  selectedItem,
   darkMode,
   mobileMode,
   isOpen,
@@ -39,9 +39,8 @@ const LeftMenu = ({
   //@@viewOn:private
   const { t } = useTranslation();
   const routeList = useMemo(() => getRouteList(t), [t]);
-  
+
   const handleItemClick = (item: SideBarItem) => {
-    // Vytvořit nový objekt bez itemList, aby se nepřenášel itemList z selectedItem
     const cleanItem: SideBarItem = {
       title: item.title,
       icon: item.icon,
@@ -49,7 +48,6 @@ const LeftMenu = ({
       onClick: item.onClick,
       hidden: item.hidden,
       defaultExpandedItem: item.defaultExpandedItem,
-      // NEPŘENÁŠET itemList - to by mohlo způsobit problémy
     };
     setSelectedItem(cleanItem);
   };

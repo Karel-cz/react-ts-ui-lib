@@ -78,9 +78,15 @@ export const DocumentationTypeScheme = {
   },
   propTypesList: {
     name: "propTypesList",
-    description: "Array of prop-type meta objects to render in the Prop Types table.",
+    description:
+      "Array of prop-type meta objects to render in the Prop Types table.",
     required: false,
-    type: [] as Array<{ name: string; description?: string; type?: string; required?: boolean }>,
+    type: [] as Array<{
+      name: string;
+      description?: string;
+      type?: string;
+      required?: boolean;
+    }>,
   },
   componentList: {
     name: "componentList",
@@ -97,7 +103,7 @@ export const DocumentationTypeScheme = {
 };
 
 export type DocumentationProps = {
-  [K in keyof typeof DocumentationTypeScheme]?: (typeof DocumentationTypeScheme)[K]["type"]
+  [K in keyof typeof DocumentationTypeScheme]?: (typeof DocumentationTypeScheme)[K]["type"];
 } & {
   propTypesTitle?: string;
   propTypesNameLabel?: string;
@@ -136,7 +142,12 @@ const Documentation = ({
       {componentList && componentList.length > 0 && (
         <section style={Css.section}>
           {componentList.map((group, gi) => (
-            <Block key={gi} card="full" header={group.category} darkMode={darkMode}>
+            <Block
+              key={gi}
+              card="full"
+              header={group.category}
+              darkMode={darkMode}
+            >
               <div style={Css.itemsGrid}>
                 {group.itemList.map((item, ii) => (
                   <div key={ii} style={Css.itemCard}>
@@ -149,33 +160,33 @@ const Documentation = ({
           ))}
         </section>
       )}
-     <Block card="full" darkMode={darkMode}>
-      {propTypesList && propTypesList.length > 0 && (
-        <section style={Css.section}>
-          <h2>{propTypesTitle}</h2>
-          <table style={Css.table}>
-            <thead></thead>
-            <tr>
-              <th style={Css.th}>{propTypesNameLabel}</th>
-              <th style={Css.th}>{propTypesDescriptionLabel}</th>
-              <th style={Css.th}>{propTypesTypeLabel}</th>
-              <th style={Css.th}>{propTypesRequiredLabel}</th>
-            </tr>
-            <tbody></tbody>
-       
-            {propTypesList.map((propType, index: number) => (
-              <tr key={index}>
-                <td style={Css.td}>{propType.name}</td>
-                <td style={Css.td}>{propType.description}</td>
-                <td style={Css.td}>{propType.type}</td>
-                <td style={Css.td}>{propType.required ? propTypesYes : propTypesNo}</td>
+      <Block card="full" header={propTypesTitle} darkMode={darkMode}>
+        {propTypesList && propTypesList.length > 0 && (
+          <section style={Css.section}>
+            <table style={Css.table}>
+              <thead></thead>
+              <tr>
+                <th style={Css.th}>{propTypesNameLabel}</th>
+                <th style={Css.th}>{propTypesDescriptionLabel}</th>
+                <th style={Css.th}>{propTypesTypeLabel}</th>
+                <th style={Css.th}>{propTypesRequiredLabel}</th>
               </tr>
-            ))}
-          </table>
-        </section>
-       
-      )}
-       </Block>
+              <tbody></tbody>
+
+              {propTypesList.map((propType, index: number) => (
+                <tr key={index}>
+                  <td style={Css.td}>{propType.name}</td>
+                  <td style={Css.td}>{propType.description}</td>
+                  <td style={Css.td}>{propType.type}</td>
+                  <td style={Css.td}>
+                    {propType.required ? propTypesYes : propTypesNo}
+                  </td>
+                </tr>
+              ))}
+            </table>
+          </section>
+        )}
+      </Block>
     </div>
   );
   //@@viewOff:render

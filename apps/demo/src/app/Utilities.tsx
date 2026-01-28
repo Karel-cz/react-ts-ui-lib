@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import { Block } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../i18n/useTranslation";
-import { useTheme } from "./context/ThemeContext";
+import { useTheme } from "./context/themeContext";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -16,7 +16,7 @@ import { useTheme } from "./context/ThemeContext";
 //@@viewOn:propTypes
 //@@viewOff:propTypes
 
-const Documentation = () => {
+const Utilities = () => {
   //@@viewOn:private
   const { darkMode } = useTheme();
   const { t } = useTranslation();
@@ -25,10 +25,10 @@ const Documentation = () => {
   //@@viewOn:render
   return (
     <div>
-      <h1>{t("documentationPage.title")}</h1>
+      <h1>{t("utilitiesPage.title")}</h1>
       <Block card="full" darkMode={darkMode}>
-        <p>{t("documentationPage.description")}</p>
-        <p>{t("documentationPage.instructions")}</p>
+        <p>{t("utilitiesPage.description")}</p>
+        <p>{t("utilitiesPage.instructions")}</p>
       </Block>
     </div>
   );
@@ -36,6 +36,6 @@ const Documentation = () => {
 };
 
 //@@viewOn:exports
-export { Documentation };
-export default Documentation;
+export { Utilities };
+export default Utilities;
 //@@viewOff:exports

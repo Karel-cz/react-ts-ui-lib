@@ -254,12 +254,6 @@ npm run dev
 
 This starts the demo app at `http://localhost:5173` (or similar) where you can see all components in action.
 
-**Build the library:**
-
-```bash
-npm run build:ui
-```
-
 This builds the library package in the `library/ui/dist` directory.
 
 #### 5. 🌿 Create a Branch from Development
@@ -434,11 +428,6 @@ Check out the [Contributors page](https://github.com/karel-cz/react-ts-ui-lib/gr
    npm run dev
    ```
    The demo app will be available at `http://localhost:5173`
-
-4. **Build the library**:
-   ```bash
-   npm run build:ui
-   ```
 
 ### Workspace Structure
 

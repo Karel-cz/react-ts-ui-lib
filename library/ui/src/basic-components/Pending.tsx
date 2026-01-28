@@ -44,9 +44,15 @@ export const PENDING_PROP_NAMES = [
 ] as const;
 //@@viewOff:propTypes
 
-const Pending = ({ className, type = "circular", size = "sm", darkMode = true, colorScheme = "primary" }: PendingProps) => {
+const Pending = ({
+  className,
+  type = "circular",
+  size = "sm",
+  darkMode = true,
+  colorScheme = "primary",
+}: PendingProps) => {
   const pendingSize = getPendingSize(size as SizeToken).size;
-  
+
   const mutedScheme = getColorScheme("muted", darkMode);
   // use the provided colorScheme for the foreground so e.g. "primary" actually appears
   const scheme = getColorScheme(colorScheme as ColorScheme, darkMode);

@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import { Pending, getBorderColor } from "@react-ts-ui-lib/ui";
 import { useEffect, useState } from "react";
-import { useTheme } from "./context/ThemeContext";
+import { useTheme } from "./context/themeContext";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -41,7 +41,7 @@ function Contributions() {
 
   const fetchContributors = async () => {
     const response = await fetch(
-      `https://api.github.com/repos/${owner}/${repo}/contributors`
+      `https://api.github.com/repos/${owner}/${repo}/contributors`,
     );
     const data = await response.json();
     const result: Contributor[] = data.map((c: GitHubContributor) => ({
@@ -53,7 +53,7 @@ function Contributions() {
     }));
 
     setContributions(result);
-  }
+  };
 
   useEffect(() => {
     const loadContributors = async () => {
@@ -62,12 +62,11 @@ function Contributions() {
     loadContributors();
   }, []);
 
-
   //@@viewOff:private
 
   //@@viewOn:render
 
-  if(contributors.length === 0){
+  if (contributors.length === 0) {
     return <Pending />;
   }
 
@@ -109,7 +108,12 @@ function Contributions() {
         <tbody>
           {contributors.map((c) => (
             <tr key={c.id}>
-              <td style={{ padding: "8px", borderBottom: `1px solid ${borderColor}` }}>
+              <td
+                style={{
+                  padding: "8px",
+                  borderBottom: `1px solid ${borderColor}`,
+                }}
+              >
                 <img
                   src={c.avatar_url}
                   alt={c.login}
@@ -118,7 +122,12 @@ function Contributions() {
                   style={{ borderRadius: 4 }}
                 />
               </td>
-              <td style={{ padding: "8px", borderBottom: `1px solid ${borderColor}` }}>
+              <td
+                style={{
+                  padding: "8px",
+                  borderBottom: `1px solid ${borderColor}`,
+                }}
+              >
                 <a href={c.html_url} target="_blank" rel="noreferrer">
                   {c.login}
                 </a>

@@ -14,6 +14,7 @@ export default defineConfig({
     alias: {
       // During local development, point the package name to the source files
       '@react-ts-ui-lib/ui': path.resolve(__dirname, '../../library/ui/src/index.ts'),
+      '@react-ts-ui-lib/utilities': path.resolve(__dirname, '../../library/utilities/index.ts'),
     },
   },
 })

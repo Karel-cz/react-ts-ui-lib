@@ -28,7 +28,8 @@ const Css = {
     hoverBackground?: string,
     padding?: string,
     fontSize?: number,
-    width?: string
+    height?: string,
+    width?: string,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -46,6 +47,7 @@ const Css = {
       cursor: isDisabled ? "not-allowed" : "pointer",
       fontWeight: 600,
       fontSize: fontSize,
+      height: height,
       width: width,
       transition:
         "transform 120ms ease, background 160ms ease, color 160ms ease",
@@ -170,7 +172,8 @@ const Button = ({
     info: infoDarkScheme,
   };
 
-  const hoverBackground = hoverSchemeMap[colorScheme as string]?.color || background;
+  const hoverBackground =
+    hoverSchemeMap[colorScheme as string]?.color || background;
 
   const content = children || label;
   //@@viewOff:private
@@ -190,7 +193,8 @@ const Button = ({
         hoverBackground,
         buttonSize.padding,
         buttonSize.fontSize,
-        buttonSize.width
+        buttonSize.height,
+        buttonSize.width,
       )}
       type={type}
       title={tooltip}
@@ -209,7 +213,7 @@ const Button = ({
       </span>
       {isPending && (
         <span style={Css.spinnerContainer()}>
-          <Pending darkMode={darkMode} size={"xs"}/>
+          <Pending darkMode={darkMode} size={"xs"} />
         </span>
       )}
     </button>

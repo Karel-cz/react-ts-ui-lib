@@ -1,7 +1,12 @@
 //@@viewOn:imports
 import React, { useState } from "react";
 import Icon from "./Icon";
-import { type ColorScheme, getColorScheme, getBorderColor, getRgbaFromScheme } from "../tools/colors";
+import {
+  type ColorScheme,
+  getColorScheme,
+  getBorderColor,
+  getRgbaFromScheme,
+} from "../tools/colors";
 //@@viewOff:imports
 
 //@@viewOn:css
@@ -12,7 +17,7 @@ const Css = {
     darkMode = true,
     mobileMode?: boolean,
     isOpen?: boolean,
-    navbarHeight?: number
+    navbarHeight?: number,
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
@@ -58,13 +63,13 @@ const Css = {
     colorScheme: ColorScheme = "background",
     darkMode = true,
     isActive?: boolean,
-    isHovered?: boolean
+    isHovered?: boolean,
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
 
     const scheme = getColorScheme(colorScheme, darkMode);
     const primaryScheme = getColorScheme("primary", darkMode);
-    
+
     const baseStyle: React.CSSProperties = {
       display: "flex",
       alignItems: "center",
@@ -80,8 +85,12 @@ const Css = {
 
     if (isActive) {
       const primaryColor = primaryScheme.color;
-      const primaryRgba = getRgbaFromScheme("primary", darkMode, darkMode ? 0.15 : 0.1);
-      
+      const primaryRgba = getRgbaFromScheme(
+        "primary",
+        darkMode,
+        darkMode ? 0.15 : 0.1,
+      );
+
       return {
         ...baseStyle,
         backgroundColor: primaryRgba,
@@ -95,7 +104,11 @@ const Css = {
 
     if (isHovered) {
       const hoverAlpha = darkMode ? 0.1 : 0.05;
-      const hoverBg = getRgbaFromScheme(darkMode ? "white" : "black", darkMode, hoverAlpha);
+      const hoverBg = getRgbaFromScheme(
+        darkMode ? "white" : "black",
+        darkMode,
+        hoverAlpha,
+      );
       return {
         ...baseStyle,
         backgroundColor: hoverBg,
@@ -119,7 +132,7 @@ const Css = {
     removeDefaultStyle?: boolean,
     colorScheme: ColorScheme = "background",
     darkMode = true,
-    isActive?: boolean
+    isActive?: boolean,
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
@@ -146,7 +159,7 @@ export type SideBarItem = {
   hidden?: boolean;
   itemList?: SideBarItem[];
   defaultExpandedItem?: boolean;
-  key?: string; 
+  key?: string;
 };
 
 export type SideBarProps = {
@@ -230,7 +243,6 @@ function SideBar({
   const handleItemClick = (item: SideBarItem, e?: React.MouseEvent) => {
     if (item.onClick) item.onClick(e);
     if (onItemClick) onItemClick(item, e);
-    // Zavřít menu při kliknutí na item v mobilním režimu
     if (mobileMode && onClose) {
       onClose();
     }
@@ -238,11 +250,17 @@ function SideBar({
 
   const isItemSelected = (item: SideBarItem): boolean => {
     if (!selectedItem) return false;
-    return (selectedItem.key && item.key === selectedItem.key) || 
-           (selectedItem.title === item.title && !selectedItem.key && !item.key);
+    return (
+      (selectedItem.key && item.key === selectedItem.key) ||
+      (selectedItem.title === item.title && !selectedItem.key && !item.key)
+    );
   };
 
-  const renderItem = (item: SideBarItem | undefined, index: number | undefined, parentKey = "") => {
+  const renderItem = (
+    item: SideBarItem | undefined,
+    index: number | undefined,
+    parentKey = "",
+  ) => {
     if (!item || index === undefined || isHidden(item)) return null;
     const key = parentKey ? `${parentKey}-${index}` : `${index}`;
     const hasChildren =
@@ -264,7 +282,13 @@ function SideBar({
           onMouseLeave={() => setHoveredKey(null)}
           className={className}
           style={{
-            ...Css.item(removeDefaultStyle, colorScheme, darkMode, isActive, isHovered),
+            ...Css.item(
+              removeDefaultStyle,
+              colorScheme,
+              darkMode,
+              isActive,
+              isHovered,
+            ),
             ...(hasChildren ? { justifyContent: "space-between" } : {}),
           }}
           title={item.title}
@@ -275,7 +299,12 @@ function SideBar({
             ) : null}
             {!collapsed && (
               <span
-                style={Css.title(removeDefaultStyle, colorScheme, darkMode, isActive)}
+                style={Css.title(
+                  removeDefaultStyle,
+                  colorScheme,
+                  darkMode,
+                  isActive,
+                )}
               >
                 {item.title}
               </span>
@@ -296,7 +325,7 @@ function SideBar({
         {hasChildren && open && (
           <div style={Css.nested(removeDefaultStyle)}>
             {item.itemList?.map((child?: SideBarItem, i?: number | undefined) =>
-              renderItem(child, i, key)
+              renderItem(child, i, key),
             )}
           </div>
         )}
@@ -306,7 +335,6 @@ function SideBar({
 
   return (
     <>
-      {/* Overlay pro mobilní režim */}
       {mobileMode && isOpen && onClose && (
         <div
           style={{
@@ -322,7 +350,14 @@ function SideBar({
         />
       )}
       <nav
-        style={Css.container(removeDefaultStyle, colorScheme, darkMode, mobileMode, isOpen, navbarHeight)}
+        style={Css.container(
+          removeDefaultStyle,
+          colorScheme,
+          darkMode,
+          mobileMode,
+          isOpen,
+          navbarHeight,
+        )}
       >
         {itemList?.map((item?: SideBarItem, i?: number) => renderItem(item, i))}
       </nav>

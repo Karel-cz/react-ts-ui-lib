@@ -1,7 +1,12 @@
 //@@viewOn:imports
 import React, { useState, useEffect } from "react";
 import type { ReactNode } from "react";
-import { type ColorScheme, getColorScheme, getBorderColor, getRgbaFromScheme } from "../tools/colors";
+import {
+  type ColorScheme,
+  getColorScheme,
+  getBorderColor,
+  getRgbaFromScheme,
+} from "../tools/colors";
 import Icon from "./Icon";
 //@@viewOff:imports
 
@@ -11,7 +16,7 @@ const Css = {
     removeDefaultStyle?: boolean,
     colorScheme: ColorScheme = "background",
     darkMode = true,
-    sticky?: boolean
+    sticky?: boolean,
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
@@ -22,6 +27,7 @@ const Css = {
       alignItems: "center",
       justifyContent: "space-between",
       height: 64,
+      gap: 16,
       padding: "0 24px",
       backgroundColor: scheme.color,
       borderBottom: `1px solid ${borderColor}`,
@@ -49,14 +55,14 @@ const Css = {
       align === "center"
         ? "center"
         : align === "right"
-        ? "flex-end"
-        : "flex-start",
+          ? "flex-end"
+          : "flex-start",
   }),
 
   logo: (
     removeDefaultStyle?: boolean,
     colorScheme: ColorScheme = "background",
-    darkMode = true
+    darkMode = true,
   ): React.CSSProperties => {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
@@ -153,7 +159,8 @@ function Navbar({
     return () => window.removeEventListener("resize", checkMobile);
   }, [mobileBreakpoint]);
 
-  const shouldShowHamburger = showHamburger !== undefined ? showHamburger : isMobile;
+  const shouldShowHamburger =
+    showHamburger !== undefined ? showHamburger : isMobile;
 
   const handleHamburgerClick = () => {
     if (onHamburgerClick) {
@@ -164,24 +171,15 @@ function Navbar({
   const hamburgerIcon = hamburgerOpen ? "mdi-close" : "mdi-menu";
 
   return (
-    <header style={Css.container(removeDefaultStyle, colorScheme, darkMode, sticky)}>
+    <header
+      style={Css.container(removeDefaultStyle, colorScheme, darkMode, sticky)}
+    >
       {/* LEFT – HAMBURGER + LOGO */}
       <div style={Css.section("left")}>
         {shouldShowHamburger && onHamburgerClick && (
           <div
             style={Css.hamburgerButton(removeDefaultStyle)}
             onClick={handleHamburgerClick}
-            onMouseEnter={(e) => {
-              if (!removeDefaultStyle) {
-                const scheme = getColorScheme(colorScheme, darkMode);
-                e.currentTarget.style.backgroundColor = darkMode
-                  ? "rgba(255, 255, 255, 0.1)"
-                  : "rgba(0, 0, 0, 0.05)";
-              }
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = "transparent";
-            }}
           >
             <Icon
               icon={hamburgerIcon}
