@@ -8,7 +8,8 @@ const radiusTokens = {
 
 export type RadiusToken = keyof typeof radiusTokens;
 
-export const getRadiusValue = (radius: RadiusToken = "md") => radiusTokens[radius];
+export const getRadiusValue = (radius: RadiusToken = "md") =>
+  radiusTokens[radius];
 export const radiusKeyList = Object.keys(radiusTokens) as RadiusToken[];
 
 export default radiusTokens;

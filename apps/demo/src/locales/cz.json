@@ -355,7 +355,8 @@
       "input": "Vstupní pole"
     },
     "utilities": {
-      "copyToClipboard": "Kopírovat do schránky"
+      "copyToClipboard": "Kopírovat do schránky",
+      "getMostFrequentValue": "Získat nejčastější hodnotu"
     }
   },
   "block": {
@@ -675,6 +676,74 @@
       "withErrorHandling": {
         "title": "S ošetřením chyb",
         "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  try {\n    const success = await copyToClipboard(\"Text k kopírování\");\n    if (success) {\n      // Úspěch\n      alert(\"Zkopírováno!\");\n    } else {\n      // Neúspěch\n      alert(\"Kopírování selhalo.\");\n    }\n  } catch (error) {\n    console.error(\"Chyba při kopírování:\", error);\n  }\n};"
+      }
+    }
+  },
+
+  "getMostFrequentValue": {
+    "title": "Získat nejčastější hodnotu",
+    "description": "Utility funkce, která vrací nejčastější hodnotu v poli. Můžete také zadat klíč pro analýzu objektů.",
+    "inputs": {
+      "array": {
+        "label": "Pole / hodnoty",
+        "placeholder": "jablko, banán, jablko, pomeranč"
+      },
+      "key": {
+        "label": "Klíč (volitelné pro objekty)",
+        "placeholder": "např. role"
+      },
+      "caseSensitive": {
+        "label": "Rozlišovat velikost písmen"
+      }
+    },
+    "actions": {
+      "calculate": "Najít nejčastější hodnotu"
+    },
+    "examples": {
+      "simple": "📋 Příklad: Jednoduché pole",
+      "withObjects": "👥 Příklad: Pole s objekty"
+    },
+    "result": {
+      "label": "Výsledek",
+      "empty": "Zatím bez výsledku"
+    },
+    "errors": {
+      "empty": "Zadejte prosím nějaké hodnoty.",
+      "invalidInput": "Vstup musí být seznam oddělený čárkami nebo JSON pole.",
+      "invalidKey": "Klíč nebyl v objektech nalezen. Zadejte platné objekty nebo nechte klíč prázdný."
+    },
+    "parameters": {
+      "arr": {
+        "name": "arr",
+        "description": "Pole hodnot nebo objektů k analýze.",
+        "type": "any[]",
+        "required": "true"
+      },
+      "key": {
+        "name": "key",
+        "description": "Klíč objektu pro analýzu. Použijte prázdný řetězec pro analýzu hodnot pole.",
+        "type": "string",
+        "required": "true"
+      },
+      "caseSensitive": {
+        "name": "caseSensitive",
+        "description": "Pokud je false, hodnoty se porovnávají bez ohledu na velikost písmen.",
+        "type": "boolean",
+        "required": "false"
+      }
+    },
+    "returnValue": {
+      "description": "Vrací Promise<any | null> - nejčastější hodnotu nebo null pro prázdné pole.",
+      "type": "Promise<any | null>"
+    },
+    "usage": {
+      "basic": {
+        "title": "Základní použití",
+        "code": "import { getMostFrequentValue } from \"@react-ts-ui-lib/utilities\";\n\nconst values = [\"Apple\", \"Banana\", \"apple\", \"Apple\"];\nconst most = await getMostFrequentValue(values, \"\", false);\n// most === \"apple\""
+      },
+      "withObjects": {
+        "title": "S objekty",
+        "code": "import { getMostFrequentValue } from \"@react-ts-ui-lib/utilities\";\n\nconst users = [\n  { role: \"Admin\" },\n  { role: \"User\" },\n  { role: \"admin\" },\n];\n\nconst mostRole = await getMostFrequentValue(users, \"role\", false);\n// mostRole === \"admin\""
       }
     }
   },

@@ -1,7 +1,12 @@
 /* eslint-disable react-refresh/only-export-components */
 //@@viewOn:imports
 import React from "react";
-import { getColorScheme, getSignificanceColor, type ColorScheme, type Significance } from "../tools/colors";
+import {
+  getColorScheme,
+  getSignificanceColor,
+  type ColorScheme,
+  type Significance,
+} from "../tools/colors";
 import { getRadiusValue, type RadiusToken } from "../tools/radius";
 import { getBadgeSize, type SizeToken } from "../tools/size";
 import Icon from "./Icon";
@@ -24,7 +29,7 @@ const Css = {
     padding?: string,
     fontSize?: number,
     gap?: number,
-    width?: string
+    width?: string,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -151,7 +156,7 @@ const Badge = ({
         badgeSize.padding,
         badgeSize.fontSize,
         badgeSize.gap,
-        badgeSize.width
+        badgeSize.width,
       )}
     >
       {icon && <Icon icon={icon} size={iconSize} darkMode={darkMode} />}

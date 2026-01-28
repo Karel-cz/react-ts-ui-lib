@@ -1,5 +1,9 @@
 //@@viewOn:imports
-import { Documentation, SIDEBAR_PROP_NAMES, SideBar as UiSideBar } from "@react-ts-ui-lib/ui";
+import {
+  Documentation,
+  SIDEBAR_PROP_NAMES,
+  SideBar as UiSideBar,
+} from "@react-ts-ui-lib/ui";
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../../i18n/useTranslation";
 import { getPropsWithTranslations } from "../../i18n/getPropsWithTranslations";
@@ -11,7 +15,11 @@ const SideBarDoc = () => {
   //@@viewOn:private
   const { darkMode } = useTheme();
   const { t } = useTranslation();
-  const propTypesList = getPropsWithTranslations("sidebar", SIDEBAR_PROP_NAMES, t);
+  const propTypesList = getPropsWithTranslations(
+    "sidebar",
+    SIDEBAR_PROP_NAMES,
+    t,
+  );
 
   const items: SideBarItem[] = [
     { title: t("sidebar.examples.dashboard"), icon: "mdi-view-dashboard" },
@@ -29,14 +37,23 @@ const SideBarDoc = () => {
     {
       category: t("sidebar.categories.basic"),
       itemList: [
-        { label: t("sidebar.examples.default"), components: <UiSideBar itemList={items} /> },
-        { label: t("sidebar.examples.light"), components: <UiSideBar itemList={items} darkMode={false} /> },
+        {
+          label: t("sidebar.examples.default"),
+          components: <UiSideBar itemList={items} />,
+        },
+        {
+          label: t("sidebar.examples.light"),
+          components: <UiSideBar itemList={items} darkMode={false} />,
+        },
       ],
     },
     {
       category: t("sidebar.categories.styling"),
       itemList: [
-        { label: t("sidebar.examples.raw"), components: <UiSideBar itemList={items} removeDefaultStyle /> },
+        {
+          label: t("sidebar.examples.raw"),
+          components: <UiSideBar itemList={items} removeDefaultStyle />,
+        },
       ],
     },
   ];

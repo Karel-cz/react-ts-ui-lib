@@ -79,7 +79,8 @@ export const UtilityDocumentationTypeScheme = {
   },
   parametersList: {
     name: "parametersList",
-    description: "Array of parameter objects to render in the Parameters table.",
+    description:
+      "Array of parameter objects to render in the Parameters table.",
     required: false,
     type: [] as UtilityParameter[],
   },
@@ -146,7 +147,7 @@ export const UtilityDocumentationTypeScheme = {
 };
 
 export type UtilityDocumentationProps = {
-  [K in keyof typeof UtilityDocumentationTypeScheme]?: (typeof UtilityDocumentationTypeScheme)[K]["type"]
+  [K in keyof typeof UtilityDocumentationTypeScheme]?: (typeof UtilityDocumentationTypeScheme)[K]["type"];
 };
 //@@viewOff:propTypes
 
@@ -185,8 +186,7 @@ const UtilityDocumentation = ({
 
       {parametersList && parametersList.length > 0 && (
         <section style={Css.section}>
-          <Block card="full" darkMode={darkMode}>
-            <h2>{parametersTitle}</h2>
+          <Block card="full" header={parametersTitle} darkMode={darkMode}>
             <table style={Css.table}>
               <thead>
                 <tr>
@@ -202,7 +202,9 @@ const UtilityDocumentation = ({
                     <td style={Css.td}>{param.name}</td>
                     <td style={Css.td}>{param.description || "-"}</td>
                     <td style={Css.td}>{param.type || "-"}</td>
-                    <td style={Css.td}>{param.required ? parametersYes : parametersNo}</td>
+                    <td style={Css.td}>
+                      {param.required ? parametersYes : parametersNo}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -213,11 +215,12 @@ const UtilityDocumentation = ({
 
       {usageExamples && usageExamples.length > 0 && (
         <section style={Css.section}>
-          <Block card="full" darkMode={darkMode}>
-            <h2>{usageTitle}</h2>
+          <Block card="full" header={usageTitle} darkMode={darkMode}>
             {usageExamples.map((example, index: number) => (
               <div key={index} style={{ marginTop: index > 0 ? 16 : 0 }}>
-                {example.title && <h3 style={{ marginBottom: 8 }}>{example.title}</h3>}
+                {example.title && (
+                  <h3 style={{ marginBottom: 8 }}>{example.title}</h3>
+                )}
                 <div style={Css.codeBlock}>
                   <pre style={Css.code}>{example.code}</pre>
                 </div>

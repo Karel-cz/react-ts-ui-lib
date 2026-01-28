@@ -8,18 +8,41 @@ const componentMap: { [key: string]: React.LazyExoticComponent<React.FC> } = {
   AboutApplication: React.lazy(() => import("../AboutApplication")),
 
   //Components
-  SideBar: React.lazy(() => import("../../documentation/basic-components/SideBarDoc")),
-  Pending: React.lazy(() => import("../../documentation/basic-components/PendingDoc")),
-  Icon: React.lazy(() => import("../../documentation/basic-components/IconDoc")),
-  Button: React.lazy(() => import("../../documentation/basic-components/ButtonDoc")),
-  Navbar: React.lazy(() => import("../../documentation/basic-components/NavbarDoc")),
-  Badge: React.lazy(() => import("../../documentation/basic-components/BadgeDoc")),
-  Block: React.lazy(() => import("../../documentation/basic-components/BlockDoc")),
-  Number: React.lazy(() => import("../../documentation/basic-components/NumberDoc")),
-  Input: React.lazy(() => import("../../documentation/basic-components/InputDoc")),
+  SideBar: React.lazy(
+    () => import("../../documentation/basic-components/SideBarDoc"),
+  ),
+  Pending: React.lazy(
+    () => import("../../documentation/basic-components/PendingDoc"),
+  ),
+  Icon: React.lazy(
+    () => import("../../documentation/basic-components/IconDoc"),
+  ),
+  Button: React.lazy(
+    () => import("../../documentation/basic-components/ButtonDoc"),
+  ),
+  Navbar: React.lazy(
+    () => import("../../documentation/basic-components/NavbarDoc"),
+  ),
+  Badge: React.lazy(
+    () => import("../../documentation/basic-components/BadgeDoc"),
+  ),
+  Block: React.lazy(
+    () => import("../../documentation/basic-components/BlockDoc"),
+  ),
+  Number: React.lazy(
+    () => import("../../documentation/basic-components/NumberDoc"),
+  ),
+  Input: React.lazy(
+    () => import("../../documentation/basic-components/InputDoc"),
+  ),
 
   //Utilities
-  CopyToClipboard: React.lazy(() => import("../../documentation/utilities/CopyToClipboardDoc")),
+  CopyToClipboard: React.lazy(
+    () => import("../../documentation/utilities/CopyToClipboardDoc"),
+  ),
+  GetMostFrequentValue: React.lazy(
+    () => import("../../documentation/utilities/GetMostFrequentValueDoc"),
+  ),
 };
 
 export { componentMap };

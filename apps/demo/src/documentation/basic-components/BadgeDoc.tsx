@@ -16,44 +16,157 @@ const BadgeDoc = () => {
     {
       category: t("badge.categories.colorScheme"),
       itemList: [
-        { label: t("badge.examples.primary"), components: <Badge label={t("badge.examples.primary")} colorScheme="primary" /> },
-        { label: t("badge.examples.success"), components: <Badge label={t("badge.examples.success")} colorScheme="success" /> },
-        { label: t("badge.examples.danger"), components: <Badge label={t("badge.examples.danger")} colorScheme="danger" /> },
-        { label: t("badge.examples.warning"), components: <Badge label={t("badge.examples.warning")} colorScheme="warning" /> },
-        { label: t("badge.examples.info"), components: <Badge label={t("badge.examples.info")} colorScheme="info" /> },
+        {
+          label: t("badge.examples.primary"),
+          components: (
+            <Badge label={t("badge.examples.primary")} colorScheme="primary" />
+          ),
+        },
+        {
+          label: t("badge.examples.success"),
+          components: (
+            <Badge label={t("badge.examples.success")} colorScheme="success" />
+          ),
+        },
+        {
+          label: t("badge.examples.danger"),
+          components: (
+            <Badge label={t("badge.examples.danger")} colorScheme="danger" />
+          ),
+        },
+        {
+          label: t("badge.examples.warning"),
+          components: (
+            <Badge label={t("badge.examples.warning")} colorScheme="warning" />
+          ),
+        },
+        {
+          label: t("badge.examples.info"),
+          components: (
+            <Badge label={t("badge.examples.info")} colorScheme="info" />
+          ),
+        },
       ],
     },
     {
       category: t("badge.categories.significance"),
       itemList: [
-        { label: t("badge.examples.common"), components: <Badge label={t("badge.examples.common")} colorScheme="primary" significance="common" /> },
-        { label: t("badge.examples.highlighted"), components: <Badge label={t("badge.examples.highlighted")} colorScheme="primary" significance="highlighted" /> },
-        { label: t("badge.examples.distinct"), components: <Badge label={t("badge.examples.distinct")} colorScheme="primary" significance="distinct" /> },
+        {
+          label: t("badge.examples.common"),
+          components: (
+            <Badge
+              label={t("badge.examples.common")}
+              colorScheme="primary"
+              significance="common"
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.highlighted"),
+          components: (
+            <Badge
+              label={t("badge.examples.highlighted")}
+              colorScheme="primary"
+              significance="highlighted"
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.distinct"),
+          components: (
+            <Badge
+              label={t("badge.examples.distinct")}
+              colorScheme="primary"
+              significance="distinct"
+            />
+          ),
+        },
       ],
     },
     {
       category: t("badge.categories.size"),
       itemList: [
-        { label: t("badge.examples.xs"), components: <Badge label={t("badge.examples.xs")} size="xs" /> },
-        { label: t("badge.examples.sm"), components: <Badge label={t("badge.examples.sm")} size="sm" /> },
-        { label: t("badge.examples.md"), components: <Badge label={t("badge.examples.md")} size="md" /> },
-        { label: t("badge.examples.lg"), components: <Badge label={t("badge.examples.lg")} size="lg" /> },
-        { label: t("badge.examples.xl"), components: <Badge label={t("badge.examples.xl")} size="xl" /> },
+        {
+          label: t("badge.examples.xs"),
+          components: <Badge label={t("badge.examples.xs")} size="xs" />,
+        },
+        {
+          label: t("badge.examples.sm"),
+          components: <Badge label={t("badge.examples.sm")} size="sm" />,
+        },
+        {
+          label: t("badge.examples.md"),
+          components: <Badge label={t("badge.examples.md")} size="md" />,
+        },
+        {
+          label: t("badge.examples.lg"),
+          components: <Badge label={t("badge.examples.lg")} size="lg" />,
+        },
+        {
+          label: t("badge.examples.xl"),
+          components: <Badge label={t("badge.examples.xl")} size="xl" />,
+        },
       ],
     },
     {
       category: t("badge.categories.icon"),
       itemList: [
-        { label: t("badge.examples.iconLeft"), components: <Badge label={t("badge.examples.withIcon")} icon="mdi-check" colorScheme="success" /> },
-        { label: t("badge.examples.alert"), components: <Badge label={t("badge.examples.alert")} icon="mdi-alert" colorScheme="danger" /> },
+        {
+          label: t("badge.examples.iconLeft"),
+          components: (
+            <Badge
+              label={t("badge.examples.withIcon")}
+              icon="mdi-check"
+              colorScheme="success"
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.alert"),
+          components: (
+            <Badge
+              label={t("badge.examples.alert")}
+              icon="mdi-alert"
+              colorScheme="danger"
+            />
+          ),
+        },
       ],
     },
     {
       category: t("badge.categories.states"),
       itemList: [
-        { label: t("badge.examples.disabled"), components: <Badge label={t("badge.examples.disabled")} colorScheme="muted" disabled /> },
-        { label: t("badge.examples.noPrint"), components: <Badge label={t("badge.examples.noPrint")} colorScheme="info" noPrint tooltip={t("badge.examples.noPrintTooltip")} /> },
-        { label: t("badge.examples.onClick"), components: <Badge label={t("badge.examples.clickMe")} colorScheme="primary" onClick={() => alert("Badge clicked!")} /> },
+        {
+          label: t("badge.examples.disabled"),
+          components: (
+            <Badge
+              label={t("badge.examples.disabled")}
+              colorScheme="muted"
+              disabled
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.noPrint"),
+          components: (
+            <Badge
+              label={t("badge.examples.noPrint")}
+              colorScheme="info"
+              noPrint
+              tooltip={t("badge.examples.noPrintTooltip")}
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.onClick"),
+          components: (
+            <Badge
+              label={t("badge.examples.clickMe")}
+              colorScheme="primary"
+              onClick={() => alert("Badge clicked!")}
+            />
+          ),
+        },
       ],
     },
   ];

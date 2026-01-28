@@ -11,6 +11,7 @@
 // Přidat knihovnu funkcí Utils (kopírovat do schránky, validace emailu, validace hesla, validace telefonního čísla, validace mac adresy, validace IP adresy, formátování data, formátování čísla, generování náhodného řetězce, atd.)
 // getRgb for color a ostaní
 // utilita fetch repo
+// generování hesla se spousty možnostmi
 
 //Feature Components
 // Button - na ikonách chybí cursor pointer

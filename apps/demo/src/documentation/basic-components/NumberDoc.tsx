@@ -10,31 +10,55 @@ const NumberDoc = () => {
   //@@viewOn:private
   const { darkMode } = useTheme();
   const { t } = useTranslation();
-  const propTypesList = getPropsWithTranslations("number", NUMBER_PROP_NAMES, t);
+  const propTypesList = getPropsWithTranslations(
+    "number",
+    NUMBER_PROP_NAMES,
+    t,
+  );
 
   const componentList = [
     {
       category: t("number.examples.basic"),
       itemList: [
-        { label: t("number.examples.basic"), components: <Number value={12345.678} /> },
+        {
+          label: t("number.examples.basic"),
+          components: <Number value={12345.678} />,
+        },
       ],
     },
     {
       category: t("number.examples.decimals"),
       itemList: [
-        { label: t("number.examples.decimals"), components: <Number value={12345.678} minDecimalDigits={2} /> },
+        {
+          label: t("number.examples.decimals"),
+          components: <Number value={12345.678} minDecimalDigits={2} />,
+        },
       ],
     },
     {
       category: t("number.examples.tooltip"),
       itemList: [
-        { label: t("number.examples.tooltip"), components: <Number value={987654321.12345} wholeLengthNumberInTooltip /> },
+        {
+          label: t("number.examples.tooltip"),
+          components: (
+            <Number value={987654321.12345} wholeLengthNumberInTooltip />
+          ),
+        },
       ],
     },
     {
       category: t("number.examples.customTooltip"),
       itemList: [
-        { label: t("number.examples.customTooltip"), components: <Number value={12345} tooltip="This is a custom tooltip" wholeLengthNumberInTooltip /> },
+        {
+          label: t("number.examples.customTooltip"),
+          components: (
+            <Number
+              value={12345}
+              tooltip="This is a custom tooltip"
+              wholeLengthNumberInTooltip
+            />
+          ),
+        },
       ],
     },
   ];

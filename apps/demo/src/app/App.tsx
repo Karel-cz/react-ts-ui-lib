@@ -28,7 +28,7 @@ const LANGUAGE_MAP: Record<string, string> = {
 const getThemeStyles = (darkMode: boolean): React.CSSProperties => {
   const backgroundScheme = getColorScheme("background", darkMode);
   const textScheme = getColorScheme("text", darkMode);
-  
+
   return {
     backgroundColor: backgroundScheme.color,
     color: textScheme.color,
@@ -49,8 +49,8 @@ function App() {
   const { language, setLanguage } = useLanguage();
   const { t } = useTranslation();
   const routeList = useMemo(() => getRouteList(t), [t]);
-  const [selectedItem, setSelectedItem] = useState<SideBarItem | null>(() => 
-    routeList.length > 0 ? routeList[0] : null
+  const [selectedItem, setSelectedItem] = useState<SideBarItem | null>(() =>
+    routeList.length > 0 ? routeList[0] : null,
   );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -61,7 +61,7 @@ function App() {
     document.body.style.color = backgroundScheme.textColor;
     document.documentElement.style.backgroundColor = backgroundScheme.color;
     document.documentElement.style.color = backgroundScheme.textColor;
-    
+
     return () => {
       document.body.style.backgroundColor = "";
       document.body.style.color = "";
@@ -87,11 +87,14 @@ function App() {
     return (
       <>
         <Button
-        size="sm"
+          size="sm"
           icon={!darkMode ? SUNNY : MOON}
           onClick={() => setDarkMode(!darkMode)}
         />
-        <Button  onClick={() => setLanguage(language === "en" ? "cz" : "en")}>
+        <Button
+          size="sm"
+          onClick={() => setLanguage(language === "en" ? "cz" : "en")}
+        >
           {LANGUAGE_MAP[language as keyof typeof LANGUAGE_MAP]}
         </Button>
       </>
@@ -102,8 +105,10 @@ function App() {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const handleSetSelectedItem: React.Dispatch<React.SetStateAction<SideBarItem | null>> = (item) => {
-    const actualItem = typeof item === 'function' ? item(selectedItem) : item;
+  const handleSetSelectedItem: React.Dispatch<
+    React.SetStateAction<SideBarItem | null>
+  > = (item) => {
+    const actualItem = typeof item === "function" ? item(selectedItem) : item;
     setSelectedItem(actualItem);
     if (isMobile) {
       setIsMobileMenuOpen(false);
@@ -121,25 +126,32 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <Navbar 
-        sticky={true} 
-        logo={LOGO} 
-        darkMode={darkMode} 
+      <Navbar
+        sticky={true}
+        logo={LOGO}
+        darkMode={darkMode}
         rightContent={RightContent()}
         onHamburgerClick={handleHamburgerClick}
         hamburgerOpen={isMobileMenuOpen}
       />
       <div style={{ display: "flex", flex: 1 }}>
-        <LeftMenu 
-          setSelectedItem={handleSetSelectedItem} 
-          selectedItem={selectedItem} 
+        <LeftMenu
+          setSelectedItem={handleSetSelectedItem}
+          selectedItem={selectedItem}
           darkMode={darkMode}
           mobileMode={isMobile}
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
           navbarHeight={64}
         />
-        <div style={{ flex: 1, padding: "32px", overflow: "auto", maxWidth: "100%" }}>
+        <div
+          style={{
+            flex: 1,
+            padding: "32px",
+            overflow: "auto",
+            maxWidth: "100%",
+          }}
+        >
           <Content selectedItem={selectedItem} />
         </div>
       </div>

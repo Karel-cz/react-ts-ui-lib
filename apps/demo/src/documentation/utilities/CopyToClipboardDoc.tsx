@@ -1,6 +1,6 @@
 //@@viewOn:imports
-import React, { useState } from "react";
-import { Block, Button, UtilityDocumentation } from "@react-ts-ui-lib/ui";
+import  { useState } from "react";
+import {  Button, UtilityDocumentation } from "@react-ts-ui-lib/ui";
 import { copyToClipboard } from "@react-ts-ui-lib/utilities";
 import { useTheme } from "../../app/context/themeContext";
 import { useTranslation } from "../../i18n/useTranslation";
@@ -39,7 +39,6 @@ const CopyToClipboardDoc = () => {
           }}
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder="Zadejte text k kopírování..."
         />
         <Button label={t("sidebar.utilities.copyToClipboard")} onClick={handleCopy} />
       </div>

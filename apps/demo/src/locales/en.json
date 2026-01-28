@@ -355,7 +355,8 @@
       "input": "Input"
     },
     "utilities": {
-      "copyToClipboard": "Copy to Clipboard"
+      "copyToClipboard": "Copy to Clipboard",
+      "getMostFrequentValue": "Get Most Frequent Value"
     }
   },
   "block": {
@@ -477,7 +478,6 @@
     },
     "examples": {
       "none": "None",
-      "full": "Full",
       "content": "Content",
       "withHeader": "With Header",
       "withSeparator": "With Separator",
@@ -677,6 +677,74 @@
       "withErrorHandling": {
         "title": "With error handling",
         "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  try {\n    const success = await copyToClipboard(\"Text to copy\");\n    if (success) {\n      // Success\n      alert(\"Copied!\");\n    } else {\n      // Failure\n      alert(\"Copying failed.\");\n    }\n  } catch (error) {\n    console.error(\"Error copying:\", error);\n  }\n};"
+      }
+    }
+  },
+
+  "getMostFrequentValue": {
+    "title": "Get Most Frequent Value",
+    "description": "Utility function that returns the most frequent value in an array. You can also pass a key to analyze objects.",
+    "inputs": {
+      "array": {
+        "label": "Array / values",
+        "placeholder": "apple, banana, apple, orange"
+      },
+      "key": {
+        "label": "Key (optional for objects)",
+        "placeholder": "e.g. role"
+      },
+      "caseSensitive": {
+        "label": "Case sensitive"
+      }
+    },
+    "actions": {
+      "calculate": "Find most frequent value"
+    },
+    "examples": {
+      "simple": "📋 Example: Simple Array",
+      "withObjects": "👥 Example: Array with Objects"
+    },
+    "result": {
+      "label": "Result",
+      "empty": "No result yet"
+    },
+    "errors": {
+      "empty": "Please enter some values.",
+      "invalidInput": "Input must be a comma-separated list or a JSON array.",
+      "invalidKey": "Key not found in objects. Provide valid objects or leave key empty."
+    },
+    "parameters": {
+      "arr": {
+        "name": "arr",
+        "description": "Array of values or objects to analyze.",
+        "type": "any[]",
+        "required": "true"
+      },
+      "key": {
+        "name": "key",
+        "description": "Object key to analyze. Use empty string to analyze array values directly.",
+        "type": "string",
+        "required": "true"
+      },
+      "caseSensitive": {
+        "name": "caseSensitive",
+        "description": "When false, values are compared case-insensitively.",
+        "type": "boolean",
+        "required": "false"
+      }
+    },
+    "returnValue": {
+      "description": "Returns Promise<any | null> - the most frequent value or null for an empty array.",
+      "type": "Promise<any | null>"
+    },
+    "usage": {
+      "basic": {
+        "title": "Basic usage",
+        "code": "import { getMostFrequentValue } from \"@react-ts-ui-lib/utilities\";\n\nconst values = [\"Apple\", \"Banana\", \"apple\", \"Apple\"];\nconst most = await getMostFrequentValue(values, \"\", false);\n// most === \"apple\""
+      },
+      "withObjects": {
+        "title": "With objects",
+        "code": "import { getMostFrequentValue } from \"@react-ts-ui-lib/utilities\";\n\nconst users = [\n  { role: \"Admin\" },\n  { role: \"User\" },\n  { role: \"admin\" },\n];\n\nconst mostRole = await getMostFrequentValue(users, \"role\", false);\n// mostRole === \"admin\""
       }
     }
   },

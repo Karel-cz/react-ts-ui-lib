@@ -27,9 +27,9 @@ type LeftMenuPropTypes = {
 };
 //@@viewOff:propTypes
 
-const LeftMenu = ({ 
-  setSelectedItem, 
-  selectedItem, 
+const LeftMenu = ({
+  setSelectedItem,
+  selectedItem,
   darkMode,
   mobileMode,
   isOpen,
@@ -39,7 +39,7 @@ const LeftMenu = ({
   //@@viewOn:private
   const { t } = useTranslation();
   const routeList = useMemo(() => getRouteList(t), [t]);
-  
+
   const handleItemClick = (item: SideBarItem) => {
     const cleanItem: SideBarItem = {
       title: item.title,
