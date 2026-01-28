@@ -4,11 +4,11 @@ import LeftMenu from "./LeftMenu";
 import Content from "./Content";
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
 import { getRouteList } from "./tools/routeList";
-import { Navbar, Button } from "@react-ts-ui-lib/ui";
+import { Navbar, Button, getColorScheme } from "@react-ts-ui-lib/ui";
 import { useTheme } from "./context/themeContext";
 import { useLanguage } from "./context/languageContext";
 import { useTranslation } from "../i18n/useTranslation";
-import { getColorScheme } from "@react-ts-ui-lib/ui";
+import { storage } from "@react-ts-ui-lib/utilities";
 //@@viewOff:imports
 
 //@@viewOff:imports
@@ -22,6 +22,8 @@ const LANGUAGE_MAP: Record<string, string> = {
   en: "EN",
   cz: "CZ",
 };
+
+const STORAGE_KEY_DARK_MODE = "app-dark-mode";
 //@@viewOff:constants
 
 //@@viewOn:css
@@ -54,6 +56,10 @@ function App() {
   );
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    storage.set(STORAGE_KEY_DARK_MODE, darkMode);
+  }, [darkMode]);
 
   useEffect(() => {
     const backgroundScheme = getColorScheme("background", darkMode);

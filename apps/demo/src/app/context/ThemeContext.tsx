@@ -8,8 +8,16 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-export const ThemeProvider = ({ children }: { children: ReactNode }) => {
-  const [darkMode, setDarkMode] = useState<boolean>(true);
+type ThemeProviderProps = {
+  children: ReactNode;
+  initialDarkMode?: boolean;
+};
+
+export const ThemeProvider = ({
+  children,
+  initialDarkMode = true,
+}: ThemeProviderProps) => {
+  const [darkMode, setDarkMode] = useState<boolean>(initialDarkMode);
   const toggleDarkMode = () => setDarkMode((prev) => !prev);
 
   return (
