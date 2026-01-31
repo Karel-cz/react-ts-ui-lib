@@ -50,6 +50,30 @@ const COLORS = {
   warning: "#9a6700",
   warningDark: "#bf8700",
 
+  // Purple colors
+  purple: "#8b5cf6",
+  purpleDark: "#7c3aed",
+
+  // Teal colors
+  teal: "#14b8a6",
+  tealDark: "#0d9488",
+
+  // Pink colors
+  pink: "#ec4899",
+  pinkDark: "#db2777",
+
+  // Indigo colors
+  indigo: "#6366f1",
+  indigoDark: "#4f46e5",
+
+  // Orange colors
+  orange: "#f97316",
+  orangeDark: "#ea580c",
+
+  // Cyan colors
+  cyan: "#06b6d4",
+  cyanDark: "#0891b2",
+
   // Shadow colors - dark mode uses lighter shadows, light mode uses darker shadows
   shadowDark: "rgba(255,255,255,0.1)",
   shadowLight: "rgba(0,0,0,0.15)",
@@ -128,6 +152,78 @@ const dark = {
     color: "#bb8009",
     textColor: COLORS.white,
     key: "warningDark" as const,
+  },
+
+  // Purple colors
+  purple: {
+    color: COLORS.purple,
+    textColor: COLORS.white,
+    key: "purple" as const,
+  },
+  purpleDark: {
+    color: COLORS.purpleDark,
+    textColor: COLORS.white,
+    key: "purpleDark" as const,
+  },
+
+  // Teal colors
+  teal: {
+    color: COLORS.teal,
+    textColor: COLORS.white,
+    key: "teal" as const,
+  },
+  tealDark: {
+    color: COLORS.tealDark,
+    textColor: COLORS.white,
+    key: "tealDark" as const,
+  },
+
+  // Pink colors
+  pink: {
+    color: COLORS.pink,
+    textColor: COLORS.white,
+    key: "pink" as const,
+  },
+  pinkDark: {
+    color: COLORS.pinkDark,
+    textColor: COLORS.white,
+    key: "pinkDark" as const,
+  },
+
+  // Indigo colors
+  indigo: {
+    color: COLORS.indigo,
+    textColor: COLORS.white,
+    key: "indigo" as const,
+  },
+  indigoDark: {
+    color: COLORS.indigoDark,
+    textColor: COLORS.white,
+    key: "indigoDark" as const,
+  },
+
+  // Orange colors
+  orange: {
+    color: COLORS.orange,
+    textColor: COLORS.white,
+    key: "orange" as const,
+  },
+  orangeDark: {
+    color: COLORS.orangeDark,
+    textColor: COLORS.white,
+    key: "orangeDark" as const,
+  },
+
+  // Cyan colors
+  cyan: {
+    color: COLORS.cyan,
+    textColor: COLORS.white,
+    key: "cyan" as const,
+  },
+  cyanDark: {
+    color: COLORS.cyanDark,
+    textColor: COLORS.white,
+    key: "cyanDark" as const,
   },
 
   // Typography / neutral
@@ -239,6 +335,78 @@ const light = {
     key: "warningDark" as const,
   },
 
+  // Purple colors
+  purple: {
+    color: COLORS.purple,
+    textColor: COLORS.white,
+    key: "purple" as const,
+  },
+  purpleDark: {
+    color: COLORS.purpleDark,
+    textColor: COLORS.white,
+    key: "purpleDark" as const,
+  },
+
+  // Teal colors
+  teal: {
+    color: COLORS.teal,
+    textColor: COLORS.white,
+    key: "teal" as const,
+  },
+  tealDark: {
+    color: COLORS.tealDark,
+    textColor: COLORS.white,
+    key: "tealDark" as const,
+  },
+
+  // Pink colors
+  pink: {
+    color: COLORS.pink,
+    textColor: COLORS.white,
+    key: "pink" as const,
+  },
+  pinkDark: {
+    color: COLORS.pinkDark,
+    textColor: COLORS.white,
+    key: "pinkDark" as const,
+  },
+
+  // Indigo colors
+  indigo: {
+    color: COLORS.indigo,
+    textColor: COLORS.white,
+    key: "indigo" as const,
+  },
+  indigoDark: {
+    color: COLORS.indigoDark,
+    textColor: COLORS.white,
+    key: "indigoDark" as const,
+  },
+
+  // Orange colors
+  orange: {
+    color: COLORS.orange,
+    textColor: COLORS.white,
+    key: "orange" as const,
+  },
+  orangeDark: {
+    color: COLORS.orangeDark,
+    textColor: COLORS.white,
+    key: "orangeDark" as const,
+  },
+
+  // Cyan colors
+  cyan: {
+    color: COLORS.cyan,
+    textColor: COLORS.white,
+    key: "cyan" as const,
+  },
+  cyanDark: {
+    color: COLORS.cyanDark,
+    textColor: COLORS.white,
+    key: "cyanDark" as const,
+  },
+
   text: {
     color: COLORS.lightText,
     textColor: COLORS.lightBg,
@@ -293,6 +461,18 @@ export const colorsKeyList = [
   dark.warningDark.key,
   dark.info.key,
   dark.infoDark.key,
+  dark.purple.key,
+  dark.purpleDark.key,
+  dark.teal.key,
+  dark.tealDark.key,
+  dark.pink.key,
+  dark.pinkDark.key,
+  dark.indigo.key,
+  dark.indigoDark.key,
+  dark.orange.key,
+  dark.orangeDark.key,
+  dark.cyan.key,
+  dark.cyanDark.key,
   dark.surface.key,
   dark.background.key,
   dark.text.key,
@@ -327,6 +507,12 @@ const highlightedMap: Partial<Record<ColorScheme, ColorScheme>> = {
   warning: "warningDark",
   info: "infoDark",
   primaryHover: "primaryDark",
+  purple: "purpleDark",
+  teal: "tealDark",
+  pink: "pinkDark",
+  indigo: "indigoDark",
+  orange: "orangeDark",
+  cyan: "cyanDark",
 };
 
 export const getSignificanceColor = (
@@ -415,4 +601,92 @@ export const getRgbaFromScheme = (
 ): string => {
   const scheme = getColorScheme(colorScheme, darkMode);
   return hexToRgba(scheme.color, alpha);
+};
+
+export const mixHex = (base: string, mix: string, mixWeight: number): string => {
+  const clamp = (value: number) => Math.max(0, Math.min(255, value));
+  const toRgb = (hex: string) => {
+    const sanitized = hex.replace("#", "");
+    return {
+      r: parseInt(sanitized.substring(0, 2), 16),
+      g: parseInt(sanitized.substring(2, 4), 16),
+      b: parseInt(sanitized.substring(4, 6), 16),
+    };
+  };
+
+  const baseRgb = toRgb(base);
+  const mixRgb = toRgb(mix);
+  const weight = Math.max(0, Math.min(1, mixWeight));
+
+  const r = clamp(Math.round(baseRgb.r * (1 - weight) + mixRgb.r * weight));
+  const g = clamp(Math.round(baseRgb.g * (1 - weight) + mixRgb.g * weight));
+  const b = clamp(Math.round(baseRgb.b * (1 - weight) + mixRgb.b * weight));
+
+  return `#${r.toString(16).padStart(2, "0")}${g
+    .toString(16)
+    .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
+};
+
+export const getModernGradient = (
+  colorScheme: ColorScheme,
+  significance: Significance = "common",
+  darkMode: boolean = true,
+) => {
+  const scheme = getSignificanceColor(colorScheme, significance, darkMode);
+  const baseScheme = getColorScheme(colorScheme, darkMode);
+  const surfaceScheme = getColorScheme("surface", darkMode);
+  const white = getColorScheme("white", darkMode).color;
+  const black = getColorScheme("black", darkMode).color;
+  const shadowColor = getColorScheme("shadow", darkMode).color;
+
+  const primaryDarkScheme = getColorScheme("primaryDark", darkMode);
+  const successDarkScheme = getColorScheme("successDark", darkMode);
+  const dangerDarkScheme = getColorScheme("dangerDark", darkMode);
+  const warningDarkScheme = getColorScheme("warningDark", darkMode);
+  const infoDarkScheme = getColorScheme("infoDark", darkMode);
+
+  const hoverSchemeMap: Record<string, typeof primaryDarkScheme> = {
+    primary: primaryDarkScheme,
+    success: successDarkScheme,
+    danger: dangerDarkScheme,
+    warning: warningDarkScheme,
+    info: infoDarkScheme,
+  };
+
+  const mixWeight =
+    significance === "distinct" ? 0.6 : significance === "subdued" ? 0.75 : 0;
+
+  const baseTone = mixWeight
+    ? mixHex(baseScheme.color, surfaceScheme.color, mixWeight)
+    : baseScheme.color;
+  const midTone = mixWeight
+    ? mixHex(scheme.color, surfaceScheme.color, mixWeight)
+    : scheme.color;
+  const hoverTone = mixWeight
+    ? mixHex(
+        hoverSchemeMap[colorScheme as string]?.color ?? scheme.color,
+        surfaceScheme.color,
+        mixWeight,
+      )
+    : hoverSchemeMap[colorScheme as string]?.color ?? scheme.color;
+
+  const gradientFrom = hoverTone;
+  const gradientMid = midTone;
+  const gradientTo = baseTone;
+
+  const highlightOverlay = `linear-gradient(120deg, ${hexToRgba(white, darkMode ? 0.2 : 0.28)} 0%, ${hexToRgba(white, 0)} 40%, ${hexToRgba(black, darkMode ? 0.18 : 0.12)} 100%)`;
+  const overlayGradient = `linear-gradient(135deg, ${hexToRgba(white, darkMode ? 0.18 : 0.26)} 0%, ${hexToRgba(white, 0)} 44%, ${hexToRgba(black, darkMode ? 0.18 : 0.1)} 100%)`;
+  const baseGradient = `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientMid} 45%, ${gradientTo} 100%)`;
+  const hoverGradient = `linear-gradient(135deg, ${gradientTo} 0%, ${gradientMid} 45%, ${gradientFrom} 100%)`;
+  const background = `${highlightOverlay}, ${overlayGradient}, ${baseGradient}`;
+  const hoverBackground = `${highlightOverlay}, ${overlayGradient}, ${hoverGradient}`;
+  const shadow = `0 6px 16px ${shadowColor}`;
+  const hoverShadow = `0 10px 26px ${shadowColor}`;
+
+  return {
+    background,
+    hoverBackground,
+    shadow,
+    hoverShadow,
+  };
 };

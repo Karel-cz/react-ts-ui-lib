@@ -76,11 +76,18 @@
         "description": "No default styles (keeps only content).",
         "type": "boolean",
         "required": "false"
+      },
+      "modern": {
+        "description": "Enables modern gradient styling.",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "categories": {
       "colorScheme": "Color scheme",
       "significance": "Significance",
+      "modern": "Modern style",
+      "modernSignificance": "Modern significance",
       "size": "Size",
       "icon": "Icon",
       "states": "States"
@@ -94,6 +101,16 @@
       "common": "Common",
       "highlighted": "Highlighted",
       "distinct": "Distinct",
+      "modern": "Modern",
+      "classic": "Classic",
+      "modernPrimary": "Modern primary",
+      "modernSuccess": "Modern success",
+      "modernDanger": "Modern danger",
+      "modernWarning": "Modern warning",
+      "modernInfo": "Modern info",
+      "modernCommon": "Modern common",
+      "modernHighlighted": "Modern highlighted",
+      "modernDistinct": "Modern distinct",
       "xs": "XS",
       "sm": "SM",
       "md": "MD",
@@ -130,6 +147,7 @@
       "darkMode": { "description": "Renders the button using dark mode palette (affects colorScheme behavior).", "type": "boolean", "required": "false" },
       "isPending": { "description": "Shows loading spinner and blocks interactions. Content becomes visually hidden.", "type": "boolean", "required": "false" },
       "noPrint": { "description": "Hides the button when printing (adds no-print class).", "type": "boolean", "required": "false" }
+      ,"modern": { "description": "Enables modern gradient styling.", "type": "boolean", "required": "false" }
     },
     "categories": {
       "colorScheme": "Color scheme",
@@ -137,6 +155,8 @@
       "content": "Content",
       "icons": "Icons",
       "styling": "Styling",
+      "modern": "Modern style",
+      "modernSignificance": "Modern significance",
       "significance": "Significance",
       "size": "Size",
       "borderRadius": "Border radius & print",
@@ -161,6 +181,16 @@
       "rightIcon": "Right icon",
       "noDefault": "no default",
       "rawButton": "Raw button",
+      "modern": "Modern",
+      "classic": "Classic",
+      "modernPrimary": "Modern primary",
+      "modernSuccess": "Modern success",
+      "modernDanger": "Modern danger",
+      "modernWarning": "Modern warning",
+      "modernInfo": "Modern info",
+      "modernCommon": "Modern common",
+      "modernHighlighted": "Modern highlighted",
+      "modernDistinct": "Modern distinct",
       "common": "Common",
       "highlighted": "Highlighted",
       "distinct": "Distinct",
@@ -539,6 +569,15 @@
       "customTooltip": "With Custom Tooltip"
     }
   },
+  "auth": {
+    "modalTitle": "Sign in with Google",
+    "googleButton": "Continue with Google",
+    "signIn": "Sign in",
+    "signOut": "Sign out",
+    "welcome": "Welcome, {name}!",
+    "googleUser": "Google user",
+    "errorGeneric": "An error occurred during sign in"
+  },
   "input": {
     "title": "Input Component",
     "props": {
@@ -644,7 +683,36 @@
   "basicComponentsPage": {
     "title": "Basic Components Library",
     "description": "This is a library of simple, reusable UI components. Here you can find detailed information about all available basic components.",
-    "instructions": "To view documentation for a specific component, expand the Basic Components section in the left menu and select the component you're interested in."
+    "instructions": "To view documentation for a specific component, expand the Basic Components section in the left menu and select the component you're interested in.",
+    "components": {
+      "buttons": "Buttons",
+      "icons": "Icons",
+      "inputs": "Inputs",
+      "numbers": "Numbers",
+      "pending": "Pending",
+      "badges": "Badges",
+      "navbar": "Navbar",
+      "sidebar": "SideBar"
+    },
+    "examples": {
+      "primary": "Primary",
+      "success": "Success",
+      "purple": "Purple",
+      "danger": "Danger",
+      "menu": "Menu",
+      "action": "Action",
+      "dashboard": "Dashboard",
+      "settings": "Settings",
+      "profile": "Profile",
+      "logo": "Logo",
+      "new": "New",
+      "warning": "Warning",
+      "hot": "Hot",
+      "premium": "Premium",
+      "primaryInput": "Primary input",
+      "successInput": "Success input",
+      "tealInput": "Teal input"
+    }
   },
   "utilitiesPage": {
     "title": "Tools and Utilities",

@@ -24,3 +24,5 @@
 // nová komponenta Copy to Clipboard
 
 // Input -  type, disabled, readOnly, size, width, borderRadius, colorScheme, significance, hidden, noPrint, darkMode, label pozittion
+// bug sidebar při scrolování zmizí, musí se zafixovat k navbaru
+// přidat do number možnost měnit color scheme

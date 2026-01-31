@@ -84,6 +84,89 @@ const BadgeDoc = () => {
       ],
     },
     {
+      category: t("badge.categories.modern"),
+      itemList: [
+        {
+          label: t("badge.examples.modernPrimary"),
+          components: (
+            <Badge
+              label={t("badge.examples.primary")}
+              colorScheme="primary"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.modernSuccess"),
+          components: (
+            <Badge
+              label={t("badge.examples.success")}
+              colorScheme="success"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.modernDanger"),
+          components: (
+            <Badge
+              label={t("badge.examples.danger")}
+              colorScheme="danger"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.modernWarning"),
+          components: (
+            <Badge
+              label={t("badge.examples.warning")}
+              colorScheme="warning"
+              modern
+            />
+          ),
+        },
+      ],
+    },
+    {
+      category: t("badge.categories.modernSignificance"),
+      itemList: [
+        {
+          label: t("badge.examples.modernCommon"),
+          components: (
+            <Badge
+              label={t("badge.examples.common")}
+              colorScheme="primary"
+              significance="common"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.modernHighlighted"),
+          components: (
+            <Badge
+              label={t("badge.examples.highlighted")}
+              colorScheme="primary"
+              significance="highlighted"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("badge.examples.modernDistinct"),
+          components: (
+            <Badge
+              label={t("badge.examples.distinct")}
+              colorScheme="primary"
+              significance="distinct"
+              modern
+            />
+          ),
+        },
+      ],
+    },
+    {
       category: t("badge.categories.size"),
       itemList: [
         {

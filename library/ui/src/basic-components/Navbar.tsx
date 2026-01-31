@@ -28,7 +28,7 @@ const Css = {
       justifyContent: "space-between",
       height: 64,
       gap: 16,
-      padding: "0 24px",
+      padding: "0 16px",
       backgroundColor: scheme.color,
       borderBottom: `1px solid ${borderColor}`,
       boxSizing: "border-box",
@@ -67,10 +67,13 @@ const Css = {
     if (removeDefaultStyle) return {};
     const scheme = getColorScheme(colorScheme, darkMode);
     return {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
       fontSize: 20,
       fontWeight: 600,
       color: scheme.textColor,
-      cursor: "pointer",
+      marginRight: "auto",
       transition: "opacity 0.2s ease",
       letterSpacing: "-0.01em",
     };

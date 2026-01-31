@@ -54,9 +54,57 @@ const ButtonDoc = () => {
           ),
         },
         {
-          label: t("button.examples.info"),
+          label: "Purple",
           components: (
-            <Button label={t("button.examples.info")} colorScheme="info" />
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Purple" colorScheme="purple" />
+              <Button label="Purple Dark" colorScheme="purpleDark" />
+            </div>
+          ),
+        },
+        {
+          label: "Teal",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Teal" colorScheme="teal" />
+              <Button label="Teal Dark" colorScheme="tealDark" />
+            </div>
+          ),
+        },
+        {
+          label: "Pink",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Pink" colorScheme="pink" />
+              <Button label="Pink Dark" colorScheme="pinkDark" />
+            </div>
+          ),
+        },
+        {
+          label: "Indigo",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Indigo" colorScheme="indigo" />
+              <Button label="Indigo Dark" colorScheme="indigoDark" />
+            </div>
+          ),
+        },
+        {
+          label: "Orange",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Orange" colorScheme="orange" />
+              <Button label="Orange Dark" colorScheme="orangeDark" />
+            </div>
+          ),
+        },
+        {
+          label: "Cyan",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Cyan" colorScheme="cyan" />
+              <Button label="Cyan Dark" colorScheme="cyanDark" />
+            </div>
           ),
         },
       ],
@@ -129,6 +177,143 @@ const ButtonDoc = () => {
           label: t("button.examples.noDefault"),
           components: (
             <Button label={t("button.examples.rawButton")} removeDefaultStyle />
+          ),
+        },
+      ],
+    },
+    {
+      category: t("button.categories.modern"),
+      itemList: [
+        {
+          label: t("button.examples.modernPrimary"),
+          components: (
+            <Button
+              label={t("button.examples.primary")}
+              colorScheme="primary"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("button.examples.modernSuccess"),
+          components: (
+            <Button
+              label={t("button.examples.success")}
+              colorScheme="success"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("button.examples.modernDanger"),
+          components: (
+            <Button
+              label={t("button.examples.danger")}
+              colorScheme="danger"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("button.examples.modernWarning"),
+          components: (
+            <Button
+              label={t("button.examples.warning")}
+              colorScheme="warning"
+              modern
+            />
+          ),
+        },
+        {
+          label: "Purple",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Purple" colorScheme="purple" modern />
+              <Button label="Purple Dark" colorScheme="purpleDark" modern />
+            </div>
+          ),
+        },
+        {
+          label: "Teal",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Teal" colorScheme="teal" modern />
+              <Button label="Teal Dark" colorScheme="tealDark" modern />
+            </div>
+          ),
+        },
+        {
+          label: "Pink",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Pink" colorScheme="pink" modern />
+              <Button label="Pink Dark" colorScheme="pinkDark" modern />
+            </div>
+          ),
+        },
+        {
+          label: "Indigo",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Indigo" colorScheme="indigo" modern />
+              <Button label="Indigo Dark" colorScheme="indigoDark" modern />
+            </div>
+          ),
+        },
+        {
+          label: "Orange",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Orange" colorScheme="orange" modern />
+              <Button label="Orange Dark" colorScheme="orangeDark" modern />
+            </div>
+          ),
+        },
+        {
+          label: "Cyan",
+          components: (
+            <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+              <Button label="Cyan" colorScheme="cyan" modern />
+              <Button label="Cyan Dark" colorScheme="cyanDark" modern />
+            </div>
+          ),
+        },
+      ],
+    },
+    {
+      category: t("button.categories.modernSignificance"),
+      itemList: [
+        {
+          label: t("button.examples.modernCommon"),
+          components: (
+            <Button
+              label={t("button.examples.common")}
+              colorScheme="primary"
+              significance="common"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("button.examples.modernHighlighted"),
+          components: (
+            <Button
+              label={t("button.examples.highlighted")}
+              colorScheme="primary"
+              significance="highlighted"
+              modern
+            />
+          ),
+        },
+        {
+          label: t("button.examples.modernDistinct"),
+          components: (
+            <Button
+              label={t("button.examples.distinct")}
+              colorScheme="primary"
+              significance="distinct"
+              modern
+            />
           ),
         },
       ],

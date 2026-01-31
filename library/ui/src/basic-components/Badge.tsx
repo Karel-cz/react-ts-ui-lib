@@ -4,6 +4,7 @@ import React from "react";
 import {
   getColorScheme,
   getSignificanceColor,
+  getModernGradient,
   type ColorScheme,
   type Significance,
 } from "../tools/colors";
@@ -76,6 +77,7 @@ export type BadgeProps = {
   tooltip?: string;
   darkMode?: boolean;
   removeDefaultStyle?: boolean;
+  modern?: boolean;
 };
 
 // Const array for runtime prop extraction in documentation
@@ -95,6 +97,7 @@ export const BADGE_PROP_NAMES = [
   "tooltip",
   "darkMode",
   "removeDefaultStyle",
+  "modern",
 ] as const;
 //@@viewOff:propTypes
 
@@ -115,6 +118,7 @@ const Badge = ({
   tooltip,
   darkMode = true,
   removeDefaultStyle = false,
+  modern = false,
 }: BadgeProps) => {
   //@@viewOn:private
   if (hidden) return null;
@@ -127,6 +131,12 @@ const Badge = ({
 
   const background = disabled ? disabledBg : scheme.color;
   const textColor = disabled ? disabledText : scheme.textColor;
+  const modernStyle = getModernGradient(colorScheme, significance, darkMode);
+  const finalBackground = disabled
+    ? disabledBg
+    : modern
+      ? modernStyle.background
+      : background;
   const borderRadiusValue = getRadiusValue(borderRadius);
 
   const badgeSize = getBadgeSize(size);
@@ -146,7 +156,7 @@ const Badge = ({
       title={tooltip}
       style={Css.badge(
         removeDefaultStyle,
-        background,
+        finalBackground,
         textColor,
         borderRadiusValue,
         clickable,

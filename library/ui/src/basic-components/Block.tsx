@@ -345,7 +345,7 @@ const Block = ({
 
   const shadowColor = shadowScheme.color;
   const shadow = darkMode
-    ? `0 1px 2px ${shadowColor}, 0 4px 12px ${shadowColor}`
+    ? `0 1px 2px ${shadowColor}, 2px 2px 4px ${shadowColor}`
     : `0 1px 3px ${shadowColor}, 0 8px 24px ${shadowColor}`;
 
   const hasHeader = header || ActionList || info || collapsible;

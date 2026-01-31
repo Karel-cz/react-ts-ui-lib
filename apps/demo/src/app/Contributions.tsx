@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { Pending, getBorderColor } from "@react-ts-ui-lib/ui";
+import { Pending, getBorderColor, Block } from "@react-ts-ui-lib/ui";
 import { useEffect, useState } from "react";
 import { useTheme } from "./context/themeContext";
 //@@viewOff:imports
@@ -72,79 +72,80 @@ function Contributions() {
 
   return (
     <div>
-      <h3>Contributors</h3>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th
-              style={{
-                textAlign: "left",
-                borderBottom: `1px solid ${borderColor}`,
-                padding: "8px",
-              }}
-            >
-              Avatar
-            </th>
-            <th
-              style={{
-                textAlign: "left",
-                borderBottom: `1px solid ${borderColor}`,
-                padding: "8px",
-              }}
-            >
-              Login
-            </th>
-            <th
-              style={{
-                textAlign: "right",
-                borderBottom: `1px solid ${borderColor}`,
-                padding: "8px",
-              }}
-            >
-              Contributions
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {contributors.map((c) => (
-            <tr key={c.id}>
-              <td
+      <Block header="Contributions" borderRadius="md" darkMode={darkMode} card="full" >
+        <table style={{ width: "100%", borderCollapse: "collapse" }}>
+          <thead>
+            <tr>
+              <th
                 style={{
-                  padding: "8px",
+                  textAlign: "left",
                   borderBottom: `1px solid ${borderColor}`,
+                  padding: "8px",
                 }}
               >
-                <img
-                  src={c.avatar_url}
-                  alt={c.login}
-                  width={32}
-                  height={32}
-                  style={{ borderRadius: 4 }}
-                />
-              </td>
-              <td
+                Avatar
+              </th>
+              <th
                 style={{
-                  padding: "8px",
+                  textAlign: "left",
                   borderBottom: `1px solid ${borderColor}`,
+                  padding: "8px",
                 }}
               >
-                <a href={c.html_url} target="_blank" rel="noreferrer">
-                  {c.login}
-                </a>
-              </td>
-              <td
+                Login
+              </th>
+              <th
                 style={{
-                  padding: "8px",
-                  borderBottom: `1px solid ${borderColor}`,
                   textAlign: "right",
+                  borderBottom: `1px solid ${borderColor}`,
+                  padding: "8px",
                 }}
               >
-                {c.contributions}
-              </td>
+                Contributions
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {contributors.map((c) => (
+              <tr key={c.id}>
+                <td
+                  style={{
+                    padding: "8px",
+                    borderBottom: `1px solid ${borderColor}`,
+                  }}
+                >
+                  <img
+                    src={c.avatar_url}
+                    alt={c.login}
+                    width={32}
+                    height={32}
+                    style={{ borderRadius: 4 }}
+                  />
+                </td>
+                <td
+                  style={{
+                    padding: "8px",
+                    borderBottom: `1px solid ${borderColor}`,
+                  }}
+                >
+                  <a href={c.html_url} target="_blank" rel="noreferrer">
+                    {c.login}
+                  </a>
+                </td>
+                <td
+                  style={{
+                    padding: "8px",
+                    borderBottom: `1px solid ${borderColor}`,
+                    textAlign: "right",
+                  }}
+                >
+                  {c.contributions}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </Block>
     </div>
   );
   //@@viewOff:render

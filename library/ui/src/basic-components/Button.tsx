@@ -6,6 +6,7 @@ import {
   type Significance,
   getColorScheme,
   getSignificanceColor,
+  getModernGradient,
 } from "../tools/colors";
 import { getRadiusValue, type RadiusToken } from "../tools/radius";
 import { getButtonSize, type SizeToken } from "../tools/size";
@@ -30,10 +31,17 @@ const Css = {
     fontSize?: number,
     height?: string,
     width?: string,
+    modernEnabled?: boolean,
+    modernBackground?: string,
+    modernHoverBackground?: string,
+    shadow?: string,
+    hoverShadow?: string,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
     }
+
+    const useModern = modernEnabled && !isDisabled;
 
     return {
       display: "inline-flex",
@@ -42,7 +50,15 @@ const Css = {
       padding: padding,
       border: "none",
       borderRadius: borderRadiusValue,
-      background: hover && !isDisabled ? hoverBackground : background,
+      background: useModern
+        ? hover
+          ? modernHoverBackground
+          : modernBackground
+        : hover && !isDisabled
+          ? hoverBackground
+          : background,
+      backgroundSize: useModern ? "200% 200%" : undefined,
+      backgroundPosition: useModern ? (hover ? "100% 0%" : "0% 50%") : undefined,
       color: textColor,
       cursor: isDisabled ? "not-allowed" : "pointer",
       fontWeight: 600,
@@ -50,7 +66,8 @@ const Css = {
       height: height,
       width: width,
       transition:
-        "transform 120ms ease, background 160ms ease, color 160ms ease",
+        "background-position 260ms ease, background 160ms ease, color 160ms ease, box-shadow 180ms ease",
+      boxShadow: useModern ? (hover ? hoverShadow : shadow) : undefined,
       outline: "none",
       WebkitTapHighlightColor: "transparent",
       position: "relative",
@@ -97,6 +114,7 @@ export type ButtonProps = {
   darkMode?: boolean;
   isPending?: boolean;
   noPrint?: boolean;
+  modern?: boolean;
 };
 
 // Const array for runtime prop extraction in documentation
@@ -119,6 +137,7 @@ export const BUTTON_PROP_NAMES = [
   "darkMode",
   "isPending",
   "noPrint",
+  "modern",
 ] as const;
 //@@viewOff:propTypes
 
@@ -140,6 +159,7 @@ const Button = ({
   iconPosition = "left",
   darkMode = true,
   noPrint = false,
+  modern = false,
 }: ButtonProps) => {
   //@@viewOn:private
   const [hover, setHover] = useState(false);
@@ -175,6 +195,12 @@ const Button = ({
   const hoverBackground =
     hoverSchemeMap[colorScheme as string]?.color || background;
 
+  const modernStyle = getModernGradient(colorScheme, significance, darkMode);
+  const gradientBackground = modernStyle.background;
+  const gradientHoverBackground = modernStyle.hoverBackground;
+  const shadow = modernStyle.shadow;
+  const hoverShadow = modernStyle.hoverShadow;
+
   const content = children || label;
   //@@viewOff:private
 
@@ -195,6 +221,11 @@ const Button = ({
         buttonSize.fontSize,
         buttonSize.height,
         buttonSize.width,
+        modern,
+        gradientBackground,
+        gradientHoverBackground,
+        shadow,
+        hoverShadow,
       )}
       type={type}
       title={tooltip}

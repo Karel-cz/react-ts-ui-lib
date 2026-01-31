@@ -8,6 +8,7 @@ export { Documentation } from "./basic-components/Documentation";
 export { UtilityDocumentation } from "./basic-components/UtilityDocumentation";
 export { Badge } from "./basic-components/Badge";
 export { Block } from "./basic-components/Block";
+export { Modal } from "./basic-components/Modal";
 export { Number } from "./basic-components/Number";
 export { Input } from "./basic-components/Input";
 
@@ -24,6 +25,7 @@ export { SIDEBAR_PROP_NAMES } from "./basic-components/SideBar";
 export { NUMBER_PROP_NAMES } from "./basic-components/Number";
 export { BADGE_PROP_NAMES } from "./basic-components/Badge";
 export { BLOCK_PROP_NAMES } from "./basic-components/Block";
+export { MODAL_PROP_NAMES } from "./basic-components/Modal";
 export { INPUT_PROP_NAMES } from "./basic-components/Input";
 
 // Types
@@ -32,3 +34,4 @@ export type { NavbarProps } from "./basic-components/Navbar";
 export type { SideBarItem, SideBarProps } from "./basic-components/SideBar";
 export type { BadgeProps } from "./basic-components/Badge";
 export type { BlockProps } from "./basic-components/Block";
+export type { ModalProps, ModalSize } from "./basic-components/Modal";
