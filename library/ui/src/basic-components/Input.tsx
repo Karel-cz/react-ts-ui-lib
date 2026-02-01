@@ -1,6 +1,7 @@
 /* eslint-disable react-refresh/only-export-components */
 //@@viewOn:imports
 import React from "react";
+import { getRadiusValue, type RadiusToken } from "../tools/radius";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -18,7 +19,7 @@ const Css = {
     fontWeight: 600,
     color: "#333",
   }),
-  input: (removeDefaultStyle?: boolean): React.CSSProperties => {
+  input: (removeDefaultStyle?: boolean, borderRadiusValue?: number): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
     }
@@ -26,7 +27,7 @@ const Css = {
     return {
       padding: "0.5rem 0.75rem",
       border: "1px solid #ccc",
-      borderRadius: "4px",
+      borderRadius: borderRadiusValue,
       fontSize: "1rem",
       fontFamily: "inherit",
       outline: "none",
@@ -56,6 +57,7 @@ export type InputProps = {
   disabled?: boolean;
   id?: string;
   name?: string;
+  borderRadius?: RadiusToken;
 };
 
 export const INPUT_PROP_NAMES = [
@@ -71,6 +73,7 @@ export const INPUT_PROP_NAMES = [
   "disabled",
   "id",
   "name",
+  "borderRadius",
 ] as const;
 //@@viewOff:propTypes
 
@@ -87,8 +90,10 @@ export const Input: React.FC<InputProps> = ({
   disabled,
   id,
   name,
+  borderRadius = "md",
 }) => {
   //@@viewOn:private
+  const borderRadiusValue = getRadiusValue(borderRadius);
   //@@viewOff:private
 
   //@@viewOn:render
@@ -111,7 +116,7 @@ export const Input: React.FC<InputProps> = ({
         onBlur={onBlur}
         onFocus={onFocus}
         disabled={disabled}
-        style={Css.input(removeDefaultStyle)}
+        style={Css.input(removeDefaultStyle, borderRadiusValue)}
       />
     </div>
   );
