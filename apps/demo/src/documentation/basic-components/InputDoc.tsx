@@ -99,6 +99,66 @@ const InputDoc = () => {
         },
       ],
     },
+    {
+      category: t("input.examples.borderRadius") || "Border Radius",
+      itemList: [
+        {
+          label: "xs",
+          components: (
+            <Input
+              placeholder="xs radius"
+              borderRadius="xs"
+              value={basicValue}
+              onChange={(e) => setBasicValue(e.target.value)}
+            />
+          ),
+        },
+        {
+          label: "sm",
+          components: (
+            <Input
+              placeholder="sm radius"
+              borderRadius="sm"
+              value={basicValue}
+              onChange={(e) => setBasicValue(e.target.value)}
+            />
+          ),
+        },
+        {
+          label: "md",
+          components: (
+            <Input
+              placeholder="md radius (default)"
+              borderRadius="md"
+              value={basicValue}
+              onChange={(e) => setBasicValue(e.target.value)}
+            />
+          ),
+        },
+        {
+          label: "lg",
+          components: (
+            <Input
+              placeholder="lg radius"
+              borderRadius="lg"
+              value={basicValue}
+              onChange={(e) => setBasicValue(e.target.value)}
+            />
+          ),
+        },
+        {
+          label: "full",
+          components: (
+            <Input
+              placeholder="full radius"
+              borderRadius="full"
+              value={basicValue}
+              onChange={(e) => setBasicValue(e.target.value)}
+            />
+          ),
+        },
+      ],
+    },
   ];
   //@@viewOff:private
 
