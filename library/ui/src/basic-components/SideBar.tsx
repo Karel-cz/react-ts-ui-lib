@@ -44,13 +44,20 @@ const Css = {
         transition: "transform 0.3s ease",
         transform: isOpen ? "translateX(0)" : "translateX(-100%)",
         overflowY: "auto",
-      };
+        scrollbarWidth: "none",
+        msOverflowStyle: "none",
+      } as React.CSSProperties;
     }
 
     return {
       ...baseStyle,
-      minHeight: "100vh",
-    };
+      position: "sticky",
+      top: navbarHeight || 64,
+      height: `calc(100vh - ${navbarHeight || 64}px)`,
+      overflowY: "auto",
+      scrollbarWidth: "none",
+      msOverflowStyle: "none",
+    } as React.CSSProperties;
   },
   openIcon: (removeDefaultStyle?: boolean) => {
     if (removeDefaultStyle) return {};
