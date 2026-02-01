@@ -1,4 +1,4 @@
-/* eslint-disable react-refresh/only-export-components */
+ 
 //@@viewOn:imports
 import React from "react";
 //@@viewOff:imports
@@ -9,7 +9,6 @@ import React from "react";
 //@@viewOn:css
 const Css = {
   span: (): React.CSSProperties => ({
-    // Basic styles for the number component can be added here if needed.
   }),
 };
 //@@viewOff:css
