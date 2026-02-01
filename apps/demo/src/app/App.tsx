@@ -193,7 +193,7 @@ function App() {
           mobileMode={isMobile}
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
-          navbarHeight={80}
+          navbarHeight={64}
         />
         <div
           style={{
