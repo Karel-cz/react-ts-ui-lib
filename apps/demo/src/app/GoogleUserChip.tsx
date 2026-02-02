@@ -1,4 +1,5 @@
 //@@viewOn:imports
+import { useState, useEffect } from "react";
 import { Icon, getColorScheme } from "@react-ts-ui-lib/ui";
 import { useTheme } from "./context/themeContext";
 import { useTranslation } from "../i18n/useTranslation";
@@ -23,8 +24,8 @@ const getAuthStyles = (darkMode: boolean): Record<string, React.CSSProperties> =
       maxWidth: 220,
       transition: "all 0.2s ease",
       cursor: "default",
-      boxShadow: darkMode 
-        ? "0 2px 8px rgba(0, 0, 0, 0.2)" 
+      boxShadow: darkMode
+        ? "0 2px 8px rgba(0, 0, 0, 0.2)"
         : "0 2px 8px rgba(0, 0, 0, 0.08)",
     },
     avatar: {
@@ -87,16 +88,22 @@ const GoogleUserChip = ({ user, showDetails = true }: GoogleUserChipProps) => {
   const { darkMode } = useTheme();
   const { t } = useTranslation();
   const authCss = getAuthStyles(darkMode);
+  const [imgError, setImgError] = useState(false);
+
+  useEffect(() => {
+    setImgError(false);
+  }, [user.photoURL]);
   //@@viewOff:private
 
   //@@viewOn:render
   return (
     <div style={authCss.userChip}>
-      {user.photoURL ? (
+      {user.photoURL && !imgError ? (
         <img
           src={user.photoURL}
           alt={user.displayName || "User"}
           style={authCss.avatar}
+          onError={() => setImgError(true)}
         />
       ) : (
         <span style={authCss.googleIcon}>
