@@ -97,6 +97,19 @@ const PendingDoc = () => {
         },
       ],
     },
+    {
+      category: t("pending.categories.animationSpeed"),
+      itemList: [
+        {
+          label: t("pending.examples.slow"),
+          components: <UiPending animationSpeed={0.5} />,
+        },
+        {
+          label: t("pending.examples.fast"),
+          components: <UiPending animationSpeed={2} />,
+        },
+      ],
+    },
   ];
   //@@viewOff:private
 

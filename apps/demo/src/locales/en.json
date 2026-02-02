@@ -129,25 +129,101 @@
   "button": {
     "title": "Button Component",
     "props": {
-      "children": { "description": "Content rendered inside the button (text, icons, custom nodes).", "type": "ReactNode", "required": "false" },
-      "disabled": { "description": "Prevents interaction and visually disables the button.", "type": "boolean", "required": "false" },
-      "loading": { "description": "Alias for pending state – indicates that an async action is running.", "type": "boolean", "required": "false" },
-      "colorScheme": { "description": "Determines visual look of the button based on predefined color palette (primary, success, danger…).", "type": "string", "required": "false" },
-      "significance": { "description": "Controls visual intensity of the button: common (default), highlighted, distinct.", "type": "string", "required": "false" },
-      "icon": { "description": "Name of mdi icon rendered inside the button.", "type": "string", "required": "false" },
-      "iconPosition": { "description": "Controls whether icon is rendered on the left or right side of the content.", "type": "string", "required": "false" },
-      "label": { "description": "Simple text alternative to children – useful for easy text buttons or accessibility.", "type": "string", "required": "false" },
-      "onClick": { "description": "Triggered when the user clicks the button.", "type": "function", "required": "false" },
-      "className": { "description": "Additional CSS class names applied to the root button element.", "type": "string", "required": "false" },
-      "borderRadius": { "description": "Predefined border radius token (xs, sm, md, lg, full).", "type": "string", "required": "false" },
-      "size": { "description": "Button size token (xs, sm, md, lg, xl).", "type": "string", "required": "false" },
-      "removeDefaultStyle": { "description": "Disables built-in styling and leaves only raw button element for full customization.", "type": "boolean", "required": "false" },
-      "tooltip": { "description": "Browser default tooltip shown when hovering over the button.", "type": "string", "required": "false" },
-      "type": { "description": "Native button type (button, submit, reset).", "type": "string", "required": "false" },
-      "darkMode": { "description": "Renders the button using dark mode palette (affects colorScheme behavior).", "type": "boolean", "required": "false" },
-      "isPending": { "description": "Shows loading spinner and blocks interactions. Content becomes visually hidden.", "type": "boolean", "required": "false" },
-      "noPrint": { "description": "Hides the button when printing (adds no-print class).", "type": "boolean", "required": "false" }
-      ,"modern": { "description": "Enables modern gradient styling.", "type": "boolean", "required": "false" }
+      "children": {
+        "description": "Content rendered inside the button (text, icons, custom nodes).",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "disabled": {
+        "description": "Prevents interaction and visually disables the button.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "loading": {
+        "description": "Alias for pending state – indicates that an async action is running.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Determines visual look of the button based on predefined color palette (primary, success, danger…).",
+        "type": "string",
+        "required": "false"
+      },
+      "significance": {
+        "description": "Controls visual intensity of the button: common (default), highlighted, distinct.",
+        "type": "string",
+        "required": "false"
+      },
+      "icon": {
+        "description": "Name of mdi icon rendered inside the button.",
+        "type": "string",
+        "required": "false"
+      },
+      "iconPosition": {
+        "description": "Controls whether icon is rendered on the left or right side of the content.",
+        "type": "string",
+        "required": "false"
+      },
+      "label": {
+        "description": "Simple text alternative to children – useful for easy text buttons or accessibility.",
+        "type": "string",
+        "required": "false"
+      },
+      "onClick": {
+        "description": "Triggered when the user clicks the button.",
+        "type": "function",
+        "required": "false"
+      },
+      "className": {
+        "description": "Additional CSS class names applied to the root button element.",
+        "type": "string",
+        "required": "false"
+      },
+      "borderRadius": {
+        "description": "Predefined border radius token (xs, sm, md, lg, full).",
+        "type": "string",
+        "required": "false"
+      },
+      "size": {
+        "description": "Button size token (xs, sm, md, lg, xl).",
+        "type": "string",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Disables built-in styling and leaves only raw button element for full customization.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Browser default tooltip shown when hovering over the button.",
+        "type": "string",
+        "required": "false"
+      },
+      "type": {
+        "description": "Native button type (button, submit, reset).",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Renders the button using dark mode palette (affects colorScheme behavior).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "isPending": {
+        "description": "Shows loading spinner and blocks interactions. Content becomes visually hidden.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Hides the button when printing (adds no-print class).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "modern": {
+        "description": "Enables modern gradient styling.",
+        "type": "boolean",
+        "required": "false"
+      }
     },
     "categories": {
       "colorScheme": "Color scheme",
@@ -217,16 +293,56 @@
   "icon": {
     "title": "Icon Component",
     "props": {
-      "icon": { "description": "Name of the Material Design Icon (mdi-*) to render.", "type": "string", "required": "false" },
-      "size": { "description": "Icon size token (xs, sm, md, lg, xl) or number (em) for custom size.", "type": "string | number", "required": "false" },
-      "color": { "description": "Icon color (CSS color value).", "type": "string", "required": "false" },
-      "className": { "description": "Additional class names for the wrapper span.", "type": "string", "required": "false" },
-      "onClick": { "description": "Click handler for the icon wrapper.", "type": "function", "required": "false" },
-      "removeDefaultStyle": { "description": "Render without default layout styles.", "type": "boolean", "required": "false" },
-      "hidden": { "description": "If true, the icon is not rendered.", "type": "boolean", "required": "false" },
-      "label": { "description": "Optional text label displayed next to the icon.", "type": "string", "required": "false" },
-      "tooltip": { "description": "Browser tooltip shown on hover.", "type": "string", "required": "false" },
-      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" }
+      "icon": {
+        "description": "Name of the Material Design Icon (mdi-*) to render.",
+        "type": "string",
+        "required": "false"
+      },
+      "size": {
+        "description": "Icon size token (xs, sm, md, lg, xl) or number (em) for custom size.",
+        "type": "string | number",
+        "required": "false"
+      },
+      "color": {
+        "description": "Icon color (CSS color value).",
+        "type": "string",
+        "required": "false"
+      },
+      "className": {
+        "description": "Additional class names for the wrapper span.",
+        "type": "string",
+        "required": "false"
+      },
+      "onClick": {
+        "description": "Click handler for the icon wrapper.",
+        "type": "function",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Render without default layout styles.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "If true, the icon is not rendered.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "label": {
+        "description": "Optional text label displayed next to the icon.",
+        "type": "string",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Browser tooltip shown on hover.",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Use dark mode palette when true.",
+        "type": "boolean",
+        "required": "false"
+      }
     },
     "categories": {
       "size": "Size",
@@ -264,17 +380,43 @@
   "pending": {
     "title": "Pending Component",
     "props": {
-      "className": { "description": "Additional CSS class names for the SVG element.", "type": "string", "required": "false" },
-      "type": { "description": "Spinner style: circular or horizontal bar.", "type": "string", "required": "false" },
-      "size": { "description": "Pending size token (xs, sm, md, lg, xl).", "type": "string", "required": "false" },
-      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" },
-      "colorScheme": { "description": "Color scheme for the spinner.", "type": "string", "required": "false" }
+      "className": {
+        "description": "Additional CSS class names for the SVG element.",
+        "type": "string",
+        "required": "false"
+      },
+      "type": {
+        "description": "Spinner style: circular or horizontal bar.",
+        "type": "string",
+        "required": "false"
+      },
+      "size": {
+        "description": "Pending size token (xs, sm, md, lg, xl).",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Use dark mode palette when true.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Color scheme for the spinner.",
+        "type": "string",
+        "required": "false"
+      },
+      "animationSpeed": {
+        "description": "Controls the speed of the animation (multiplier).",
+        "type": "number",
+        "required": "false"
+      }
     },
     "categories": {
       "type": "Type",
       "size": "Size",
       "colorScheme": "Color Scheme",
-      "darkMode": "Dark mode"
+      "darkMode": "Dark mode",
+      "animationSpeed": "Animation Speed"
     },
     "examples": {
       "circular": "circular",
@@ -290,24 +432,74 @@
       "danger": "danger",
       "success": "success",
       "dark": "dark",
-      "light": "light"
+      "light": "light",
+      "slow": "Slow",
+      "fast": "Fast"
     }
   },
   "navbar": {
     "title": "Navbar Component",
     "props": {
-      "logo": { "description": "Content rendered in the left section; string or custom node.", "type": "string | ReactNode", "required": "false" },
-      "centerContent": { "description": "Content placed in the centered section of the navbar.", "type": "ReactNode", "required": "false" },
-      "rightContent": { "description": "Content placed in the right section (e.g., actions).", "type": "ReactNode", "required": "false" },
-      "onLogoClick": { "description": "Callback fired when the logo is clicked.", "type": "function", "required": "false" },
-      "removeDefaultStyle": { "description": "Disables built-in styling for container, logo, and buttons.", "type": "boolean", "required": "false" },
-      "colorScheme": { "description": "Background and text colors based on theme palette.", "type": "string", "required": "false" },
-      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" },
-      "sticky": { "description": "If true, navbar will stick to the top when scrolling.", "type": "boolean", "required": "false" },
-      "onHamburgerClick": { "description": "Callback fired when the hamburger menu button is clicked.", "type": "function", "required": "false" },
-      "showHamburger": { "description": "Manually control hamburger menu visibility. If not provided, automatically shows on mobile (< 768px).", "type": "boolean", "required": "false" },
-      "hamburgerOpen": { "description": "Controls the open/closed state of the hamburger menu (affects icon: menu/close).", "type": "boolean", "required": "false" },
-      "mobileBreakpoint": { "description": "Breakpoint in pixels for mobile detection (default: 768).", "type": "number", "required": "false" }
+      "logo": {
+        "description": "Content rendered in the left section; string or custom node.",
+        "type": "string | ReactNode",
+        "required": "false"
+      },
+      "centerContent": {
+        "description": "Content placed in the centered section of the navbar.",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "rightContent": {
+        "description": "Content placed in the right section (e.g., actions).",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "onLogoClick": {
+        "description": "Callback fired when the logo is clicked.",
+        "type": "function",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Disables built-in styling for container, logo, and buttons.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Background and text colors based on theme palette.",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Use dark mode palette when true.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "sticky": {
+        "description": "If true, navbar will stick to the top when scrolling.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "onHamburgerClick": {
+        "description": "Callback fired when the hamburger menu button is clicked.",
+        "type": "function",
+        "required": "false"
+      },
+      "showHamburger": {
+        "description": "Manually control hamburger menu visibility. If not provided, automatically shows on mobile (< 768px).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hamburgerOpen": {
+        "description": "Controls the open/closed state of the hamburger menu (affects icon: menu/close).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "mobileBreakpoint": {
+        "description": "Breakpoint in pixels for mobile detection (default: 768).",
+        "type": "number",
+        "required": "false"
+      }
     },
     "categories": {
       "layout": "Layout",
@@ -333,20 +525,76 @@
   "sidebar": {
     "title": "SideBar Component",
     "props": {
-      "itemList": { "description": "Top-level items to render in the sidebar (can be nested).", "type": "array", "required": "true" },
-      "className": { "description": "Additional class names for the container.", "type": "string", "required": "false" },
-      "removeDefaultStyle": { "description": "Disables built-in container and item styling.", "type": "boolean", "required": "false" },
-      "tooltip": { "description": "Optional tooltip on the container (native title).", "type": "string", "required": "false" },
-      "label": { "description": "Optional label text for the container.", "type": "string", "required": "false" },
-      "onItemClick": { "description": "Callback when an item is clicked; receives item and event.", "type": "function", "required": "false" },
-      "collapsed": { "description": "Whether the sidebar is collapsed.", "type": "boolean", "required": "false" },
-      "colorScheme": { "description": "Background and text colors based on theme palette.", "type": "string", "required": "false" },
-      "darkMode": { "description": "Use dark mode palette when true.", "type": "boolean", "required": "false" },
-      "selectedItem": { "description": "Currently selected item to highlight.", "type": "SideBarItem | null", "required": "false" },
-      "mobileMode": { "description": "Activates mobile mode with overlay and fixed positioning.", "type": "boolean", "required": "false" },
-      "isOpen": { "description": "Controls the open/closed state of the sidebar in mobile mode.", "type": "boolean", "required": "false" },
-      "onClose": { "description": "Callback fired when the sidebar should close (e.g., overlay click or item click).", "type": "function", "required": "false" },
-      "navbarHeight": { "description": "Height of the navbar for proper positioning in mobile mode (default: 64).", "type": "number", "required": "false" }
+      "itemList": {
+        "description": "Top-level items to render in the sidebar (can be nested).",
+        "type": "array",
+        "required": "true"
+      },
+      "className": {
+        "description": "Additional class names for the container.",
+        "type": "string",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Disables built-in container and item styling.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Optional tooltip on the container (native title).",
+        "type": "string",
+        "required": "false"
+      },
+      "label": {
+        "description": "Optional label text for the container.",
+        "type": "string",
+        "required": "false"
+      },
+      "onItemClick": {
+        "description": "Callback when an item is clicked; receives item and event.",
+        "type": "function",
+        "required": "false"
+      },
+      "collapsed": {
+        "description": "Whether the sidebar is collapsed.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Background and text colors based on theme palette.",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Use dark mode palette when true.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "selectedItem": {
+        "description": "Currently selected item to highlight.",
+        "type": "SideBarItem | null",
+        "required": "false"
+      },
+      "mobileMode": {
+        "description": "Activates mobile mode with overlay and fixed positioning.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "isOpen": {
+        "description": "Controls the open/closed state of the sidebar in mobile mode.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "onClose": {
+        "description": "Callback fired when the sidebar should close (e.g., overlay click or item click).",
+        "type": "function",
+        "required": "false"
+      },
+      "navbarHeight": {
+        "description": "Height of the navbar for proper positioning in mobile mode (default: 64).",
+        "type": "number",
+        "required": "false"
+      }
     },
     "categories": {
       "basic": "Basic",
@@ -885,7 +1133,6 @@
     "description": "A collection of helpful tools and utilities for your projects.",
     "instructions": "Select a tool from the left menu to view its documentation."
   },
-
   "copyToClipboard": {
     "title": "Copy to Clipboard",
     "description": "Utility function for copying text to clipboard using navigator.clipboard API with fallback for older browsers.",
@@ -914,7 +1161,6 @@
       }
     }
   },
-
   "getMostFrequentValue": {
     "title": "Get Most Frequent Value",
     "description": "Utility function that returns the most frequent value in an array. You can also pass a key to analyze objects.",
@@ -982,7 +1228,6 @@
       }
     }
   },
-
   "aboutApplication": {
     "title": "About Application",
     "about": {
