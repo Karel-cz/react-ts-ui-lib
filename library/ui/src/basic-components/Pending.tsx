@@ -32,6 +32,7 @@ export type PendingProps = {
   size?: SizeToken;
   darkMode?: boolean;
   colorScheme?: ColorScheme;
+  animationSpeed?: number;
 };
 
 // Const array for runtime prop extraction in documentation
@@ -40,7 +41,9 @@ export const PENDING_PROP_NAMES = [
   "type",
   "size",
   "darkMode",
+  "darkMode",
   "colorScheme",
+  "animationSpeed",
 ] as const;
 //@@viewOff:propTypes
 
@@ -50,6 +53,7 @@ const Pending = ({
   size = "sm",
   darkMode = true,
   colorScheme = "primary",
+  animationSpeed = 1,
 }: PendingProps) => {
   const pendingSize = getPendingSize(size as SizeToken).size;
 
@@ -99,7 +103,7 @@ const Pending = ({
           <animate
             attributeName="x"
             values={`${startX};${trackWidth};${startX}`}
-            dur="1.2s"
+            dur={`${1.2 / animationSpeed}s`}
             repeatCount="indefinite"
           />
         </rect>
@@ -137,7 +141,7 @@ const Pending = ({
           type="rotate"
           from="0 12 12"
           to="360 12 12"
-          dur="0.9s"
+          dur={`${0.9 / animationSpeed}s`}
           repeatCount="indefinite"
         />
       </path>
