@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { Block, Button, Icon, Input, Number, Pending, Badge, Navbar, SideBar, ThemeToggle } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../i18n/useTranslation";
-import { useTheme } from "./context/themeContext";
+import { useTheme } from "./context/ThemeContext";
 //@@viewOff:imports
 
 //@@viewOn:constants

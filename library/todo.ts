@@ -39,3 +39,5 @@
 // todo na pending přidat propsu fast medium slow a podle toho rischlost pendingu
 // side bar přidat hedader ke by mohl bít další action list a to samé do ffoteru cíelem je aby nahoře se dal vykrelsovat přihlášení atd...
 // copy to clipboard Component
+//infoGroup zarovunání textů dole va do prava pro title a subtitel + jsou tam todo
+// tabs rounding, display botom line podle aktivní code, a dislpliy line pod všemi taby, do itimeListu přidat možnost tag - ty se budou implementovat déel budou sloužit pro označení napříkald new a bdue to jen přepoužitá badge. 

@@ -40,4 +40,19 @@ export const getComponentList = (t: (key: string) => string): SideBarItem[] => [
     icon: "mdi-theme-light-dark",
     key: "ThemeToggle",
   },
+  {
+    title: t("sidebar.components.infogroup"),
+    icon: "mdi-information-outline",
+    key: "InfoGroup",
+  },
+  {
+    title: t("sidebar.components.tabgroup"),
+    icon: "mdi-tab",
+    key: "TabGroup",
+  },
+  {
+    title: t("sidebar.components.checkbox"),
+    icon: "mdi-checkbox-marked",
+    key: "Checkbox",
+  },
 ];

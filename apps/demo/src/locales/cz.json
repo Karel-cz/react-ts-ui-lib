@@ -384,7 +384,10 @@
       "number": "Číslo",
       "input": "Vstupní pole",
       "profileCard": "Profil karta",
-      "themeToggle": "Přepínač motivu"
+      "themeToggle": "Přepínač motivu",
+      "infogroup": "Info skupina",
+      "tabgroup": "Tab skupina",
+      "checkbox": "Checkbox"
     },
     "utilities": {
       "copyToClipboard": "Kopírovat do schránky",
@@ -867,6 +870,268 @@
       "light": "Světlý režim",
       "interactive": "Interaktivní (přepni)",
       "noDefault": "Bez výchozího stylu"
+    }
+  },
+  "infogroup": {
+    "title": "InfoGroup Komponenta",
+    "props": {
+      "itemList": {
+        "description": "Pole položek k zobrazení. Každá položka může mít title, subtitle a volitelnou ikonu.",
+        "type": "InfoGroupItem[]",
+        "required": "true"
+      },
+      "direction": {
+        "description": "Směr rozložení skupiny: horizontal (položky v řádku) nebo vertical (položky ve sloupci).",
+        "type": "string",
+        "required": "false"
+      },
+      "itemDirection": {
+        "description": "Směr rozložení jednotlivých položek: horizontal (ikona a obsah vedle sebe) nebo vertical (ikona nad obsahem).",
+        "type": "string",
+        "required": "false"
+      },
+      "autoResize": {
+        "description": "TODO: Implementovat autoResize funkcionalitu.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "className": {
+        "description": "Dodatečné CSS třídy aplikované na root element.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Skryje komponentu při tisku (přidá třídu no-print).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "Pokud true, komponenta se nevyrenderuje.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Vypne vestavěné styly a ponechá pouze surový element pro plnou přizpůsobitelnost.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Renderuje komponentu pomocí tmavé palety barev.",
+        "type": "boolean",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "basic": "Základní",
+      "directions": "Směry",
+      "itemDirections": "Směry položek",
+      "content": "Obsah",
+      "styling": "Styling"
+    },
+    "examples": {
+      "default": "Výchozí",
+      "horizontal": "Horizontální",
+      "vertical": "Vertikální",
+      "itemHorizontal": "Položka horizontální",
+      "itemVertical": "Položka vertikální",
+      "withIcons": "S ikonami",
+      "withSubtitle": "S podtitulem",
+      "withComponentSubtitles": "S komponentami v podtitulech",
+      "mixedContent": "Smíšený obsah",
+      "customContent": "Vlastní obsah",
+      "noDefault": "Bez výchozího",
+      "item1Title": "Položka 1",
+      "item1Subtitle": "Popis pro položku 1",
+      "item2Title": "Položka 2",
+      "item2Subtitle": "Popis pro položku 2",
+      "item3Title": "Položka 3",
+      "item3Subtitle": "Popis pro položku 3"
+    }
+  },
+  "tabgroup": {
+    "title": "TabGroup Komponenta",
+    "props": {
+      "itemList": {
+        "description": "Pole tab položek. Každá položka musí mít title, content a code. Volitelně subtitle, icon a onClick.",
+        "type": "TabGroupItem[]",
+        "required": "true"
+      },
+      "codeActive": {
+        "description": "Identifikátor aktuálně aktivního tabu. Musí odpovídat jednomu z item codes.",
+        "type": "string | number",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Barevné schéma pro zvýraznění aktivního tabu.",
+        "type": "string",
+        "required": "false"
+      },
+      "ActionList": {
+        "description": "Pole komponent zobrazených vpravo od tabů.",
+        "type": "React.ReactNode[]",
+        "required": "false"
+      },
+      "onChange": {
+        "description": "Callback funkce volaná při změně aktivního tabu. Přijímá code kliknutého tabu.",
+        "type": "function",
+        "required": "false"
+      },
+      "className": {
+        "description": "Dodatečné CSS třídy aplikované na root element.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Skryje komponentu při tisku (přidá třídu no-print).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "Pokud true, komponenta se nevyrenderuje.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Vypne vestavěné styly a ponechá pouze surový element pro plnou přizpůsobitelnost.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Renderuje komponentu pomocí tmavé palety barev.",
+        "type": "boolean",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "basic": "Základní",
+      "colorScheme": "Barevné schéma",
+      "actionList": "Action List",
+      "content": "Obsah",
+      "styling": "Styling"
+    },
+    "examples": {
+      "default": "Výchozí",
+      "withIcons": "S ikonami",
+      "withSubtitle": "S podtitulem",
+      "primary": "Primary",
+      "success": "Success",
+      "danger": "Danger",
+      "warning": "Warning",
+      "withActions": "S ActionList",
+      "withComponentContent": "S komponentami v obsahu",
+      "noDefault": "Bez výchozího",
+      "bestExamples": "Nejlepší příklady",
+      "topPicks": "Top výběr",
+      "bestExamplesContent": "Tento tab zobrazuje nejlepší příklady vybrané naším týmem.",
+      "allExamples": "Všechny příklady",
+      "completeList": "Kompletní seznam",
+      "allExamplesContent": "Tento tab zobrazuje všechny dostupné příklady v knihovně.",
+      "props": "Props",
+      "documentation": "Dokumentace",
+      "propsContent": "Tento tab obsahuje detailní dokumentaci props a příklady použití."
+    }
+  },
+  "checkbox": {
+    "title": "Checkbox Komponenta",
+    "props": {
+      "className": {
+        "description": "Dodatečné CSS třídy aplikované na root element.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Skryje komponentu při tisku (přidá třídu no-print).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "Pokud true, komponenta se nevyrenderuje.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Vypne vestavěné styly a ponechá pouze surový element pro plnou přizpůsobitelnost.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Renderuje komponentu pomocí tmavé palety barev.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "value": {
+        "description": "Stav checkboxu (true = zaškrtnuto, false = nezaškrtnuto).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "onChange": {
+        "description": "Callback funkce volaná při změně stavu checkboxu. Přijímá change event.",
+        "type": "function",
+        "required": "false"
+      },
+      "name": {
+        "description": "HTML name atribut pro odeslání formuláře.",
+        "type": "string",
+        "required": "false"
+      },
+      "id": {
+        "description": "HTML id atribut pro asociaci s label.",
+        "type": "string",
+        "required": "false"
+      },
+      "disabled": {
+        "description": "Zakáže interakci s checkboxem.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "label": {
+        "description": "Text labelu zobrazený nad checkboxem.",
+        "type": "string",
+        "required": "false"
+      },
+      "required": {
+        "description": "Označí checkbox jako povinný (zobrazí hvězdičku v labelu).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "error": {
+        "description": "Chybový stav (změní styling pro zobrazení chyby).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "errorMessage": {
+        "description": "Chybová zpráva zobrazená pod checkboxem když je error true.",
+        "type": "string",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "basic": "Základní",
+      "states": "Stavy",
+      "validation": "Validace",
+      "styling": "Styling"
+    },
+    "examples": {
+      "basic": "Základní",
+      "withLabel": "S labelem",
+      "required": "Povinný",
+      "disabled": "Zakázáno",
+      "checked": "Zaškrtnuto",
+      "unchecked": "Nezaškrtnuto",
+      "withError": "S chybou",
+      "requiredWithError": "Povinný s chybou",
+      "noDefault": "Bez výchozího",
+      "basicLabel": "Základní checkbox",
+      "termsLabel": "Přijímám podmínky použití",
+      "requiredLabel": "Souhlasím s podmínkami",
+      "disabledLabel": "Zakázaný checkbox",
+      "checkedLabel": "Zaškrtnutý checkbox",
+      "uncheckedLabel": "Nezaškrtnutý checkbox",
+      "errorLabel": "Prosím přijměte pro pokračování",
+      "requiredErrorLabel": "Povinné pole",
+      "noDefaultLabel": "Bez výchozího stylu",
+      "errorMessage": "Toto pole je povinné",
+      "requiredErrorMessage": "Musíte toto přijmout pro pokračování"
     }
   },
   "documentation": {

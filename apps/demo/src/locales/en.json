@@ -632,7 +632,10 @@
       "number": "Number",
       "input": "Input",
       "profileCard": "Profile Card",
-      "themeToggle": "Theme Toggle"
+      "themeToggle": "Theme Toggle",
+      "infogroup": "Info Group",
+      "tabgroup": "Tab Group",
+      "checkbox": "Checkbox"
     },
     "utilities": {
       "copyToClipboard": "Copy to Clipboard",
@@ -1116,6 +1119,268 @@
       "light": "Light mode",
       "interactive": "Interactive (toggle)",
       "noDefault": "No default style"
+    }
+  },
+  "infogroup": {
+    "title": "InfoGroup Component",
+    "props": {
+      "itemList": {
+        "description": "Array of items to display. Each item can have title, subtitle, and optional icon.",
+        "type": "InfoGroupItem[]",
+        "required": "true"
+      },
+      "direction": {
+        "description": "Layout direction for the group: horizontal (items in a row) or vertical (items in a column).",
+        "type": "string",
+        "required": "false"
+      },
+      "itemDirection": {
+        "description": "Layout direction for individual items: horizontal (icon and content side by side) or vertical (icon above content).",
+        "type": "string",
+        "required": "false"
+      },
+      "autoResize": {
+        "description": "TODO: Implement autoResize functionality.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "className": {
+        "description": "Additional CSS classes applied to the root element.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Hides the component when printing (adds no-print class).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "If true, the component will not be rendered.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Disables built-in styling and leaves only raw element for full customization.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Renders the component using dark mode palette.",
+        "type": "boolean",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "basic": "Basic",
+      "directions": "Directions",
+      "itemDirections": "Item Directions",
+      "content": "Content",
+      "styling": "Styling"
+    },
+    "examples": {
+      "default": "Default",
+      "horizontal": "Horizontal",
+      "vertical": "Vertical",
+      "itemHorizontal": "Item Horizontal",
+      "itemVertical": "Item Vertical",
+      "withIcons": "With icons",
+      "withSubtitle": "With subtitle",
+      "withComponentSubtitles": "With component subtitles",
+      "mixedContent": "Mixed content",
+      "customContent": "Custom content",
+      "noDefault": "No default",
+      "item1Title": "Item 1",
+      "item1Subtitle": "Description for item 1",
+      "item2Title": "Item 2",
+      "item2Subtitle": "Description for item 2",
+      "item3Title": "Item 3",
+      "item3Subtitle": "Description for item 3"
+    }
+  },
+  "tabgroup": {
+    "title": "TabGroup Component",
+    "props": {
+      "itemList": {
+        "description": "Array of tab items. Each item must have title, content, and code. Optionally subtitle, icon, and onClick.",
+        "type": "TabGroupItem[]",
+        "required": "true"
+      },
+      "codeActive": {
+        "description": "Identifier of the currently active tab. Must match one of the item codes.",
+        "type": "string | number",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Color scheme for highlighting the active tab.",
+        "type": "string",
+        "required": "false"
+      },
+      "ActionList": {
+        "description": "Array of components displayed to the right of tabs.",
+        "type": "React.ReactNode[]",
+        "required": "false"
+      },
+      "onChange": {
+        "description": "Callback function called when active tab changes. Receives the code of the clicked tab.",
+        "type": "function",
+        "required": "false"
+      },
+      "className": {
+        "description": "Additional CSS classes applied to the root element.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Hides the component when printing (adds no-print class).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "If true, the component will not be rendered.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Disables built-in styling and leaves only raw element for full customization.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Renders the component using dark mode palette.",
+        "type": "boolean",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "basic": "Basic",
+      "colorScheme": "Color scheme",
+      "actionList": "Action List",
+      "content": "Content",
+      "styling": "Styling"
+    },
+    "examples": {
+      "default": "Default",
+      "withIcons": "With icons",
+      "withSubtitle": "With subtitle",
+      "primary": "Primary",
+      "success": "Success",
+      "danger": "Danger",
+      "warning": "Warning",
+      "withActions": "With ActionList",
+      "withComponentContent": "With component content",
+      "noDefault": "No default",
+      "bestExamples": "Best Examples",
+      "topPicks": "Top picks",
+      "bestExamplesContent": "This tab shows the best examples selected by our team.",
+      "allExamples": "All Examples",
+      "completeList": "Complete list",
+      "allExamplesContent": "This tab displays all available examples in the library.",
+      "props": "Props",
+      "documentation": "Documentation",
+      "propsContent": "This tab contains detailed prop documentation and usage examples."
+    }
+  },
+  "checkbox": {
+    "title": "Checkbox Component",
+    "props": {
+      "className": {
+        "description": "Additional CSS classes applied to the root element.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Hides the component when printing (adds no-print class).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "If true, the component will not be rendered.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Disables built-in styling and leaves only raw element for full customization.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Renders the component using dark mode palette.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "value": {
+        "description": "Checked state of the checkbox (true = checked, false = unchecked).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "onChange": {
+        "description": "Callback function called when checkbox state changes. Receives the change event.",
+        "type": "function",
+        "required": "false"
+      },
+      "name": {
+        "description": "HTML name attribute for form submission.",
+        "type": "string",
+        "required": "false"
+      },
+      "id": {
+        "description": "HTML id attribute for label association.",
+        "type": "string",
+        "required": "false"
+      },
+      "disabled": {
+        "description": "Disables the checkbox interaction.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "label": {
+        "description": "Label text displayed above the checkbox.",
+        "type": "string",
+        "required": "false"
+      },
+      "required": {
+        "description": "Marks checkbox as required (shows asterisk in label).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "error": {
+        "description": "Error state (changes styling to show error).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "errorMessage": {
+        "description": "Error message displayed below checkbox when error is true.",
+        "type": "string",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "basic": "Basic",
+      "states": "States",
+      "validation": "Validation",
+      "styling": "Styling"
+    },
+    "examples": {
+      "basic": "Basic",
+      "withLabel": "With label",
+      "required": "Required",
+      "disabled": "Disabled",
+      "checked": "Checked",
+      "unchecked": "Unchecked",
+      "withError": "With error",
+      "requiredWithError": "Required with error",
+      "noDefault": "No default",
+      "basicLabel": "Basic checkbox",
+      "termsLabel": "Accept terms and conditions",
+      "requiredLabel": "I agree to the terms",
+      "disabledLabel": "Disabled checkbox",
+      "checkedLabel": "Checked checkbox",
+      "uncheckedLabel": "Unchecked checkbox",
+      "errorLabel": "Please accept to continue",
+      "requiredErrorLabel": "Required field",
+      "noDefaultLabel": "No default styling",
+      "errorMessage": "This field is required",
+      "requiredErrorMessage": "You must accept this to continue"
     }
   },
   "documentation": {

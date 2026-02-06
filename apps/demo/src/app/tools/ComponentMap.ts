@@ -41,6 +41,15 @@ const componentMap: { [key: string]: React.LazyExoticComponent<React.FC> } = {
   ThemeToggle: React.lazy(
     () => import("../../documentation/basic-components/ThemeToggleDoc"),
   ),
+  InfoGroup: React.lazy(
+    () => import("../../documentation/basic-components/InfoGroupDoc"),
+  ),
+  TabGroup: React.lazy(
+    () => import("../../documentation/basic-components/TabGroupDoc"),
+  ),
+  Checkbox: React.lazy(
+    () => import("../../documentation/basic-components/CheckboxDoc"),
+  ),
 
   //Utilities
   CopyToClipboard: React.lazy(

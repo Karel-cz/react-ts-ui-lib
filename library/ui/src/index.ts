@@ -13,6 +13,9 @@ export { Number } from "./basic-components/Number";
 export { Input } from "./basic-components/Input";
 export { ProfileCard } from "./basic-components/ProfileCard";
 export { ThemeToggle } from "./basic-components/ThemeToggle";
+export { InfoGroup } from "./basic-components/InfoGroup";
+export { TabGroup } from "./basic-components/TabGroup";
+export { Checkbox } from "./basic-components/Checkbox";
 
 // Color utilities
 export { getColorScheme, getBorderColor, getRgbaFromScheme, hexToRgba } from "./tools/colors";
@@ -31,6 +34,9 @@ export { MODAL_PROP_NAMES } from "./basic-components/Modal";
 export { INPUT_PROP_NAMES } from "./basic-components/Input";
 export { PROFILE_CARD_PROP_NAMES } from "./basic-components/ProfileCard";
 export { THEME_TOGGLE_PROP_NAMES } from "./basic-components/ThemeToggle";
+export { INFO_GROUP_PROP_NAMES } from "./basic-components/InfoGroup";
+export { TAB_GROUP_PROP_NAMES } from "./basic-components/TabGroup";
+export { CHECKBOX_PROP_NAMES } from "./basic-components/Checkbox";
 
 // Types
 export type { PendingProps } from "./basic-components/Pending";
@@ -41,3 +47,6 @@ export type { BlockProps } from "./basic-components/Block";
 export type { ModalProps, ModalSize } from "./basic-components/Modal";
 export type { ProfileCardProps } from "./basic-components/ProfileCard";
 export type { ThemeToggleProps } from "./basic-components/ThemeToggle";
+export type { InfoGroupProps, InfoGroupItem } from "./basic-components/InfoGroup";
+export type { TabGroupProps, TabGroupItem } from "./basic-components/TabGroup";
+export type { CheckboxProps } from "./basic-components/Checkbox";
