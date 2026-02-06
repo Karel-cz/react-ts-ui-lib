@@ -70,4 +70,14 @@ export const getComponentList = (t: (key: string) => string): SideBarItem[] => [
     icon: "mdi-radiobox-marked",
     key: "Radios",
   },
+  {
+    title: t("sidebar.components.label"),
+    icon: "mdi-format-title",
+    key: "Label",
+  },
+  {
+    title: t("sidebar.components.popover"),
+    icon: "mdi-tooltip-outline",
+    key: "Popover",
+  },
 ];

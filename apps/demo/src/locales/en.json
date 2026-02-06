@@ -638,7 +638,9 @@
       "checkbox": "Checkbox",
       "date": "Date",
       "select": "Select",
-      "radios": "Radios"
+      "radios": "Radios",
+      "label": "Label",
+      "popover": "Popover"
     },
     "utilities": {
       "copyToClipboard": "Copy to Clipboard",
@@ -1633,6 +1635,129 @@
       "banana": "Banana",
       "orange": "Orange",
       "grape": "Grape"
+    }
+  },
+  "label": {
+    "title": "Label Component",
+    "props": {
+      "className": {
+        "description": "Additional CSS classes applied to the root element.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Hides the component when printing (adds no-print class).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "If true, the component will not be rendered.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Disables built-in styling for full customization.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Uses dark mode color palette.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "children": {
+        "description": "Label content (string or React node).",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "size": {
+        "description": "Typography size: xxs, xs, s, m, l, xl, xxl.",
+        "type": "LabelSizeToken",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Theme color scheme; affects text color.",
+        "type": "ColorScheme",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Tooltip text shown on hover (native title attribute).",
+        "type": "string",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "basic": "Basic",
+      "sizes": "Sizes",
+      "colorScheme": "Color scheme",
+      "styling": "Styling"
+    },
+    "examples": {
+      "basic": "Basic",
+      "withTooltip": "With tooltip",
+      "tooltipContent": "This is a label with tooltip.",
+      "sampleText": "Sample heading text",
+      "noDefault": "No default"
+    }
+  },
+  "popover": {
+    "title": "Popover Component",
+    "props": {
+      "className": {
+        "description": "Additional CSS classes applied to the wrapper.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Hides the component when printing.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "If true, the component will not be rendered.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Disables built-in styling.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Uses dark mode color palette.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "triggerRef": {
+        "description": "Ref to the element the popover attaches to (e.g. a div wrapping your button). You control open state via the button's onClick.",
+        "type": "RefObject<HTMLElement>",
+        "required": "true"
+      },
+      "content": {
+        "description": "Content shown inside the popover panel.",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "open": {
+        "description": "Whether the popover is open.",
+        "type": "boolean",
+        "required": "true"
+      },
+      "onOpenChange": {
+        "description": "Called when popover should close (e.g. click outside, Escape).",
+        "type": "function",
+        "required": "true"
+      }
+    },
+    "categories": {
+      "basic": "Basic",
+      "styling": "Styling"
+    },
+    "examples": {
+      "basic": "Basic",
+      "trigger": "Open",
+      "contentText": "Popover content – click outside or press Escape to close.",
+      "noDefault": "No default"
     }
   },
   "documentation": {

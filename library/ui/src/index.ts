@@ -19,10 +19,14 @@ export { Checkbox } from "./basic-components/Checkbox";
 export { Date } from "./basic-components/Date";
 export { Select } from "./basic-components/Select";
 export { Radios } from "./basic-components/Radios";
+export { Label } from "./basic-components/Label";
+export { Popover } from "./basic-components/Popover";
 
 // Color utilities
 export { getColorScheme, getBorderColor, getRgbaFromScheme, hexToRgba } from "./tools/colors";
 export type { ColorScheme } from "./tools/colors";
+export { getLabelSize } from "./tools/labelSize";
+export type { LabelSizeToken } from "./tools/labelSize";
 
 // Prop Names (for docs)
 export { BUTTON_PROP_NAMES } from "./basic-components/Button";
@@ -43,6 +47,8 @@ export { CHECKBOX_PROP_NAMES } from "./basic-components/Checkbox";
 export { DATE_PROP_NAMES } from "./basic-components/Date";
 export { SELECT_PROP_NAMES } from "./basic-components/Select";
 export { RADIOS_PROP_NAMES } from "./basic-components/Radios";
+export { LABEL_PROP_NAMES } from "./basic-components/Label";
+export { POPOVER_PROP_NAMES } from "./basic-components/Popover";
 
 // Types
 export type { PendingProps } from "./basic-components/Pending";
@@ -59,3 +65,5 @@ export type { CheckboxProps } from "./basic-components/Checkbox";
 export type { DateProps } from "./basic-components/Date";
 export type { SelectProps, SelectItem } from "./basic-components/Select";
 export type { RadiosProps, RadiosItem } from "./basic-components/Radios";
+export type { LabelProps } from "./basic-components/Label";
+export type { PopoverProps } from "./basic-components/Popover";

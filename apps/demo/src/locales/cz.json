@@ -390,7 +390,9 @@
       "checkbox": "Checkbox",
       "date": "Datum",
       "select": "Select",
-      "radios": "Radios"
+      "radios": "Radios",
+      "label": "Label",
+      "popover": "Popover"
     },
     "utilities": {
       "copyToClipboard": "Kopírovat do schránky",
@@ -1384,6 +1386,129 @@
       "banana": "Banán",
       "orange": "Pomeranč",
       "grape": "Hrozny"
+    }
+  },
+  "label": {
+    "title": "Label Komponenta",
+    "props": {
+      "className": {
+        "description": "Dodatečné CSS třídy aplikované na root element.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Skryje komponentu při tisku (přidá třídu no-print).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "Pokud true, komponenta se nevyrenderuje.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Vypne vestavěné styly pro plnou přizpůsobitelnost.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Použije tmavou paletu barev.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "children": {
+        "description": "Obsah labelu (řetězec nebo React node).",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "size": {
+        "description": "Velikost typografie: xxs, xs, s, m, l, xl, xxl.",
+        "type": "LabelSizeToken",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Barevné schéma tématu; ovlivňuje barvu textu.",
+        "type": "ColorScheme",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Text tooltipu při najetí myší (nativní atribut title).",
+        "type": "string",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "basic": "Základní",
+      "sizes": "Velikosti",
+      "colorScheme": "Barevné schéma",
+      "styling": "Styling"
+    },
+    "examples": {
+      "basic": "Základní",
+      "withTooltip": "S tooltipem",
+      "tooltipContent": "Toto je label s tooltipem.",
+      "sampleText": "Ukázkový nadpis",
+      "noDefault": "Bez výchozího"
+    }
+  },
+  "popover": {
+    "title": "Popover Komponenta",
+    "props": {
+      "className": {
+        "description": "Dodatečné CSS třídy aplikované na wrapper.",
+        "type": "string",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Skryje komponentu při tisku.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "Pokud true, komponenta se nevyrenderuje.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Vypne vestavěné styly.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Použije tmavou paletu barev.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "triggerRef": {
+        "description": "Ref na element, na který se popover navěsí (např. div obalující tlačítko). Stav open řídíte přes onClick tlačítka.",
+        "type": "RefObject<HTMLElement>",
+        "required": "true"
+      },
+      "content": {
+        "description": "Obsah zobrazený v panelu popoveru.",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "open": {
+        "description": "Zda je popover otevřený.",
+        "type": "boolean",
+        "required": "true"
+      },
+      "onOpenChange": {
+        "description": "Volání při zavření (klik mimo, Escape).",
+        "type": "function",
+        "required": "true"
+      }
+    },
+    "categories": {
+      "basic": "Základní",
+      "styling": "Styling"
+    },
+    "examples": {
+      "basic": "Základní",
+      "trigger": "Otevřít",
+      "contentText": "Obsah popoveru – klikněte mimo nebo stiskněte Escape pro zavření.",
+      "noDefault": "Bez výchozího"
     }
   },
   "documentation": {
