@@ -396,7 +396,12 @@
     },
     "utilities": {
       "copyToClipboard": "Kopírovat do schránky",
-      "getMostFrequentValue": "Získat nejčastější hodnotu"
+      "getMostFrequentValue": "Získat nejčastější hodnotu",
+      "generatePassword": "Generátor hesel",
+      "parseQueryString": "Parsovat query string",
+      "generateRandomString": "Generovat náhodný řetězec",
+      "validateEmail": "Validovat email",
+      "validateJson": "Validovat JSON"
     }
   },
   "block": {
@@ -1673,7 +1678,140 @@
       }
     }
   },
-
+  "parseQueryString": {
+    "title": "Parsovat query string",
+    "description": "Převede query string (např. z URL) na objekt dvojic klíč–hodnota.",
+    "inputs": {
+      "search": {
+        "label": "Query string",
+        "placeholder": "?a=1&b=2"
+      }
+    },
+    "actions": {
+      "parse": "Parsovat"
+    },
+    "parameters": {
+      "search": {
+        "name": "search",
+        "description": "Query string, s nebo bez úvodního \"?\".",
+        "type": "string",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "Objekt s názvy parametrů jako klíči a dekódovanými hodnotami.",
+      "type": "Record<string, string>"
+    },
+    "usage": {
+      "basic": {
+        "title": "Základní použití",
+        "code": "import { parseQueryString } from \"@react-ts-ui-lib/utilities\";\n\nconst params = parseQueryString(\"?a=1&b=hello\");\n// { a: \"1\", b: \"hello\" }"
+      }
+    }
+  },
+  "generateRandomString": {
+    "title": "Generovat náhodný řetězec",
+    "description": "Vygeneruje náhodný alfanumerický řetězec (0-9, A-Z, a-z).",
+    "inputs": {
+      "length": {
+        "label": "Délka"
+      }
+    },
+    "actions": {
+      "generate": "Generovat"
+    },
+    "result": {
+      "label": "Výsledek"
+    },
+    "parameters": {
+      "length": {
+        "name": "length",
+        "description": "Délka vygenerovaného řetězce.",
+        "type": "number",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "Náhodný alfanumerický řetězec.",
+      "type": "string"
+    },
+    "usage": {
+      "basic": {
+        "title": "Základní použití",
+        "code": "import { generateRandomString } from \"@react-ts-ui-lib/utilities\";\n\nconst id = generateRandomString(12);\n// např. \"a3Fk9xL2mN1p\""
+      }
+    }
+  },
+  "validateEmail": {
+    "title": "Validovat email",
+    "description": "Jednoduchá kontrola, zda řetězec vypadá jako email (local@domain.tld).",
+    "inputs": {
+      "email": {
+        "label": "Email",
+        "placeholder": "user@example.com"
+      }
+    },
+    "actions": {
+      "validate": "Validovat"
+    },
+    "result": {
+      "valid": "Platný email",
+      "invalid": "Neplatný email"
+    },
+    "parameters": {
+      "str": {
+        "name": "str",
+        "description": "Řetězec k validaci.",
+        "type": "string",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "True, pokud řetězec vypadá jako platný email.",
+      "type": "boolean"
+    },
+    "usage": {
+      "basic": {
+        "title": "Základní použití",
+        "code": "import { validateEmail } from \"@react-ts-ui-lib/utilities\";\n\nconst ok = validateEmail(\"user@example.com\");\n// true"
+      }
+    }
+  },
+  "validateJson": {
+    "title": "Validovat JSON",
+    "description": "Zkontroluje, zda je řetězec platný JSON (lze parsovat).",
+    "inputs": {
+      "str": {
+        "label": "JSON řetězec",
+        "placeholder": "{\"a\": 1}"
+      }
+    },
+    "actions": {
+      "validate": "Validovat"
+    },
+    "result": {
+      "valid": "Platný JSON",
+      "invalid": "Neplatný JSON"
+    },
+    "parameters": {
+      "str": {
+        "name": "str",
+        "description": "Řetězec k validaci.",
+        "type": "string",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "True, pokud je řetězec platný JSON.",
+      "type": "boolean"
+    },
+    "usage": {
+      "basic": {
+        "title": "Základní použití",
+        "code": "import { validateJson } from \"@react-ts-ui-lib/utilities\";\n\nconst ok = validateJson('{\"x\": 1}');\n// true"
+      }
+    }
+  },
   "aboutApplication": {
     "title": "O aplikaci",
     "about": {

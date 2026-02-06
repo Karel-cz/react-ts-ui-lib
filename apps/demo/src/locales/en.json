@@ -644,7 +644,12 @@
     },
     "utilities": {
       "copyToClipboard": "Copy to Clipboard",
-      "getMostFrequentValue": "Get Most Frequent Value"
+      "getMostFrequentValue": "Get Most Frequent Value",
+      "generatePassword": "Generate Password",
+      "parseQueryString": "Parse Query String",
+      "generateRandomString": "Generate Random String",
+      "validateEmail": "Validate Email",
+      "validateJson": "Validate JSON"
     }
   },
   "block": {
@@ -1917,6 +1922,173 @@
       "withObjects": {
         "title": "With objects",
         "code": "import { getMostFrequentValue } from \"@react-ts-ui-lib/utilities\";\n\nconst users = [\n  { role: \"Admin\" },\n  { role: \"User\" },\n  { role: \"admin\" },\n];\n\nconst mostRole = await getMostFrequentValue(users, \"role\", false);\n// mostRole === \"admin\""
+      }
+    }
+  },
+  "generatePassword": {
+    "title": "Generate Password",
+    "description": "Generates a random password from digits (0–9). For now only the length parameter is supported.",
+    "inputs": {
+      "length": {
+        "label": "Length"
+      }
+    },
+    "actions": {
+      "generate": "Generate"
+    },
+    "result": {
+      "label": "Password"
+    },
+    "parameters": {
+      "length": {
+        "name": "length",
+        "description": "Length of the generated password (number of digits).",
+        "type": "number",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "Returns a string of random digits.",
+      "type": "string"
+    },
+    "usage": {
+      "basic": {
+        "title": "Basic usage",
+        "code": "import { generatePassword } from \"@react-ts-ui-lib/utilities\";\n\nconst password = generatePassword(8);\n// e.g. \"38472901\""
+      }
+    }
+  },
+  "parseQueryString": {
+    "title": "Parse Query String",
+    "description": "Parses a query string (e.g. from URL search) into an object of key-value pairs.",
+    "inputs": {
+      "search": {
+        "label": "Query string",
+        "placeholder": "?a=1&b=2"
+      }
+    },
+    "actions": {
+      "parse": "Parse"
+    },
+    "parameters": {
+      "search": {
+        "name": "search",
+        "description": "The query string, with or without leading \"?\".",
+        "type": "string",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "Object with parameter names as keys and decoded values.",
+      "type": "Record<string, string>"
+    },
+    "usage": {
+      "basic": {
+        "title": "Basic usage",
+        "code": "import { parseQueryString } from \"@react-ts-ui-lib/utilities\";\n\nconst params = parseQueryString(\"?a=1&b=hello\");\n// { a: \"1\", b: \"hello\" }"
+      }
+    }
+  },
+  "generateRandomString": {
+    "title": "Generate Random String",
+    "description": "Generates a random alphanumeric string (0-9, A-Z, a-z).",
+    "inputs": {
+      "length": {
+        "label": "Length"
+      }
+    },
+    "actions": {
+      "generate": "Generate"
+    },
+    "result": {
+      "label": "Result"
+    },
+    "parameters": {
+      "length": {
+        "name": "length",
+        "description": "Length of the generated string.",
+        "type": "number",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "Random alphanumeric string.",
+      "type": "string"
+    },
+    "usage": {
+      "basic": {
+        "title": "Basic usage",
+        "code": "import { generateRandomString } from \"@react-ts-ui-lib/utilities\";\n\nconst id = generateRandomString(12);\n// e.g. \"a3Fk9xL2mN1p\""
+      }
+    }
+  },
+  "validateEmail": {
+    "title": "Validate Email",
+    "description": "Simple check that a string looks like an email (local@domain.tld).",
+    "inputs": {
+      "email": {
+        "label": "Email",
+        "placeholder": "user@example.com"
+      }
+    },
+    "actions": {
+      "validate": "Validate"
+    },
+    "result": {
+      "valid": "Valid email",
+      "invalid": "Invalid email"
+    },
+    "parameters": {
+      "str": {
+        "name": "str",
+        "description": "String to validate.",
+        "type": "string",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "True if the string looks like a valid email.",
+      "type": "boolean"
+    },
+    "usage": {
+      "basic": {
+        "title": "Basic usage",
+        "code": "import { validateEmail } from \"@react-ts-ui-lib/utilities\";\n\nconst ok = validateEmail(\"user@example.com\");\n// true"
+      }
+    }
+  },
+  "validateJson": {
+    "title": "Validate JSON",
+    "description": "Checks if a string is valid JSON (parseable).",
+    "inputs": {
+      "str": {
+        "label": "JSON string",
+        "placeholder": "{\"a\": 1}"
+      }
+    },
+    "actions": {
+      "validate": "Validate"
+    },
+    "result": {
+      "valid": "Valid JSON",
+      "invalid": "Invalid JSON"
+    },
+    "parameters": {
+      "str": {
+        "name": "str",
+        "description": "String to validate.",
+        "type": "string",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "True if the string is valid JSON.",
+      "type": "boolean"
+    },
+    "usage": {
+      "basic": {
+        "title": "Basic usage",
+        "code": "import { validateJson } from \"@react-ts-ui-lib/utilities\";\n\nconst ok = validateJson('{\"x\": 1}');\n// true"
       }
     }
   },

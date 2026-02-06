@@ -73,6 +73,21 @@ const componentMap: { [key: string]: React.LazyExoticComponent<React.FC> } = {
   GetMostFrequentValue: React.lazy(
     () => import("../../documentation/utilities/GetMostFrequentValueDoc"),
   ),
+  GeneratePassword: React.lazy(
+    () => import("../../documentation/utilities/GeneratePasswordDoc"),
+  ),
+  ParseQueryString: React.lazy(
+    () => import("../../documentation/utilities/ParseQueryStringDoc"),
+  ),
+  GenerateRandomString: React.lazy(
+    () => import("../../documentation/utilities/GenerateRandomStringDoc"),
+  ),
+  ValidateEmail: React.lazy(
+    () => import("../../documentation/utilities/ValidateEmailDoc"),
+  ),
+  ValidateJson: React.lazy(
+    () => import("../../documentation/utilities/ValidateJsonDoc"),
+  ),
 };
 
 export { componentMap };
