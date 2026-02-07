@@ -53,7 +53,6 @@ const Css = {
       flexWrap: layout === "stacked" ? "nowrap" : "wrap",
       ...(isGradient ? { background } : { backgroundColor: background }),
       color: textColor,
-      borderRadius: modern ? CARD_RADIUS_MODERN : 0,
       boxShadow: shadow,
       border: borderColor ? `1px solid ${borderColor}` : undefined,
       boxSizing: "border-box",

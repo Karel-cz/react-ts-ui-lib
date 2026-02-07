@@ -44,13 +44,9 @@ const Css = {
 
 //@@viewOn:propTypes
 export type CopyToClipboardProps = {
-  /** Text to copy to clipboard */
   text: string;
-  /** Copy function (e.g. from @react-ts-ui-lib/utilities copyToClipboard) */
   onCopy: (text: string) => Promise<boolean>;
-  /** Label for the trigger button */
   label?: string;
-  /** Custom trigger content (overrides label if set) */
   children?: React.ReactNode;
   darkMode?: boolean;
   className?: string;

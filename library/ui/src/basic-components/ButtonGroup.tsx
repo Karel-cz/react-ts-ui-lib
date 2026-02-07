@@ -92,15 +92,10 @@ export type ButtonGroupItemCustom = {
 export type ButtonGroupItem = ButtonGroupItemButton | ButtonGroupItemCustom;
 
 export type ButtonGroupProps = {
-  /** List of items: each can be Button props or custom component via `component` */
   itemList: ButtonGroupItem[];
-  /** Layout direction */
   direction?: "row" | "column";
-  /** Gap between items (CSS value, e.g. "0.5rem") */
   gap?: string;
-  /** Visual style: default (spaced) or segmented (buttons visually joined) */
   variant?: "default" | "segmented";
-  /** Border radius for segmented variant */
   borderRadius?: RadiusToken;
   className?: string;
   noPrint?: boolean;
