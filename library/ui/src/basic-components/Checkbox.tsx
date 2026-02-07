@@ -104,7 +104,7 @@ const Css = {
 
 //@@viewOn:propTypes
 export type CheckboxProps = {
-  className?: string;
+  style?: React.CSSProperties;
   noPrint?: boolean;
   hidden?: boolean;
   removeDefaultStyle?: boolean;
@@ -120,9 +120,9 @@ export type CheckboxProps = {
   errorMessage?: string;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const CHECKBOX_PROP_NAMES = [
-  "className",
+  "style",
   "noPrint",
   "hidden",
   "removeDefaultStyle",
@@ -140,7 +140,7 @@ export const CHECKBOX_PROP_NAMES = [
 //@@viewOff:propTypes
 
 const Checkbox = ({
-  className,
+  style,
   noPrint = false,
   hidden = false,
   removeDefaultStyle = false,
@@ -162,8 +162,8 @@ const Checkbox = ({
   //@@viewOn:render
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.wrapper(removeDefaultStyle)}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...Css.wrapper(removeDefaultStyle), ...style }}
     >
       {label && (
         <label htmlFor={id} style={Css.label(removeDefaultStyle, darkMode)}>

@@ -73,14 +73,14 @@ export type BadgeProps = {
   disabled?: boolean;
   hidden?: boolean;
   noPrint?: boolean;
-  className?: string;
+  style?: React.CSSProperties;
   tooltip?: string;
   darkMode?: boolean;
   removeDefaultStyle?: boolean;
   modern?: boolean;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const BADGE_PROP_NAMES = [
   "children",
   "label",
@@ -93,7 +93,7 @@ export const BADGE_PROP_NAMES = [
   "disabled",
   "hidden",
   "noPrint",
-  "className",
+  "style",
   "tooltip",
   "darkMode",
   "removeDefaultStyle",
@@ -114,7 +114,7 @@ const Badge = ({
   disabled = false,
   hidden = false,
   noPrint = false,
-  className,
+  style,
   tooltip,
   darkMode = true,
   removeDefaultStyle = false,
@@ -147,27 +147,29 @@ const Badge = ({
   //@@viewOff:private
 
   //@@viewOn:render
+  const badgeStyle = Css.badge(
+    removeDefaultStyle,
+    finalBackground,
+    textColor,
+    borderRadiusValue,
+    clickable,
+    disabled,
+    disabledBg,
+    baseScheme.color,
+    badgeSize.padding,
+    badgeSize.fontSize,
+    badgeSize.gap,
+    badgeSize.width,
+  );
+
   return (
     <span
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
+      className={noPrint ? "no-print" : undefined}
       onClick={clickable ? onClick : undefined}
       role={clickable ? "button" : undefined}
       aria-disabled={disabled || undefined}
       title={tooltip}
-      style={Css.badge(
-        removeDefaultStyle,
-        finalBackground,
-        textColor,
-        borderRadiusValue,
-        clickable,
-        disabled,
-        disabledBg,
-        baseScheme.color,
-        badgeSize.padding,
-        badgeSize.fontSize,
-        badgeSize.gap,
-        badgeSize.width,
-      )}
+      style={{ ...badgeStyle, ...style }}
     >
       {icon && <Icon icon={icon} size={iconSize} darkMode={darkMode} />}
       {content}

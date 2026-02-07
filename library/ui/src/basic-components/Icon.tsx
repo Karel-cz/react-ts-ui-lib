@@ -19,7 +19,7 @@ export type IconProps = {
   icon?: string;
   size?: SizeToken | number;
   color?: string;
-  className?: string;
+  style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLSpanElement>;
   removeDefaultStyle?: boolean;
   hidden?: boolean;
@@ -28,12 +28,12 @@ export type IconProps = {
   darkMode?: boolean;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const ICON_PROP_NAMES = [
   "icon",
   "size",
   "color",
-  "className",
+  "style",
   "onClick",
   "removeDefaultStyle",
   "hidden",
@@ -47,7 +47,7 @@ function Icon({
   icon = "mdi-close",
   size = "md",
   color = "white",
-  className,
+  style,
   onClick,
   removeDefaultStyle = false,
   hidden = false,
@@ -73,16 +73,18 @@ function Icon({
   //@@viewOff:private
 
   //@@viewOn:render
+  const baseStyle: React.CSSProperties = {
+    cursor: onClick ? "pointer" : "default",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 4,
+  };
+
   return (
     <span
-      className={`inline-flex items-center gap-1 ${className || ""}`}
       onClick={onClick}
       title={tooltip}
-      style={{
-        cursor: onClick ? "pointer" : "default",
-        display: "flex",
-        alignItems: "center",
-      }}
+      style={{ ...baseStyle, ...style }}
     >
       <MdiIcon
         path={path}

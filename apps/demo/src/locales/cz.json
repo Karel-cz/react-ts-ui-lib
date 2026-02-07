@@ -57,9 +57,9 @@
         "type": "boolean",
         "required": "false"
       },
-      "className": {
-        "description": "Dodatečné className pro wrapper.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "tooltip": {
@@ -138,7 +138,7 @@
       "iconPosition": { "description": "Ovládá, zda je ikona renderována na levé nebo pravé straně obsahu.", "type": "string", "required": "false" },
       "label": { "description": "Jednoduchá textová alternativa k children – užitečné pro snadná textová tlačítka nebo přístupnost.", "type": "string", "required": "false" },
       "onClick": { "description": "Spuštěno, když uživatel klikne na tlačítko.", "type": "function", "required": "false" },
-      "className": { "description": "Dodatečné CSS třídy aplikované na root button element.", "type": "string", "required": "false" },
+      "style": { "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.", "type": "React.CSSProperties", "required": "false" },
       "borderRadius": { "description": "Předdefinovaný border radius token (xs, sm, md, lg, full).", "type": "string", "required": "false" },
       "size": { "description": "Button size token (xs, sm, md, lg, xl).", "type": "string", "required": "false" },
       "removeDefaultStyle": { "description": "Vypne vestavěné styly a ponechá pouze surový button element pro plnou přizpůsobitelnost.", "type": "boolean", "required": "false" },
@@ -220,7 +220,7 @@
       "icon": { "description": "Název Material Design Icon (mdi-*) k renderování.", "type": "string", "required": "false" },
       "size": { "description": "Icon size token (xs, sm, md, lg, xl) nebo číslo (em) pro vlastní velikost.", "type": "string | number", "required": "false" },
       "color": { "description": "Barva ikony (CSS color hodnota).", "type": "string", "required": "false" },
-      "className": { "description": "Dodatečné třídy pro wrapper span.", "type": "string", "required": "false" },
+      "style": { "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.", "type": "React.CSSProperties", "required": "false" },
       "onClick": { "description": "Click handler pro wrapper ikony.", "type": "function", "required": "false" },
       "removeDefaultStyle": { "description": "Render bez výchozích layout stylů.", "type": "boolean", "required": "false" },
       "hidden": { "description": "Pokud true, ikona se nevyrenderuje.", "type": "boolean", "required": "false" },
@@ -264,7 +264,7 @@
   "pending": {
     "title": "Pending Komponenta",
     "props": {
-      "className": { "description": "Dodatečné CSS třídy pro SVG element.", "type": "string", "required": "false" },
+      "style": { "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.", "type": "React.CSSProperties", "required": "false" },
       "type": { "description": "Styl spinneru: circular nebo horizontal bar.", "type": "string", "required": "false" },
       "size": { "description": "Pending size token (xs, sm, md, lg, xl).", "type": "string", "required": "false" },
       "darkMode": { "description": "Použije tmavou paletu barev, když true.", "type": "boolean", "required": "false" },
@@ -334,7 +334,7 @@
     "title": "SideBar Komponenta",
     "props": {
       "itemList": { "description": "Položky nejvyšší úrovně k renderování v sidebaru (mohou být vnořené).", "type": "array", "required": "true" },
-      "className": { "description": "Dodatečné třídy pro container.", "type": "string", "required": "false" },
+      "style": { "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.", "type": "React.CSSProperties", "required": "false" },
       "removeDefaultStyle": { "description": "Vypne vestavěné styly pro container a položky.", "type": "boolean", "required": "false" },
       "tooltip": { "description": "Volitelný tooltip na containeru (nativní title).", "type": "string", "required": "false" },
       "label": { "description": "Volitelný textový label pro container.", "type": "string", "required": "false" },
@@ -490,9 +490,9 @@
         "type": "string | number",
         "required": "false"
       },
-      "className": {
-        "description": "Dodatečné CSS třídy.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "removeDefaultStyle": {
@@ -578,9 +578,9 @@
         "type": "number",
         "required": "false"
       },
-      "className": {
-        "description": "Dodatečné CSS třídy.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       }
     },
@@ -603,9 +603,9 @@
   "input": {
     "title": "Input Komponenta",
     "props": {
-      "className": {
-        "description": "Dodatečné CSS třídy.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "removeDefaultStyle": {
@@ -666,6 +666,11 @@
       "name": {
         "description": "HTML atribut name.",
         "type": "string",
+        "required": "false"
+      },
+      "borderRadius": {
+        "description": "Předdefinované zaoblení rohů pole (none, xs, sm, md, lg, full).",
+        "type": "RadiusToken",
         "required": "false"
       }
     },
@@ -740,9 +745,9 @@
         "type": "boolean",
         "required": "false"
       },
-      "className": {
-        "description": "Další CSS třídy.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "colorScheme": {
@@ -857,9 +862,9 @@
         "type": "function",
         "required": "true"
       },
-      "className": {
-        "description": "Další CSS třída pro obal.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "removeDefaultStyle": {
@@ -913,9 +918,9 @@
         "type": "boolean",
         "required": "false"
       },
-      "className": {
-        "description": "Dodatečné CSS třídy aplikované na root element.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -994,9 +999,9 @@
         "type": "function",
         "required": "false"
       },
-      "className": {
-        "description": "Dodatečné CSS třídy aplikované na root element.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1077,9 +1082,9 @@
         "type": "string",
         "required": "false"
       },
-      "className": {
-        "description": "Dodatečné CSS třídy aplikované na root element.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1126,9 +1131,9 @@
   "checkbox": {
     "title": "Checkbox Komponenta",
     "props": {
-      "className": {
-        "description": "Dodatečné CSS třídy aplikované na root element.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1229,9 +1234,9 @@
   "date": {
     "title": "Date Komponenta",
     "props": {
-      "className": {
-        "description": "Dodatečné CSS třídy aplikované na root element.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1328,9 +1333,9 @@
   "select": {
     "title": "Select Komponenta",
     "props": {
-      "className": {
-        "description": "Dodatečné CSS třídy aplikované na root element.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1395,9 +1400,9 @@
   "radios": {
     "title": "Radios Komponenta",
     "props": {
-      "className": {
-        "description": "Dodatečné CSS třídy aplikované na root element.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1478,9 +1483,9 @@
   "label": {
     "title": "Label Komponenta",
     "props": {
-      "className": {
-        "description": "Dodatečné CSS třídy aplikované na root element.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1522,6 +1527,11 @@
         "description": "Text tooltipu při najetí myší (nativní atribut title).",
         "type": "string",
         "required": "false"
+      },
+      "block": {
+        "description": "Pokud true, label se vykreslí jako blok na celou šířku s ohraničením; text zůstane vlevo.",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "categories": {
@@ -1535,15 +1545,16 @@
       "withTooltip": "S tooltipem",
       "tooltipContent": "Toto je label s tooltipem.",
       "sampleText": "Ukázkový nadpis",
-      "noDefault": "Bez výchozího"
+      "noDefault": "Bez výchozího",
+      "block": "Jako blok"
     }
   },
   "popover": {
     "title": "Popover Komponenta",
     "props": {
-      "className": {
-        "description": "Dodatečné CSS třídy aplikované na wrapper.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1607,6 +1618,12 @@
       "required": "Povinné",
       "yes": "Ano",
       "no": "Ne"
+    },
+    "tabs": {
+      "basicInfo": "Základní",
+      "examples": "Příklady",
+      "usage": "Použití",
+      "propTypes": "Prop Types"
     },
     "utility": {
       "parameters": {
@@ -1741,9 +1758,9 @@
         "type": "boolean",
         "required": "false"
       },
-      "className": {
-        "description": "Další CSS třída.",
-        "type": "string",
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "removeDefaultStyle": {

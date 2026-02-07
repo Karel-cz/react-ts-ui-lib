@@ -53,7 +53,7 @@ const Css = {
 
 //@@viewOn:propTypes
 export type PopoverProps = {
-  className?: string;
+  style?: React.CSSProperties;
   noPrint?: boolean;
   hidden?: boolean;
   removeDefaultStyle?: boolean;
@@ -64,9 +64,9 @@ export type PopoverProps = {
   onOpenChange: (open: boolean) => void;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const POPOVER_PROP_NAMES = [
-  "className",
+  "style",
   "noPrint",
   "hidden",
   "removeDefaultStyle",
@@ -81,7 +81,7 @@ export const POPOVER_PROP_NAMES = [
 const GAP = 8;
 
 const Popover = ({
-  className,
+  style,
   noPrint = false,
   hidden = false,
   removeDefaultStyle = false,
@@ -160,8 +160,8 @@ const Popover = ({
       ? createPortal(
           <div
             ref={panelRef}
-            className={[className, noPrint ? "no-print" : null].filter(Boolean).join(" ") || undefined}
-            style={{ ...Css.panelPosition(panelPosition), ...Css.panelStyle(removeDefaultStyle, darkMode) }}
+            className={noPrint ? "no-print" : undefined}
+            style={{ ...Css.panelPosition(panelPosition), ...Css.panelStyle(removeDefaultStyle, darkMode), ...style }}
             role="dialog"
             aria-hidden={!open}
           >

@@ -194,7 +194,7 @@ export type ModalProps = {
   height?: string | number;
   maxHeight?: string | number;
   borderRadius?: RadiusToken;
-  className?: string;
+  style?: React.CSSProperties;
   removeDefaultStyle?: boolean;
   closeOnBackdrop?: boolean;
   closeOnEsc?: boolean;
@@ -219,7 +219,7 @@ export const MODAL_PROP_NAMES = [
   "height",
   "maxHeight",
   "borderRadius",
-  "className",
+  "style",
   "removeDefaultStyle",
   "closeOnBackdrop",
   "closeOnEsc",
@@ -246,7 +246,7 @@ const Modal = ({
   height,
   maxHeight,
   borderRadius = "md",
-  className,
+  style,
   removeDefaultStyle = false,
   closeOnBackdrop = true,
   closeOnEsc = true,
@@ -302,8 +302,8 @@ const Modal = ({
   //@@viewOn:render
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.overlay(removeDefaultStyle, overlayColor)}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...Css.overlay(removeDefaultStyle, overlayColor), ...style }}
       onClick={handleBackdropClick}
       role="presentation"
     >

@@ -94,7 +94,7 @@ const Css = {
 export type ThemeToggleProps = {
   darkMode: boolean;
   onToggle: () => void;
-  className?: string;
+  style?: React.CSSProperties;
   removeDefaultStyle?: boolean;
   ariaLabelDark?: string;
   ariaLabelLight?: string;
@@ -103,7 +103,7 @@ export type ThemeToggleProps = {
 export const THEME_TOGGLE_PROP_NAMES = [
   "darkMode",
   "onToggle",
-  "className",
+  "style",
   "removeDefaultStyle",
   "ariaLabelDark",
   "ariaLabelLight",
@@ -116,7 +116,7 @@ const DEFAULT_ARIA_LIGHT = "Light mode";
 function ThemeToggle({
   darkMode,
   onToggle,
-  className,
+  style,
   removeDefaultStyle = false,
   ariaLabelDark = DEFAULT_ARIA_DARK,
   ariaLabelLight = DEFAULT_ARIA_LIGHT,
@@ -125,10 +125,11 @@ function ThemeToggle({
   const isDark = darkMode;
   const textScheme = getColorScheme("text", darkMode);
 
+  const wrapperStyle = removeDefaultStyle ? {} : Css.wrapper();
+
   return (
     <div
-      className={className}
-      style={removeDefaultStyle ? {} : Css.wrapper()}
+      style={{ ...wrapperStyle, ...style }}
     >
       <div
         role="switch"

@@ -65,6 +65,14 @@ const LabelDoc = () => {
             </Label>
           ),
         },
+        {
+          label: t("label.examples.block"),
+          components: (
+            <Label block darkMode={darkMode}>
+              {t("label.examples.sampleText")}
+            </Label>
+          ),
+        },
       ],
     },
   ];
@@ -74,6 +82,7 @@ const LabelDoc = () => {
   return (
     <div>
       <Documentation
+        state="inProgress"
         title={t("label.title")}
         propTypesList={propTypesList}
         componentList={componentList}
@@ -84,6 +93,10 @@ const LabelDoc = () => {
         propTypesRequiredLabel={t("documentation.propTypes.required")}
         propTypesYes={t("documentation.propTypes.yes")}
         propTypesNo={t("documentation.propTypes.no")}
+        tabBasicInfoLabel={t("documentation.tabs.basicInfo")}
+        tabExamplesLabel={t("documentation.tabs.examples")}
+        tabUsageLabel={t("documentation.tabs.usage")}
+        tabPropTypesLabel={t("documentation.tabs.propTypes")}
         darkMode={darkMode}
       />
     </div>

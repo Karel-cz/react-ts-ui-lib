@@ -191,6 +191,7 @@ const InfoGroupDoc = () => {
   return (
     <div>
       <Documentation
+        state="nearlyReady"
         title={t("infogroup.title")}
         propTypesList={propTypesList}
         componentList={componentList}
@@ -201,6 +202,10 @@ const InfoGroupDoc = () => {
         propTypesRequiredLabel={t("documentation.propTypes.required")}
         propTypesYes={t("documentation.propTypes.yes")}
         propTypesNo={t("documentation.propTypes.no")}
+        tabBasicInfoLabel={t("documentation.tabs.basicInfo")}
+        tabExamplesLabel={t("documentation.tabs.examples")}
+        tabUsageLabel={t("documentation.tabs.usage")}
+        tabPropTypesLabel={t("documentation.tabs.propTypes")}
         darkMode={darkMode}
       />
     </div>

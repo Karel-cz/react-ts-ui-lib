@@ -27,7 +27,7 @@ const Css = {
 
 //@@viewOn:propTypes
 export type PendingProps = {
-  className?: string;
+  style?: React.CSSProperties;
   type?: "circular" | "horizontal";
   size?: SizeToken;
   darkMode?: boolean;
@@ -35,12 +35,11 @@ export type PendingProps = {
   animationSpeed?: number;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const PENDING_PROP_NAMES = [
-  "className",
+  "style",
   "type",
   "size",
-  "darkMode",
   "darkMode",
   "colorScheme",
   "animationSpeed",
@@ -48,7 +47,7 @@ export const PENDING_PROP_NAMES = [
 //@@viewOff:propTypes
 
 const Pending = ({
-  className,
+  style,
   type = "circular",
   size = "sm",
   darkMode = true,
@@ -63,6 +62,8 @@ const Pending = ({
 
   const strokeBackground = mutedScheme.color;
   const strokeForeground = scheme.color;
+
+  const pendingStyle = Css.pending(colorScheme as ColorScheme, darkMode);
 
   if (type === "horizontal") {
     // horizontal track with moving foreground bar inside (light track, darker moving bar)
@@ -80,8 +81,7 @@ const Pending = ({
         fill="none"
         aria-hidden={true}
         focusable={false}
-        className={className}
-        style={Css.pending(colorScheme as ColorScheme, darkMode)}
+        style={{ ...pendingStyle, ...style }}
       >
         <rect
           x={0}
@@ -120,8 +120,7 @@ const Pending = ({
       fill="none"
       aria-hidden={true}
       focusable={false}
-      className={className}
-      style={Css.pending(colorScheme as ColorScheme, darkMode)}
+      style={{ ...pendingStyle, ...style }}
     >
       <circle
         cx="12"

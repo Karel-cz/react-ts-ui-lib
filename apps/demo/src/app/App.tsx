@@ -196,7 +196,7 @@ function App() {
         <div
           style={{
             flex: 1,
-            padding: "16px",
+          
             overflow: "auto",
             maxWidth: "100%",
           }}

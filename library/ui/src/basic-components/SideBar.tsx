@@ -171,7 +171,7 @@ export type SideBarItem = {
 
 export type SideBarProps = {
   itemList: SideBarItem[];
-  className?: string;
+  style?: React.CSSProperties;
   removeDefaultStyle?: boolean;
   tooltip?: string;
   label?: string;
@@ -186,10 +186,10 @@ export type SideBarProps = {
   navbarHeight?: number;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const SIDEBAR_PROP_NAMES = [
   "itemList",
-  "className",
+  "style",
   "removeDefaultStyle",
   "tooltip",
   "label",
@@ -207,7 +207,7 @@ export const SIDEBAR_PROP_NAMES = [
 //@@viewOn:render
 function SideBar({
   itemList,
-  className,
+  style,
   removeDefaultStyle = false,
   onItemClick,
   collapsed = false,
@@ -287,7 +287,6 @@ function SideBar({
           }}
           onMouseEnter={() => setHoveredKey(key)}
           onMouseLeave={() => setHoveredKey(null)}
-          className={className}
           style={{
             ...Css.item(
               removeDefaultStyle,
@@ -357,14 +356,17 @@ function SideBar({
         />
       )}
       <nav
-        style={Css.container(
-          removeDefaultStyle,
-          colorScheme,
-          darkMode,
-          mobileMode,
-          isOpen,
-          navbarHeight,
-        )}
+        style={{
+          ...Css.container(
+            removeDefaultStyle,
+            colorScheme,
+            darkMode,
+            mobileMode,
+            isOpen,
+            navbarHeight,
+          ),
+          ...style,
+        }}
       >
         {itemList?.map((item?: SideBarItem, i?: number) => renderItem(item, i))}
       </nav>

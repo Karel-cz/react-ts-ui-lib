@@ -57,9 +57,9 @@
         "type": "boolean",
         "required": "false"
       },
-      "className": {
-        "description": "Additional className for wrapper.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "tooltip": {
@@ -174,9 +174,9 @@
         "type": "function",
         "required": "false"
       },
-      "className": {
-        "description": "Additional CSS class names applied to the root button element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "borderRadius": {
@@ -308,9 +308,9 @@
         "type": "string",
         "required": "false"
       },
-      "className": {
-        "description": "Additional class names for the wrapper span.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "onClick": {
@@ -380,9 +380,9 @@
   "pending": {
     "title": "Pending Component",
     "props": {
-      "className": {
-        "description": "Additional CSS class names for the SVG element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "type": {
@@ -530,9 +530,9 @@
         "type": "array",
         "required": "true"
       },
-      "className": {
-        "description": "Additional class names for the container.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "removeDefaultStyle": {
@@ -738,9 +738,9 @@
         "type": "string | number",
         "required": "false"
       },
-      "className": {
-        "description": "Additional CSS class names.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "removeDefaultStyle": {
@@ -827,9 +827,9 @@
         "type": "number",
         "required": "false"
       },
-      "className": {
-        "description": "Additional CSS class names.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       }
     },
@@ -852,9 +852,9 @@
   "input": {
     "title": "Input Component",
     "props": {
-      "className": {
-        "description": "Additional CSS class names.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "removeDefaultStyle": {
@@ -915,6 +915,11 @@
       "name": {
         "description": "HTML name attribute.",
         "type": "string",
+        "required": "false"
+      },
+      "borderRadius": {
+        "description": "Predefined border radius of the input field (none, xs, sm, md, lg, full).",
+        "type": "RadiusToken",
         "required": "false"
       }
     },
@@ -989,9 +994,9 @@
         "type": "boolean",
         "required": "false"
       },
-      "className": {
-        "description": "Additional CSS class names.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "colorScheme": {
@@ -1106,9 +1111,9 @@
         "type": "function",
         "required": "true"
       },
-      "className": {
-        "description": "Additional CSS class for the wrapper.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "removeDefaultStyle": {
@@ -1162,9 +1167,9 @@
         "type": "boolean",
         "required": "false"
       },
-      "className": {
-        "description": "Additional CSS classes applied to the root element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1243,9 +1248,9 @@
         "type": "function",
         "required": "false"
       },
-      "className": {
-        "description": "Additional CSS classes applied to the root element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1326,9 +1331,9 @@
         "type": "string",
         "required": "false"
       },
-      "className": {
-        "description": "Additional CSS classes applied to the root element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1375,9 +1380,9 @@
   "checkbox": {
     "title": "Checkbox Component",
     "props": {
-      "className": {
-        "description": "Additional CSS classes applied to the root element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1478,9 +1483,9 @@
   "date": {
     "title": "Date Component",
     "props": {
-      "className": {
-        "description": "Additional CSS classes applied to the root element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1577,9 +1582,9 @@
   "select": {
     "title": "Select Component",
     "props": {
-      "className": {
-        "description": "Additional CSS classes applied to the root element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1644,9 +1649,9 @@
   "radios": {
     "title": "Radios Component",
     "props": {
-      "className": {
-        "description": "Additional CSS classes applied to the root element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1727,9 +1732,9 @@
   "label": {
     "title": "Label Component",
     "props": {
-      "className": {
-        "description": "Additional CSS classes applied to the root element.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1771,6 +1776,11 @@
         "description": "Tooltip text shown on hover (native title attribute).",
         "type": "string",
         "required": "false"
+      },
+      "block": {
+        "description": "If true, label is rendered as a full-width block with border; text stays left-aligned.",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "categories": {
@@ -1784,15 +1794,16 @@
       "withTooltip": "With tooltip",
       "tooltipContent": "This is a label with tooltip.",
       "sampleText": "Sample heading text",
-      "noDefault": "No default"
+      "noDefault": "No default",
+      "block": "As block"
     }
   },
   "popover": {
     "title": "Popover Component",
     "props": {
-      "className": {
-        "description": "Additional CSS classes applied to the wrapper.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "noPrint": {
@@ -1856,6 +1867,12 @@
       "required": "Required",
       "yes": "Yes",
       "no": "No"
+    },
+    "tabs": {
+      "basicInfo": "Basic",
+      "examples": "Examples",
+      "usage": "Usage",
+      "propTypes": "Prop Types"
     },
     "utility": {
       "parameters": {
@@ -1992,9 +2009,9 @@
         "type": "boolean",
         "required": "false"
       },
-      "className": {
-        "description": "Additional CSS class.",
-        "type": "string",
+      "style": {
+        "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
+        "type": "React.CSSProperties",
         "required": "false"
       },
       "removeDefaultStyle": {

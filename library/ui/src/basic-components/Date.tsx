@@ -97,7 +97,7 @@ const Css = {
 
 //@@viewOn:propTypes
 export type DateProps = {
-  className?: string;
+  style?: React.CSSProperties;
   noPrint?: boolean;
   hidden?: boolean;
   removeDefaultStyle?: boolean;
@@ -113,9 +113,9 @@ export type DateProps = {
   errorMessage?: string;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const DATE_PROP_NAMES = [
-  "className",
+  "style",
   "noPrint",
   "hidden",
   "removeDefaultStyle",
@@ -133,7 +133,7 @@ export const DATE_PROP_NAMES = [
 //@@viewOff:propTypes
 
 const DateInput = ({
-  className,
+  style,
   noPrint = false,
   hidden = false,
   removeDefaultStyle = false,
@@ -155,8 +155,8 @@ const DateInput = ({
   //@@viewOn:render
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.wrapper(removeDefaultStyle)}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...Css.wrapper(removeDefaultStyle), ...style }}
     >
       {label && (
         <label htmlFor={id} style={Css.label(removeDefaultStyle, darkMode)}>

@@ -1,58 +1,84 @@
 /* eslint-disable react-refresh/only-export-components */
 //@@viewOn:imports
-import React from "react";
+import React, { useState } from "react";
 import Block from "./Block";
-import { getColorScheme, getBorderColor } from "../tools/colors";
+import Label from "./Label";
+import Box from "./Box";
+import Badge from "./Badge";
+import TabGroup, { type TabGroupItem } from "./TabGroup";
+import {
+  getColorScheme,
+  getBorderColor,
+  type ColorScheme,
+} from "../tools/colors";
+
 //@@viewOff:imports
 
 //@@viewOn:constants
+const BASIC_INFO = "basicInfo";
+const PROP_TYPES = "propTypes";
+const USAGE = "usage";
+const EXAMPLES = "examples";
+
+const STATES: Record<
+  "production" | "nearlyReady" | "inProgress" | "draft",
+  ColorScheme
+> = {
+  production: "success",
+  nearlyReady: "warning",
+  inProgress: "info",
+  draft: "muted",
+};
+
+
 //@@viewOff:constants
 
 //@@viewOn:css
-const getCss = (darkMode: boolean = true) => {
-  const borderColor = getBorderColor(darkMode);
-  const mutedScheme = getColorScheme("muted", darkMode);
-
-  return {
-    section: {
-      marginTop: 24,
-    } as React.CSSProperties,
-    table: {
-      width: "100%",
-      borderCollapse: "collapse",
-      marginTop: 8,
-    } as React.CSSProperties,
-    th: {
-      textAlign: "left",
-      borderBottom: `1px solid ${borderColor}`,
-      padding: "8px",
-    } as React.CSSProperties,
-    td: {
-      borderBottom: `1px solid ${borderColor}`,
-      padding: "8px",
-      verticalAlign: "middle",
-    } as React.CSSProperties,
-    itemsGrid: {
-      display: "flex",
-      flexWrap: "wrap",
-      gap: 12,
-      alignItems: "stretch",
-    } as React.CSSProperties,
-    itemCard: {
-      display: "inline-flex",
-      flexDirection: "column",
-      alignItems: "center",
-      gap: 6,
-      padding: 8,
-      borderRadius: 8,
-      background: "transparent",
-    } as React.CSSProperties,
-    itemLabel: {
-      fontSize: 12,
-      color: mutedScheme.color,
-      textAlign: "center",
-    } as React.CSSProperties,
-  };
+const Css = {
+  section: (): React.CSSProperties => ({
+    marginTop: 0,
+  }),
+  table: (): React.CSSProperties => ({
+    width: "100%",
+    borderCollapse: "collapse",
+  }),
+  th: (borderColor: string): React.CSSProperties => ({
+    textAlign: "left",
+    borderBottom: `1px solid ${borderColor}`,
+    padding: "8px",
+  }),
+  td: (borderColor: string): React.CSSProperties => ({
+    borderBottom: `1px solid ${borderColor}`,
+    padding: "8px",
+    verticalAlign: "middle",
+  }),
+  itemsGrid: (): React.CSSProperties => ({
+    display: "flex",
+    flexWrap: "wrap",
+    gap: 12,
+    alignItems: "stretch",
+  }),
+  itemCard: (): React.CSSProperties => ({
+    display: "inline-flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: 6,
+    padding: 8,
+    borderRadius: 8,
+    background: "transparent",
+  }),
+  itemLabel: (mutedColor: string): React.CSSProperties => ({
+    fontSize: 12,
+    color: mutedColor,
+    textAlign: "center",
+  }),
+  box: (): React.CSSProperties => ({
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 12,
+    justifyContent: "space-between",
+  }),
 };
 //@@viewOff:css
 
@@ -100,6 +126,12 @@ export const DocumentationTypeScheme = {
     required: false,
     type: {} as object,
   },
+  state: {
+    name: "state",
+    description: "State of the component.",
+    required: false,
+    type: "production" as "production" | "nearlyReady" | "inProgress" | "draft",
+  },
 };
 
 export type DocumentationProps = {
@@ -112,7 +144,12 @@ export type DocumentationProps = {
   propTypesRequiredLabel?: string;
   propTypesYes?: string;
   propTypesNo?: string;
+  tabBasicInfoLabel?: string;
+  tabExamplesLabel?: string;
+  tabUsageLabel?: string;
+  tabPropTypesLabel?: string;
   darkMode?: boolean;
+  state?: "production" | "nearlyReady" | "inProgress" | "draft";
 };
 //@@viewOff:propTypes
 
@@ -127,66 +164,121 @@ const Documentation = ({
   propTypesRequiredLabel = "Required",
   propTypesYes = "Yes",
   propTypesNo = "No",
+  tabBasicInfoLabel = "Basic",
+  tabExamplesLabel = "Examples",
+  tabUsageLabel = "Usage",
+  tabPropTypesLabel = "Prop Types",
   darkMode = true,
+  state = "draft",
 }: DocumentationProps) => {
+
   //@@viewOn:private
-  //@@viewOff:private
+  const [activeTab, setActiveTab] = useState<string>(BASIC_INFO);
+  const borderColor = getBorderColor(darkMode);
+  const mutedColor = getColorScheme("muted", darkMode).color;
 
-  //@@viewOn:render
-  const Css = getCss(darkMode);
-
-  return (
-    <div>
-      {title && <h1>{title}</h1>}
-
-      {componentList && componentList.length > 0 && (
-        <section style={Css.section}>
-          {componentList.map((group, gi) => (
-            <Block
-              key={gi}
-              card="full"
-              header={group.category}
-              darkMode={darkMode}
-            >
-              <div style={Css.itemsGrid}>
-                {group.itemList.map((item, ii) => (
-                  <div key={ii} style={Css.itemCard}>
-                    <div style={Css.itemLabel}>{item.label}</div>
-                    <div>{item.components}</div>
-                  </div>
-                ))}
-              </div>
-            </Block>
-          ))}
-        </section>
-      )}
-      <Block card="full" header={propTypesTitle} darkMode={darkMode}>
+  const tabsList: TabGroupItem[] = [
+    {
+      title: tabBasicInfoLabel,
+      content: <div>{tabBasicInfoLabel}</div>,
+      code: BASIC_INFO,
+      onClick: () => {
+        setActiveTab(BASIC_INFO);
+      },
+    },
+    {
+      title: tabExamplesLabel,
+      code: EXAMPLES,
+      onClick: () => {
+        setActiveTab(EXAMPLES);
+      },
+      content: <>
+        {componentList && componentList.length > 0 && (
+          <section style={Css.section()}>
+            {componentList.map((group, gi) => (
+              <Block
+                key={gi}
+                card="full"
+                header={group.category}
+                darkMode={darkMode}
+              >
+                <div style={Css.itemsGrid()}>
+                  {group.itemList.map((item, ii) => (
+                    <div key={ii} style={Css.itemCard()}>
+                      <div style={Css.itemLabel(mutedColor)}>{item.label}</div>
+                      <div>{item.components}</div>
+                    </div>
+                  ))}
+                </div>
+              </Block>
+            ))}
+          </section>
+        )}
+      </>
+    },
+    {
+      title: tabUsageLabel,
+      content: <div>{tabUsageLabel}</div>,
+      code: USAGE,
+      onClick: () => {
+        setActiveTab(USAGE);
+      },
+    },
+    {
+      title: tabPropTypesLabel,
+      code: PROP_TYPES,
+      onClick: () => {
+        setActiveTab(PROP_TYPES);
+      },
+      content: <Block header={propTypesTitle} darkMode={darkMode}>
         {propTypesList && propTypesList.length > 0 && (
-          <section style={Css.section}>
-            <table style={Css.table}>
-              <thead></thead>
-              <tr>
-                <th style={Css.th}>{propTypesNameLabel}</th>
-                <th style={Css.th}>{propTypesDescriptionLabel}</th>
-                <th style={Css.th}>{propTypesTypeLabel}</th>
-                <th style={Css.th}>{propTypesRequiredLabel}</th>
-              </tr>
-              <tbody></tbody>
-
-              {propTypesList.map((propType, index: number) => (
-                <tr key={index}>
-                  <td style={Css.td}>{propType.name}</td>
-                  <td style={Css.td}>{propType.description}</td>
-                  <td style={Css.td}>{propType.type}</td>
-                  <td style={Css.td}>
-                    {propType.required ? propTypesYes : propTypesNo}
-                  </td>
+          <section style={Css.section()}>
+            <table style={Css.table()}>
+              <thead>
+                <tr>
+                  <th style={Css.th(borderColor)}>{propTypesNameLabel}</th>
+                  <th style={Css.th(borderColor)}>{propTypesDescriptionLabel}</th>
+                  <th style={Css.th(borderColor)}>{propTypesTypeLabel}</th>
+                  <th style={Css.th(borderColor)}>{propTypesRequiredLabel}</th>
                 </tr>
-              ))}
+              </thead>
+              <tbody>
+                {propTypesList.map((propType, index: number) => (
+                  <tr key={index}>
+                    <td style={Css.td(borderColor)}>{propType.name}</td>
+                    <td style={Css.td(borderColor)}>{propType.description}</td>
+                    <td style={Css.td(borderColor)}>{propType.type}</td>
+                    <td style={Css.td(borderColor)}>
+                      {propType.required ? propTypesYes : propTypesNo}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
           </section>
         )}
       </Block>
+    },
+
+  ];
+
+  //@@viewOff:private
+
+  //@@viewOn:render
+
+
+  return (
+    <div>
+      <Box darkMode={darkMode} style={Css.box()} borderRadius="none" borderTop={false} borderLeft={false} borderRight={false}   >
+        <Label darkMode={darkMode} style={{ width: "auto", flex: "0 1 auto" }}>{title}</Label>
+        <Badge colorScheme={STATES[state]} darkMode={darkMode}>{state}</Badge>
+      </Box>
+      <TabGroup
+        itemList={tabsList}
+        codeActive={activeTab}
+        onChange={(code) => setActiveTab(code as string)}
+        contentStyle={{ paddingTop: 0 }}
+      />
     </div>
   );
   //@@viewOff:render

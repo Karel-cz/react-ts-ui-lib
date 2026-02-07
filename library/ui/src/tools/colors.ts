@@ -5,7 +5,7 @@ type ColorEntry = {
 };
 
 // Common colors used across themes - Netflix-inspired palette
-const COLORS = {
+export const COLORS = {
   // Whites & Transparent
   white: "#ffffff",
   black: "#000000",

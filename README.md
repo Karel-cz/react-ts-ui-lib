@@ -4,303 +4,122 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18.3+-61dafb.svg)](https://react.dev/)
 
-A modern, type-safe React component library built with TypeScript. This library provides a collection of reusable UI components designed for both simple and complex use cases, with a focus on developer experience and flexibility.
+A modern, type-safe React component library built with TypeScript. Reusable UI components and utilities for building web applications.
 
 ---
 
 ## 📖 About the Project
 
-**React TypeScript UI Library** is an open-source component library that aims to become a comprehensive collection of React components for building modern web applications. Our goal is to create a public TypeScript library with a wide range of contributors, offering both simple and complex components that can be easily integrated into any React project.
+**React TypeScript UI Library** is an open-source component library for React applications. It provides a growing set of UI components (buttons, inputs, modals, navbars, badges, and more) plus small utilities (validation, clipboard, storage). The library is built with TypeScript, supports theming and dark mode, and is designed to be easy to integrate and extend.
 
 ### 🎯 Vision
 
-- **Simple & Complex Components**: From basic buttons to sophisticated layout components
-- **Type-Safe**: Full TypeScript support with comprehensive type definitions
-- **Community-Driven**: Built by and for the community
-- **Modern & Flexible**: Built with the latest React patterns and best practices
+- **Simple & complex components** — from Button and Badge to Block, Modal, SideBar, Navbar
+- **Type-safe** — full TypeScript support and exported types
+- **Community-driven** — open for contributions
+- **Modern stack** — React 18+, Vite, MDI icons
 
 ### 🛠️ Technology Stack
 
-- **React 18.3+** - Modern React with hooks and concurrent features
-- **TypeScript** - Type-safe development experience
-- **Vite** - Fast build tool and development server
-- **MDI Icons** - Material Design Icons integration
+- **React 18.3+** — hooks, functional components
+- **TypeScript** — type-safe APIs
+- **Vite** — build and dev server
+- **MDI Icons** — Material Design Icons
 
 ---
 
-## ✨ Features
-
-- ⚡ **TypeScript Support** - Full type definitions for all components
-- 🎨 **Modern React Patterns** - Built with hooks and functional components
-- 🎯 **Customizable Components** - Highly configurable with extensive prop options
-- 🌙 **Theme Support** - Built-in dark mode support
-- ♿ **Accessibility** - Components designed with accessibility in mind
-- 📦 **Tree-Shakeable** - Import only what you need
-- 🚀 **Lightweight** - Optimized bundle size
-- 📚 **Well Documented** - Comprehensive documentation and examples
-
----
-
-## 🚀 Installation & Usage
-
-### Installation
-
-
-
-## 🤝 Contributing
-
-We welcome contributions! This project is designed to be community-driven, and we'd love to have you on board. Contributors will be recognized in our [Contributors section](#-contributor-recognition).
-
-### How to Contribute
-
-Follow these steps to contribute to the project:
-
-#### 1. ⭐ Star the Repository (Pleas)
-
-**This is important!** Giving the repository a star helps with visibility and makes the project more discoverable. This helps attract more contributors and grows the community. Your support means a lot! 🌟
-
-#### 2. 🍴 Fork the Repository
-
-1. Go to the [GitHub repository](https://github.com/karel-cz/react-ts-ui-lib)
-2. Click the "Fork" button in the top right corner
-3. This creates a copy of the repository in your GitHub account
-
-> **What is forking?** Forking creates your own copy of the project that you can modify without affecting the original.
-
-#### 3. 📥 Clone Your Fork
-
-Clone your forked repository to your local machine:
-
-```bash
-git clone https://github.com/YOUR_USERNAME/react-ts-ui-lib.git
-cd react-ts-ui-lib
-```
-
-Add the original repository as an upstream remote:
-
-```bash
-git remote add upstream https://github.com/karel-cz/react-ts-ui-lib.git
-```
-
-#### 4. 🛠️ Set Up Development Environment
-
-**Prerequisites:**
-- Node.js 18+ (recommended: use [nvm](https://github.com/nvm-sh/nvm) or [fnm](https://github.com/Schniz/fnm))
-- npm, yarn, or pnpm
-
-**Install dependencies:**
-
-```bash
-npm i -ignore scrpits
-
-```
-
-**Run the demo application:**
-
-```bash
-npm run dev
-```
-
-This starts the demo app at `http://localhost:5173` (or similar) where you can see all components in action.
-
-This builds the library package in the `library/ui/dist` directory.
-
-#### 5. 🌿 Create a Branch from Development
-
-```bash
-# Make sure you're up to date
-git fetch upstream
-git checkout development
-git pull upstream development
-
-# Create your feature branch
-git checkout -b feature/your-feature-name development
-# or for bug fixes:
-git checkout -b fix/bug-description development
-```
-
-**Branch naming conventions:**
-- `feature/component-name` - For new components or features
-- `fix/bug-description` - For bug fixes
-- `docs/update-readme` - For documentation updates
-- `refactor/component-name` - For code refactoring
-
-#### 6. ✏️ Make Your Changes
-
-- Follow the existing code style and patterns
-- Use TypeScript for all new code
-- Add proper type definitions
-- Follow React best practices
-- Keep components modular and reusable
-- Add comments for complex logic
-- Test your changes in the demo app
-
-**Code style guidelines:**
-- Use functional components with hooks
-- Use TypeScript interfaces for props
-- Follow the existing component structure
-- Use meaningful variable and function names
-
-#### 7. 🔄 Sync Before Committing
-
-**⚠️ CRITICAL: Always sync with the upstream `development` branch before committing!**
-
-This is essential to avoid merge conflicts and ensure your changes work with the latest code.
-
-**Step-by-step sync process:**
-
-```bash
-# Fetch the latest changes from upstream
-git fetch upstream
-
-# Update your local development branch
-git checkout development
-git rebase upstream/development
-
-# Go back to your feature branch
-git checkout feature/your-feature-name
-
-# Rebase your branch on the updated development
-git rebase development
-```
-
-**Why is this important?**
-- Avoids merge conflicts
-- Ensures your code works with the latest changes
-- Keeps the git history clean
-- Makes code review easier
-
-If you encounter conflicts during rebase, resolve them and continue:
-
-```bash
-# After resolving conflicts
-git add .
-git rebase --continue
-```
-
-#### 8. 💾 Commit Your Changes
-
-Write clear, descriptive commit messages following the [Conventional Commits](https://www.conventionalcommits.org/) format:
-
-```bash
-git add .
-git commit -m "type(scope): description"
-```
-
-**Commit message format:**
-- `feat(button): add loading state support`
-- `fix(navbar): correct dark mode styling`
-- `docs(readme): update installation instructions`
-- `refactor(icon): simplify icon rendering logic`
-
-**Commit types:**
-- `feat` - New feature
-- `fix` - Bug fix
-- `docs` - Documentation changes
-- `style` - Code style changes (formatting, etc.)
-- `refactor` - Code refactoring
-- `test` - Adding or updating tests
-- `chore` - Maintenance tasks
-
-#### 9. 🚀 Push and Create Pull Request
-
-**Push your branch to your fork:**
-
-```bash
-git push origin feature/your-feature-name
-```
-
-If you've rebased, you may need to force push (be careful with this):
-
-```bash
-git push origin feature/your-feature-name --force-with-lease
-```
-
-**Create a Pull Request:**
-
-1. Go to your forked repository on GitHub
-2. Click "New Pull Request"
-3. Select `development` as the base branch (NOT `main`)
-4. Select your feature branch
-5. Fill out the PR template with:
-   - Description of changes
-   - Screenshots (if UI changes)
-   - Related issues (if any)
-   - Testing notes
-
-**PR Requirements:**
-- All code must be properly formatted
-- No console errors or warnings
-- Changes should be tested in the demo app
-- Documentation updated if needed
-
-#### 10. 👥 Contributor Recognition
-
-Thank you for contributing! 🎉
-
-All contributors will be:
-- **Listed in the Contributors section** - Visible in our demo application
-- **Recognized in the project** - Your contributions help make this library better
-- **Part of the community** - Join a growing community of developers
-
-Check out the [Contributors page](https://github.com/karel-cz/react-ts-ui-lib/graphs/contributors) to see all contributors!
-
----
-
-## 🛠️ Development Setup
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- **Node.js**: 18.0.0 or higher
-- **Package Manager**: npm, yarn, or pnpm
-- **Git**: For version control
+- **Node.js** 18+
+- **npm** (or yarn/pnpm)
 
-### Step-by-Step Setup
+### Run the project locally
 
 1. **Clone the repository** (or your fork):
+
    ```bash
    git clone https://github.com/karel-cz/react-ts-ui-lib.git
    cd react-ts-ui-lib
    ```
 
 2. **Install dependencies**:
+
    ```bash
    npm install
    ```
 
-3. **Run the demo application**:
+3. **Start the demo app**:
+
    ```bash
    npm run dev
    ```
-   The demo app will be available at `http://localhost:5173`
 
-### Workspace Structure
+   Demo runs at `http://localhost:5173` and showcases all components.
 
-This project uses npm workspaces (monorepo structure):
+---
 
+## 🤝 Contributing
+
+Rádi uvítáme příspěvky — i od začátečníků. Postupuj krok za krokem:
+
+### 1. Vytvoř si kopii repozitáře (fork)
+
+Na GitHubu otevři [karel-cz/react-ts-ui-lib](https://github.com/karel-cz/react-ts-ui-lib) a klikni na **Fork**. Vznikne ti kopie projektu pod tvým účtem.
+
+### 2. Naklonuj si svůj fork na počítač
+
+V terminálu (nahraď `TVE_GITHUB_JMENO` svým GitHub nickem):
+
+```bash
+git clone https://github.com/TVE_GITHUB_JMENO/react-ts-ui-lib.git
+cd react-ts-ui-lib
 ```
-react-ts-ui-lib/
-├── library/
-│   └── ui/              # The main library package
-│       └── src/
-│           ├── basic-components/
-│           └── tools/
-├── apps/
-│   └── demo/            # Demo application
-│       └── src/
-└── package.json         # Root package.json with workspaces
+
+Přidej původní repo jako „upstream“, aby sis mohl později stáhnout nové změny:
+
+```bash
+git remote add upstream https://github.com/karel-cz/react-ts-ui-lib.git
 ```
 
-### Troubleshooting
+### 3. Vytvoř větev pro svoji úpravu
 
-**Issue**: Dependencies not installing correctly
-- **Solution**: Delete `node_modules` and `package-lock.json`, then run `npm install` again
+Všechny větve se zakládají z `main`. Vždy před vytvořením nové větve stáhni nejnovější kód:
 
-**Issue**: Demo app not starting
-- **Solution**: Make sure you're using Node.js 18+ and all dependencies are installed
+```bash
+git checkout main
+git pull upstream main
+git checkout -b muj-popis-zmeny
+```
 
-**Issue**: Build errors
-- **Solution**: Check TypeScript errors with `npm run build:ui` and fix any type issues
+Příklad názvů větví: `pridani-tlacitka-loading`, `oprava-dark-mode`, `doplneni-dokumentace`.
+
+### 4. Udělej změny v kódu
+
+- Piš v TypeScriptu, drž se stylu existujícího kódu.
+- Používej funkční komponenty a hooky.
+- Ověř, že vše funguje: spusť `npm run dev` a vyzkoušej to v demo aplikaci.
+
+### 5. Commitni a pushni
+
+```bash
+git add .
+git commit -m "krátký popis toho, co jsi změnil"
+git push origin muj-popis-zmeny
+```
+
+Commit zpráva může být např.: „Přidán loading stav u Button“, „Oprava stylů v dark mode“.
+
+### 6. Otevři Pull Request (PR)
+
+1. Jdi na svůj fork na GitHubu.
+2. Klikni na **Compare & pull request** (GitHub ti to nabídne po pushi).
+3. Základní větev (base) nech **main**.
+4. Napiš, co jsi změnil, u úprav UI přidej screenshot.
+5. Odešli PR.
+
+Po schválení a mergi bude tvá změna v projektu a objevíš se mezi [přispěvateli](https://github.com/karel-cz/react-ts-ui-lib/graphs/contributors).
 
 ---
 
@@ -308,96 +127,138 @@ react-ts-ui-lib/
 
 ```
 react-ts-ui-lib/
-├── library/
-│   └── ui/                    # Main library package
-│       ├── src/
-│       │   ├── basic-components/   # React components
-│       │   │   ├── Button.tsx
-│       │   │   ├── Badge.tsx
-│       │   │   ├── Icon.tsx
-│       │   │   ├── Navbar.tsx
-│       │   │   ├── SideBar.tsx
-│       │   │   └── Pending.tsx
-│       │   ├── tools/              # Utility functions
-│       │   │   ├── colors.ts
-│       │   │   ├── radius.ts
-│       │   │   └── size.ts
-│       │   └── index.ts            # Main export file
-│       ├── package.json
-│       └── vite.config.ts
-├── apps/
-│   └── demo/                  # Demo application
-│       ├── src/
-│       │   ├── app/            # Demo app components
-│       │   ├── Documentation/  # Component documentation
-│       │   └── main.tsx
-│       └── package.json
+├── package.json              # Root workspace config & scripts
+├── jest.config.js            # Tests
 ├── LICENSE
-└── README.md
+├── README.md
+│
+├── library/
+│   ├── ui/                   # Main UI library (@react-ts-ui-lib/ui)
+│   │   ├── src/
+│   │   │   ├── basic-components/
+│   │   │   │   ├── Badge.tsx
+│   │   │   │   ├── Block.tsx
+│   │   │   │   ├── Box.tsx
+│   │   │   │   ├── Button.tsx
+│   │   │   │   ├── ButtonGroup.tsx
+│   │   │   │   ├── Checkbox.tsx
+│   │   │   │   ├── CopyToClipboard.tsx
+│   │   │   │   ├── Date.tsx
+│   │   │   │   ├── Documentation.tsx
+│   │   │   │   ├── Icon.tsx
+│   │   │   │   ├── InfoGroup.tsx
+│   │   │   │   ├── Input.tsx
+│   │   │   │   ├── Label.tsx
+│   │   │   │   ├── Modal.tsx
+│   │   │   │   ├── Navbar.tsx
+│   │   │   │   ├── Number.tsx
+│   │   │   │   ├── Pending.tsx
+│   │   │   │   ├── Popover.tsx
+│   │   │   │   ├── ProfileCard.tsx
+│   │   │   │   ├── Radios.tsx
+│   │   │   │   ├── Select.tsx
+│   │   │   │   ├── SideBar.tsx
+│   │   │   │   ├── TabGroup.tsx
+│   │   │   │   ├── ThemeToggle.tsx
+│   │   │   │   └── UtilityDocumentation.tsx
+│   │   │   ├── tools/
+│   │   │   │   ├── colors.ts
+│   │   │   │   ├── labelSize.ts
+│   │   │   │   ├── radius.ts
+│   │   │   │   └── size.ts
+│   │   │   └── index.ts
+│   │   ├── package.json
+│   │   └── vite.config.ts
+│   │
+│   └── utilities/            # Shared utilities (e.g. copyToClipboard, validateEmail)
+│       ├── copyToClipboard.ts
+│       ├── generatePassword.ts
+│       ├── generateRandomString.ts
+│       ├── getMostFrequentValue.ts
+│       ├── parseQueryString.ts
+│       ├── storage.ts
+│       ├── validateEmail.ts
+│       ├── validateJson.ts
+│       └── index.ts
+│
+└── apps/
+    └── demo/                 # Demo app (component showcase & docs)
+        ├── src/
+        │   ├── app/          # App layout, routing, context
+        │   ├── documentation/  # Per-component docs (basic-components/, utilities/)
+        │   ├── locales/
+        │   └── main.tsx
+        ├── package.json
+        └── vite.config.ts
 ```
 
-### Monorepo Benefits
+---
 
-- **Shared dependencies** - Dependencies are managed at the root level
-- **Easy development** - Work on library and demo simultaneously
-- **Consistent tooling** - Same build tools and configurations
-- **Workspace commands** - Run commands in specific workspaces
+## 📝 Code Examples
+
+### Button
+
+```tsx
+import { Button } from "@react-ts-ui-lib/ui";
+
+<Button text="Click me" onClick={() => console.log("clicked")} />
+<Button text="Primary" significance="primary" />
+<Button text="Disabled" disabled />
+```
+
+### Badge
+
+```tsx
+import { Badge } from "@react-ts-ui-lib/ui";
+
+<Badge text="New" significance="primary" />
+<Badge text="Done" significance="success" />
+```
+
+### Input with Label
+
+```tsx
+import { Input, Label } from "@react-ts-ui-lib/ui";
+
+<Label text="Email" />
+<Input
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  placeholder="you@example.com"
+/>
+```
+
+### ThemeToggle (dark mode)
+
+```tsx
+import { ThemeToggle } from "@react-ts-ui-lib/ui";
+
+<ThemeToggle darkMode={darkMode} onToggle={() => setDarkMode(!darkMode)} />
+```
 
 ---
 
 ## 🗺️ Roadmap
 
-We're constantly working on improving the library. Here's what's coming:
-
-### Planned Features
-
-- 🔄 More component variants and options
-- 🎨 Additional theme customization options
-- 📱 Mobile-responsive improvements
-- ♿ Enhanced accessibility features
-- 🧪 Comprehensive test coverage
-- 📚 Expanded documentation
-
-### Upcoming Components
-
-- Data tables
-- Forms and inputs
-- Modals and dialogs
-- Tooltips and popovers
-- And more!
-
-### Community Suggestions
-
-Have an idea for a component or feature? We'd love to hear it! Open an issue or discussion on GitHub.
+- More component variants and theme options
+- Mobile-responsive and accessibility improvements
+- Broader test coverage and documentation
+- Community-driven ideas — open an issue or discussion with suggestions
 
 ---
 
-## 💬 Support & Community
+## 💬 Support & Links
 
-### Getting Help
-
-- **GitHub Issues** - Report bugs or request features
-- **GitHub Discussions** - Ask questions and share ideas
-- **Documentation** - Check the demo app for component examples
-
-### Code of Conduct
-
-We are committed to providing a welcoming and inclusive environment for all contributors. Please be respectful and constructive in all interactions.
+- **Issues & feature requests**: [GitHub Issues](https://github.com/karel-cz/react-ts-ui-lib/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/karel-cz/react-ts-ui-lib/discussions)
+- **Repository**: [karel-cz/react-ts-ui-lib](https://github.com/karel-cz/react-ts-ui-lib)
+- **Author**: [Karel-cz](https://github.com/Karel-cz)
 
 ---
 
-## 🔗 Links & Resources
+## 📄 License
 
-- 🔗 **GitHub Repository**: [karel-cz/react-ts-ui-lib](https://github.com/karel-cz/react-ts-ui-lib)
-- 🎮 **Demo Application**: [Live Demo](https://github.com/karel-cz/react-ts-ui-lib) (when deployed)
-- 📚 **Documentation**: See component examples in the demo app
-- 👤 **Author**: [Karel-cz](https://github.com/Karel-cz)
-
----
-
-## 📝 License
-
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT — see [LICENSE](LICENSE).
 
 ---
 

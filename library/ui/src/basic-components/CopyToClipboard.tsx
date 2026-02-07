@@ -49,7 +49,7 @@ export type CopyToClipboardProps = {
   label?: string;
   children?: React.ReactNode;
   darkMode?: boolean;
-  className?: string;
+  style?: React.CSSProperties;
   removeDefaultStyle?: boolean;
   borderRadius?: RadiusToken;
 };
@@ -60,7 +60,7 @@ export const COPY_TO_CLIPBOARD_PROP_NAMES = [
   "label",
   "children",
   "darkMode",
-  "className",
+  "style",
   "removeDefaultStyle",
   "borderRadius",
 ] as const;
@@ -72,7 +72,7 @@ const CopyToClipboard = ({
   label = "Copy",
   children,
   darkMode = true,
-  className,
+  style,
   removeDefaultStyle = false,
   borderRadius = "md",
 }: CopyToClipboardProps) => {
@@ -105,7 +105,7 @@ const CopyToClipboard = ({
     return (
       <button
         type="button"
-        className={className}
+        style={style}
         onClick={handleClick}
         aria-label={typeof label === "string" ? label : "Copy to clipboard"}
       >
@@ -117,8 +117,7 @@ const CopyToClipboard = ({
   return (
     <button
       type="button"
-      className={className}
-      style={Css.button(darkMode, borderRadiusValue, success)}
+      style={{ ...Css.button(darkMode, borderRadiusValue, success), ...style }}
       onClick={handleClick}
       aria-label={typeof label === "string" ? label : "Copy to clipboard"}
     >

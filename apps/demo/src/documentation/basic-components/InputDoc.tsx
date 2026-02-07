@@ -166,6 +166,7 @@ const InputDoc = () => {
   return (
     <div>
       <Documentation
+        state="draft"
         title={t("input.title")}
         propTypesList={propTypesList}
         componentList={componentList}
@@ -176,6 +177,10 @@ const InputDoc = () => {
         propTypesRequiredLabel={t("documentation.propTypes.required")}
         propTypesYes={t("documentation.propTypes.yes")}
         propTypesNo={t("documentation.propTypes.no")}
+        tabBasicInfoLabel={t("documentation.tabs.basicInfo")}
+        tabExamplesLabel={t("documentation.tabs.examples")}
+        tabUsageLabel={t("documentation.tabs.usage")}
+        tabPropTypesLabel={t("documentation.tabs.propTypes")}
         darkMode={darkMode}
       />
     </div>

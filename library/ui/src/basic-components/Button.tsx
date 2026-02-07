@@ -105,7 +105,7 @@ export type ButtonProps = {
   iconPosition?: "left" | "right";
   label?: string;
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  className?: string;
+  style?: React.CSSProperties;
   borderRadius?: RadiusToken;
   size?: SizeToken;
   removeDefaultStyle?: boolean;
@@ -117,7 +117,7 @@ export type ButtonProps = {
   modern?: boolean;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const BUTTON_PROP_NAMES = [
   "children",
   "disabled",
@@ -128,7 +128,7 @@ export const BUTTON_PROP_NAMES = [
   "iconPosition",
   "label",
   "onClick",
-  "className",
+  "style",
   "borderRadius",
   "size",
   "removeDefaultStyle",
@@ -145,7 +145,7 @@ const Button = ({
   children,
   label,
   disabled = false,
-  className,
+  style,
   removeDefaultStyle = false,
   type = "button",
   tooltip,
@@ -205,28 +205,30 @@ const Button = ({
   //@@viewOff:private
 
   //@@viewOn:render
+  const buttonStyle = Css.button(
+    removeDefaultStyle,
+    background,
+    textColor,
+    borderRadiusValue,
+    isDisabled,
+    hover,
+    hoverBackground,
+    buttonSize.padding,
+    buttonSize.fontSize,
+    buttonSize.height,
+    buttonSize.width,
+    modern,
+    gradientBackground,
+    gradientHoverBackground,
+    shadow,
+    hoverShadow,
+  );
+
   return (
     <button
       disabled={isDisabled}
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.button(
-        removeDefaultStyle,
-        background,
-        textColor,
-        borderRadiusValue,
-        isDisabled,
-        hover,
-        hoverBackground,
-        buttonSize.padding,
-        buttonSize.fontSize,
-        buttonSize.height,
-        buttonSize.width,
-        modern,
-        gradientBackground,
-        gradientHoverBackground,
-        shadow,
-        hoverShadow,
-      )}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...buttonStyle, ...style }}
       type={type}
       title={tooltip}
       aria-label={

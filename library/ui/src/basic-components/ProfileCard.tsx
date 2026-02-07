@@ -294,7 +294,7 @@ export type ProfileCardProps = {
   actionList?: React.ReactNode[];
   darkMode?: boolean;
   removeDefaultStyle?: boolean;
-  className?: string;
+  style?: React.CSSProperties;
   colorScheme?: ColorScheme;
   significance?: Significance;
   modern?: boolean;
@@ -322,7 +322,7 @@ export const PROFILE_CARD_PROP_NAMES = [
   "actionList",
   "darkMode",
   "removeDefaultStyle",
-  "className",
+  "style",
   "colorScheme",
   "significance",
   "modern",
@@ -352,7 +352,7 @@ const ProfileCard = ({
   actionList,
   darkMode = true,
   removeDefaultStyle = false,
-  className,
+  style,
   colorScheme = "surface",
   significance = "common",
   modern = false,
@@ -415,22 +415,24 @@ const ProfileCard = ({
   //@@viewOff:private
 
   //@@viewOn:render
+  const cardStyle = Css.card(
+    removeDefaultStyle,
+    background,
+    textColor,
+    shadow,
+    borderColor,
+    layout,
+    modern,
+    cardWidth,
+    cardHeight,
+    cardMinWidth,
+    cardMinHeight,
+  );
+
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.card(
-        removeDefaultStyle,
-        background,
-        textColor,
-        shadow,
-        borderColor,
-        layout,
-        modern,
-        cardWidth,
-        cardHeight,
-        cardMinWidth,
-        cardMinHeight,
-      )}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...cardStyle, ...style }}
     >
       {(photo !== undefined || name !== undefined || role !== undefined) && (
         <div style={Css.header(removeDefaultStyle, padding)}>

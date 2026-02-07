@@ -245,14 +245,14 @@ export type BlockProps = {
   colorScheme?: ColorScheme;
   significance?: Significance;
   maxWidth?: string | number;
-  className?: string;
+  style?: React.CSSProperties;
   removeDefaultStyle?: boolean;
   hidden?: boolean;
   noPrint?: boolean;
   darkMode?: boolean;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const BLOCK_PROP_NAMES = [
   "children",
   "card",
@@ -269,7 +269,7 @@ export const BLOCK_PROP_NAMES = [
   "colorScheme",
   "significance",
   "maxWidth",
-  "className",
+  "style",
   "removeDefaultStyle",
   "hidden",
   "noPrint",
@@ -294,7 +294,7 @@ const Block = ({
   colorScheme = "background",
   significance = "common",
   maxWidth,
-  className,
+  style,
   removeDefaultStyle = false,
   hidden = false,
   noPrint = false,
@@ -372,23 +372,25 @@ const Block = ({
   //@@viewOff:private
 
   //@@viewOn:render
+  const blockStyle = Css.block(
+    removeDefaultStyle,
+    card === "full" ? background : undefined,
+    textColor,
+    card === "full" ? borderRadiusValue : undefined,
+    card === "full" ? shadow : undefined,
+    formatUnit(height),
+    formatUnit(minHeight),
+    formatUnit(maxHeight),
+    formatUnit(maxWidth),
+    card,
+    borderColor,
+    padding,
+  );
+
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.block(
-        removeDefaultStyle,
-        card === "full" ? background : undefined,
-        textColor,
-        card === "full" ? borderRadiusValue : undefined,
-        card === "full" ? shadow : undefined,
-        formatUnit(height),
-        formatUnit(minHeight),
-        formatUnit(maxHeight),
-        formatUnit(maxWidth),
-        card,
-        borderColor,
-        padding,
-      )}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...blockStyle, ...style }}
     >
       {hasHeader && (
         <div style={Css.header(removeDefaultStyle, padding, card)}>

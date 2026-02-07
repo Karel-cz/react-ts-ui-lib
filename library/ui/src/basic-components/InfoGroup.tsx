@@ -66,20 +66,20 @@ export type InfoGroupProps = {
   itemDirection?: "horizontal" | "vertical";
   // TODO: Implement autoResize functionality
   autoResize?: boolean;
-  className?: string;
+  style?: React.CSSProperties;
   noPrint?: boolean;
   hidden?: boolean;
   removeDefaultStyle?: boolean;
   darkMode?: boolean;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const INFO_GROUP_PROP_NAMES = [
   "itemList",
   "direction",
   "itemDirection",
   "autoResize",
-  "className",
+  "style",
   "noPrint",
   "hidden",
   "removeDefaultStyle",
@@ -92,7 +92,7 @@ const InfoGroup = ({
   direction = "vertical",
   itemDirection = "horizontal",
   autoResize = false,
-  className,
+  style,
   noPrint = false,
   hidden = false,
   removeDefaultStyle = false,
@@ -110,8 +110,8 @@ const InfoGroup = ({
   //@@viewOn:render
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.container(removeDefaultStyle, direction)}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...Css.container(removeDefaultStyle, direction), ...style }}
     >
       {itemList.map((item, index) => (
         <div

@@ -97,21 +97,21 @@ export type ButtonGroupProps = {
   gap?: string;
   variant?: "default" | "segmented";
   borderRadius?: RadiusToken;
-  className?: string;
+  style?: React.CSSProperties;
   noPrint?: boolean;
   hidden?: boolean;
   removeDefaultStyle?: boolean;
   darkMode?: boolean;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const BUTTON_GROUP_PROP_NAMES = [
   "itemList",
   "direction",
   "gap",
   "variant",
   "borderRadius",
-  "className",
+  "style",
   "noPrint",
   "hidden",
   "removeDefaultStyle",
@@ -125,7 +125,7 @@ const ButtonGroup = ({
   gap,
   variant = "default",
   borderRadius = "md",
-  className,
+  style,
   noPrint = false,
   hidden = false,
   removeDefaultStyle = false,
@@ -147,8 +147,8 @@ const ButtonGroup = ({
   //@@viewOn:render
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={containerStyle}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...containerStyle, ...style }}
       role="group"
     >
       {itemList.map((item, index) => {

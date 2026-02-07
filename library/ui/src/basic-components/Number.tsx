@@ -22,7 +22,7 @@ export type NumberProps = {
   tooltip?: string;
   wholeLengthNumberInTooltip?: boolean;
   minDecimalDigits?: number;
-  className?: string;
+  style?: React.CSSProperties;
 };
 
 export const NUMBER_PROP_NAMES = [
@@ -30,7 +30,7 @@ export const NUMBER_PROP_NAMES = [
   "tooltip",
   "wholeLengthNumberInTooltip",
   "minDecimalDigits",
-  "className",
+  "style",
 ] as const;
 //@@viewOff:propTypes
 
@@ -39,7 +39,7 @@ export const Number: React.FC<NumberProps> = ({
   tooltip,
   wholeLengthNumberInTooltip,
   minDecimalDigits = 0,
-  className,
+  style,
 }) => {
   //@@viewOn:private
   const formattedValue = new Intl.NumberFormat(undefined, {
@@ -53,7 +53,7 @@ export const Number: React.FC<NumberProps> = ({
 
   //@@viewOn:render
   return (
-    <span style={Css.span()} className={className} title={tooltipContent}>
+    <span style={{ ...Css.span(), ...style }} title={tooltipContent}>
       {formattedValue}
     </span>
   );

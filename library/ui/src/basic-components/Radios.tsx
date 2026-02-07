@@ -80,7 +80,7 @@ export type RadiosItem = {
 };
 
 export type RadiosProps = {
-  className?: string;
+  style?: React.CSSProperties;
   noPrint?: boolean;
   hidden?: boolean;
   removeDefaultStyle?: boolean;
@@ -95,9 +95,9 @@ export type RadiosProps = {
   direction?: "row" | "column";
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const RADIOS_PROP_NAMES = [
-  "className",
+  "style",
   "noPrint",
   "hidden",
   "removeDefaultStyle",
@@ -114,7 +114,7 @@ export const RADIOS_PROP_NAMES = [
 //@@viewOff:propTypes
 
 const Radios = ({
-  className,
+  style,
   noPrint = false,
   hidden = false,
   removeDefaultStyle = false,
@@ -137,8 +137,8 @@ const Radios = ({
   //@@viewOn:render
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.wrapper(removeDefaultStyle, direction)}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...Css.wrapper(removeDefaultStyle, direction), ...style }}
       role="radiogroup"
     >
       {itemList.map((item) => {

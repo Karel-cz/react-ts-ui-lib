@@ -154,6 +154,7 @@ const CheckboxDoc = () => {
   return (
     <div>
       <Documentation
+        state="inProgress"
         title={t("checkbox.title")}
         propTypesList={propTypesList}
         componentList={componentList}
@@ -164,6 +165,10 @@ const CheckboxDoc = () => {
         propTypesRequiredLabel={t("documentation.propTypes.required")}
         propTypesYes={t("documentation.propTypes.yes")}
         propTypesNo={t("documentation.propTypes.no")}
+        tabBasicInfoLabel={t("documentation.tabs.basicInfo")}
+        tabExamplesLabel={t("documentation.tabs.examples")}
+        tabUsageLabel={t("documentation.tabs.usage")}
+        tabPropTypesLabel={t("documentation.tabs.propTypes")}
         darkMode={darkMode}
       />
     </div>

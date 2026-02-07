@@ -118,7 +118,7 @@ export type NavbarProps = {
   mobileBreakpoint?: number;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const NAVBAR_PROP_NAMES = [
   "logo",
   "centerContent",

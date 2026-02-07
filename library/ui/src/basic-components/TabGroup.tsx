@@ -27,19 +27,30 @@ const Css = {
     };
   },
 
-  tabsContainer: (removeDefaultStyle?: boolean, darkMode = true): React.CSSProperties => {
+  tabsContainer: (
+    removeDefaultStyle?: boolean,
+    darkMode = true,
+    borderTop = false,
+    borderRight = false,
+    borderBottom = true,
+    borderLeft = false,
+  ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
     }
 
     const borderColor = getBorderColor(darkMode);
+    const borderStyle = `1px solid ${borderColor}`;
 
     return {
       display: "flex",
       alignItems: "center",
       justifyContent: "space-between",
       width: "100%",
-      borderBottom: `1px solid ${borderColor}`,
+      borderTop: borderTop ? borderStyle : undefined,
+      borderRight: borderRight ? borderStyle : undefined,
+      borderBottom: borderBottom ? borderStyle : undefined,
+      borderLeft: borderLeft ? borderStyle : undefined,
       gap: "1rem",
     };
   },
@@ -199,21 +210,36 @@ export type TabGroupProps = {
   colorScheme?: ColorScheme;
   ActionList?: React.ReactNode[];
   onChange?: (codeActive: string | number) => void;
-  className?: string;
+  style?: React.CSSProperties;
+  /** Optional style for the content wrapper below tabs (e.g. paddingTop). */
+  contentStyle?: React.CSSProperties;
+  /** Show top border on the tab bar. */
+  borderTop?: boolean;
+  /** Show right border on the tab bar. */
+  borderRight?: boolean;
+  /** Show bottom border on the tab bar. Default true. */
+  borderBottom?: boolean;
+  /** Show left border on the tab bar. */
+  borderLeft?: boolean;
   noPrint?: boolean;
   hidden?: boolean;
   removeDefaultStyle?: boolean;
   darkMode?: boolean;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const TAB_GROUP_PROP_NAMES = [
   "itemList",
   "codeActive",
   "colorScheme",
   "ActionList",
   "onChange",
-  "className",
+  "style",
+  "contentStyle",
+  "borderTop",
+  "borderRight",
+  "borderBottom",
+  "borderLeft",
   "noPrint",
   "hidden",
   "removeDefaultStyle",
@@ -227,7 +253,12 @@ const TabGroup = ({
   colorScheme = "primary",
   ActionList,
   onChange,
-  className,
+  style,
+  contentStyle,
+  borderTop = false,
+  borderRight = false,
+  borderBottom = true,
+  borderLeft = false,
   noPrint = false,
   hidden = false,
   removeDefaultStyle = false,
@@ -258,10 +289,19 @@ const TabGroup = ({
   //@@viewOn:render
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.container(removeDefaultStyle)}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...Css.container(removeDefaultStyle), ...style }}
     >
-      <div style={Css.tabsContainer(removeDefaultStyle, darkMode)}>
+      <div
+          style={Css.tabsContainer(
+            removeDefaultStyle,
+            darkMode,
+            borderTop,
+            borderRight,
+            borderBottom,
+            borderLeft,
+          )}
+        >
         <div style={Css.tabsWrapper(removeDefaultStyle)}>
           {itemList.map((item, index) => {
             const isActive = isTabActive(item);
@@ -324,7 +364,14 @@ const TabGroup = ({
         )}
       </div>
       {activeContent && (
-        <div style={Css.tabContent(removeDefaultStyle)}>{activeContent}</div>
+        <div
+          style={{
+            ...Css.tabContent(removeDefaultStyle),
+            ...contentStyle,
+          }}
+        >
+          {activeContent}
+        </div>
       )}
     </div>
   );

@@ -45,7 +45,7 @@ const Css = {
 
 //@@viewOn:propTypes
 export type InputProps = {
-  className?: string;
+  style?: React.CSSProperties;
   removeDefaultStyle?: boolean;
   placeholder?: string;
   value?: string;
@@ -61,7 +61,7 @@ export type InputProps = {
 };
 
 export const INPUT_PROP_NAMES = [
-  "className",
+  "style",
   "removeDefaultStyle",
   "placeholder",
   "value",
@@ -78,7 +78,7 @@ export const INPUT_PROP_NAMES = [
 //@@viewOff:propTypes
 
 export const Input: React.FC<InputProps> = ({
-  className,
+  style,
   removeDefaultStyle,
   placeholder,
   value,
@@ -98,7 +98,7 @@ export const Input: React.FC<InputProps> = ({
 
   //@@viewOn:render
   return (
-    <div style={Css.wrapper()} className={className}>
+    <div style={{ ...Css.wrapper(), ...style }}>
       {label && (
         <label htmlFor={id} style={Css.label()}>
           {label}

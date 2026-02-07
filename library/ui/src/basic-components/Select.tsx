@@ -63,7 +63,7 @@ export type SelectItem = {
 };
 
 export type SelectProps = {
-  className?: string;
+  style?: React.CSSProperties;
   noPrint?: boolean;
   hidden?: boolean;
   removeDefaultStyle?: boolean;
@@ -77,9 +77,9 @@ export type SelectProps = {
   id?: string;
 };
 
-// Const array for runtime prop extraction in documentation
+// Const array for runtime prop extraction in Documentation
 export const SELECT_PROP_NAMES = [
-  "className",
+  "style",
   "noPrint",
   "hidden",
   "removeDefaultStyle",
@@ -95,7 +95,7 @@ export const SELECT_PROP_NAMES = [
 //@@viewOff:propTypes
 
 const Select = ({
-  className,
+  style,
   noPrint = false,
   hidden = false,
   removeDefaultStyle = false,
@@ -118,8 +118,8 @@ const Select = ({
   //@@viewOn:render
   return (
     <div
-      className={`${className ?? ""} ${noPrint ? "no-print" : ""}`.trim()}
-      style={Css.wrapper(removeDefaultStyle)}
+      className={noPrint ? "no-print" : undefined}
+      style={{ ...Css.wrapper(removeDefaultStyle), ...style }}
     >
       <select
         id={id}
