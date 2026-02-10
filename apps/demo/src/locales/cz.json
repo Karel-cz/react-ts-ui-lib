@@ -582,13 +582,24 @@
         "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
         "type": "React.CSSProperties",
         "required": "false"
+      },
+      "colorScheme": {
+        "description": "Barevné schéma number (primary, success, danger, warning, info).",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Použije tmavé schéma barev.",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "examples": {
       "basic": "Základní",
       "decimals": "S desetinnými místy",
       "tooltip": "S tooltipem",
-      "customTooltip": "S vlastním tooltipem"
+      "customTooltip": "S vlastním tooltipem",
+      "color": "S vlastní barvou"
     }
   },
   "auth": {

@@ -831,13 +831,24 @@
         "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
         "type": "React.CSSProperties",
         "required": "false"
+      },
+      "colorScheme": {
+        "description": "Color scheme of number (primary, success, danger, warning, info).",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Uses dark mode color palette.",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "examples": {
       "basic": "Basic",
       "decimals": "With Decimals",
       "tooltip": "With Tooltip",
-      "customTooltip": "With Custom Tooltip"
+      "customTooltip": "With Custom Tooltip",
+      "color": "With Color Prop"
     }
   },
   "auth": {

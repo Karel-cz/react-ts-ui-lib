@@ -61,6 +61,61 @@ const NumberDoc = () => {
         },
       ],
     },
+    {
+      category: t("number.examples.color"),
+      itemList: [
+        {
+          label: t("background"),
+          components: (
+            <Number
+              value={12345}
+              colorScheme="background"
+              darkMode={darkMode}
+            />
+          ),
+        },
+        {
+          label: t("tabgroup.examples.primary"),
+          components: (
+            <Number
+              value={12345}
+              colorScheme="primary"
+              darkMode={darkMode}
+            />
+          ),
+        },
+        {
+          label: t("tabgroup.examples.success"),
+          components: (
+            <Number
+              value={12345}
+              colorScheme="success"
+              darkMode={darkMode}
+            />
+          ),
+        },
+        {
+          label: t("tabgroup.examples.danger"),
+          components: (
+            <Number
+              value={12345}
+              colorScheme="danger"
+              darkMode={darkMode}
+            />
+          ),
+        },
+        {
+          label: t("muted"),
+          components: (
+            <Number
+              value={12345}
+              colorScheme="muted"
+              darkMode={darkMode}
+            />
+          ),
+        },
+      ],
+    },
   ];
   //@@viewOff:private
 

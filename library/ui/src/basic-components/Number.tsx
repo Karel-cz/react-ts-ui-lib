@@ -1,20 +1,26 @@
- 
 //@@viewOn:imports
 import React from "react";
+import { getColorScheme, type ColorScheme } from "../tools/colors";
 //@@viewOff:imports
-
-//@@viewOn:constants
-//@@viewOff:constants
 
 //@@viewOn:css
 const Css = {
-  span: (): React.CSSProperties => ({
-  }),
+  span: (
+    darkMode = true,
+    colorScheme?: ColorScheme,
+  ): React.CSSProperties => {
+    const scheme = getColorScheme(colorScheme ?? "background", darkMode);
+    const isNeutral =
+      colorScheme === "background" || colorScheme === "surface";
+
+    const textColor = isNeutral ? scheme.textColor : scheme.color;
+
+    return {
+      color: textColor,
+    };
+  },
 };
 //@@viewOff:css
-
-//@@viewOn:helpers
-//@@viewOff:helpers
 
 //@@viewOn:propTypes
 export type NumberProps = {
@@ -22,6 +28,8 @@ export type NumberProps = {
   tooltip?: string;
   wholeLengthNumberInTooltip?: boolean;
   minDecimalDigits?: number;
+  colorScheme?: ColorScheme;
+  darkMode?: boolean;
   style?: React.CSSProperties;
 };
 
@@ -30,6 +38,8 @@ export const NUMBER_PROP_NAMES = [
   "tooltip",
   "wholeLengthNumberInTooltip",
   "minDecimalDigits",
+  "colorScheme",
+  "darkMode",
   "style",
 ] as const;
 //@@viewOff:propTypes
@@ -39,6 +49,8 @@ export const Number: React.FC<NumberProps> = ({
   tooltip,
   wholeLengthNumberInTooltip,
   minDecimalDigits = 0,
+  colorScheme = "background",
+  darkMode = true,
   style,
 }) => {
   //@@viewOn:private
@@ -53,7 +65,10 @@ export const Number: React.FC<NumberProps> = ({
 
   //@@viewOn:render
   return (
-    <span style={{ ...Css.span(), ...style }} title={tooltipContent}>
+    <span
+      style={{ ...Css.span(darkMode, colorScheme), ...style }}
+      title={tooltipContent}
+    >
       {formattedValue}
     </span>
   );
