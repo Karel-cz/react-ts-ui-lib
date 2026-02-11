@@ -475,6 +475,7 @@ const ProfileCard = ({
               <p style={Css.name(removeDefaultStyle)}>{name}</p>
             )}
           </div>
+          {hasBody && (
           <button
               type="button"
               onClick={() => setIsCollapsed((prev) => !prev)}
@@ -488,6 +489,7 @@ const ProfileCard = ({
                 darkMode={darkMode}
               />
             </button>
+          )}
         </div>
       )}
 
