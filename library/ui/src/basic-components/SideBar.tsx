@@ -278,6 +278,10 @@ function SideBar({
     const isHovered = hoveredKey === key;
     const scheme = getColorScheme(colorScheme, darkMode);
     const primaryScheme = getColorScheme("primary", darkMode);
+    const iconDefaultColor = getColorScheme(
+    "background",
+    darkMode,
+  ).textColor;
 
     return (
       <div key={key}>
@@ -313,7 +317,7 @@ function SideBar({
                     ? getColorScheme(item.iconColor, darkMode).color
                     : isActive
                       ? primaryScheme.color
-                      : scheme.textColor
+                      : iconDefaultColor
                 }
               />
             ) : null}
