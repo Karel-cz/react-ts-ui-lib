@@ -272,7 +272,7 @@ const TabGroup = ({
   const activeItem = itemList.find((item) => item.code === codeActive);
   const activeContent = activeItem?.content || null;
 
-  const handleTabClick = (item: TabGroupItem, index: number) => {
+  const handleTabClick = (item: TabGroupItem) => {
     if (item.onClick) {
       item.onClick();
     }
@@ -312,7 +312,7 @@ const TabGroup = ({
                 key={item.code}
                 role="button"
                 tabIndex={0}
-                onClick={() => handleTabClick(item, index)}
+                onClick={() => handleTabClick(item)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={Css.tab(

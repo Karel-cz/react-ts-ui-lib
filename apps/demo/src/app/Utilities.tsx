@@ -19,7 +19,7 @@ import { useTheme } from "./context/ThemeContext";
 
 //@@viewOn:css
 const getStyles = (darkMode: boolean): Record<string, React.CSSProperties> => ({
-  container: { display: "flex", flexDirection: "column", gap: 24 },
+  container: { display: "flex", flexDirection: "column", gap: 24, margin: 12 },
   grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 },
   blockContent: { display: "flex", flexDirection: "column", gap: 12 },
   input: {
@@ -102,9 +102,10 @@ const Utilities = () => {
   //@@viewOn:render
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>{t("utilitiesPage.title")}</h1>
-      <p style={{ marginBottom: 24 }}>{t("utilitiesPage.description")}</p>
-      <p style={{ marginBottom: 24 }}>{t("utilitiesPage.instructions")}</p>
+      <Block header={t("utilitiesPage.title")} card="full" darkMode={darkMode}>
+        <p style={{ marginBottom: 24 }}>{t("utilitiesPage.description")}</p>
+        <p style={{ marginBottom: 24 }}>{t("utilitiesPage.instructions")}</p>
+      </Block>
 
       <div style={styles.grid}>
         <Block card="full" darkMode={darkMode} header={t("sidebar.utilities.copyToClipboard")}>

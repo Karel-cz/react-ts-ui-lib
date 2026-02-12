@@ -2,7 +2,7 @@
 import React, { useMemo } from "react";
 import { SideBar } from "@react-ts-ui-lib/ui";
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
-import { getRouteList } from "../app/tools/routeList";
+import { getRouteList } from "../app/tools/RouteList";
 import { useTranslation } from "../i18n/useTranslation";
 //@@viewOff:imports
 

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://react-ts-kit.com/sitemap.xml
+

@@ -7,7 +7,7 @@ import { useState } from "react";
 //@@viewOff:imports
 
 const CHECKBOX_EXAMPLE_CODE = `<Checkbox
-  label="Souhlasím"
+  label="I agree"
   checked={checked}
   onChange={setChecked}
   darkMode={darkMode}
@@ -169,7 +169,7 @@ const CheckboxDoc = () => {
           preview: (
             <Checkbox
               label={t("checkbox.examples.label")}
-              checked={false}
+              value={false}
               darkMode={darkMode}
               onChange={() => {}}
             />

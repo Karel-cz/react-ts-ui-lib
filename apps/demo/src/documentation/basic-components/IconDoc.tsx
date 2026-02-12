@@ -167,7 +167,7 @@ const IconDoc = () => {
           description: t("icon.basicInfo.description"),
           exampleCode: ICON_EXAMPLE_CODE,
           preview: (
-            <Icon icon="mdi-check" size="md" darkMode={darkMode} />
+            <UiIcon icon="mdi-check" size="md" darkMode={darkMode} />
           ),
         }}
         basicInfoDescriptionHeader={t("documentation.basicInfo.descriptionHeader")}

@@ -62,64 +62,64 @@ A modern, type-safe React component library built with TypeScript. Reusable UI c
 
 ## 🤝 Contributing
 
-Rádi uvítáme příspěvky — i od začátečníků. Postupuj krok za krokem:
+We happily welcome contributions — including from beginners. Follow these steps:
 
-### 1. Vytvoř si kopii repozitáře (fork)
+### 1. Fork the repository
 
-Na GitHubu otevři [karel-cz/react-ts-ui-lib](https://github.com/karel-cz/react-ts-ui-lib) a klikni na **Fork**. Vznikne ti kopie projektu pod tvým účtem.
+On GitHub, open [karel-cz/react-ts-ui-lib](https://github.com/karel-cz/react-ts-ui-lib) and click **Fork**. This creates a copy of the repo under your account.
 
-### 2. Naklonuj si svůj fork na počítač
+### 2. Clone your fork
 
-V terminálu (nahraď `TVE_GITHUB_JMENO` svým GitHub nickem):
+In your terminal (replace `YOUR_GITHUB_USERNAME` with your GitHub username):
 
 ```bash
-git clone https://github.com/TVE_GITHUB_JMENO/react-ts-ui-lib.git
+git clone https://github.com/YOUR_GITHUB_USERNAME/react-ts-ui-lib.git
 cd react-ts-ui-lib
 ```
 
-Přidej původní repo jako „upstream“, aby sis mohl později stáhnout nové změny:
+Add the original repo as `upstream` so you can pull new changes later:
 
 ```bash
 git remote add upstream https://github.com/karel-cz/react-ts-ui-lib.git
 ```
 
-### 3. Vytvoř větev pro svoji úpravu
+### 3. Create a feature branch
 
-Všechny větve se zakládají z `main`. Vždy před vytvořením nové větve stáhni nejnovější kód:
+All branches should be created from `main`. Always pull the latest code before creating a new branch:
 
 ```bash
 git checkout main
 git pull upstream main
-git checkout -b muj-popis-zmeny
+git checkout -b my-feature-or-fix
 ```
 
-Příklad názvů větví: `pridani-tlacitka-loading`, `oprava-dark-mode`, `doplneni-dokumentace`.
+Example branch names: `add-button-loading-state`, `fix-dark-mode`, `update-documentation`.
 
-### 4. Udělej změny v kódu
+### 4. Make your changes
 
-- Piš v TypeScriptu, drž se stylu existujícího kódu.
-- Používej funkční komponenty a hooky.
-- Ověř, že vše funguje: spusť `npm run dev` a vyzkoušej to v demo aplikaci.
+- Write TypeScript and follow the existing code style.
+- Use functional components and hooks.
+- Verify everything works: run `npm run dev` and test in the demo app.
 
-### 5. Commitni a pushni
+### 5. Commit and push
 
 ```bash
 git add .
-git commit -m "krátký popis toho, co jsi změnil"
-git push origin muj-popis-zmeny
+git commit -m "short description of your change"
+git push origin my-feature-or-fix
 ```
 
-Commit zpráva může být např.: „Přidán loading stav u Button“, „Oprava stylů v dark mode“.
+Example commit messages: "Add loading state to Button", "Fix styles in dark mode".
 
-### 6. Otevři Pull Request (PR)
+### 6. Open a Pull Request (PR)
 
-1. Jdi na svůj fork na GitHubu.
-2. Klikni na **Compare & pull request** (GitHub ti to nabídne po pushi).
-3. Základní větev (base) nech **main**.
-4. Napiš, co jsi změnil, u úprav UI přidej screenshot.
-5. Odešli PR.
+1. Go to your fork on GitHub.
+2. Click **Compare & pull request** (GitHub usually suggests this after a push).
+3. Keep the base branch as **main**.
+4. Describe what you changed; for UI changes, please add a screenshot.
+5. Submit the PR.
 
-Po schválení a mergi bude tvá změna v projektu a objevíš se mezi [přispěvateli](https://github.com/karel-cz/react-ts-ui-lib/graphs/contributors).
+After review and merge, your change will be part of the project and you will appear among the [contributors](https://github.com/karel-cz/react-ts-ui-lib/graphs/contributors).
 
 ---
 

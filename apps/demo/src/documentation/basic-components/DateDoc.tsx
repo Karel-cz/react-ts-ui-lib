@@ -145,10 +145,10 @@ const DateDoc = () => {
           description: t("date.basicInfo.description"),
           exampleCode: DATE_EXAMPLE_CODE,
           preview: (
-            <Date
+            <DateComponent
+              label={t("date.examples.basicLabel")}
               value={basicValue}
-              format="d.M.yyyy"
-              locale="cs"
+              onChange={(e) => setBasicValue(e.target.value)}
               darkMode={darkMode}
             />
           ),

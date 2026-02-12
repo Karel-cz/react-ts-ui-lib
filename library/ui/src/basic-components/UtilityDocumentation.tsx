@@ -11,7 +11,7 @@ import { getColorScheme, getBorderColor } from "../tools/colors";
 //@@viewOn:css
 const getCss = (darkMode: boolean = true) => {
   const borderColor = getBorderColor(darkMode);
-  const mutedScheme = getColorScheme("muted", darkMode);
+  const textScheme = getColorScheme("text", darkMode);
 
   return {
     section: {
@@ -33,7 +33,6 @@ const getCss = (darkMode: boolean = true) => {
       verticalAlign: "middle",
     } as React.CSSProperties,
     codeBlock: {
-      background: mutedScheme.background,
       padding: "12px",
       borderRadius: "4px",
       overflow: "auto",
@@ -42,8 +41,11 @@ const getCss = (darkMode: boolean = true) => {
     code: {
       fontFamily: "monospace",
       fontSize: "14px",
-      color: mutedScheme.color,
+      color: textScheme.color,
       whiteSpace: "pre",
+    } as React.CSSProperties,
+    container: {
+      margin: 12,
     } as React.CSSProperties,
   };
 };
@@ -158,7 +160,7 @@ const UtilityDocumentation = ({
   const Css = getCss(darkMode);
 
   return (
-    <div>
+    <div style={Css.container}>
       {title && <h1>{title}</h1>}
 
       {demoComponent && (

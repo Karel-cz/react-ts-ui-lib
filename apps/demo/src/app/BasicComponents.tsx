@@ -15,11 +15,13 @@ const getStyles = (): Record<string, React.CSSProperties> => ({
     display: "flex",
     flexDirection: "column",
     gap: 24,
+    margin: 12
   },
   grid: {
     display: "grid",
     gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
     gap: 24,
+
   },
   blockContent: {
     display: "flex",
@@ -52,9 +54,11 @@ const BasicComponents = () => {
   //@@viewOn:render
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>{t("basicComponentsPage.title")}</h1>
-      <p style={{ marginBottom: 24 }}>{t("basicComponentsPage.description")}</p>
-      <p style={{ marginBottom: 24 }}>{t("basicComponentsPage.instructions")}</p>
+      <Block card="full" darkMode={darkMode} header={t("basicComponentsPage.title")}  >
+        <p style={{ marginBottom: 24 }}>{t("basicComponentsPage.description")}</p>
+        <p style={{ marginBottom: 24 }}>{t("basicComponentsPage.instructions")}</p>
+      </Block>
+
 
       <div style={styles.grid}>
         <Block card="full" darkMode={darkMode} header={t("basicComponentsPage.components.buttons")}>

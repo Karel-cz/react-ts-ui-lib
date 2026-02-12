@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import { useState } from "react";
-import { Documentation, TAB_GROUP_PROP_NAMES, TabGroup, Button, Badge, Icon } from "@react-ts-ui-lib/ui";
+import { Documentation, TAB_GROUP_PROP_NAMES, TabGroup, Button, Badge } from "@react-ts-ui-lib/ui";
 import type { TabGroupItem } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../../i18n/useTranslation";
 import { getPropsWithTranslations } from "../../i18n/getPropsWithTranslations";

@@ -11,7 +11,7 @@ import { useTheme } from "../../app/context/ThemeContext";
 //@@viewOff:imports
 
 const COPY_TO_CLIPBOARD_EXAMPLE_CODE = `<CopyToClipboard
-  text="Text ke zkopírování"
+  text="Text to copy"
   onCopy={() => {}}
   darkMode={darkMode}
 />`;

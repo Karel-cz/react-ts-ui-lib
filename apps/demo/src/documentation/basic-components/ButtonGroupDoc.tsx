@@ -14,7 +14,7 @@ import { useTheme } from "../../app/context/ThemeContext";
 const BUTTON_GROUP_EXAMPLE_CODE = `<ButtonGroup
   itemList={[
     { label: 'Ok' },
-    { label: 'Zrušit' }
+    { label: 'Cancel' }
   ]}
   direction="row"
   darkMode={darkMode}

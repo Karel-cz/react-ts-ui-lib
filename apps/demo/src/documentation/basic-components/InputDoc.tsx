@@ -10,7 +10,6 @@ const INPUT_EXAMPLE_CODE = `<Input
   label="Email"
   value={value}
   onChange={(e) => setValue(e.target.value)}
-  darkMode={darkMode}
 />`;
 
 //@@viewOn:component
@@ -182,7 +181,6 @@ const InputDoc = () => {
             <Input
               label="Email"
               value="example@mail.com"
-              darkMode={darkMode}
               onChange={() => {}}
             />
           ),

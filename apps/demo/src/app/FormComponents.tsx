@@ -11,7 +11,7 @@ import { useTheme } from "./context/ThemeContext";
 
 //@@viewOn:css
 const getStyles = (): Record<string, React.CSSProperties> => ({
-  container: { display: "flex", flexDirection: "column", gap: 24 },
+  container: { display: "flex", flexDirection: "column", gap: 24, margin: 12 },
   grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 },
   blockContent: { display: "flex", flexDirection: "column", gap: 12, flexWrap: "wrap" },
   title: { fontSize: 24, fontWeight: 700, marginBottom: 24 },
@@ -48,9 +48,10 @@ const FormComponents = () => {
   //@@viewOn:render
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>{t("formComponentsPage.title")}</h1>
-      <p style={{ marginBottom: 24 }}>{t("formComponentsPage.description")}</p>
-      <p style={{ marginBottom: 24 }}>{t("formComponentsPage.instructions")}</p>
+      <Block header={t("formComponentsPage.title")} card="full" darkMode={darkMode}>
+        <p style={{ marginBottom: 24 }}>{t("formComponentsPage.description")}</p>
+        <p style={{ marginBottom: 24 }}>{t("formComponentsPage.instructions")}</p>
+      </Block>
 
       <div style={styles.grid}>
         <Block card="full" darkMode={darkMode} header={t("formComponentsPage.components.input")}>

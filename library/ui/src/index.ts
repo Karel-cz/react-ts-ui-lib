@@ -29,6 +29,7 @@ export { Radios } from "./basic-components/Radios";
 export { Label } from "./basic-components/Label";
 export { Popover } from "./basic-components/Popover";
 export { CopyToClipboard } from "./basic-components/CopyToClipboard";
+export { UnderConstruction } from "./basic-components/UnderConstruction";
 
 // Color utilities
 export { getColorScheme, getBorderColor, getRgbaFromScheme, hexToRgba } from "./tools/colors";

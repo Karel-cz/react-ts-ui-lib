@@ -1,12 +1,13 @@
 //@@viewOn:imports
 import { useState, useMemo, useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import LeftMenu from "./LeftMenu";
 import Content from "./Content";
 import type { SideBarItem } from "@react-ts-ui-lib/ui";
-import { getRouteList } from "./tools/routeList";
+import { getRouteList } from "./tools/RouteList";
 import { Navbar, Button, ThemeToggle, getColorScheme } from "@react-ts-ui-lib/ui";
 import { useTheme } from "./context/ThemeContext";
-import { useLanguage } from "./context/languageContext";
+import { useLanguage } from "./context/LanguageContext";
 import { useTranslation } from "../i18n/useTranslation";
 import RegisterModal from "./RegisterModal";
 import { storage } from "@react-ts-ui-lib/utilities";
@@ -19,9 +20,11 @@ import GoogleUserChip from "./GoogleUserChip";
 //@@viewOn:constants
 
 const Logo = ({ isMobile }: { isMobile?: boolean }) => (
-  <img 
+  <img
     src={isMobile ? "/images/logo-icon.png" : "/images/logo2.png"}
-    alt="Logo" 
+    alt="Logo"
+    width={isMobile ? 278 : undefined}
+    height={isMobile ? 291 : undefined}
     style={{
       width: "auto",
       height: isMobile ? 40 : 52,
@@ -166,48 +169,54 @@ function App() {
   //@@viewOff:private
 
   //@@viewOn:render
-  return (<>
-   <div
-      style={{
-        ...getThemeStyles(darkMode),
-        minHeight: "100vh",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
-      <Navbar
-        sticky={true}
-        logo={<Logo isMobile={isMobile} />}
-        darkMode={darkMode}
-        rightContent={RightContent()}
-        onHamburgerClick={handleHamburgerClick}
-        hamburgerOpen={isMobileMenuOpen}
-      />
-      <div style={{ display: "flex", flex: 1 }}>
-        <LeftMenu
-          setSelectedItem={handleSetSelectedItem}
-          selectedItem={selectedItem}
-          darkMode={darkMode}
-          mobileMode={isMobile}
-          isOpen={isMobileMenuOpen}
-          onClose={() => setIsMobileMenuOpen(false)}
-          navbarHeight={64}
+  return (
+    <>
+      <Helmet>
+        <title>React TS Kit – React TypeScript UI components</title>
+        <meta
+          name="description"
+          content="React TS Kit is a modern React &amp; TypeScript UI component library for building consistent, scalable interfaces."
         />
-        <div
-          style={{
-            flex: 1,
-          
-            overflow: "auto",
-            maxWidth: "100%",
-          }}
-        >
-          <Content selectedItem={selectedItem} />
+      </Helmet>
+      <div
+        style={{
+          ...getThemeStyles(darkMode),
+          minHeight: "100vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Navbar
+          sticky={true}
+          logo={<Logo isMobile={isMobile} />}
+          darkMode={darkMode}
+          rightContent={RightContent()}
+          onHamburgerClick={handleHamburgerClick}
+          hamburgerOpen={isMobileMenuOpen}
+        />
+        <div style={{ display: "flex", flex: 1 }}>
+          <LeftMenu
+            setSelectedItem={handleSetSelectedItem}
+            selectedItem={selectedItem}
+            darkMode={darkMode}
+            mobileMode={isMobile}
+            isOpen={isMobileMenuOpen}
+            onClose={() => setIsMobileMenuOpen(false)}
+            navbarHeight={64}
+          />
+          <div
+            style={{
+              flex: 1,
+              overflow: "auto",
+              maxWidth: "100%",
+            }}
+          >
+            <Content selectedItem={selectedItem} />
+          </div>
         </div>
       </div>
-    </div>
-    <RegisterModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
-  </>
-   
+      <RegisterModal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
+    </>
   );
   //@@viewOff:render
 }

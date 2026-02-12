@@ -9,7 +9,7 @@ const BADGE_EXAMPLE_CODE = `<Badge
   colorScheme="success"
   darkMode={true}
 >
-  Schváleno
+  Approved
 </Badge>`;
 
 //@@viewOn:component

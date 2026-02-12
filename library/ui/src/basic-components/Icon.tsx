@@ -46,7 +46,7 @@ export const ICON_PROP_NAMES = [
 function Icon({
   icon = "mdi-close",
   size = "md",
-  color = "white",
+  color,
   style,
   onClick,
   removeDefaultStyle = false,
@@ -70,6 +70,9 @@ function Icon({
   const iconSize =
     typeof size === "number" ? size : getIconSize(size as SizeToken).size;
 
+  // Resolve default color based on theme when color is not provided
+  const resolvedColor = color ?? (darkMode ? "white" : "#111827");
+
   //@@viewOff:private
 
   //@@viewOn:render
@@ -89,7 +92,7 @@ function Icon({
       <MdiIcon
         path={path}
         size={iconSize}
-        color={color}
+        color={resolvedColor}
         style={removeDefaultStyle ? {} : { display: "flex" }}
       />
       {label && <span>{label}</span>}

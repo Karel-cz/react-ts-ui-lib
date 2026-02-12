@@ -1,4 +1,4 @@
-import { useLanguage } from "../app/context/languageContext";
+import { useLanguage } from "../app/context/LanguageContext";
 import { getTranslation } from "./translations";
 
 export const useTranslation = () => {

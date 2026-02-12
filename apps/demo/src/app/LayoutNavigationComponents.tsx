@@ -10,7 +10,7 @@ import { useTheme } from "./context/ThemeContext";
 
 //@@viewOn:css
 const getStyles = (): Record<string, React.CSSProperties> => ({
-  container: { display: "flex", flexDirection: "column", gap: 24 },
+  container: { display: "flex", flexDirection: "column", gap: 24, margin: 12 },
   grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 },
   title: { fontSize: 24, fontWeight: 700, marginBottom: 24 },
 });
@@ -43,9 +43,10 @@ const LayoutNavigationComponents = () => {
   //@@viewOn:render
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>{t("layoutNavigationComponentsPage.title")}</h1>
-      <p style={{ marginBottom: 24 }}>{t("layoutNavigationComponentsPage.description")}</p>
-      <p style={{ marginBottom: 24 }}>{t("layoutNavigationComponentsPage.instructions")}</p>
+      <Block header={t("layoutNavigationComponentsPage.title")} card="full" darkMode={darkMode}>
+        <p style={{ marginBottom: 24 }}>{t("layoutNavigationComponentsPage.description")}</p>
+        <p style={{ marginBottom: 24 }}>{t("layoutNavigationComponentsPage.instructions")}</p>
+      </Block>
 
       <div style={styles.grid}>
         <Block card="full" darkMode={darkMode} header={t("layoutNavigationComponentsPage.components.navbar")}>
@@ -68,7 +69,7 @@ const LayoutNavigationComponents = () => {
               itemList={sidebarItems}
               selectedItem={sidebarItems[0]}
               darkMode={darkMode}
-              onItemClick={() => {}}
+              onItemClick={() => { }}
             />
           </div>
         </Block>

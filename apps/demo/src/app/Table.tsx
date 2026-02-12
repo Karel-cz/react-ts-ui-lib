@@ -1,5 +1,6 @@
 //@@viewOn:imports
-import React from "react";
+import { UnderConstruction } from "@react-ts-ui-lib/ui";
+import { useTheme } from "./context/ThemeContext";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -10,8 +11,9 @@ import React from "react";
 //@@viewOff:propTypes
 
 const Table = () => {
+  const { darkMode } = useTheme();
   //@@viewOn:render
-  return <div>Table page – work in progress.</div>;
+  return <UnderConstruction darkMode={darkMode} />;
   //@@viewOff:render
 };
 

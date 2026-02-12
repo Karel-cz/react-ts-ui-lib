@@ -12,8 +12,8 @@ import { useRef, useState } from "react";
 //@@viewOff:imports
 
 const POPOVER_EXAMPLE_CODE = `<Popover
-  trigger={<Button label="Otevřít" />}
-  content={<div>Obsah popoveru</div>}
+  trigger={<Button label="Open" />}
+  content={<div>Popover content</div>}
   darkMode={darkMode}
 />`;
 

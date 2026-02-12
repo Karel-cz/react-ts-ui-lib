@@ -6,7 +6,7 @@ import { useTheme } from "../../app/context/ThemeContext";
 //@@viewOff:imports
 
 const BUTTON_EXAMPLE_CODE = `<Button
-  label="Uložit"
+  label="Save"
   colorScheme="primary"
   onClick={() => {}}
 />`;

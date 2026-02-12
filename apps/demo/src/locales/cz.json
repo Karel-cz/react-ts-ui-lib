@@ -280,13 +280,19 @@
       "type": { "description": "Styl spinneru: circular nebo horizontal bar.", "type": "string", "required": "false" },
       "size": { "description": "Pending size token (xs, sm, md, lg, xl).", "type": "string", "required": "false" },
       "darkMode": { "description": "Použije tmavou paletu barev, když true.", "type": "boolean", "required": "false" },
-      "colorScheme": { "description": "Barevné schéma pro spinner.", "type": "string", "required": "false" }
+      "colorScheme": { "description": "Barevné schéma pro spinner.", "type": "string", "required": "false" },
+      "animationSpeed": {
+        "description": "Rychlost animace (násobek výchozí rychlosti).",
+        "type": "number",
+        "required": "false"
+      }
     },
     "categories": {
       "type": "Typ",
       "size": "Velikost",
       "colorScheme": "Barevné schéma",
-      "darkMode": "Tmavý režim"
+      "darkMode": "Tmavý režim",
+      "animationSpeed": "Rychlost animace"
     },
     "examples": {
       "circular": "kruhový",
@@ -302,7 +308,9 @@
       "danger": "danger",
       "success": "success",
       "dark": "tmavý",
-      "light": "světlý"
+      "light": "světlý",
+      "slow": "Pomalé",
+      "fast": "Rychlé"
     }
   },
   "navbar": {
@@ -553,6 +561,7 @@
     },
     "examples": {
       "none": "Žádný",
+      "content": "Obsah",
       "full": "Plný",
       "withHeader": "S headerem",
       "withSeparator": "S oddělovačem",
@@ -1771,7 +1780,10 @@
       "new": "Nové",
       "warning": "Varování",
       "hot": "Horké",
-      "premium": "Prémiové"
+      "premium": "Prémiové",
+      "primaryInput": "Primární input",
+      "successInput": "Úspěšný input",
+      "tealInput": "Tyrkysový input"
     }
   },
   "formComponentsPage": {
@@ -1967,6 +1979,39 @@
       "withObjects": {
         "title": "S objekty",
         "code": "import { getMostFrequentValue } from \"@react-ts-ui-lib/utilities\";\n\nconst users = [\n  { role: \"Admin\" },\n  { role: \"User\" },\n  { role: \"admin\" },\n];\n\nconst mostRole = await getMostFrequentValue(users, \"role\", false);\n// mostRole === \"admin\""
+      }
+    }
+  },
+  "generatePassword": {
+    "title": "Generátor hesla",
+    "description": "Vygeneruje náhodné heslo z číslic (0–9). Prozatím je podporován pouze parametr délky.",
+    "inputs": {
+      "length": {
+        "label": "Délka"
+      }
+    },
+    "actions": {
+      "generate": "Generovat"
+    },
+    "result": {
+      "label": "Heslo"
+    },
+    "parameters": {
+      "length": {
+        "name": "length",
+        "description": "Délka generovaného hesla (počet číslic).",
+        "type": "number",
+        "required": "true"
+      }
+    },
+    "returnValue": {
+      "description": "Vrací řetězec náhodných číslic.",
+      "type": "string"
+    },
+    "usage": {
+      "basic": {
+        "title": "Základní použití",
+        "code": "import { generatePassword } from \"@react-ts-ui-lib/utilities\";\n\nconst password = generatePassword(8);\n// např. \"38472901\""
       }
     }
   },

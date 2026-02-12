@@ -1,12 +1,7 @@
 //@@viewOn:imports
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 import type { User, UserCredential } from "firebase/auth";
-import { 
-  onAuthStateChanged, 
-  signInWithPopup, 
-  signOut as firebaseSignOut
-} from "firebase/auth";
-import { auth, googleProvider, isFirebaseConfigured } from "../../firebase/config";
+import { getFirebaseAuth, isFirebaseConfigured } from "../../firebase/config";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -28,33 +23,34 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 //@@viewOn:provider
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    if (!auth) {
-      setLoading(false);
-      return () => undefined;
-    }
-
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
-    });
-
-    return () => unsubscribe();
-  }, []);
+  const [loading, setLoading] = useState(false);
 
   const signInWithGoogle = async () => {
-    if (!isFirebaseConfigured || !auth || !googleProvider) {
+    if (!isFirebaseConfigured) {
       throw new Error("Firebase není nakonfigurován (.env.local chybí).");
     }
 
-    return await signInWithPopup(auth, googleProvider);
+    setLoading(true);
+    try {
+      const { auth, googleProvider, signInWithPopup } = await getFirebaseAuth();
+      const credential = await signInWithPopup(auth, googleProvider);
+      setUser(credential.user);
+      return credential;
+    } finally {
+      setLoading(false);
+    }
   };
 
   const signOut = async () => {
-    if (!auth) return;
-    await firebaseSignOut(auth);
+    if (!isFirebaseConfigured) return;
+    setLoading(true);
+    try {
+      const { auth, signOut: firebaseSignOut } = await getFirebaseAuth();
+      await firebaseSignOut(auth);
+      setUser(null);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const value: AuthContextType = {

@@ -8,7 +8,7 @@ import { useTheme } from "../../app/context/ThemeContext";
 
 const INFO_GROUP_EXAMPLE_CODE = `<InfoGroup
   itemList={[
-    { title: 'Jméno', subtitle: 'Jan' },
+    { title: 'Name', subtitle: 'Jan' },
     { title: 'Email', subtitle: 'jan@example.com' }
   ]}
   darkMode={darkMode}

@@ -61,6 +61,7 @@ const Css = {
       height,
       minWidth,
       minHeight,
+      borderRadius: modern ? CARD_RADIUS_MODERN : undefined,
     };
   },
 
@@ -495,33 +496,33 @@ const ProfileCard = ({
 
       {hasBody && (
         <div style={Css.bodyWrapper(removeDefaultStyle, !bodyVisible)}>
-        <div style={Css.body(removeDefaultStyle, padding, borderColor)}>
-          {(labelName !== undefined || labelValue !== undefined) && (
-            <div style={Css.labelRow(removeDefaultStyle)}>
-              {labelName !== undefined && labelName !== "" && (
-                <span style={Css.labelName(removeDefaultStyle)}>{labelName}</span>
-              )}
-              {labelValue !== undefined && (
-                <span style={Css.labelValue(removeDefaultStyle)}>{labelValue}</span>
-              )}
-            </div>
-          )}
-          {(descriptionName !== undefined || descriptionValue !== undefined) && (
-            <div style={Css.labelRow(removeDefaultStyle)}>
-              {descriptionName !== undefined && descriptionName !== "" && (
-                <span style={Css.labelName(removeDefaultStyle)}>{descriptionName}</span>
-              )}
-              {descriptionValue !== undefined && (
-                <span style={Css.labelValue(removeDefaultStyle)}>{descriptionValue}</span>
-              )}
-            </div>
-          )}
-          {content != null ? <div>{content}</div> : null}
-        </div>
+          <div style={Css.body(removeDefaultStyle, padding, borderColor)}>
+            {(labelName !== undefined || labelValue !== undefined) && (
+              <div style={Css.labelRow(removeDefaultStyle)}>
+                {labelName !== undefined && labelName !== "" && (
+                  <span style={Css.labelName(removeDefaultStyle)}>{labelName}</span>
+                )}
+                {labelValue !== undefined && (
+                  <span style={Css.labelValue(removeDefaultStyle)}>{labelValue}</span>
+                )}
+              </div>
+            )}
+            {(descriptionName !== undefined || descriptionValue !== undefined) && (
+              <div style={Css.labelRow(removeDefaultStyle)}>
+                {descriptionName !== undefined && descriptionName !== "" && (
+                  <span style={Css.labelName(removeDefaultStyle)}>{descriptionName}</span>
+                )}
+                {descriptionValue !== undefined && (
+                  <span style={Css.labelValue(removeDefaultStyle)}>{descriptionValue}</span>
+                )}
+              </div>
+            )}
+            {content != null ? <div>{content}</div> : null}
+          </div>
         </div>
       )}
 
-      {actionList && actionList.length > 0 && (
+      {hasFooter && (
         <div style={Css.footer(removeDefaultStyle, padding, borderColor)}>
           {actionList.map((action, index) => (
             <React.Fragment key={index}>{action}</React.Fragment>

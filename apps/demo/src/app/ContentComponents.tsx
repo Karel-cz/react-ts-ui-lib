@@ -11,7 +11,7 @@ import { useTheme } from "./context/ThemeContext";
 
 //@@viewOn:css
 const getStyles = (): Record<string, React.CSSProperties> => ({
-  container: { display: "flex", flexDirection: "column", gap: 24 },
+  container: { display: "flex", flexDirection: "column", gap: 24, margin: 12 },
   grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 },
   blockContent: { display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" },
   title: { fontSize: 24, fontWeight: 700, marginBottom: 24 },
@@ -41,10 +41,11 @@ const ContentComponents = () => {
   //@@viewOn:render
   return (
     <div style={styles.container}>
-      <h1 style={styles.title}>{t("contentComponentsPage.title")}</h1>
-      <p style={{ marginBottom: 24 }}>{t("contentComponentsPage.description")}</p>
-      <p style={{ marginBottom: 24 }}>{t("contentComponentsPage.instructions")}</p>
-
+      <Block header={t("contentComponentsPage.title")} card="full" darkMode={darkMode}>
+        <p style={{ marginBottom: 24 }}>{t("contentComponentsPage.description")}</p>
+        <p style={{ marginBottom: 24 }}>{t("contentComponentsPage.instructions")}</p>
+      </Block>
+      
       <div style={styles.grid}>
         <Block card="full" darkMode={darkMode} header={t("contentComponentsPage.components.infoGroup")}>
           <InfoGroup itemList={infoItems} direction="horizontal" darkMode={darkMode} />

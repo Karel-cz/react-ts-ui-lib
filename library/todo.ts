@@ -40,3 +40,15 @@
 // drobečkou navigaci byla by hezká v dokumentaci, bais componet > Button > props tab
 // sidebar aktuálně se dá otevřít víc root itemů bylo by dobré mít na to propsu a tohle dovolit nebo zakázat aby se při rozklinutí další root tamty ostatní zavřely. 
 // novou metodu pro rozdělení cammleCase 
+// v block se renderuje linie měla bybýt možnost zadat její šířku
+// přidat welcome stránku
+// přidat stránku že ta routa neexistuje
+// přidat placeholder 
+// přidat komponenu je to ve výstavbě
+// přestalo fungovat přihlášení přes google
+// v mobilním režimu po kliknutí v sidebaru na rozklkávaci šipku se hend sidebar ztratí to by nemělo na to regovat mělo by nechat zvotli i podsložku
+// napojit na analtic dashbor od firebase
+// opravit draf, inProgress, Produce
+// po vytvoření welcome stránky jí dát na rozkliknutí na logo
+// předělat halvní sekce kompnenty vypadají hrozně
+// spojit content componest a basic components

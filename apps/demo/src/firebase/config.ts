@@ -1,6 +1,5 @@
 //@@viewOn:imports
-import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import type { Auth, GoogleAuthProvider } from "firebase/auth";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -18,14 +17,34 @@ export const isFirebaseConfigured = true;
 //@@viewOff:constants
 
 //@@viewOn:initialization
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+let firebasePromise:
+  | Promise<{
+      auth: Auth;
+      googleProvider: GoogleAuthProvider;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      signInWithPopup: (auth: Auth, provider: GoogleAuthProvider) => Promise<any>;
+      signOut: (auth: Auth) => Promise<void>;
+    }>
+  | null = null;
 
-// Initialize Firebase Authentication and get a reference to the service
-export const auth = getAuth(app);
+export const getFirebaseAuth = async () => {
+  if (!isFirebaseConfigured) {
+    throw new Error("Firebase není nakonfigurován (.env.local chybí).");
+  }
 
-// Initialize Google Auth Provider
-export const googleProvider = new GoogleAuthProvider();
+  if (!firebasePromise) {
+    firebasePromise = (async () => {
+      const { initializeApp } = await import("firebase/app");
+      const { getAuth, GoogleAuthProvider, signInWithPopup, signOut } = await import("firebase/auth");
+
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const googleProvider = new GoogleAuthProvider();
+
+      return { auth, googleProvider, signInWithPopup, signOut };
+    })();
+  }
+
+  return firebasePromise;
+};
 //@@viewOff:initialization
-
-export default app;

@@ -5,6 +5,7 @@ import Block from "./Block";
 import Label from "./Label";
 import Box from "./Box";
 import Badge from "./Badge";
+import UnderConstruction from "./UnderConstruction";
 import TabGroup, { type TabGroupItem } from "./TabGroup";
 import {
   getColorScheme,
@@ -12,7 +13,8 @@ import {
   type ColorScheme,
 } from "../tools/colors";
 
-//@@viewOff:imports
+
+//@@viewOff:imports 
 
 //@@viewOn:constants
 const BASIC_INFO = "basicInfo";
@@ -106,6 +108,28 @@ const Css = {
     overflow: "auto",
     whiteSpace: "pre",
   }),
+  usagePlaceholder: (): React.CSSProperties => ({
+    width: "100%",
+    minHeight: 200,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 32,
+    boxSizing: "border-box",
+  }),
+  usagePlaceholderCard: (
+    borderColor: string,
+    surfaceColor: string,
+  ): React.CSSProperties => ({
+    maxWidth: 520,
+    width: "100%",
+    textAlign: "center",
+    padding: 32,
+    borderRadius: 16,
+    border: `1px dashed ${borderColor}`,
+    backgroundColor: surfaceColor,
+    boxShadow: "0 8px 24px rgba(0,0,0,0.12)",
+  }),
 };
 //@@viewOff:css
 
@@ -160,6 +184,12 @@ export const DocumentationTypeScheme = {
     required: false,
     type: undefined as unknown as BasicInfo,
   },
+  usageContent: {
+    name: "usageContent",
+    description: "Optional custom content to render in the Usage tab.",
+    required: false,
+    type: null as React.ReactNode,
+  },
   state: {
     name: "state",
     description: "State of the component.",
@@ -195,6 +225,7 @@ const Documentation = ({
   propTypesList,
   componentList,
   basicInfo,
+  usageContent,
   propTypesTitle = "Prop Types",
   propTypesNameLabel = "Name",
   propTypesDescriptionLabel = "Description",
@@ -297,11 +328,13 @@ const Documentation = ({
     },
     {
       title: tabUsageLabel,
-      content: <div>{tabUsageLabel}</div>,
+      content: usageContent ?? <UnderConstruction darkMode={darkMode} />,
       code: USAGE,
       onClick: () => {
         setActiveTab(USAGE);
       },
+      
+    
     },
     {
       title: tabPropTypesLabel,

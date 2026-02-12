@@ -11,8 +11,8 @@ import { useTheme } from "../../app/context/ThemeContext";
 //@@viewOff:imports
 
 const PROFILE_CARD_EXAMPLE_CODE = `<ProfileCard
-  name="Jméno"
-  description="Popis"
+  name="John Doe"
+  description="Short bio"
   avatarSrc="/avatar.jpg"
   darkMode={darkMode}
 />`;
