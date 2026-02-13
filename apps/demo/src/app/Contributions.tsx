@@ -1,7 +1,8 @@
 //@@viewOn:imports
-import { Pending, getBorderColor, Block } from "@react-ts-ui-lib/ui";
+import { Pending, getBorderColor, Block, ProfileCard, Button } from "@react-ts-ui-lib/ui";
 import { useEffect, useState } from "react";
 import { useTheme } from "./context/ThemeContext";
+//import { ProfileCard } from "./ProfileCard";
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -62,6 +63,10 @@ function Contributions() {
     loadContributors();
   }, []);
 
+  const contributorsSorted = [...contributors].sort(
+    (a, b) => b.contributions - a.contributions
+  );
+
   //@@viewOff:private
 
   //@@viewOn:render
@@ -71,82 +76,50 @@ function Contributions() {
   }
 
   return (
-    <div>
+    <div style={{ margin: "16px" }}>
       <Block header="Contributions" borderRadius="md" darkMode={darkMode} card="full" >
-        <table style={{ width: "100%", borderCollapse: "collapse" }}>
-          <thead>
-            <tr>
-              <th
-                style={{
-                  textAlign: "left",
-                  borderBottom: `1px solid ${borderColor}`,
-                  padding: "8px",
-                }}
-              >
-                Avatar
-              </th>
-              <th
-                style={{
-                  textAlign: "left",
-                  borderBottom: `1px solid ${borderColor}`,
-                  padding: "8px",
-                }}
-              >
-                Login
-              </th>
-              <th
-                style={{
-                  textAlign: "right",
-                  borderBottom: `1px solid ${borderColor}`,
-                  padding: "8px",
-                }}
-              >
-                Contributions
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {contributors.map((c) => (
-              <tr key={c.id}>
-                <td
-                  style={{
-                    padding: "8px",
-                    borderBottom: `1px solid ${borderColor}`,
-                  }}
-                >
-                  <img
-                    src={c.avatar_url}
-                    alt={c.login}
-                    width={32}
-                    height={32}
-                    style={{ borderRadius: 4 }}
-                  />
-                </td>
-                <td
-                  style={{
-                    padding: "8px",
-                    borderBottom: `1px solid ${borderColor}`,
-                  }}
-                >
-                  <a href={c.html_url} target="_blank" rel="noreferrer">
-                    {c.login}
-                  </a>
-                </td>
-                <td
-                  style={{
-                    padding: "8px",
-                    borderBottom: `1px solid ${borderColor}`,
-                    textAlign: "right",
-                  }}
-                >
-                  {c.contributions}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gap: 16,
+          alignItems: "start",
+        }}
+        >
+          {contributorsSorted.map((c) => (
+            <ProfileCard
+              key={c.id}
+              photo={c.avatar_url}
+              photoLink={c.html_url}
+              name={c.login}
+              role="GitHub Contributor"
+              labelName="Contributions"
+              labelValue={c.contributions.toString()}
+              darkMode={darkMode}
+              collapsed={true}
+              width="100%"
+              actionList={[
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>  
+                  <Button
+                    icon="mdi-github"
+                    colorScheme="primary"
+                    significance="common"
+                    modern
+                    darkMode={darkMode}
+                    size="sm"
+                    onClick={() => 
+                      window.open(c.html_url, "_blank", "noopener,noreferrer")}
+                  >
+                    View Profile
+                  </Button>
+                </div>
+              ]}
+            />
+          ))}
+        </div>
+        
       </Block>
     </div>
+
   );
   //@@viewOff:render
 }
