@@ -98,9 +98,8 @@ function Contributions() {
               darkMode={darkMode}
               collapsed={true}
               width="100%"
-
+              borderRadius="md"
               actionList={[
-
                   <Button
                     icon="mdi-github"
                     colorScheme="primary"

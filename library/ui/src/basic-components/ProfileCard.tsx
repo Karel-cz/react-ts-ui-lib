@@ -8,6 +8,7 @@ import {
   getModernCardGradient,
   getBorderColor,
 } from "../tools/colors";
+import { getRadiusValue, type RadiusToken } from "../tools/radius";
 import Icon from "./Icon";
 //@@viewOff:imports
 
@@ -42,6 +43,7 @@ const Css = {
     height?: string,
     minWidth?: string,
     minHeight?: string,
+    borderRadiusValue?: number,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -61,10 +63,10 @@ const Css = {
       height,
       minWidth,
       minHeight,
-      borderRadius: modern ? CARD_RADIUS_MODERN : undefined,
+      borderRadius: borderRadiusValue,
     };
   },
-
+  
   header: (
     removeDefaultStyle?: boolean,
     padding?: number,
@@ -313,6 +315,7 @@ export type ProfileCardProps = {
   collapsed?: boolean;
   noPrint?: boolean;
   hidden?: boolean;
+  borderRadius?: RadiusToken;
 };
 
 export const PROFILE_CARD_PROP_NAMES = [
@@ -371,15 +374,18 @@ const ProfileCard = ({
   collapsed = true,
   noPrint = false,
   hidden = false,
+  borderRadius = "md",
 }: ProfileCardProps) => {
   //@@viewOn:private
   const [isCollapsed, setIsCollapsed] = useState(collapsed);
   const bodyVisible = !isCollapsed;
+  
 
   if (hidden) return null;
 
   const borderColor = getBorderColor(darkMode);
   const padding = DEFAULT_PADDING;
+  const borderRadiusValue = getRadiusValue(borderRadius);
 
   let background: string;
   let textColor: string;
@@ -433,6 +439,7 @@ const ProfileCard = ({
     cardHeight,
     cardMinWidth,
     cardMinHeight,
+    borderRadiusValue,
   );
 
   return (
