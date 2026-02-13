@@ -75,6 +75,7 @@ export type SelectProps = {
   onBlur?: (e: React.FocusEvent<HTMLSelectElement>) => void;
   name?: string;
   id?: string;
+  className?: string;
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -91,6 +92,7 @@ export const SELECT_PROP_NAMES = [
   "onBlur",
   "name",
   "id",
+  "className",
 ] as const;
 //@@viewOff:propTypes
 
@@ -107,6 +109,7 @@ const Select = ({
   onBlur,
   name,
   id,
+  className,
 }: SelectProps) => {
   //@@viewOn:private
   const [focused, setFocused] = useState(false);
@@ -124,6 +127,7 @@ const Select = ({
       <select
         id={id}
         name={name}
+        className={className}
         value={valueStr}
         onChange={onChange}
         onFocus={(e) => {
