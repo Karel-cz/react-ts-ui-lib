@@ -3,9 +3,9 @@ import { useState, useMemo, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import LeftMenu from "./LeftMenu";
 import Content from "./Content";
-import type { SideBarItem } from "@react-ts-ui-lib/ui";
+import type { SelectItem, SideBarItem } from "@react-ts-ui-lib/ui";
 import { getRouteList } from "./tools/RouteList";
-import { Navbar, Button, ThemeToggle, getColorScheme } from "@react-ts-ui-lib/ui";
+import { Navbar, Button, ThemeToggle, getColorScheme, Select } from "@react-ts-ui-lib/ui";
 import { useTheme } from "./context/ThemeContext";
 import { useLanguage } from "./context/LanguageContext";
 import { useTranslation } from "../i18n/useTranslation";
@@ -32,10 +32,11 @@ const Logo = ({ isMobile }: { isMobile?: boolean }) => (
     }}
   />
 );
-const LANGUAGE_MAP: Record<string, string> = {
-  en: "EN",
-  cz: "CZ",
-};
+// const LANGUAGE_MAP: Record<string, string> = {
+//   en: "EN",
+//   cz: "CZ",
+// };
+
 
 const STORAGE_KEY_DARK_MODE = "app-dark-mode";
 //@@viewOff:constants
@@ -74,6 +75,11 @@ function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const languageOptions: SelectItem[] = [
+    { value: "en", label: "EN" },
+    { value: "cz", label: "CZ" },
+  ];
 
   useEffect(() => {
     storage.set(STORAGE_KEY_DARK_MODE, darkMode);
@@ -118,13 +124,16 @@ function App() {
           ariaLabelDark={t("themeToggle.ariaLabelDark")}
           ariaLabelLight={t("themeToggle.ariaLabelLight")}
         />
-        <Button
-          size="sm"
-          onClick={() => setLanguage(language === "en" ? "cz" : "en")}
-          modern={true}
-        >
-          {LANGUAGE_MAP[language as keyof typeof LANGUAGE_MAP]}
-        </Button>
+        <Select
+          id="language-select"
+          name="language"
+          className={`demo-language-select ${darkMode ? "dark-mode" : "light-mode"}`}
+          itemList={languageOptions}
+          value={language}
+          onChange={(e) => setLanguage(e.target.value as "en" | "cz")}
+          darkMode={darkMode}
+          removeDefaultStyle={true}
+        />
         {user ? (
           <>
            
