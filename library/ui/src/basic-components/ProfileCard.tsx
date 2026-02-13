@@ -15,7 +15,6 @@ import Icon from "./Icon";
 //@@viewOn:constants
 const DEFAULT_PADDING = 16;
 const PHOTO_SIZE = 48;
-const CARD_RADIUS_MODERN = 8;
 const DEFAULT_CARD_WIDTH = 320;
 const DEFAULT_MIN_HEIGHT = 200;
 const DEFAULT_MIN_HEIGHT_HEADER_ONLY = 0;
@@ -38,7 +37,6 @@ const Css = {
     shadow?: string,
     borderColor?: string,
     layout?: "responsive" | "stacked",
-    modern?: boolean,
     width?: string,
     height?: string,
     minWidth?: string,
@@ -434,7 +432,6 @@ const ProfileCard = ({
     shadow,
     borderColor,
     layout,
-    modern,
     cardWidth,
     cardHeight,
     cardMinWidth,
