@@ -97,6 +97,7 @@ function Contributions() {
               darkMode={darkMode}
               collapsed={true}
               width="100%"
+              borderRadius="md"
               actionList={[
                 <div style={{ display: "flex", justifyContent: "flex-end" }}>  
                   <Button
