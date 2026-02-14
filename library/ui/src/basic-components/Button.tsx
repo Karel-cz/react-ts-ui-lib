@@ -201,6 +201,7 @@ const Button = ({
   const hoverShadow = modernStyle.hoverShadow;
 
   const content = children || label;
+  const useModernGradient = modern && significance !== "distinct";
   //@@viewOff:private
 
   //@@viewOn:render
@@ -216,7 +217,7 @@ const Button = ({
     buttonSize.fontSize,
     buttonSize.height,
     buttonSize.width,
-    modern,
+    useModernGradient,
     gradientBackground,
     gradientHoverBackground,
     shadow,

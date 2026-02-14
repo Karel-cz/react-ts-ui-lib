@@ -580,7 +580,8 @@ export const getColorScheme = (colorScheme: ColorScheme, darkMode: boolean) => {
 // Significance handling
 export type Significance = "common" | "highlighted" | "distinct" | "subdued";
 
-const highlightedMap: Partial<Record<ColorScheme, ColorScheme>> = {
+// Common = normal level (muted/darker variant). Highlighted = full accent (vivid, stands out).
+const commonToMutedMap: Partial<Record<ColorScheme, ColorScheme>> = {
   primary: "primaryDark",
   success: "successDark",
   danger: "dangerDark",
@@ -598,25 +599,62 @@ const highlightedMap: Partial<Record<ColorScheme, ColorScheme>> = {
   bronze: "bronzeDark",
 };
 
+// Neutral schemes: "highlighted" uses primary so it clearly stands out from "common".
+const neutralSchemes: Set<ColorScheme> = new Set([
+  "surface",
+  "background",
+  "text",
+  "muted",
+  "border",
+  "shadow",
+  "white",
+  "black",
+]);
+
+// Dark variant -> base variant: highlighted always uses full vivid color.
+const darkToFullMap: Partial<Record<ColorScheme, ColorScheme>> = {
+  primaryDark: "primary",
+  successDark: "success",
+  dangerDark: "danger",
+  warningDark: "warning",
+  infoDark: "info",
+  purpleDark: "purple",
+  tealDark: "teal",
+  pinkDark: "pink",
+  indigoDark: "indigo",
+  orangeDark: "orange",
+  cyanDark: "cyan",
+  goldDark: "gold",
+  silverDark: "silver",
+  bronzeDark: "bronze",
+};
+
 export const getSignificanceColor = (
   colorScheme: ColorScheme,
   significance: Significance = "common",
   darkMode: boolean = true,
 ) => {
   if (significance === "common") {
-    return getColorScheme(colorScheme, darkMode);
+    const muted = commonToMutedMap[colorScheme] ?? colorScheme;
+    return getColorScheme(muted, darkMode);
   }
 
   if (significance === "highlighted") {
-    const mappedScheme = highlightedMap[colorScheme] ?? colorScheme;
-    return getColorScheme(mappedScheme, darkMode);
+    const fullScheme = neutralSchemes.has(colorScheme)
+      ? "primary"
+      : darkToFullMap[colorScheme] ?? colorScheme;
+    const base = getColorScheme(fullScheme, darkMode);
+    return {
+      ...base,
+      textColor: COLORS.white,
+    } as ColorEntry;
   }
 
   if (significance === "distinct") {
     const baseScheme = getColorScheme(colorScheme, darkMode);
     return {
-      color: hexToRgba(baseScheme.color, 0.2),
-      textColor: baseScheme.color,
+      color: hexToRgba(baseScheme.color, 0.18),
+      textColor: COLORS.white,
       key: baseScheme.key,
     } as ColorEntry;
   }
@@ -745,16 +783,19 @@ export const getModernGradient = (
 
   const mixWeight =
     significance === "distinct" ? 0.6 : significance === "subdued" ? 0.75 : 0;
+  const isDistinctOrSubdued = mixWeight > 0;
+  const colorForMix =
+    isDistinctOrSubdued ? baseScheme.color : (scheme.color as string);
 
   const baseTone = mixWeight
     ? mixHex(baseScheme.color, surfaceScheme.color, mixWeight)
     : baseScheme.color;
   const midTone = mixWeight
-    ? mixHex(scheme.color, surfaceScheme.color, mixWeight)
-    : scheme.color;
+    ? mixHex(colorForMix, surfaceScheme.color, mixWeight)
+    : scheme.color as string;
   const hoverTone = mixWeight
     ? mixHex(
-        hoverSchemeMap[colorScheme as string]?.color ?? scheme.color,
+        hoverSchemeMap[colorScheme as string]?.color ?? baseScheme.color,
         surfaceScheme.color,
         mixWeight,
       )
@@ -764,8 +805,21 @@ export const getModernGradient = (
   const gradientMid = midTone;
   const gradientTo = baseTone;
 
-  const highlightOverlay = `linear-gradient(120deg, ${hexToRgba(white, darkMode ? 0.2 : 0.28)} 0%, ${hexToRgba(white, 0)} 40%, ${hexToRgba(black, darkMode ? 0.18 : 0.12)} 100%)`;
-  const overlayGradient = `linear-gradient(135deg, ${hexToRgba(white, darkMode ? 0.18 : 0.26)} 0%, ${hexToRgba(white, 0)} 44%, ${hexToRgba(black, darkMode ? 0.18 : 0.1)} 100%)`;
+  const isHighlighted = significance === "highlighted";
+  const isDistinct = significance === "distinct";
+  const whiteHighlight =
+    isHighlighted ? (darkMode ? 0.08 : 0.12)
+    : isDistinct ? (darkMode ? 0.06 : 0.08)
+    : (darkMode ? 0.2 : 0.28);
+  const whiteOverlay =
+    isHighlighted ? (darkMode ? 0.06 : 0.1)
+    : isDistinct ? (darkMode ? 0.04 : 0.06)
+    : (darkMode ? 0.18 : 0.26);
+  const blackOverlay = darkMode ? 0.18 : 0.12;
+  const blackOverlayAlt = darkMode ? 0.18 : 0.1;
+
+  const highlightOverlay = `linear-gradient(120deg, ${hexToRgba(white, whiteHighlight)} 0%, ${hexToRgba(white, 0)} 40%, ${hexToRgba(black, blackOverlay)} 100%)`;
+  const overlayGradient = `linear-gradient(135deg, ${hexToRgba(white, whiteOverlay)} 0%, ${hexToRgba(white, 0)} 44%, ${hexToRgba(black, blackOverlayAlt)} 100%)`;
   const baseGradient = `linear-gradient(135deg, ${gradientFrom} 0%, ${gradientMid} 45%, ${gradientTo} 100%)`;
   const hoverGradient = `linear-gradient(135deg, ${gradientTo} 0%, ${gradientMid} 45%, ${gradientFrom} 100%)`;
   const background = `${highlightOverlay}, ${overlayGradient}, ${baseGradient}`;
@@ -821,7 +875,10 @@ export const getModernCardGradient = (
 
   const significanceMix =
     significance === "distinct" ? 0.6 : significance === "subdued" ? 0.75 : 0;
-  const cardMixWeight = 0.5 + significanceMix * 0.15;
+  const isHighlighted = significance === "highlighted";
+  const cardMixWeight = isHighlighted
+    ? 0.25
+    : 0.5 + significanceMix * 0.15;
 
   const baseTone = mixHex(baseScheme.color, surfaceScheme.color, cardMixWeight);
   const midTone = mixHex(scheme.color, surfaceScheme.color, cardMixWeight * 0.9);
@@ -835,7 +892,7 @@ export const getModernCardGradient = (
   const gradientMid = midTone;
   const gradientTo = baseTone;
 
-  const softWhite = darkMode ? 0.07 : 0.08;
+  const softWhite = isHighlighted ? (darkMode ? 0.03 : 0.04) : (darkMode ? 0.07 : 0.08);
   const softBlack = darkMode ? 0.05 : 0.04;
   const highlightOverlay = `linear-gradient(120deg, ${hexToRgba(white, softWhite)} 0%, ${hexToRgba(white, 0)} 50%, ${hexToRgba(black, softBlack)} 100%)`;
   const overlayGradient = `linear-gradient(135deg, ${hexToRgba(white, softWhite * 0.8)} 0%, ${hexToRgba(white, 0)} 45%, ${hexToRgba(black, softBlack * 0.8)} 100%)`;

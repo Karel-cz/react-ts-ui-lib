@@ -291,6 +291,12 @@
       "loading": "Loading",
       "rounded": "Rounded",
       "pillNoPrint": "pill noPrint",
+      "radiusNone": "None",
+      "radiusXs": "XS",
+      "radiusSm": "SM",
+      "radiusMd": "MD",
+      "radiusLg": "LG",
+      "radiusFull": "Full",
       "tooltip": "tooltip",
       "hoverMe": "Hover me",
       "nativeTooltip": "Native tooltip"
@@ -643,8 +649,7 @@
     "componentCategories": {
       "basic": "Basic Components",
       "form": "Form Components",
-      "layoutNavigation": "Layout & Navigation Components",
-      "content": "Content Components"
+      "layoutStructure": "Layout & Structure"
     },
     "components": {
       "button": "Button",
@@ -800,6 +805,7 @@
       "darkMode": "Dark Mode"
     },
     "examples": {
+      "basic": "Basic",
       "none": "None",
       "content": "Content",
       "withHeader": "With Header",
@@ -1156,6 +1162,11 @@
         "type": "function",
         "required": "true"
       },
+      "size": {
+        "description": "Size of the toggle: xs, sm, md, lg, xl – affects track width, thumb and icons.",
+        "type": "string",
+        "required": "false"
+      },
       "style": {
         "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
         "type": "React.CSSProperties",
@@ -1180,12 +1191,18 @@
     "categories": {
       "darkMode": "Dark / Light",
       "interactive": "Interactive",
+      "size": "Size",
       "styling": "Styling"
     },
     "examples": {
       "dark": "Dark mode",
       "light": "Light mode",
       "interactive": "Interactive (toggle)",
+      "xs": "XS",
+      "sm": "SM",
+      "md": "MD",
+      "lg": "LG",
+      "xl": "XL",
       "noDefault": "No default style"
     }
   },
@@ -2004,7 +2021,9 @@
       "labels": "Labels",
       "themeToggle": "Theme Toggle",
       "copyToClipboard": "Copy to Clipboard",
-      "block": "Block"
+      "infogroup": "Info Group",
+      "profileCard": "Profile Card",
+      "popover": "Popover"
     },
     "examples": {
       "primary": "Primary",
@@ -2044,25 +2063,17 @@
       "checked": "Checked by default"
     }
   },
-  "layoutNavigationComponentsPage": {
-    "title": "Layout & Navigation Components",
-    "description": "Navbar, SideBar, TabGroup and other layout or navigation patterns. Select from the left menu for documentation.",
-    "instructions": "Expand Layout & Navigation Components in the left menu.",
+  "layoutStructureComponentsPage": {
+    "title": "Layout & Structure",
+    "description": "Navbar, SideBar, TabGroup and Block – components for page layout, navigation and content structure. Select from the left menu for documentation.",
+    "instructions": "Expand Layout & Structure in the left menu.",
     "components": {
       "navbar": "Navbar",
       "sidebar": "SideBar",
-      "tabGroup": "TabGroup"
-    }
-  },
-  "contentComponentsPage": {
-    "title": "Content Components",
-    "description": "InfoGroup, ProfileCard, Popover and similar content or overlay components. Select from the left menu for documentation.",
-    "instructions": "Expand Content Components in the left menu.",
-    "components": {
-      "infoGroup": "InfoGroup",
-      "profileCard": "ProfileCard",
-      "popover": "Popover"
-    }
+      "tabGroup": "TabGroup",
+      "block": "Block"
+    },
+    "blockExample": "Block with optional header and card styling."
   },
   "utilitiesPage": {
     "title": "Tools and Utilities",

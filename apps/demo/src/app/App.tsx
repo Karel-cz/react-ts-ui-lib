@@ -116,13 +116,14 @@ function App() {
   const RightContent = () => {
     return (
       <>
-      {user &&
-       <GoogleUserChip user={user} showDetails={!isMobile} />}
+        {user &&
+        <GoogleUserChip user={user} showDetails={!isMobile} />}
         <ThemeToggle
           darkMode={darkMode}
           onToggle={() => setDarkMode(!darkMode)}
           ariaLabelDark={t("themeToggle.ariaLabelDark")}
           ariaLabelLight={t("themeToggle.ariaLabelLight")}
+          size="sm"
         />
         <Select
           id="language-select"
@@ -136,13 +137,14 @@ function App() {
         />
         {user ? (
           <>
-           
+
             <Button
               size="sm"
               onClick={signOut}
               modern={true}
               icon="mdi-logout"
-              colorScheme="indigo"
+              colorScheme="primary"
+              significance="distinct"
             >
               {!isMobile && t("auth.signOut")}
             </Button>
@@ -152,7 +154,9 @@ function App() {
             size="sm"
             onClick={() => setIsModalOpen(true)}
             modern={true}
-            colorScheme="indigo"
+            colorScheme="primary"
+            significance="highlighted"
+            icon="mdi-login"
             disabled={loading}
           >
             {t("auth.signIn")}

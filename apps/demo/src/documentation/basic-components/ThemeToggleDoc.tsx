@@ -71,6 +71,71 @@ const ThemeToggleDoc = () => {
       ],
     },
     {
+      category: t("themeToggle.categories.size"),
+      itemList: [
+        {
+          label: t("themeToggle.examples.xs"),
+          components: (
+            <UiThemeToggle
+              darkMode={demoDark}
+              onToggle={() => setDemoDark(!demoDark)}
+              size="xs"
+              ariaLabelDark={t("themeToggle.ariaLabelDark")}
+              ariaLabelLight={t("themeToggle.ariaLabelLight")}
+            />
+          ),
+        },
+        {
+          label: t("themeToggle.examples.sm"),
+          components: (
+            <UiThemeToggle
+              darkMode={demoDark}
+              onToggle={() => setDemoDark(!demoDark)}
+              size="sm"
+              ariaLabelDark={t("themeToggle.ariaLabelDark")}
+              ariaLabelLight={t("themeToggle.ariaLabelLight")}
+            />
+          ),
+        },
+        {
+          label: t("themeToggle.examples.md"),
+          components: (
+            <UiThemeToggle
+              darkMode={demoDark}
+              onToggle={() => setDemoDark(!demoDark)}
+              size="md"
+              ariaLabelDark={t("themeToggle.ariaLabelDark")}
+              ariaLabelLight={t("themeToggle.ariaLabelLight")}
+            />
+          ),
+        },
+        {
+          label: t("themeToggle.examples.lg"),
+          components: (
+            <UiThemeToggle
+              darkMode={demoDark}
+              onToggle={() => setDemoDark(!demoDark)}
+              size="lg"
+              ariaLabelDark={t("themeToggle.ariaLabelDark")}
+              ariaLabelLight={t("themeToggle.ariaLabelLight")}
+            />
+          ),
+        },
+        {
+          label: t("themeToggle.examples.xl"),
+          components: (
+            <UiThemeToggle
+              darkMode={demoDark}
+              onToggle={() => setDemoDark(!demoDark)}
+              size="xl"
+              ariaLabelDark={t("themeToggle.ariaLabelDark")}
+              ariaLabelLight={t("themeToggle.ariaLabelLight")}
+            />
+          ),
+        },
+      ],
+    },
+    {
       category: t("themeToggle.categories.styling"),
       itemList: [
         {

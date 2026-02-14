@@ -1,6 +1,7 @@
 //@@viewOn:imports
-import { useState } from "react";
-import { Block, Button, Icon, Number, Pending, Badge, ThemeToggle, Label, CopyToClipboard } from "@react-ts-ui-lib/ui";
+import { useState, useRef } from "react";
+import { Block, Button, Icon, Number, Pending, Badge, ThemeToggle, Label, CopyToClipboard, InfoGroup, ProfileCard, Popover } from "@react-ts-ui-lib/ui";
+import type { InfoGroupItem } from "@react-ts-ui-lib/ui";
 import { copyToClipboard } from "@react-ts-ui-lib/utilities";
 import { useTranslation } from "../i18n/useTranslation";
 import { useTheme } from "./context/ThemeContext";
@@ -49,6 +50,13 @@ const BasicComponents = () => {
   const { t } = useTranslation();
   const styles = getStyles();
   const [demoDark, setDemoDark] = useState(false);
+  const [popoverOpen, setPopoverOpen] = useState(false);
+  const popoverTriggerRef = useRef<HTMLDivElement>(null);
+
+  const infoItems: InfoGroupItem[] = [
+    { title: "Status", subtitle: <Badge label="Active" colorScheme="success" /> },
+    { title: "Count", subtitle: <Number value={42} /> },
+  ];
   //@@viewOff:private
 
   //@@viewOn:render
@@ -138,12 +146,31 @@ const BasicComponents = () => {
           </div>
         </Block>
 
-        <Block card="full" darkMode={darkMode} header={t("basicComponentsPage.components.block")}>
-          <div style={styles.blockContent}>
-            <Block darkMode={darkMode} header={t("basicComponentsPage.examples.dashboard")}>
-              <p style={{ margin: 0 }}>{t("basicComponentsPage.description")}</p>
-            </Block>
+        <Block card="full" darkMode={darkMode} header={t("basicComponentsPage.components.infogroup")}>
+          <InfoGroup itemList={infoItems} direction="horizontal" darkMode={darkMode} />
+        </Block>
+
+        <Block card="full" darkMode={darkMode} header={t("basicComponentsPage.components.profileCard")}>
+          <ProfileCard
+            name="Jane Doe"
+            role="Developer"
+            darkMode={darkMode}
+          />
+        </Block>
+
+        <Block card="full" darkMode={darkMode} header={t("basicComponentsPage.components.popover")}>
+          <div ref={popoverTriggerRef} style={{ display: "inline-block" }}>
+            <Button darkMode={darkMode} onClick={() => setPopoverOpen(true)}>
+              {t("popover.examples.trigger")}
+            </Button>
           </div>
+          <Popover
+            triggerRef={popoverTriggerRef}
+            open={popoverOpen}
+            onOpenChange={setPopoverOpen}
+            content={t("popover.examples.contentText")}
+            darkMode={darkMode}
+          />
         </Block>
       </div>
     </div>

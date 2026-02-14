@@ -7,7 +7,7 @@ export const getRouteList = (t: (key: string) => string): SideBarItem[] => [
   {
     title: t("sidebar.routes.table"),
     icon: "mdi-table-large",
-    iconColor: "orange",
+    iconColor: "info",
     defaultExpandedItem: false,
     key: "Table",
   },
@@ -19,11 +19,10 @@ export const getRouteList = (t: (key: string) => string): SideBarItem[] => [
     key: "Utilities",
     itemList: getUtilsList(t),
   },
-  { title: t("sidebar.routes.profile"), icon: "mdi-account", iconColor: "info", key: "Profile" },
+  { title: t("sidebar.routes.profile"), icon: "mdi-account", key: "Profile" },
   {
     title: t("sidebar.routes.contributors"),
     icon: "mdi-account-group",
-    iconColor: "purple",
     key: "Contributors",
   },
   {

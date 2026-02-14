@@ -4,8 +4,7 @@ const componentMap: { [key: string]: React.LazyExoticComponent<React.FC> } = {
   // Overview pages (category roots)
   Basic: React.lazy(() => import("../BasicComponents")),
   Form: React.lazy(() => import("../FormComponents")),
-  LayoutNavigation: React.lazy(() => import("../LayoutNavigationComponents")),
-  Content: React.lazy(() => import("../ContentComponents")),
+  LayoutStructure: React.lazy(() => import("../LayoutStructureComponents")),
   Utilities: React.lazy(() => import("../Utilities")),
   Contributors: React.lazy(() => import("../Contributions")),
   AboutApplication: React.lazy(() => import("../AboutApplication")),

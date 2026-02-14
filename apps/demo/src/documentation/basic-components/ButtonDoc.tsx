@@ -436,19 +436,39 @@ const ButtonDoc = () => {
       category: t("button.categories.borderRadius"),
       itemList: [
         {
-          label: t("button.examples.rounded"),
+          label: t("button.examples.radiusNone"),
           components: (
-            <Button label={t("button.examples.rounded")} borderRadius="lg" />
+            <Button label={t("button.examples.radiusNone")} borderRadius="none" />
           ),
         },
         {
-          label: t("button.examples.pillNoPrint"),
+          label: t("button.examples.radiusXs"),
           components: (
-            <Button
-              label={t("button.examples.pillNoPrint")}
-              borderRadius="full"
-              noPrint
-            />
+            <Button label={t("button.examples.radiusXs")} borderRadius="xs" />
+          ),
+        },
+        {
+          label: t("button.examples.radiusSm"),
+          components: (
+            <Button label={t("button.examples.radiusSm")} borderRadius="sm" />
+          ),
+        },
+        {
+          label: t("button.examples.radiusMd"),
+          components: (
+            <Button label={t("button.examples.radiusMd")} borderRadius="md" />
+          ),
+        },
+        {
+          label: t("button.examples.radiusLg"),
+          components: (
+            <Button label={t("button.examples.radiusLg")} borderRadius="lg" />
+          ),
+        },
+        {
+          label: t("button.examples.radiusFull"),
+          components: (
+            <Button label={t("button.examples.radiusFull")} borderRadius="full" />
           ),
         },
       ],
@@ -480,11 +500,17 @@ const ButtonDoc = () => {
           description: t("button.basicInfo.description"),
           exampleCode: BUTTON_EXAMPLE_CODE,
           preview: (
+            <span style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <Button label={t("button.examples.primary")} colorScheme="primary" darkMode={darkMode} />
             <Button
               label={t("button.examples.primary")}
-              colorScheme="primary"
+              colorScheme="success"
               darkMode={darkMode}
+              significance="highlighted"
+              modern
+
             />
+            </span>
           ),
         }}
         basicInfoDescriptionHeader={t("documentation.basicInfo.descriptionHeader")}

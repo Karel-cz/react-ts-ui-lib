@@ -123,3 +123,74 @@ export const getPendingSize = (size: SizeToken = "md"): { size: number } => {
 
   return { size: sizeMap[size] || sizeMap.md };
 };
+
+export type ThemeToggleSizeToken = "xs" | "sm" | "md" | "lg" | "xl";
+
+// ThemeToggle Size - track, thumb and icon scale with size
+export const getThemeToggleSize = (
+  size: ThemeToggleSizeToken | SizeToken = "md",
+): {
+  trackWidth: number;
+  trackHeight: number;
+  thumbSize: number;
+  gap: number;
+  gapLeft: number;
+  iconSize: SizeToken;
+} => {
+  const sizeMap: Record<
+    ThemeToggleSizeToken,
+    {
+      trackWidth: number;
+      trackHeight: number;
+      thumbSize: number;
+      gap: number;
+      gapLeft: number;
+      iconSize: SizeToken;
+    }
+  > = {
+    xs: {
+      trackWidth: 46,
+      trackHeight: 20,
+      thumbSize: 14,
+      gap: 2,
+      gapLeft: 5,
+      iconSize: "xs",
+    },
+    sm: {
+      trackWidth: 52,
+      trackHeight: 26,
+      thumbSize: 18,
+      gap: 2,
+      gapLeft: 4,
+      iconSize: "xs",
+    },
+    md: {
+      trackWidth: 64,
+      trackHeight: 32,
+      thumbSize: 23,
+      gap: 3,
+      gapLeft: 5,
+      iconSize: "xs",
+    },
+    lg: {
+      trackWidth: 76,
+      trackHeight: 38,
+      thumbSize: 28,
+      gap: 4,
+      gapLeft: 6,
+      iconSize: "sm",
+    },
+    xl: {
+      trackWidth: 88,
+      trackHeight: 44,
+      thumbSize: 33,
+      gap: 4,
+      gapLeft: 6,
+      iconSize: "sm",
+    },
+  };
+
+  const key: ThemeToggleSizeToken =
+    size === "full" ? "md" : (size as ThemeToggleSizeToken);
+  return sizeMap[key] ?? sizeMap.md;
+};

@@ -215,6 +215,12 @@
       "loading": "Načítání",
       "rounded": "Zaoblené",
       "pillNoPrint": "pilulka noPrint",
+      "radiusNone": "None",
+      "radiusXs": "XS",
+      "radiusSm": "SM",
+      "radiusMd": "MD",
+      "radiusLg": "LG",
+      "radiusFull": "Full",
       "tooltip": "tooltip",
       "hoverMe": "Najetí",
       "nativeTooltip": "Nativní tooltip"
@@ -403,8 +409,7 @@
     "componentCategories": {
       "basic": "Základní komponenty",
       "form": "Formulářové komponenty",
-      "layoutNavigation": "Layout a navigace komponenty",
-      "content": "Obsahové komponenty"
+      "layoutStructure": "Layout a struktura"
     },
     "components": {
       "button": "Tlačítko",
@@ -560,6 +565,7 @@
       "darkMode": "Tmavý režim"
     },
     "examples": {
+      "basic": "Základní",
       "none": "Žádný",
       "content": "Obsah",
       "full": "Plný",
@@ -916,6 +922,11 @@
         "type": "function",
         "required": "true"
       },
+      "size": {
+        "description": "Velikost přepínače: xs, sm, md, lg, xl – ovlivňuje šířku dráhy, kolečko i ikony.",
+        "type": "string",
+        "required": "false"
+      },
       "style": {
         "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
         "type": "React.CSSProperties",
@@ -940,12 +951,18 @@
     "categories": {
       "darkMode": "Tmavý / světlý",
       "interactive": "Interaktivní",
+      "size": "Velikost",
       "styling": "Styling"
     },
     "examples": {
       "dark": "Tmavý režim",
       "light": "Světlý režim",
       "interactive": "Interaktivní (přepni)",
+      "xs": "XS",
+      "sm": "SM",
+      "md": "MD",
+      "lg": "LG",
+      "xl": "XL",
       "noDefault": "Bez výchozího stylu"
     }
   },
@@ -1764,7 +1781,9 @@
       "labels": "Štítky",
       "themeToggle": "Přepínač motivu",
       "copyToClipboard": "Kopírovat do schránky",
-      "block": "Blok"
+      "infogroup": "Info skupina",
+      "profileCard": "Profil karta",
+      "popover": "Popover"
     },
     "examples": {
       "primary": "Primární",
@@ -1804,25 +1823,17 @@
       "checked": "Zaškrtnuto ve výchozím stavu"
     }
   },
-  "layoutNavigationComponentsPage": {
-    "title": "Layout a navigace komponenty",
-    "description": "Navbar, SideBar, TabGroup a další layout nebo navigační vzory. V levém menu vyberte pro dokumentaci.",
-    "instructions": "Rozbalte Layout a navigace komponenty v levém menu.",
+  "layoutStructureComponentsPage": {
+    "title": "Layout a struktura",
+    "description": "Navbar, SideBar, TabGroup a Block – komponenty pro rozložení stránky, navigaci a strukturu obsahu. Vyberte z levého menu pro dokumentaci.",
+    "instructions": "Rozbalte Layout a struktura v levém menu.",
     "components": {
       "navbar": "Navbar",
       "sidebar": "SideBar",
-      "tabGroup": "TabGroup"
-    }
-  },
-  "contentComponentsPage": {
-    "title": "Obsahové komponenty",
-    "description": "InfoGroup, ProfileCard, Popover a podobné obsahové nebo overlay komponenty. Vyberte z levého menu.",
-    "instructions": "Rozbalte Obsahové komponenty v levém menu.",
-    "components": {
-      "infoGroup": "InfoGroup",
-      "profileCard": "ProfileCard",
-      "popover": "Popover"
-    }
+      "tabGroup": "TabGroup",
+      "block": "Blok"
+    },
+    "blockExample": "Blok s volitelným headerem a kartovým stylem."
   },
   "utilitiesPage": {
     "title": "Nástroje a utility",
