@@ -29,11 +29,17 @@ const Css = {
     maxWidth?: string | number,
     cardType?: "none" | "full",
     borderColor?: string,
+    borderTop: boolean,
+    borderRight: boolean,
+    borderBottom: boolean,
+    borderLeft: boolean,
     padding?: number,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
     }
+    
+    const borderStyle = borderColor? `1px solid ${borderColor}`: undefined;
 
     const baseStyle: React.CSSProperties = {
       backgroundColor: background,
@@ -44,7 +50,11 @@ const Css = {
       maxHeight: maxHeight,
       maxWidth: maxWidth,
       boxSizing: "border-box",
-      border: borderColor ? `1px solid ${borderColor}` : undefined,
+      borderTop: borderTop ? borderStyle : "none",
+      borderRight: borderRight ? borderStyle : "none",
+      borderBottom: borderBottom ? borderStyle : "none",
+      borderLeft: borderLeft ? borderStyle : "none",
+
       overflow: "hidden",
       marginBottom: 16,
     };
@@ -259,6 +269,11 @@ export type BlockProps = {
   hidden?: boolean;
   noPrint?: boolean;
   darkMode?: boolean;
+  borderTop?: boolean;
+  borderRight?: boolean;
+  borderBottom?: boolean;
+  borderLeft?: boolean;
+
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -283,6 +298,10 @@ export const BLOCK_PROP_NAMES = [
   "hidden",
   "noPrint",
   "darkMode",
+  "borderTop",
+  "borderRight",
+  "borderBottom",
+  "borderLeft",
 ] as const;
 //@@viewOff:propTypes
 
@@ -308,6 +327,10 @@ const Block = ({
   hidden = false,
   noPrint = false,
   darkMode = true,
+  borderTop = true,
+  borderRight = true,
+  borderBottom = true,
+  borderLeft = true,
 }: BlockProps) => {
   //@@viewOn:private
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -393,6 +416,10 @@ const Block = ({
     formatUnit(maxWidth),
     card,
     borderColor,
+    borderTop,
+    borderRight,
+    borderBottom,
+    borderLeft,
     padding,
   );
 

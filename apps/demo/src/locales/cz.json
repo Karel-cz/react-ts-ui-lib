@@ -550,6 +550,26 @@
         "description": "Použije tmavou paletu barev.",
         "type": "boolean",
         "required": "false"
+      },
+      "borderTop": {
+        "description": "Show top border.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderRight": {
+        "description": "Show right border.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderBottom": {
+        "description": "Show bottom border.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderLeft": {
+        "description": "Show left border.",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "categories": {

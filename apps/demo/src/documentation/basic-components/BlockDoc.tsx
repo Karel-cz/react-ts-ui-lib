@@ -47,6 +47,53 @@ const BlockDoc = () => {
         },
       ],
     },
+
+    // ✅ NEW SEPARATE CATEGORY
+    {
+      category: "Border Controls",
+      itemList: [
+        {
+          label: "Disable Top Border",
+          components: (
+            <Block
+              card="full"
+              header="No Top Border"
+              borderTop={false}
+              darkMode={darkMode}
+            >
+              <div>Top border disabled</div>
+            </Block>
+          ),
+        },
+        {
+          label: "Disable Left & Right Borders",
+          components: (
+            <Block
+              card="full"
+              header="No Side Borders"
+              borderLeft={false}
+              borderRight={false}
+              darkMode={darkMode}
+            >
+              <div>Left and right borders disabled</div>
+            </Block>
+          ),
+        },
+        {
+          label: "Default (All Borders)",
+          components: (
+            <Block
+              card="full"
+              header="Default Borders"
+              darkMode={darkMode}
+            >
+              <div>All borders enabled (default)</div>
+            </Block>
+          ),
+        },
+      ],
+    },
+
     {
       category: t("block.categories.header"),
       itemList: [
