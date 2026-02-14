@@ -102,7 +102,6 @@ const Css = {
         ...baseStyle,
         backgroundColor: primaryRgba,
         color: primaryColor,
-        fontWeight: 500,
         borderLeft: `3px solid ${primaryColor}`,
         borderTopLeftRadius: 0,
         borderBottomLeftRadius: 0,
