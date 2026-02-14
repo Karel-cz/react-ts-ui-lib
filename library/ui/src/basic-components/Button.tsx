@@ -239,9 +239,17 @@ const Button = ({
       onClick={onClick}
     >
       <span style={Css.content(isPending)}>
-        {iconPosition === "left" && <Icon icon={icon} size={iconSize} />}
+        {iconPosition === "left" && (
+          <span style={{ display: "inline-flex", cursor: isDisabled ? "not-allowed" : "pointer" }}>
+            <Icon icon={icon} size={iconSize} />
+          </span>
+        )}
         {content}
-        {iconPosition === "right" && <Icon icon={icon} size={iconSize} />}
+        {iconPosition === "right" && (
+          <span style={{ display: "inline-flex", cursor: isDisabled ? "not-allowed" : "pointer" }}>
+            <Icon icon={icon} size={iconSize} />
+          </span>
+        )}
       </span>
       {isPending && (
         <span style={Css.spinnerContainer()}>

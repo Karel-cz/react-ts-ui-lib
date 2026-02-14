@@ -76,7 +76,7 @@ function Icon({
 
   //@@viewOn:render
   const baseStyle: React.CSSProperties = {
-    cursor: onClick ? "pointer" : "default",
+    cursor: onClick === undefined? "inherit" : "pointer",
     display: "inline-flex",
     alignItems: "center",
     gap: 4,
