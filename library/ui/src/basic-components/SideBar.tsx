@@ -148,7 +148,7 @@ const Css = {
     return {
       fontSize: 14,
       color: isActive && primaryScheme ? primaryScheme.color : scheme.textColor,
-      fontWeight: isActive ? 500 : 400,
+      fontWeight: isActive ? 800 : 400,
     };
   },
 };
