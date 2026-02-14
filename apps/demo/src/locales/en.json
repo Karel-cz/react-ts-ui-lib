@@ -2084,7 +2084,11 @@
   "contributions": {
     "role": "GitHub Contributor",
     "labelName": "Contributions",
-    "viewProfile": "View Profile"
+    "viewProfile": "View Profile",
+    "noContributors": "No contributors (no merged PRs in the repository).",
+    "noPRs": "No pull requests.",
+    "mergedAt": "Merged at",
+    "owner": "Owner"
   },
   "copyToClipboard": {
     "title": "Copy to Clipboard",

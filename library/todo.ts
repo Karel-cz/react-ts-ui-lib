@@ -32,24 +32,19 @@
 // block colabsilbe icon na druhou stranu
 // todo na pending přidat propsu fast medium slow a podle toho rischlost pendingu
 // side bar přidat hedader ke by mohl bít další action list a to samé do ffoteru cíelem je aby nahoře se dal vykrelsovat přihlášení atd...
-// copy to clipboard Component
 // tabs rounding, display botom line podle aktivní code, a dislpliy line pod všemi taby, do itimeListu přidat možnost tag - ty se budou implementovat déel budou sloužit pro označení napříkald new a bdue to jen přepoužitá badge. 
 // sidebar sortování bug
 //v dokumentacích chybí v itemListu vypsat jaké props můžu mít možná by to šlo sjednoit a udělat globálně
-//sidebar item hegith
+
 // drobečkou navigaci byla by hezká v dokumentaci, bais componet > Button > props tab
 // sidebar aktuálně se dá otevřít víc root itemů bylo by dobré mít na to propsu a tohle dovolit nebo zakázat aby se při rozklinutí další root tamty ostatní zavřely. 
-// novou metodu pro rozdělení cammleCase 
-// v block se renderuje linie měla bybýt možnost zadat její šířku
+// // v block se renderuje linie měla bybýt možnost zadat její šířku
 // přidat welcome stránku
-// přidat stránku že ta routa neexistuje
-// přidat placeholder 
-// přidat komponenu je to ve výstavbě
+ // přidat placeholder 
 // přestalo fungovat přihlášení přes google
 // v mobilním režimu po kliknutí v sidebaru na rozklkávaci šipku se hend sidebar ztratí to by nemělo na to regovat mělo by nechat zvotli i podsložku
 // napojit na analtic dashbor od firebase
 // opravit draf, inProgress, Produce
 // po vytvoření welcome stránky jí dát na rozkliknutí na logo
 // předělat halvní sekce kompnenty vypadají hrozně
-// spojit content componest a basic components
 // do contributors dát  nahoru infogroup a tam dát součty lidí a clelkových commitů atd.. všechny zajimavé informace

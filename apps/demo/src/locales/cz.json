@@ -1844,7 +1844,11 @@
   "contributions": {
     "role": "Přispěvatel na GitHubu",
     "labelName": "Příspěvky",
-    "viewProfile": "Zobrazit profil"
+    "viewProfile": "Zobrazit profil",
+    "noContributors": "Žádní přispěvatelé (žádné mergnuté PR v repozitáři).",
+    "noPRs": "Žádné pull requesty.",
+    "mergedAt": "Sloučeno",
+    "owner": "Vlastník"
   },
   "copyToClipboard": {
     "title": "Copy to Clipboard",
