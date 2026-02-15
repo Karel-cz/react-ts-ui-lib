@@ -1,4 +1,5 @@
 //@@viewOn:imports
+import type { TextAlignOptions } from "../tools/textAlignOptions";
 import React from "react";
 import Icon from "./Icon";
 //@@viewOff:imports
@@ -70,6 +71,8 @@ export type InfoGroupProps = {
   hidden?: boolean;
   removeDefaultStyle?: boolean;
   darkMode?: boolean;
+  titleAlign?: TextAlignOptions;
+  subtitleAlign?: TextAlignOptions;
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -83,6 +86,8 @@ export const INFO_GROUP_PROP_NAMES = [
   "hidden",
   "removeDefaultStyle",
   "darkMode",
+  "titleAlign",
+  "subtitleAlign",
 ] as const;
 //@@viewOff:propTypes
 
@@ -96,6 +101,8 @@ const InfoGroup = ({
   hidden = false,
   removeDefaultStyle = false,
   darkMode = true,
+  titleAlign = "left",
+  subtitleAlign = "left",
 }: InfoGroupProps) => {
   //@@viewOn:private
   if (hidden) return null;
@@ -121,8 +128,15 @@ const InfoGroup = ({
             <Icon icon={item.icon} size="md" darkMode={darkMode} />
           )}
           <div style={Css.itemContent()}>
-            <div>{item.title}</div>
-            {item.subtitle && <div style={{ fontSize: "0.875rem", opacity: 0.8 }}>{item.subtitle}</div>}
+            <div style = {{ textAlign : titleAlign, width : "100%"}}>
+              {item.title}
+            </div>
+
+            {item.subtitle && (
+              <div style = {{fontSize : "0.875rem", opacity : 0.8, textAlign : subtitleAlign, width: "100%",}}>
+                {item.subtitle}
+              </div>
+            )}
           </div>
         </div>
       ))}
