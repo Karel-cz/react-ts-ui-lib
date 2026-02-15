@@ -11,6 +11,8 @@ const INFO_GROUP_EXAMPLE_CODE = `<InfoGroup
     { title: 'Name', subtitle: 'Jan' },
     { title: 'Email', subtitle: 'jan@example.com' }
   ]}
+    titleAlign="center"
+    subtitleAlign="right"
   darkMode={darkMode}
 />`;
 
@@ -190,6 +192,18 @@ const InfoGroupDoc = () => {
             <InfoGroup itemList={basicItems} removeDefaultStyle darkMode={darkMode} />
           ),
         },
+        {
+          label: "Text Alignment",
+          components: (
+            <InfoGroup
+              itemList={basicItems}
+              itemDirection="vertical"
+              titleAlign="center"
+              subtitleAlign="right"
+              darkMode={darkMode}
+            />
+          ),
+        },
       ],
     },
   ];
@@ -207,6 +221,9 @@ const InfoGroupDoc = () => {
           preview: (
             <InfoGroup
               itemList={basicItems}
+              itemDirection="vertical"
+              titleAlign ="center"
+              subtitleAlign ="right"
               darkMode={darkMode}
             />
           ),
