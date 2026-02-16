@@ -2182,6 +2182,24 @@
         "description": "Text, který má být zkopírován do schránky.",
         "type": "string",
         "required": "true"
+      },
+      "options": {
+        "name": "options",
+        "description": "Volitelné callbacky pro zpracování úspěchu a chyb.",
+        "type": "CopyToClipboardOptions",
+        "required": "false"
+      },
+      "onSuccess": {
+        "name": "options.onSuccess",
+        "description": "Callback funkce volaná při úspěšném kopírování.",
+        "type": "() => void",
+        "required": "false"
+      },
+      "onError": {
+        "name": "options.onError",
+        "description": "Callback funkce volaná při chybě kopírování.",
+        "type": "(error: unknown) => void",
+        "required": "false"
       }
     },
     "returnValue": {
@@ -2194,8 +2212,8 @@
         "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  const success = await copyToClipboard(\"Hello, World!\");\n  if (success) {\n    console.log(\"Text zkopírován!\");\n  }\n};"
       },
       "withErrorHandling": {
-        "title": "S ošetřením chyb",
-        "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  try {\n    const success = await copyToClipboard(\"Text k kopírování\");\n    if (success) {\n      // Úspěch\n      alert(\"Zkopírováno!\");\n    } else {\n      // Neúspěch\n      alert(\"Kopírování selhalo.\");\n    }\n  } catch (error) {\n    console.error(\"Chyba při kopírování:\", error);\n  }\n};"
+        "title": "S callbacky",
+        "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  await copyToClipboard(\"Text k kopírování\", {\n    onSuccess: () => {\n      alert(\"Zkopírováno!\");\n    },\n    onError: (error) => {\n      console.error(\"Kopírování selhalo:\", error);\n      alert(\"Kopírování selhalo.\");\n    }\n  });\n};"
       }
     }
   },
