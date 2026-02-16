@@ -114,6 +114,9 @@ export type ButtonProps = {
   isPending?: boolean;
   noPrint?: boolean;
   modern?: boolean;
+
+  /** Новое скрытое свойство для кнопки */
+  hidden?: boolean;
 };
 
 // Const array for runtime prop extraction in Documentation
