@@ -2157,6 +2157,24 @@
         "description": "The text to be copied to the clipboard.",
         "type": "string",
         "required": "true"
+      },
+      "options": {
+        "name": "options",
+        "description": "Optional callbacks for success and error handling.",
+        "type": "CopyToClipboardOptions",
+        "required": "false"
+      },
+      "onSuccess": {
+        "name": "options.onSuccess",
+        "description": "Callback function invoked when the copy operation succeeds.",
+        "type": "() => void",
+        "required": "false"
+      },
+      "onError": {
+        "name": "options.onError",
+        "description": "Callback function invoked when the copy operation fails.",
+        "type": "(error: unknown) => void",
+        "required": "false"
       }
     },
     "returnValue": {
@@ -2169,8 +2187,8 @@
         "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  const success = await copyToClipboard(\"Hello, World!\");\n  if (success) {\n    console.log(\"Text copied!\");\n  }\n};"
       },
       "withErrorHandling": {
-        "title": "With error handling",
-        "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  try {\n    const success = await copyToClipboard(\"Text to copy\");\n    if (success) {\n      // Success\n      alert(\"Copied!\");\n    } else {\n      // Failure\n      alert(\"Copying failed.\");\n    }\n  } catch (error) {\n    console.error(\"Error copying:\", error);\n  }\n};"
+        "title": "With callbacks",
+        "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  await copyToClipboard(\"Text to copy\", {\n    onSuccess: () => {\n      alert(\"Copied!\");\n    },\n    onError: (error) => {\n      console.error(\"Failed to copy:\", error);\n      alert(\"Copying failed.\");\n    }\n  });\n};"
       }
     }
   },

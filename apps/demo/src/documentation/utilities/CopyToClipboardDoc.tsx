@@ -1,6 +1,6 @@
 //@@viewOn:imports
-import  { useState } from "react";
-import {  Button, UtilityDocumentation } from "@react-ts-ui-lib/ui";
+import { useState } from "react";
+import { Button, UtilityDocumentation } from "@react-ts-ui-lib/ui";
 import { copyToClipboard } from "@react-ts-ui-lib/utilities";
 import { useTheme } from "../../app/context/ThemeContext";
 import { useTranslation } from "../../i18n/useTranslation";
@@ -15,12 +15,15 @@ const CopyToClipboardDoc = () => {
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
 
   const handleCopy = async () => {
-    const ok = await copyToClipboard(value);
-    setStatus(ok ? "success" : "error");
-
-    if (ok) {
-      setTimeout(() => setStatus("idle"), 1500);
-    }
+    await copyToClipboard(value, {
+      onSuccess: () => {
+        setStatus("success");
+        setTimeout(() => setStatus("idle"), 1500);
+      },
+      onError: () => {
+        setStatus("error");
+      },
+    });
   };
 
   const DemoComponent = (
@@ -45,12 +48,12 @@ const CopyToClipboardDoc = () => {
 
       {status === "success" && (
         <p style={{ marginTop: 8, color: "var(--rt-success, #16a34a)" }}>
-          ✓ {t("copyToClipboard.success")} 
+          ✓ {t("copyToClipboard.success")}
         </p>
       )}
       {status === "error" && (
         <p style={{ marginTop: 8, color: "var(--rt-danger, #dc2626)" }}>
-          ✗ {t("copyToClipboard.error")} 
+          ✗ {t("copyToClipboard.error")}
         </p>
       )}
     </div>
@@ -58,10 +61,28 @@ const CopyToClipboardDoc = () => {
 
   const parametersList = [
     {
-      name: "text",
+      name: t("copyToClipboard.parameters.text.name"),
       description: t("copyToClipboard.parameters.text.description"),
       type: t("copyToClipboard.parameters.text.type"),
       required: true,
+    },
+    {
+      name: t("copyToClipboard.parameters.options.name"),
+      description: t("copyToClipboard.parameters.options.description"),
+      type: t("copyToClipboard.parameters.options.type"),
+      required: false,
+    },
+    {
+      name: t("copyToClipboard.parameters.onSuccess.name"),
+      description: t("copyToClipboard.parameters.onSuccess.description"),
+      type: t("copyToClipboard.parameters.onSuccess.type"),
+      required: false,
+    },
+    {
+      name: t("copyToClipboard.parameters.onError.name"),
+      description: t("copyToClipboard.parameters.onError.description"),
+      type: t("copyToClipboard.parameters.onError.type"),
+      required: false,
     },
   ];
 

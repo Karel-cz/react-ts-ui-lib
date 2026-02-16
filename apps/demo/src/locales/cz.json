@@ -135,25 +135,101 @@
       "description": "Tlačítko pro akce (odeslání formuláře, potvrzení, navigace). Podporuje ikony, loading stav, barevná schémata a různé velikosti."
     },
     "props": {
-      "children": { "description": "Obsah renderovaný uvnitř tlačítka (text, ikony, vlastní node).", "type": "ReactNode", "required": "false" },
-      "disabled": { "description": "Zabrání interakci a vizuálně deaktivuje tlačítko.", "type": "boolean", "required": "false" },
-      "loading": { "description": "Alias pro pending stav – indikuje, že běží asynchronní akce.", "type": "boolean", "required": "false" },
-      "colorScheme": { "description": "Určuje vizuální vzhled tlačítka na základě předdefinované barevné palety (primary, success, danger…).", "type": "string", "required": "false" },
-      "significance": { "description": "Ovládá vizuální intenzitu tlačítka: common (default), highlighted, distinct.", "type": "string", "required": "false" },
-      "icon": { "description": "Název mdi ikony renderované uvnitř tlačítka.", "type": "string", "required": "false" },
-      "iconPosition": { "description": "Ovládá, zda je ikona renderována na levé nebo pravé straně obsahu.", "type": "string", "required": "false" },
-      "label": { "description": "Jednoduchá textová alternativa k children – užitečné pro snadná textová tlačítka nebo přístupnost.", "type": "string", "required": "false" },
-      "onClick": { "description": "Spuštěno, když uživatel klikne na tlačítko.", "type": "function", "required": "false" },
-      "style": { "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.", "type": "React.CSSProperties", "required": "false" },
-      "borderRadius": { "description": "Předdefinovaný border radius token (xs, sm, md, lg, full).", "type": "string", "required": "false" },
-      "size": { "description": "Button size token (xs, sm, md, lg, xl).", "type": "string", "required": "false" },
-      "removeDefaultStyle": { "description": "Vypne vestavěné styly a ponechá pouze surový button element pro plnou přizpůsobitelnost.", "type": "boolean", "required": "false" },
-      "tooltip": { "description": "Výchozí tooltip prohlížeče zobrazený při najetí na tlačítko.", "type": "string", "required": "false" },
-      "type": { "description": "Nativní typ tlačítka (button, submit, reset).", "type": "string", "required": "false" },
-      "darkMode": { "description": "Renderuje tlačítko pomocí tmavé palety barev (ovlivňuje chování colorScheme).", "type": "boolean", "required": "false" },
-      "isPending": { "description": "Zobrazí loading spinner a zablokuje interakce. Obsah se vizuálně skryje.", "type": "boolean", "required": "false" },
-      "noPrint": { "description": "Skryje tlačítko při tisku (přidá třídu no-print).", "type": "boolean", "required": "false" }
-      ,"modern": { "description": "Zapne moderní gradientní styl.", "type": "boolean", "required": "false" }
+      "children": {
+        "description": "Obsah renderovaný uvnitř tlačítka (text, ikony, vlastní node).",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "disabled": {
+        "description": "Zabrání interakci a vizuálně deaktivuje tlačítko.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "loading": {
+        "description": "Alias pro pending stav – indikuje, že běží asynchronní akce.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Určuje vizuální vzhled tlačítka na základě předdefinované barevné palety (primary, success, danger…).",
+        "type": "string",
+        "required": "false"
+      },
+      "significance": {
+        "description": "Ovládá vizuální intenzitu tlačítka: common (default), highlighted, distinct.",
+        "type": "string",
+        "required": "false"
+      },
+      "icon": {
+        "description": "Název mdi ikony renderované uvnitř tlačítka.",
+        "type": "string",
+        "required": "false"
+      },
+      "iconPosition": {
+        "description": "Ovládá, zda je ikona renderována na levé nebo pravé straně obsahu.",
+        "type": "string",
+        "required": "false"
+      },
+      "label": {
+        "description": "Jednoduchá textová alternativa k children – užitečné pro snadná textová tlačítka nebo přístupnost.",
+        "type": "string",
+        "required": "false"
+      },
+      "onClick": {
+        "description": "Spuštěno, když uživatel klikne na tlačítko.",
+        "type": "function",
+        "required": "false"
+      },
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
+        "required": "false"
+      },
+      "borderRadius": {
+        "description": "Předdefinovaný border radius token (xs, sm, md, lg, full).",
+        "type": "string",
+        "required": "false"
+      },
+      "size": {
+        "description": "Button size token (xs, sm, md, lg, xl).",
+        "type": "string",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Vypne vestavěné styly a ponechá pouze surový button element pro plnou přizpůsobitelnost.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Výchozí tooltip prohlížeče zobrazený při najetí na tlačítko.",
+        "type": "string",
+        "required": "false"
+      },
+      "type": {
+        "description": "Nativní typ tlačítka (button, submit, reset).",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Renderuje tlačítko pomocí tmavé palety barev (ovlivňuje chování colorScheme).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "isPending": {
+        "description": "Zobrazí loading spinner a zablokuje interakce. Obsah se vizuálně skryje.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Skryje tlačítko při tisku (přidá třídu no-print).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "modern": {
+        "description": "Zapne moderní gradientní styl.",
+        "type": "boolean",
+        "required": "false"
+      }
     },
     "categories": {
       "colorScheme": "Barevné schéma",
@@ -232,16 +308,56 @@
       "description": "Zobrazuje ikonu z Material Design Icons (mdi-*). Lze nastavit velikost, barvu, tooltip a kliknutí."
     },
     "props": {
-      "icon": { "description": "Název Material Design Icon (mdi-*) k renderování.", "type": "string", "required": "false" },
-      "size": { "description": "Icon size token (xs, sm, md, lg, xl) nebo číslo (em) pro vlastní velikost.", "type": "string | number", "required": "false" },
-      "color": { "description": "Barva ikony (CSS color hodnota).", "type": "string", "required": "false" },
-      "style": { "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.", "type": "React.CSSProperties", "required": "false" },
-      "onClick": { "description": "Click handler pro wrapper ikony.", "type": "function", "required": "false" },
-      "removeDefaultStyle": { "description": "Render bez výchozích layout stylů.", "type": "boolean", "required": "false" },
-      "hidden": { "description": "Pokud true, ikona se nevyrenderuje.", "type": "boolean", "required": "false" },
-      "label": { "description": "Volitelný textový label zobrazený vedle ikony.", "type": "string", "required": "false" },
-      "tooltip": { "description": "Tooltip prohlížeče zobrazený při najetí.", "type": "string", "required": "false" },
-      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "type": "boolean", "required": "false" }
+      "icon": {
+        "description": "Název Material Design Icon (mdi-*) k renderování.",
+        "type": "string",
+        "required": "false"
+      },
+      "size": {
+        "description": "Icon size token (xs, sm, md, lg, xl) nebo číslo (em) pro vlastní velikost.",
+        "type": "string | number",
+        "required": "false"
+      },
+      "color": {
+        "description": "Barva ikony (CSS color hodnota).",
+        "type": "string",
+        "required": "false"
+      },
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
+        "required": "false"
+      },
+      "onClick": {
+        "description": "Click handler pro wrapper ikony.",
+        "type": "function",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Render bez výchozích layout stylů.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "Pokud true, ikona se nevyrenderuje.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "label": {
+        "description": "Volitelný textový label zobrazený vedle ikony.",
+        "type": "string",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Tooltip prohlížeče zobrazený při najetí.",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Použije tmavou paletu barev, když true.",
+        "type": "boolean",
+        "required": "false"
+      }
     },
     "categories": {
       "size": "Velikost",
@@ -282,11 +398,31 @@
       "description": "Indikátor načítání – kruhový nebo horizontální spinner. Používá se při asynchronních operacích."
     },
     "props": {
-      "style": { "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.", "type": "React.CSSProperties", "required": "false" },
-      "type": { "description": "Styl spinneru: circular nebo horizontal bar.", "type": "string", "required": "false" },
-      "size": { "description": "Pending size token (xs, sm, md, lg, xl).", "type": "string", "required": "false" },
-      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "type": "boolean", "required": "false" },
-      "colorScheme": { "description": "Barevné schéma pro spinner.", "type": "string", "required": "false" },
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
+        "required": "false"
+      },
+      "type": {
+        "description": "Styl spinneru: circular nebo horizontal bar.",
+        "type": "string",
+        "required": "false"
+      },
+      "size": {
+        "description": "Pending size token (xs, sm, md, lg, xl).",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Použije tmavou paletu barev, když true.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Barevné schéma pro spinner.",
+        "type": "string",
+        "required": "false"
+      },
       "animationSpeed": {
         "description": "Rychlost animace (násobek výchozí rychlosti).",
         "type": "number",
@@ -325,18 +461,66 @@
       "description": "Horní navigační lišta s logem, středním obsahem a pravou sekcí. Na mobilu zobrazuje hamburger menu."
     },
     "props": {
-      "logo": { "description": "Obsah renderovaný v levé sekci; string nebo vlastní node.", "type": "string | ReactNode", "required": "false" },
-      "centerContent": { "description": "Obsah umístěný ve střední sekci navbaru.", "type": "ReactNode", "required": "false" },
-      "rightContent": { "description": "Obsah umístěný v pravé sekci (např. akce).", "type": "ReactNode", "required": "false" },
-      "onLogoClick": { "description": "Callback spuštěný při kliknutí na logo.", "type": "function", "required": "false" },
-      "removeDefaultStyle": { "description": "Vypne vestavěné styly pro container, logo a tlačítka.", "type": "boolean", "required": "false" },
-      "colorScheme": { "description": "Barvy pozadí a textu na základě palety tématu.", "type": "string", "required": "false" },
-      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "type": "boolean", "required": "false" },
-      "sticky": { "description": "Pokud true, navbar se přilepí k horní části při scrollování.", "type": "boolean", "required": "false" },
-      "onHamburgerClick": { "description": "Callback spuštěný při kliknutí na hamburger menu tlačítko.", "type": "function", "required": "false" },
-      "showHamburger": { "description": "Manuálně ovládá viditelnost hamburger menu. Pokud není poskytnuto, automaticky se zobrazí na mobilu (< 768px).", "type": "boolean", "required": "false" },
-      "hamburgerOpen": { "description": "Ovládá stav otevření/zavření hamburger menu (ovlivňuje ikonu: menu/zavřít).", "type": "boolean", "required": "false" },
-      "mobileBreakpoint": { "description": "Breakpoint v pixelech pro detekci mobilního zařízení (výchozí: 768).", "type": "number", "required": "false" }
+      "logo": {
+        "description": "Obsah renderovaný v levé sekci; string nebo vlastní node.",
+        "type": "string | ReactNode",
+        "required": "false"
+      },
+      "centerContent": {
+        "description": "Obsah umístěný ve střední sekci navbaru.",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "rightContent": {
+        "description": "Obsah umístěný v pravé sekci (např. akce).",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "onLogoClick": {
+        "description": "Callback spuštěný při kliknutí na logo.",
+        "type": "function",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Vypne vestavěné styly pro container, logo a tlačítka.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Barvy pozadí a textu na základě palety tématu.",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Použije tmavou paletu barev, když true.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "sticky": {
+        "description": "Pokud true, navbar se přilepí k horní části při scrollování.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "onHamburgerClick": {
+        "description": "Callback spuštěný při kliknutí na hamburger menu tlačítko.",
+        "type": "function",
+        "required": "false"
+      },
+      "showHamburger": {
+        "description": "Manuálně ovládá viditelnost hamburger menu. Pokud není poskytnuto, automaticky se zobrazí na mobilu (< 768px).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hamburgerOpen": {
+        "description": "Ovládá stav otevření/zavření hamburger menu (ovlivňuje ikonu: menu/zavřít).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "mobileBreakpoint": {
+        "description": "Breakpoint v pixelech pro detekci mobilního zařízení (výchozí: 768).",
+        "type": "number",
+        "required": "false"
+      }
     },
     "categories": {
       "layout": "Rozložení",
@@ -365,20 +549,76 @@
       "description": "Boční navigační panel s položkami menu. Lze sbalit, reaguje na mobilní breakpoint a volitelně zobrazuje ikony."
     },
     "props": {
-      "itemList": { "description": "Položky nejvyšší úrovně k renderování v sidebaru (mohou být vnořené).", "type": "array", "required": "true" },
-      "style": { "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.", "type": "React.CSSProperties", "required": "false" },
-      "removeDefaultStyle": { "description": "Vypne vestavěné styly pro container a položky.", "type": "boolean", "required": "false" },
-      "tooltip": { "description": "Volitelný tooltip na containeru (nativní title).", "type": "string", "required": "false" },
-      "label": { "description": "Volitelný textový label pro container.", "type": "string", "required": "false" },
-      "onItemClick": { "description": "Callback při kliknutí na položku; přijímá položku a event.", "type": "function", "required": "false" },
-      "collapsed": { "description": "Zda je sidebar sbalený.", "type": "boolean", "required": "false" },
-      "colorScheme": { "description": "Barvy pozadí a textu na základě palety tématu.", "type": "string", "required": "false" },
-      "darkMode": { "description": "Použije tmavou paletu barev, když true.", "type": "boolean", "required": "false" },
-      "selectedItem": { "description": "Aktuálně vybraná položka pro zvýraznění.", "type": "SideBarItem | null", "required": "false" },
-      "mobileMode": { "description": "Aktivuje mobilní režim s overlay a fixed positioning.", "type": "boolean", "required": "false" },
-      "isOpen": { "description": "Ovládá stav otevření/zavření sidebaru v mobilním režimu.", "type": "boolean", "required": "false" },
-      "onClose": { "description": "Callback spuštěný, když se má sidebar zavřít (např. klik na overlay nebo položku).", "type": "function", "required": "false" },
-      "navbarHeight": { "description": "Výška navbaru pro správné umístění v mobilním režimu (výchozí: 64).", "type": "number", "required": "false" }
+      "itemList": {
+        "description": "Položky nejvyšší úrovně k renderování v sidebaru (mohou být vnořené).",
+        "type": "array",
+        "required": "true"
+      },
+      "style": {
+        "description": "Volitelné inline styly (React.CSSProperties) sloučené s výchozími styly.",
+        "type": "React.CSSProperties",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Vypne vestavěné styly pro container a položky.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Volitelný tooltip na containeru (nativní title).",
+        "type": "string",
+        "required": "false"
+      },
+      "label": {
+        "description": "Volitelný textový label pro container.",
+        "type": "string",
+        "required": "false"
+      },
+      "onItemClick": {
+        "description": "Callback při kliknutí na položku; přijímá položku a event.",
+        "type": "function",
+        "required": "false"
+      },
+      "collapsed": {
+        "description": "Zda je sidebar sbalený.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "colorScheme": {
+        "description": "Barvy pozadí a textu na základě palety tématu.",
+        "type": "string",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Použije tmavou paletu barev, když true.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "selectedItem": {
+        "description": "Aktuálně vybraná položka pro zvýraznění.",
+        "type": "SideBarItem | null",
+        "required": "false"
+      },
+      "mobileMode": {
+        "description": "Aktivuje mobilní režim s overlay a fixed positioning.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "isOpen": {
+        "description": "Ovládá stav otevření/zavření sidebaru v mobilním režimu.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "onClose": {
+        "description": "Callback spuštěný, když se má sidebar zavřít (např. klik na overlay nebo položku).",
+        "type": "function",
+        "required": "false"
+      },
+      "navbarHeight": {
+        "description": "Výška navbaru pro správné umístění v mobilním režimu (výchozí: 64).",
+        "type": "number",
+        "required": "false"
+      }
     },
     "categories": {
       "basic": "Základní",
@@ -1917,6 +2157,24 @@
         "description": "Text, který má být zkopírován do schránky.",
         "type": "string",
         "required": "true"
+      },
+      "options": {
+        "name": "options",
+        "description": "Volitelné callbacky pro zpracování úspěchu a chyb.",
+        "type": "CopyToClipboardOptions",
+        "required": "false"
+      },
+      "onSuccess": {
+        "name": "options.onSuccess",
+        "description": "Callback funkce volaná při úspěšném kopírování.",
+        "type": "() => void",
+        "required": "false"
+      },
+      "onError": {
+        "name": "options.onError",
+        "description": "Callback funkce volaná při chybě kopírování.",
+        "type": "(error: unknown) => void",
+        "required": "false"
       }
     },
     "returnValue": {
@@ -1929,12 +2187,11 @@
         "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  const success = await copyToClipboard(\"Hello, World!\");\n  if (success) {\n    console.log(\"Text zkopírován!\");\n  }\n};"
       },
       "withErrorHandling": {
-        "title": "S ošetřením chyb",
-        "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  try {\n    const success = await copyToClipboard(\"Text k kopírování\");\n    if (success) {\n      // Úspěch\n      alert(\"Zkopírováno!\");\n    } else {\n      // Neúspěch\n      alert(\"Kopírování selhalo.\");\n    }\n  } catch (error) {\n    console.error(\"Chyba při kopírování:\", error);\n  }\n};"
+        "title": "S callbacky",
+        "code": "import { copyToClipboard } from \"@react-ts-ui-lib/utilities\";\n\nconst handleCopy = async () => {\n  await copyToClipboard(\"Text k kopírování\", {\n    onSuccess: () => {\n      alert(\"Zkopírováno!\");\n    },\n    onError: (error) => {\n      console.error(\"Kopírování selhalo:\", error);\n      alert(\"Kopírování selhalo.\");\n    }\n  });\n};"
       }
     }
   },
-
   "getMostFrequentValue": {
     "title": "Získat nejčastější hodnotu",
     "description": "Utility funkce, která vrací nejčastější hodnotu v poli. Můžete také zadat klíč pro analýzu objektů.",
