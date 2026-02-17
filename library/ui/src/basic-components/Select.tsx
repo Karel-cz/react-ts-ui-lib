@@ -1,6 +1,8 @@
 //@@viewOn:imports
 import React, { useState } from "react";
 import { getColorScheme, getBorderColor } from "../tools/colors";
+import { getRadiusValue, type RadiusToken } from "../tools/radius";
+
 //@@viewOff:imports
 
 //@@viewOn:constants
@@ -24,6 +26,7 @@ const Css = {
     removeDefaultStyle?: boolean,
     darkMode = true,
     focused?: boolean,
+    borderRadiusValue?: number,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -34,20 +37,26 @@ const Css = {
     const primaryScheme = getColorScheme("primary", darkMode);
 
     return {
-      minWidth: "10rem",
-      padding: "0.5rem 2rem 0.5rem 0.75rem",
-      border: `1px solid ${focused ? primaryScheme.color : borderColor}`,
-      borderRadius: 0,
-      fontSize: "1rem",
-      fontFamily: "inherit",
-      lineHeight: 1.5,
-      outline: "none",
-      transition: "border-color 160ms ease, box-shadow 160ms ease",
-      boxShadow: focused ? `0 0 0 2px ${primaryScheme.color}40` : "none",
-      backgroundColor: scheme.color,
-      color: scheme.textColor,
-      cursor: "pointer",
-    };
+  minWidth: "10rem",
+  padding: "0.5rem 2rem 0.5rem 0.75rem",
+  border: `1px solid ${focused ? primaryScheme.color : borderColor}`,
+  borderRadius: borderRadiusValue,
+
+  appearance: "none",
+  WebkitAppearance: "none",
+  MozAppearance: "none",
+
+  fontSize: "1rem",
+  fontFamily: "inherit",
+  lineHeight: 1.5,
+  outline: "none",
+  transition: "border-color 160ms ease, box-shadow 160ms ease",
+  boxShadow: focused ? `0 0 0 2px ${primaryScheme.color}40` : "none",
+  backgroundColor: scheme.color,
+  color: scheme.textColor,
+  cursor: "pointer",
+};
+
   },
 };
 //@@viewOff:css
@@ -69,6 +78,7 @@ export type SelectProps = {
   darkMode?: boolean;
   itemList: SelectItem[];
   value?: string | number;
+  borderRadius?: RadiusToken;
   onChange?: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   onFocus?: (e: React.FocusEvent<HTMLSelectElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLSelectElement>) => void;
@@ -92,6 +102,7 @@ export const SELECT_PROP_NAMES = [
   "name",
   "id",
   "className",
+  "borderRadius",
 ] as const;
 //@@viewOff:propTypes
 
@@ -109,10 +120,13 @@ const Select = ({
   name,
   id,
   className,
+  borderRadius = "none",
 }: SelectProps) => {
   //@@viewOn:private
   const [focused, setFocused] = useState(false);
   if (hidden) return null;
+
+  const borderRadiusValue = getRadiusValue(borderRadius);
 
   const valueStr = value === undefined || value === null ? "" : String(value);
   //@@viewOff:private
@@ -137,7 +151,10 @@ const Select = ({
           setFocused(false);
           onBlur?.(e);
         }}
-        style={Css.select(removeDefaultStyle, darkMode, focused)}
+        style={{
+          ...Css.select(removeDefaultStyle, darkMode, focused, borderRadiusValue),
+          borderRadius: borderRadiusValue,
+        }}
       >
         {itemList.map((item) => (
           <option key={String(item.value)} value={String(item.value)}>
