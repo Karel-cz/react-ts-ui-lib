@@ -115,7 +115,7 @@ export type ButtonProps = {
   noPrint?: boolean;
   modern?: boolean;
 
-  /** Новое скрытое свойство для кнопки */
+  /** When true, the component will not be rendered */
   hidden?: boolean;
 };
 
@@ -140,6 +140,7 @@ export const BUTTON_PROP_NAMES = [
   "isPending",
   "noPrint",
   "modern",
+  "hidden",
 ] as const;
 //@@viewOff:propTypes
 
