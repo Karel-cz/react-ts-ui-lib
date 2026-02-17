@@ -114,6 +114,9 @@ export type ButtonProps = {
   isPending?: boolean;
   noPrint?: boolean;
   modern?: boolean;
+
+  /** When true, the component will not be rendered */
+  hidden?: boolean;
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -137,6 +140,7 @@ export const BUTTON_PROP_NAMES = [
   "isPending",
   "noPrint",
   "modern",
+  "hidden",
 ] as const;
 //@@viewOff:propTypes
 
