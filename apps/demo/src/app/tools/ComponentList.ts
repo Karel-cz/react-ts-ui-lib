@@ -3,7 +3,7 @@ import type { SideBarItem } from "@react-ts-ui-lib/ui";
 export const getComponentList = (t: (key: string) => string): SideBarItem[] => [
   {
     title: t("sidebar.componentCategories.basic"),
-    key: "Basic",
+    key: "basicComponents",
     icon: "mdi-puzzle-outline",
     iconColor: "primary",
     defaultExpandedItem: true,
@@ -25,7 +25,7 @@ export const getComponentList = (t: (key: string) => string): SideBarItem[] => [
   },
   {
     title: t("sidebar.componentCategories.form"),
-    key: "Form",
+    key: "formComponents",
     icon: "mdi-form-select",
     iconColor: "teal",
     defaultExpandedItem: false,
@@ -39,7 +39,7 @@ export const getComponentList = (t: (key: string) => string): SideBarItem[] => [
   },
   {
     title: t("sidebar.componentCategories.layoutStructure"),
-    key: "LayoutStructure",
+    key: "layoutStructureComponents",
     icon: "mdi-page-layout-sidebar-left",
     iconColor: "cyan",
     defaultExpandedItem: false,

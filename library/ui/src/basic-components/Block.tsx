@@ -18,6 +18,10 @@ const DEFAULT_PADDING = 16;
 //@@viewOn:css
 const Css = {
   block: (
+    borderTop: boolean,
+    borderRight: boolean,
+    borderBottom: boolean,
+    borderLeft: boolean,
     removeDefaultStyle?: boolean,
     background?: string,
     textColor?: string,
@@ -29,10 +33,6 @@ const Css = {
     maxWidth?: string | number,
     cardType?: "none" | "full",
     borderColor?: string,
-    borderTop: boolean,
-    borderRight: boolean,
-    borderBottom: boolean,
-    borderLeft: boolean,
     padding?: number,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
@@ -405,6 +405,10 @@ const Block = ({
 
   //@@viewOn:render
   const blockStyle = Css.block(
+    borderTop,
+    borderRight,
+    borderBottom,
+    borderLeft,
     removeDefaultStyle,
     card === "full" ? background : undefined,
     textColor,
@@ -416,10 +420,6 @@ const Block = ({
     formatUnit(maxWidth),
     card,
     borderColor,
-    borderTop,
-    borderRight,
-    borderBottom,
-    borderLeft,
     padding,
   );
 

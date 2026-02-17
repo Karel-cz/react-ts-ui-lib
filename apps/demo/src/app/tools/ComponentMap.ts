@@ -2,13 +2,13 @@ import React from "react";
 
 const componentMap: { [key: string]: React.LazyExoticComponent<React.FC> } = {
   // Overview pages (category roots)
-  Basic: React.lazy(() => import("../BasicComponents")),
-  Form: React.lazy(() => import("../FormComponents")),
-  LayoutStructure: React.lazy(() => import("../LayoutStructureComponents")),
-  Utilities: React.lazy(() => import("../Utilities")),
-  Contributors: React.lazy(() => import("../Contributions")),
-  AboutApplication: React.lazy(() => import("../AboutApplication")),
-  Table: React.lazy(() => import("../Table")),
+  basicComponents: React.lazy(() => import("../BasicComponents")),
+  formComponents: React.lazy(() => import("../FormComponents")),
+  layoutStructureComponents: React.lazy(() => import("../LayoutStructureComponents")),
+  utilities: React.lazy(() => import("../Utilities")),
+  contributors: React.lazy(() => import("../Contributions")),
+  aboutApplication: React.lazy(() => import("../AboutApplication")),
+  table: React.lazy(() => import("../Table")),
 
   //Components
   SideBar: React.lazy(

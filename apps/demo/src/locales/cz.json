@@ -129,6 +129,25 @@
       "noPrintTooltip": "Skryto při tisku"
     }
   },
+  "breadcrumb": {
+    "title": "Breadcrumb komponenta",
+    "basicInfo": {
+      "description": "Jednoduchá zástupná navigace drobečková. Zatím zobrazuje textový štítek; lze později rozšířit na plnou drobečkovou navigaci."
+    },
+    "props": {
+      "label": {
+        "description": "Textový obsah drobečku.",
+        "type": "string",
+        "required": "false"
+      }
+    },
+    "categories": {
+      "basic": "Základní"
+    },
+    "examples": {
+      "basic": "Základní drobeček"
+    }
+  },
   "button": {
     "title": "Button Komponenta",
     "basicInfo": {
@@ -676,6 +695,7 @@
       "select": "Select",
       "radios": "Radios",
       "label": "Label",
+      "breadcrumb": "Drobeček",
       "popover": "Popover",
       "copyToClipboard": "Kopírovat do schránky"
     },

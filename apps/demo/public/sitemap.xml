@@ -8,41 +8,41 @@
   </url>
 
   <!-- Basic components -->
-  <url><loc>https://react-ts-kit.com/Basic/Button</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/ButtonGroup</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/Icon</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/Pending</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/Badge</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/Number</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/Label</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/Breadcrumb</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/ThemeToggle</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/CopyToClipboardComponent</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/InfoGroup</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/ProfileCard</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://react-ts-kit.com/Basic/Popover</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/Button</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/ButtonGroup</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/Icon</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/Pending</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/Badge</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/Number</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/Label</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/Breadcrumb</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/ThemeToggle</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/CopyToClipboardComponent</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/InfoGroup</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/ProfileCard</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/Popover</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
 
   <!-- Form components -->
-  <url><loc>https://react-ts-kit.com/Form/Input</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://react-ts-kit.com/Form/Checkbox</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://react-ts-kit.com/Form/Date</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://react-ts-kit.com/Form/Select</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://react-ts-kit.com/Form/Radios</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://react-ts-kit.com/formComponents/Input</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://react-ts-kit.com/formComponents/Checkbox</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://react-ts-kit.com/formComponents/Date</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://react-ts-kit.com/formComponents/Select</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://react-ts-kit.com/formComponents/Radios</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
 
   <!-- Layout & structure components -->
-  <url><loc>https://react-ts-kit.com/LayoutStructure/Navbar</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://react-ts-kit.com/LayoutStructure/SideBar</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://react-ts-kit.com/LayoutStructure/TabGroup</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://react-ts-kit.com/LayoutStructure/Block</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://react-ts-kit.com/layoutStructureComponents/Navbar</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://react-ts-kit.com/layoutStructureComponents/SideBar</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://react-ts-kit.com/layoutStructureComponents/TabGroup</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://react-ts-kit.com/layoutStructureComponents/Block</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
 
   <!-- Utility docs -->
-  <url><loc>https://react-ts-kit.com/Utilities/CopyToClipboard</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://react-ts-kit.com/Utilities/GetMostFrequentValue</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://react-ts-kit.com/Utilities/GeneratePassword</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://react-ts-kit.com/Utilities/ParseQueryString</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://react-ts-kit.com/Utilities/GenerateRandomString</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://react-ts-kit.com/Utilities/ValidateEmail</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://react-ts-kit.com/Utilities/ValidateJson</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://react-ts-kit.com/Utilities/FromCamelCase</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://react-ts-kit.com/utilities/CopyToClipboard</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/utilities/GetMostFrequentValue</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://react-ts-kit.com/utilities/GeneratePassword</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://react-ts-kit.com/utilities/ParseQueryString</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://react-ts-kit.com/utilities/GenerateRandomString</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://react-ts-kit.com/utilities/ValidateEmail</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://react-ts-kit.com/utilities/ValidateJson</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://react-ts-kit.com/utilities/FromCamelCase</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
 </urlset>
 
