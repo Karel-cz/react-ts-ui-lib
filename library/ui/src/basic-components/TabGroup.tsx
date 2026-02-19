@@ -34,7 +34,6 @@ const Css = {
     borderRight = false,
     borderBottom = true,
     borderLeft = false,
-    borderRadiusValue?: number,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -52,8 +51,6 @@ const Css = {
       borderRight: borderRight ? borderStyle : undefined,
       borderBottom: borderBottom ? borderStyle : undefined,
       borderLeft: borderLeft ? borderStyle : undefined,
-      borderTopLeftRadius: borderRadiusValue,
-      borderTopRightRadius: borderRadiusValue,
       gap: "1rem",
     };
   },
@@ -80,6 +77,7 @@ const Css = {
     darkMode = true,
     isActive?: boolean,
     isHovered?: boolean,
+    borderRadiusValue?: number,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -101,6 +99,10 @@ const Css = {
       position: "relative",
       whiteSpace: "nowrap",
       borderBottom: "2px solid transparent",
+      borderTopLeftRadius: borderRadiusValue,
+      borderTopRightRadius: borderRadiusValue,
+      borderBottomLeftRadius: borderRadiusValue,
+      borderBottomRightRadius: borderRadiusValue,
     };
 
     if (isActive) {
@@ -214,15 +216,10 @@ export type TabGroupProps = {
   ActionList?: React.ReactNode[];
   onChange?: (codeActive: string | number) => void;
   style?: React.CSSProperties;
-  /** Optional style for the content wrapper below tabs (e.g. paddingTop). */
   contentStyle?: React.CSSProperties;
-  /** Show top border on the tab bar. */
   borderTop?: boolean;
-  /** Show right border on the tab bar. */
   borderRight?: boolean;
-  /** Show bottom border on the tab bar. Default true. */
   borderBottom?: boolean;
-  /** Show left border on the tab bar. */
   borderLeft?: boolean;
   noPrint?: boolean;
   hidden?: boolean;
@@ -307,7 +304,6 @@ const TabGroup = ({
             borderRight,
             borderBottom,
             borderLeft,
-            borderRadiusValue,
           )}
         >
         <div style={Css.tabsWrapper(removeDefaultStyle)}>
@@ -329,6 +325,7 @@ const TabGroup = ({
                   darkMode,
                   isActive,
                   isHovered,
+                  borderRadiusValue,
                 )}
               >
                 <div
