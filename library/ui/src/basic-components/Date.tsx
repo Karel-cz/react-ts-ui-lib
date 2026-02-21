@@ -92,6 +92,18 @@ const Css = {
 //@@viewOff:css
 
 //@@viewOn:helpers
+function normalizeDate(value?: string | Date): string | undefined {
+  if (!value) return undefined;
+
+  if (value instanceof Date) {
+    const year = value.getFullYear();
+    const month = String(value.getMonth() + 1).padStart(2, "0");
+    const day = String(value.getDate()).padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  }
+
+  return value;
+}
 //@@viewOff:helpers
 
 //@@viewOn:propTypes
@@ -110,6 +122,8 @@ export type DateProps = {
   required?: boolean;
   error?: boolean;
   errorMessage?: string;
+  min?: string | Date;
+  max?: string | Date;
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -128,6 +142,8 @@ export const DATE_PROP_NAMES = [
   "required",
   "error",
   "errorMessage",
+  "min",
+  "max"
 ] as const;
 //@@viewOff:propTypes
 
@@ -146,9 +162,20 @@ const DateInput = ({
   required = false,
   error = false,
   errorMessage,
+  min,
+  max,
 }: DateProps) => {
+
   //@@viewOn:private
   if (hidden) return null;
+  const normalizedMin = normalizeDate(min);
+  const normalizedMax = normalizeDate(max);
+
+  const hasValue = value !== undefined && value !== "";
+  const isBelowMin = normalizedMin && hasValue ? value < normalizedMin : false;
+  const isAboveMax = normalizedMax && hasValue ? value > normalizedMax : false;
+  const invalidRange = normalizedMin && normalizedMax && normalizedMin > normalizedMax;
+  const rangeError = !invalidRange && (isBelowMin || isAboveMax);
   //@@viewOff:private
 
   //@@viewOn:render
@@ -171,10 +198,16 @@ const DateInput = ({
         onChange={onChange}
         disabled={disabled}
         required={required}
-        style={Css.input(removeDefaultStyle, error, disabled, darkMode)}
+        min={normalizedMin}
+        max={normalizedMax}
+        style={Css.input(removeDefaultStyle, error || rangeError, disabled, darkMode)}
       />
-      {error && errorMessage && (
-        <div style={Css.errorMessage(removeDefaultStyle, darkMode)}>{errorMessage}</div>
+      {(error || rangeError) && (
+        <div style={Css.errorMessage(removeDefaultStyle, darkMode)}>
+          {rangeError
+            ? `Date must be between ${normalizedMin ?? "—"} and ${normalizedMax ?? "—"}`
+            : errorMessage}
+        </div>
       )}
     </div>
   );
