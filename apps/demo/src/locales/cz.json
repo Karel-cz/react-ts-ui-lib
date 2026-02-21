@@ -2448,11 +2448,15 @@
   },
   "fromCamelCase": {
     "title": "From Camel Case",
-    "description": "Převede řetězec v camelCase na slova oddělená mezerami (např. helloWorld → hello World).",
+    "description": "Převede řetězec ve formátu camelCase na oddělená slova. Ve výchozím nastavení jsou slova oddělena mezerami (např. helloWorld → hello World). Volitelně můžete zadat vlastní oddělovač.",
     "inputs": {
       "str": {
         "label": "camelCase řetězec",
         "placeholder": "helloWorld"
+      },
+      "separator": {
+        "label": "řetězec oddělovače (volitelné)",
+        "placeholder": "*"
       }
     },
     "actions": {
@@ -2467,6 +2471,12 @@
         "description": "camelCase řetězec k převodu.",
         "type": "string",
         "required": "true"
+      },
+      "separator": {
+        "name": "oddělovač",
+        "description": "Volitelný řetězec používaný k oddělení slov.",
+        "type": "string",
+        "required": "false"
       }
     },
     "returnValue": {
@@ -2477,6 +2487,10 @@
       "basic": {
         "title": "Základní použití",
         "code": "import { fromCamelCase } from \"@react-ts-ui-lib/utilities\";\n\nconst text = fromCamelCase(\"helloWorld\");\n// \"hello World\""
+      },
+      "custom": {
+        "title": "S vlastním oddělovačem",
+        "code": "import { fromCamelCase } from \"@react-ts-ui-lib/utilities\";\n\nconst text = fromCamelCase(\"helloWorld\", \"-\");\n// \"hello-World\""
       }
     }
   },

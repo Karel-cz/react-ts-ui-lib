@@ -21,10 +21,15 @@ const FromCamelCaseDoc = () => {
   const { darkMode } = useTheme();
   const { t } = useTranslation();
   const [input, setInput] = useState("helloWorld");
+  const [separator, setSeparator] = useState("");
   const [result, setResult] = useState<string>("");
 
   const handleConvert = () => {
-    setResult(fromCamelCase(input));
+    if(separator.length === 0){
+      setResult(fromCamelCase(input));
+      return;
+    }
+    setResult(fromCamelCase(input, separator));
   };
 
   const DemoComponent = (
@@ -38,6 +43,16 @@ const FromCamelCaseDoc = () => {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             placeholder={t("fromCamelCase.inputs.str.placeholder")}
+            style={inputStyle(darkMode)}
+          />
+        </label>
+        <label style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <span>{t("fromCamelCase.inputs.separator.label")}</span>
+          <input
+            type="text"
+            value={separator}
+            onChange={(e) => setSeparator(e.target.value) }
+            placeholder={t("fromCamelCase.inputs.separator.placeholder")}
             style={inputStyle(darkMode)}
           />
         </label>
@@ -58,6 +73,12 @@ const FromCamelCaseDoc = () => {
       type: t("fromCamelCase.parameters.str.type"),
       required: true,
     },
+    {
+      name: t("fromCamelCase.parameters.separator.name"),
+      description: t("fromCamelCase.parameters.separator.description"),
+      type: t("fromCamelCase.parameters.separator.type"),
+      required: false,
+    }
   ];
   const returnValueParam = {
     name: "return",
@@ -67,6 +88,7 @@ const FromCamelCaseDoc = () => {
   };
   const usageExamples = [
     { title: t("fromCamelCase.usage.basic.title"), code: t("fromCamelCase.usage.basic.code") },
+    { title: t("fromCamelCase.usage.custom.title"), code: t("fromCamelCase.usage.custom.code") },
   ];
 
   return (

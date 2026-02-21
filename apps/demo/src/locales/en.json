@@ -2448,11 +2448,15 @@
   },
   "fromCamelCase": {
     "title": "From Camel Case",
-    "description": "Converts a camelCase string to space-separated words (e.g. helloWorld → hello World).",
+    "description": "Converts a camelCase string to separated words. By default, words are separated by spaces (e.g. helloWorld → hello World). You can optionally provide a custom separator.",
     "inputs": {
       "str": {
         "label": "camelCase string",
         "placeholder": "helloWorld"
+      },
+      "separator": {
+        "label": "separator string (optional)",
+        "placeholder": "*"
       }
     },
     "actions": {
@@ -2467,6 +2471,12 @@
         "description": "camelCase string to convert.",
         "type": "string",
         "required": "true"
+      },
+      "separator": {
+        "name": "separator",
+        "description": "Optional string used to separate words.",
+        "type": "string",
+        "required": "false"
       }
     },
     "returnValue": {
@@ -2477,6 +2487,10 @@
       "basic": {
         "title": "Basic usage",
         "code": "import { fromCamelCase } from \"@react-ts-ui-lib/utilities\";\n\nconst text = fromCamelCase(\"helloWorld\");\n// \"hello World\""
+      },
+      "custom": {
+        "title": "With Custom Separator",
+        "code": "import { fromCamelCase } from \"@react-ts-ui-lib/utilities\";\n\nconst text = fromCamelCase(\"helloWorld\", \"-\");\n// \"hello-World\""
       }
     }
   },
