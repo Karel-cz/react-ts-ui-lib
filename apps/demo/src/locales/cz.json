@@ -714,6 +714,7 @@
       "sidebar": "Postranní menu",
       "navbar": "Navigační lišta",
       "badge": "Odznak",
+      "box": "Box",
       "block": "Blok",
       "number": "Číslo",
       "input": "Vstupní pole",
@@ -739,6 +740,84 @@
       "validateEmail": "Validovat email",
       "validateJson": "Validovat JSON",
       "fromCamelCase": "From Camel Case"
+    }
+  },
+  "box": {
+    "title": "Box komponenta",
+    "basicInfo": {
+      "description": "Jednoduchý kontejner s volitelným ohraničením, odsazením a zaoblením. Použití pro seskupení obsahu bez nadpisu nebo karty."
+    },
+    "props": {
+      "children": {
+        "description": "Obsah boxu.",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "style": {
+        "description": "Volitelné inline styly sloučené s výchozími.",
+        "type": "React.CSSProperties",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Skryje box při tisku (přidá třídu no-print).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "Pokud true, box se nevykreslí.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Odstraní výchozí ohraničení a padding; zobrazí se jen obsah.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Použije tmavý motiv pro barvu ohraničení.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderTop": {
+        "description": "Zobrazit horní ohraničení.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderRight": {
+        "description": "Zobrazit pravé ohraničení.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderBottom": {
+        "description": "Zobrazit dolní ohraničení.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderLeft": {
+        "description": "Zobrazit levé ohraničení.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "padding": {
+        "description": "Vnitřní odsazení v pixelech.",
+        "type": "number",
+        "required": "false"
+      },
+      "borderRadius": {
+        "description": "Token zaoblení (xs, sm, md, lg, full).",
+        "type": "string",
+        "required": "false"
+      }
+    },
+    "examples": {
+      "default": "Výchozí",
+      "borders": "Ohraničení",
+      "noTop": "Bez horního ohraničení",
+      "sidesOnly": "Pouze levá a pravá ohraničení",
+      "noStyle": "Bez výchozího stylu",
+      "padding": "Odsazení",
+      "smallPadding": "Malé odsazení",
+      "largePadding": "Velké odsazení"
     }
   },
   "block": {

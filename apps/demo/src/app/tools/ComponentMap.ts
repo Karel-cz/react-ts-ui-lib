@@ -32,6 +32,9 @@ const componentMap: { [key: string]: React.LazyExoticComponent<React.FC> } = {
   Badge: React.lazy(
     () => import("../../documentation/basic-components/BadgeDoc"),
   ),
+  Box: React.lazy(
+    () => import("../../documentation/basic-components/BoxDoc"),
+  ),
   Breadcrumb: React.lazy(
     () => import("../../documentation/basic-components/BreadcrumbDoc"),
   ),

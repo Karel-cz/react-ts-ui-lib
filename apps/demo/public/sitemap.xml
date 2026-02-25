@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Homepage -->
   <url>
     <loc>https://react-ts-kit.com/</loc>
@@ -13,6 +13,7 @@
   <url><loc>https://react-ts-kit.com/basicComponents/Icon</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://react-ts-kit.com/basicComponents/Pending</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://react-ts-kit.com/basicComponents/Badge</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://react-ts-kit.com/basicComponents/Box</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://react-ts-kit.com/basicComponents/Number</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://react-ts-kit.com/basicComponents/Label</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
   <url><loc>https://react-ts-kit.com/basicComponents/Breadcrumb</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
@@ -44,5 +45,11 @@
   <url><loc>https://react-ts-kit.com/utilities/ValidateEmail</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://react-ts-kit.com/utilities/ValidateJson</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
   <url><loc>https://react-ts-kit.com/utilities/FromCamelCase</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
+
+  <!-- Other pages -->
+  <url><loc>https://react-ts-kit.com/table</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/profile</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/contributors</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://react-ts-kit.com/aboutApplication</loc><changefreq>weekly</changefreq><priority>0.6</priority></url>
 </urlset>
 

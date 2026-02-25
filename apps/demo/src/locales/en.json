@@ -714,6 +714,7 @@
       "sidebar": "Sidebar",
       "navbar": "Navbar",
       "badge": "Badge",
+      "box": "Box",
       "block": "Block",
       "number": "Number",
       "input": "Input",
@@ -739,6 +740,84 @@
       "validateEmail": "Validate Email",
       "validateJson": "Validate JSON",
       "fromCamelCase": "From Camel Case"
+    }
+  },
+  "box": {
+    "title": "Box Component",
+    "basicInfo": {
+      "description": "Simple container with optional borders, padding and border radius. Use for grouping content without header or card styling."
+    },
+    "props": {
+      "children": {
+        "description": "Content of the box.",
+        "type": "ReactNode",
+        "required": "false"
+      },
+      "style": {
+        "description": "Optional inline styles merged with default styles.",
+        "type": "React.CSSProperties",
+        "required": "false"
+      },
+      "noPrint": {
+        "description": "Hides the box when printing (adds no-print class).",
+        "type": "boolean",
+        "required": "false"
+      },
+      "hidden": {
+        "description": "If true, the box is not rendered.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "removeDefaultStyle": {
+        "description": "Removes default border and padding; only content is shown.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "darkMode": {
+        "description": "Uses dark theme for border color.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderTop": {
+        "description": "Show top border.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderRight": {
+        "description": "Show right border.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderBottom": {
+        "description": "Show bottom border.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "borderLeft": {
+        "description": "Show left border.",
+        "type": "boolean",
+        "required": "false"
+      },
+      "padding": {
+        "description": "Inner padding in pixels.",
+        "type": "number",
+        "required": "false"
+      },
+      "borderRadius": {
+        "description": "Border radius token (xs, sm, md, lg, full).",
+        "type": "string",
+        "required": "false"
+      }
+    },
+    "examples": {
+      "default": "Default",
+      "borders": "Borders",
+      "noTop": "Without top border",
+      "sidesOnly": "Left and right borders only",
+      "noStyle": "No default style",
+      "padding": "Padding",
+      "smallPadding": "Small padding",
+      "largePadding": "Large padding"
     }
   },
   "block": {
