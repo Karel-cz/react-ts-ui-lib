@@ -79,6 +79,10 @@ export type RadiosItem = {
 };
 
 export type RadiosProps = {
+    /**
+     * If true, radios are visible but non-interactive (read-only).
+     */
+    readOnly?: boolean;
   style?: React.CSSProperties;
   noPrint?: boolean;
   hidden?: boolean;
@@ -96,6 +100,7 @@ export type RadiosProps = {
 
 // Const array for runtime prop extraction in Documentation
 export const RADIOS_PROP_NAMES = [
+    "readOnly",
   "style",
   "noPrint",
   "hidden",
@@ -126,6 +131,7 @@ const Radios = ({
   name,
   id,
   direction = "column",
+  readOnly = false,
 }: RadiosProps) => {
   //!#visualComponent: start
   if (hidden) return null;
@@ -155,10 +161,17 @@ const Radios = ({
               name={name}
               value={itemValueStr}
               checked={isChecked}
-              onChange={onChange}
-              onFocus={onFocus}
-              onBlur={onBlur}
-              style={Css.radio(removeDefaultStyle, darkMode)}
+              onChange={readOnly ? undefined : onChange}
+              onFocus={readOnly ? undefined : onFocus}
+              onBlur={readOnly ? undefined : onBlur}
+              tabIndex={readOnly ? -1 : 0}
+              readOnly={readOnly}
+              disabled={readOnly}
+              style={{
+                ...Css.radio(removeDefaultStyle, darkMode),
+                cursor: readOnly ? "not-allowed" : "pointer",
+                opacity: readOnly ? 0.7 : 1,
+              }}
             />
             <span style={Css.labelText(removeDefaultStyle, darkMode)}>
               {typeof item.label === "string" ? item.label : String(item.label)}
