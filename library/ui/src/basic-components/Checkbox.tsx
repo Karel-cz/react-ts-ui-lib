@@ -95,6 +95,43 @@ const Css = {
       marginTop: "-0.25rem",
     };
   },
+  boxContainer: (removeDefaultStyle?: boolean, darkMode = true): React.CSSProperties => {
+    if (removeDefaultStyle) {
+      return {};
+    }
+
+    const scheme = getColorScheme("surface", darkMode);
+    const borderScheme = getColorScheme("border", darkMode);
+
+    return {
+      display: "flex",
+      flexDirection: "row",
+      alignItems: "center",
+      justifyContent: "space-between",
+      padding: "0.75rem 1rem",
+      borderRadius: "8px",
+      backgroundColor: scheme.color,
+      border: `1px solid ${borderScheme.color}`,
+      cursor: "pointer",
+      transition: "background-color 0.2s ease, border-color 0.2s ease",
+    };
+  },
+
+  boxLabel: (removeDefaultStyle?: boolean, darkMode = true): React.CSSProperties => {
+    if (removeDefaultStyle) {
+      return {};
+    }
+
+    const scheme = getColorScheme("background", darkMode);
+
+    return {
+      fontSize: "0.95rem",
+      fontWeight: 500,
+      color: scheme.textColor,
+      cursor: "pointer",
+      flex: 1,
+    };
+  },
 };
 //!#Styles: end
 
@@ -117,6 +154,7 @@ export type CheckboxProps = {
   required?: boolean;
   error?: boolean;
   errorMessage?: string;
+  showInBox?: boolean;
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -135,6 +173,7 @@ export const CHECKBOX_PROP_NAMES = [
   "required",
   "error",
   "errorMessage",
+  "showInBox",
 ] as const;
 //!#propTypes: end
 
@@ -153,10 +192,56 @@ const Checkbox = ({
   required = false,
   error = false,
   errorMessage,
+  showInBox = false,
 }: CheckboxProps) => {
   //!#visualComponent: start
   if (hidden) return null;
   //!#render components: start
+  if (showInBox) {
+    return (
+      <div
+        className={noPrint ? "no-print" : undefined}
+        style={{ ...Css.boxContainer(removeDefaultStyle, darkMode), ...style }}
+        onClick={() => {
+          if (!disabled && onChange) {
+            const event = {
+              target: {
+                type: "checkbox",
+                checked: !value,
+                name: name,
+                id: id,
+              },
+            } as React.ChangeEvent<HTMLInputElement>;
+            onChange(event);
+          }
+        }}
+      >
+        <label
+          htmlFor={id}
+          style={Css.boxLabel(removeDefaultStyle, darkMode)}
+          onClick={(e) => e.stopPropagation()}
+        >
+          {label}
+          {required && <span style={Css.labelRequired(removeDefaultStyle)}> *</span>}
+        </label>
+        <input
+          type="checkbox"
+          id={id}
+          name={name}
+          checked={value}
+          onChange={onChange}
+          disabled={disabled}
+          required={required}
+          style={Css.checkbox(removeDefaultStyle, error, disabled, darkMode)}
+          onClick={(e) => e.stopPropagation()}
+        />
+        {error && errorMessage && (
+          <div style={Css.errorMessage(removeDefaultStyle, darkMode)}>{errorMessage}</div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div
       className={noPrint ? "no-print" : undefined}

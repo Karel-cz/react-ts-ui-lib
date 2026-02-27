@@ -1842,6 +1842,11 @@
         "description": "Error message displayed below checkbox when error is true.",
         "type": "string",
         "required": "false"
+      },
+      "showInBox": {
+        "description": "Renders the checkbox and its label within a styled container box.",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "categories": {
@@ -1860,6 +1865,7 @@
       "withError": "With error",
       "requiredWithError": "Required with error",
       "noDefault": "No default",
+      "showInBox": "Show in box",
       "basicLabel": "Example checkbox",
       "termsLabel": "Accept terms and conditions",
       "requiredLabel": "I agree to the terms",
@@ -1869,6 +1875,7 @@
       "errorLabel": "Please accept to continue",
       "requiredErrorLabel": "Required field",
       "noDefaultLabel": "No default styling",
+      "showInBoxLabel": "Boxed checkbox variation",
       "errorMessage": "This field is required",
       "requiredErrorMessage": "You must accept this to continue"
     }

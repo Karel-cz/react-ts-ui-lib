@@ -1842,6 +1842,11 @@
         "description": "Chybová zpráva zobrazená pod checkboxem když je error true.",
         "type": "string",
         "required": "false"
+      },
+      "showInBox": {
+        "description": "Vykreslí checkbox a jeho label v rámci stylovaného kontejneru (boxu).",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "categories": {
@@ -1860,6 +1865,7 @@
       "withError": "S chybou",
       "requiredWithError": "Povinný s chybou",
       "noDefault": "Bez výchozího",
+      "showInBox": "Zobrazit v boxu",
       "basicLabel": "Ukázkový checkbox",
       "termsLabel": "Přijímám podmínky použití",
       "requiredLabel": "Souhlasím s podmínkami",
@@ -1869,6 +1875,7 @@
       "errorLabel": "Prosím přijměte pro pokračování",
       "requiredErrorLabel": "Povinné pole",
       "noDefaultLabel": "Bez výchozího stylu",
+      "showInBoxLabel": "Varianta v boxu",
       "errorMessage": "Toto pole je povinné",
       "requiredErrorMessage": "Musíte toto přijmout pro pokračování"
     }

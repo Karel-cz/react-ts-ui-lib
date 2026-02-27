@@ -97,7 +97,7 @@ const CheckboxDoc = () => {
             <Checkbox
               label={t("checkbox.examples.checkedLabel")}
               value={true}
-              onChange={() => {}}
+              onChange={() => { }}
               darkMode={darkMode}
             />
           ),
@@ -108,7 +108,7 @@ const CheckboxDoc = () => {
             <Checkbox
               label={t("checkbox.examples.uncheckedLabel")}
               value={false}
-              onChange={() => {}}
+              onChange={() => { }}
               darkMode={darkMode}
             />
           ),
@@ -164,6 +164,18 @@ const CheckboxDoc = () => {
             />
           ),
         },
+        {
+          label: t("checkbox.examples.showInBox"),
+          components: (
+            <Checkbox
+              label={t("checkbox.examples.showInBoxLabel")}
+              value={basicChecked}
+              onChange={(e) => setBasicChecked(e.target.checked)}
+              showInBox
+              darkMode={darkMode}
+            />
+          ),
+        },
       ],
     },
   ];
@@ -187,7 +199,7 @@ const CheckboxDoc = () => {
               label={t("checkbox.examples.label")}
               value={false}
               darkMode={darkMode}
-              onChange={() => {}}
+              onChange={() => { }}
             />
           ),
         }}
