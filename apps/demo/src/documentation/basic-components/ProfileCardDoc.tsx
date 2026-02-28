@@ -325,6 +325,48 @@ const ProfileCardDoc = () => {
         },
       ],
     },
+    {
+      category: t("profileCard.categories.imageStyle"),
+      itemList: [
+        {
+          label: t("profileCard.examples.imgBorderOn"),
+          components: (
+            <ProfileCard
+              photo="https://api.dicebear.com/7.x/avataaars/svg?seed=border-on"
+              name="Border On"
+              role={t("profileCard.examples.roleDeveloper")}
+              imgBorder={true}
+              darkMode={darkMode}
+            />
+          ),
+        },
+        {
+          label: t("profileCard.examples.imgBorderOff"),
+          components: (
+            <ProfileCard
+              photo="https://api.dicebear.com/7.x/avataaars/svg?seed=border-off"
+              name="Border Off"
+              role={t("profileCard.examples.roleDesigner")}
+              imgBorder={false}
+              darkMode={darkMode}
+            />
+          ),
+        },
+        {
+          label: t("profileCard.examples.noCircleWithBorder"),
+          components: (
+            <ProfileCard
+              photo="https://api.dicebear.com/7.x/avataaars/svg?seed=no-circle"
+              name="Square Border"
+              role={t("profileCard.examples.roleAdmin")}
+              photoCircle={false}
+              imgBorder={true}
+              darkMode={darkMode}
+            />
+          ),
+        },
+      ],
+    },
   ];
   //!#visualComponent: end
 

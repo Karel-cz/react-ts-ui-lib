@@ -1381,6 +1381,11 @@
         "type": "boolean",
         "required": "false"
       },
+      "imgBorder": {
+        "description": "When true, a circular border is rendered around the profile image.",
+        "type": "boolean",
+        "required": "false"
+      },
       "collapsed": {
         "description": "When true, the body section (labels, description, content) is collapsed by default. Toggle button is always shown when body has content. Default true.",
         "type": "boolean",
@@ -1405,7 +1410,8 @@
       "layout": "Layout",
       "colorScheme": "Color Scheme",
       "significance": "Significance",
-      "darkMode": "Dark Mode"
+      "darkMode": "Dark Mode",
+      "imageStyle": "Image Style"
     },
     "examples": {
       "withPhotoUrl": "With photo URL",
@@ -1427,6 +1433,9 @@
       "customContentText": "Custom paragraph or any React node in the body.",
       "layoutResponsive": "Responsive",
       "layoutStacked": "Stacked",
+      "imgBorderOn": "With border",
+      "imgBorderOff": "Without border",
+      "noCircleWithBorder": "Square with border",
       "common": "Common",
       "highlighted": "Highlighted",
       "dark": "Dark",

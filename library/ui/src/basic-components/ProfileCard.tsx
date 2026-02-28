@@ -92,11 +92,15 @@ const Css = {
     removeDefaultStyle?: boolean,
     borderColor?: string,
     photoCircle?: boolean,
+    imgBorder?: boolean,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
     }
     const radius = PHOTO_SIZE / 2;
+    // Border is shown if imgBorder is true OR (imgBorder is undefined AND photoCircle is true)
+    const showBorder = imgBorder === true || (imgBorder === undefined && photoCircle === true);
+
     return {
       flexShrink: 0,
       width: PHOTO_SIZE,
@@ -107,12 +111,11 @@ const Css = {
       alignItems: "center",
       justifyContent: "center",
       aspectRatio: "1",
-      border:
-        photoCircle
-          ? borderColor
-            ? `2px solid ${borderColor}`
-            : "2px solid rgba(128,128,128,0.4)"
-          : undefined,
+      border: showBorder
+        ? borderColor
+          ? `2px solid ${borderColor}`
+          : "2px solid rgba(128,128,128,0.4)"
+        : undefined,
     };
   },
 
@@ -317,6 +320,7 @@ export type ProfileCardProps = {
   minWidth?: string | number;
   minHeight?: string | number;
   photoCircle?: boolean;
+  imgBorder?: boolean;
   collapsed?: boolean;
   noPrint?: boolean;
   hidden?: boolean;
@@ -348,6 +352,7 @@ export const PROFILE_CARD_PROP_NAMES = [
   "minWidth",
   "minHeight",
   "photoCircle",
+  "imgBorder",
   "collapsed",
   "noPrint",
   "hidden",
@@ -378,6 +383,7 @@ const ProfileCard = ({
   minWidth,
   minHeight,
   photoCircle = true,
+  imgBorder,
   collapsed = true,
   noPrint = false,
   hidden = false,
@@ -457,7 +463,7 @@ const ProfileCard = ({
       {(photo !== undefined || name !== undefined || role !== undefined) && (
         <div style={Css.header(removeDefaultStyle, padding)}>
           {photo !== undefined && (
-            <div style={Css.photoWrapper(removeDefaultStyle, borderColor, photoCircle)}>
+            <div style={Css.photoWrapper(removeDefaultStyle, borderColor, photoCircle, imgBorder)}>
               {photoLink ? (
                 <a
                   href={photoLink}

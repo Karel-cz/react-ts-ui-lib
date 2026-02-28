@@ -1381,6 +1381,11 @@
         "type": "boolean",
         "required": "false"
       },
+      "imgBorder": {
+        "description": "Když true, kolem profilového obrázku se vykreslí kruhový okraj.",
+        "type": "boolean",
+        "required": "false"
+      },
       "collapsed": {
         "description": "Když true, sekce těla (labely, popis, obsah) je výchozí sbalená. Tlačítko pro rozbalení/sbalení se zobrazí vždy, když má tělo obsah. Výchozí true.",
         "type": "boolean",
@@ -1405,7 +1410,8 @@
       "layout": "Rozložení",
       "colorScheme": "Barevné schéma",
       "significance": "Význam",
-      "darkMode": "Tmavý režim"
+      "darkMode": "Tmavý režim",
+      "imageStyle": "Styl obrázku"
     },
     "examples": {
       "withPhotoUrl": "S URL fotky",
@@ -1427,6 +1433,9 @@
       "customContentText": "Vlastní odstavec nebo libovolný React uzel v těle.",
       "layoutResponsive": "Responzivní",
       "layoutStacked": "Pod sebou",
+      "imgBorderOn": "S okrajem",
+      "imgBorderOff": "Bez okraje",
+      "noCircleWithBorder": "Čtverec s okrajem",
       "common": "Common",
       "highlighted": "Highlighted",
       "dark": "Tmavý",
