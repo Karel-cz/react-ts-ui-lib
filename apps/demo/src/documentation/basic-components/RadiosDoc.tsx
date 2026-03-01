@@ -35,7 +35,11 @@ const RadiosDoc = () => {
   //!#visualComponent: start
   const { darkMode } = useTheme();
   const { t } = useTranslation();
-  const propTypesList = getPropsWithTranslations("radios", RADIOS_PROP_NAMES, t);
+  const propTypesList = getPropsWithTranslations(
+    "radios",
+    RADIOS_PROP_NAMES,
+    t,
+  );
 
   const fruitItems: RadiosItem[] = [
     { value: "apple", label: t("radios.examples.apple") },
@@ -45,6 +49,7 @@ const RadiosDoc = () => {
   ];
 
   const [basicValue, setBasicValue] = useState<string | number>("");
+  const [readonlyValue, setReadonlyValue] = useState<string | number>("banana");
   const [rowValue, setRowValue] = useState<string | number>("");
 
   const componentList = [
@@ -60,6 +65,30 @@ const RadiosDoc = () => {
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
               darkMode={darkMode}
+            />
+          ),
+        },
+        {
+          label: "Read-only (light mode)",
+          components: (
+            <Radios
+              name="radios-readonly-light"
+              itemList={fruitItems}
+              value={readonlyValue}
+              readOnly
+              darkMode={false}
+            />
+          ),
+        },
+        {
+          label: "Read-only (dark mode)",
+          components: (
+            <Radios
+              name="radios-readonly-dark"
+              itemList={fruitItems}
+              value={readonlyValue}
+              readOnly
+              darkMode={true}
             />
           ),
         },
@@ -122,7 +151,9 @@ const RadiosDoc = () => {
             />
           ),
         }}
-        basicInfoDescriptionHeader={t("documentation.basicInfo.descriptionHeader")}
+        basicInfoDescriptionHeader={t(
+          "documentation.basicInfo.descriptionHeader",
+        )}
         basicInfoPreviewHeader={t("documentation.basicInfo.previewHeader")}
         basicInfoCodeHeader={t("documentation.basicInfo.codeHeader")}
         propTypesList={propTypesList}
