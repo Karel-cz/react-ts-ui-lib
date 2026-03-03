@@ -2303,17 +2303,29 @@
         "description": "Volání při zavření (klik mimo, Escape).",
         "type": "function",
         "required": "true"
+      },
+      "borderRadius": {
+        "description": "Předdefinovaný token zaoblení (none, xs, sm, md, lg, full) nebo vlastní číslo (px).",
+        "type": "string | number",
+        "required": "false"
       }
     },
     "categories": {
       "basic": "Základní",
-      "styling": "Styling"
+      "styling": "Styling",
+      "borderRadius": "Zaoblení"
     },
     "examples": {
       "basic": "Základní",
       "trigger": "Otevřít",
       "contentText": "Obsah popoveru – klikněte mimo nebo stiskněte Escape pro zavření.",
-      "noDefault": "Bez výchozího"
+      "noDefault": "Bez výchozího",
+      "radiusNone": "Žádné",
+      "radiusXs": "XS",
+      "radiusSm": "SM",
+      "radiusMd": "MD",
+      "radiusLg": "LG",
+      "radiusFull": "Plné"
     }
   },
   "documentation": {

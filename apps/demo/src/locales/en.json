@@ -2303,17 +2303,29 @@
         "description": "Called when popover should close (e.g. click outside, Escape).",
         "type": "function",
         "required": "true"
+      },
+      "borderRadius": {
+        "description": "Predefined border radius token (none, xs, sm, md, lg, full) or a custom number (px).",
+        "type": "string | number",
+        "required": "false"
       }
     },
     "categories": {
       "basic": "Basic",
-      "styling": "Styling"
+      "styling": "Styling",
+      "borderRadius": "Border radius"
     },
     "examples": {
       "basic": "Basic",
       "trigger": "Open",
       "contentText": "Popover content – click outside or press Escape to close.",
-      "noDefault": "No default"
+      "noDefault": "No default",
+      "radiusNone": "None",
+      "radiusXs": "XS",
+      "radiusSm": "SM",
+      "radiusMd": "MD",
+      "radiusLg": "LG",
+      "radiusFull": "Full"
     }
   },
   "documentation": {
