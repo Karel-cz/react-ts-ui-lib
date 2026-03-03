@@ -4,6 +4,7 @@ import {
   POPOVER_PROP_NAMES,
   Popover,
   Button,
+  type RadiusToken,
 } from "@react-ts-ui-lib/ui";
 import { useTranslation } from "../../i18n/useTranslation";
 import { getPropsWithTranslations } from "../../i18n/getPropsWithTranslations";
@@ -28,7 +29,42 @@ const POPOVER_EXAMPLE_CODE = `<Popover
   trigger={<Button label="Open" />}
   content={<div>Popover content</div>}
   darkMode={darkMode}
+  borderRadius="md"
 />`;
+
+const PopoverRadiusExample = ({
+  label,
+  borderRadius,
+  darkMode,
+}: {
+  label: string;
+  borderRadius: RadiusToken | number;
+  darkMode: boolean;
+}) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <div ref={ref} style={{ display: "inline-block" }}>
+        <Button darkMode={darkMode} onClick={() => setOpen(true)}>
+          {label}
+        </Button>
+      </div>
+      <Popover
+        triggerRef={ref}
+        open={open}
+        onOpenChange={setOpen}
+        content={
+          <div style={{ padding: 8 }}>{t("popover.examples.contentText")}</div>
+        }
+        darkMode={darkMode}
+        borderRadius={borderRadius}
+      />
+    </>
+  );
+};
 
 const PopoverDoc = () => {
   //!#visualComponent: start
@@ -99,6 +135,39 @@ const PopoverDoc = () => {
               />
             </>
           ),
+        },
+      ],
+    },
+    {
+      category: t("popover.categories.borderRadius"),
+      itemList: [
+        {
+          label: t("popover.examples.radiusNone"),
+          components: <PopoverRadiusExample label={t("popover.examples.radiusNone")} borderRadius="none" darkMode={darkMode} />,
+        },
+        {
+          label: t("popover.examples.radiusXs"),
+          components: <PopoverRadiusExample label={t("popover.examples.radiusXs")} borderRadius="xs" darkMode={darkMode} />,
+        },
+        {
+          label: t("popover.examples.radiusSm"),
+          components: <PopoverRadiusExample label={t("popover.examples.radiusSm")} borderRadius="sm" darkMode={darkMode} />,
+        },
+        {
+          label: t("popover.examples.radiusMd"),
+          components: <PopoverRadiusExample label={t("popover.examples.radiusMd")} borderRadius="md" darkMode={darkMode} />,
+        },
+        {
+          label: t("popover.examples.radiusLg"),
+          components: <PopoverRadiusExample label={t("popover.examples.radiusLg")} borderRadius="lg" darkMode={darkMode} />,
+        },
+        {
+          label: t("popover.examples.radiusFull"),
+          components: <PopoverRadiusExample label={t("popover.examples.radiusFull")} borderRadius="full" darkMode={darkMode} />,
+        },
+        {
+          label: "Custom (25px)",
+          components: <PopoverRadiusExample label="25px" borderRadius={25} darkMode={darkMode} />,
         },
       ],
     },

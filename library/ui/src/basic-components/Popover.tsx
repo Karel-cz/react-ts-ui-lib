@@ -2,6 +2,7 @@
 import React, { useCallback, useEffect, useLayoutEffect, useRef, useState, type RefObject } from "react";
 import { createPortal } from "react-dom";
 import { getColorScheme, getBorderColor } from "../tools/colors";
+import { getRadiusValue, type RadiusToken } from "../tools/radius";
 //!#Imports: end
 
 //!#Constants: start
@@ -17,7 +18,7 @@ const Css = {
     zIndex: 9999,
   }),
 
-  panelStyle: (removeDefaultStyle?: boolean, darkMode = true): React.CSSProperties => {
+  panelStyle: (removeDefaultStyle?: boolean, darkMode = true, borderRadiusValue = 8): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
     }
@@ -36,7 +37,7 @@ const Css = {
       backgroundColor: scheme.color,
       color: scheme.textColor,
       border: `1px solid ${borderColor}`,
-      borderRadius: 0,
+      borderRadius: borderRadiusValue,
       boxShadow: shadow,
       minWidth: 120,
       maxWidth: 320,
@@ -61,6 +62,7 @@ export type PopoverProps = {
   content?: React.ReactNode;
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  borderRadius?: RadiusToken | number;
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -74,6 +76,7 @@ export const POPOVER_PROP_NAMES = [
   "content",
   "open",
   "onOpenChange",
+  "borderRadius",
 ] as const;
 //!#propTypes: end
 
@@ -87,6 +90,7 @@ const Popover = ({
   content,
   open,
   onOpenChange,
+  borderRadius = "md",
 }: PopoverProps) => {
   //!#visualComponent: start
   const [panelPosition, setPanelPosition] = useState<{ top: number; left: number } | undefined>(undefined);
@@ -150,20 +154,26 @@ const Popover = ({
 
   if (hidden) return null;
   //!#render components: start
+  const borderRadiusValue = getRadiusValue(borderRadius);
+
   const panelElement =
     open && content != null && panelPosition != null && typeof document !== "undefined"
       ? createPortal(
-          <div
-            ref={panelRef}
-            className={noPrint ? "no-print" : undefined}
-            style={{ ...Css.panelPosition(panelPosition), ...Css.panelStyle(removeDefaultStyle, darkMode), ...style }}
-            role="dialog"
-            aria-hidden={!open}
-          >
-            {content}
-          </div>,
-          document.body,
-        )
+        <div
+          ref={panelRef}
+          className={noPrint ? "no-print" : undefined}
+          style={{
+            ...Css.panelPosition(panelPosition),
+            ...Css.panelStyle(removeDefaultStyle, darkMode, borderRadiusValue),
+            ...style,
+          }}
+          role="dialog"
+          aria-hidden={!open}
+        >
+          {content}
+        </div>,
+        document.body,
+      )
       : null;
 
   return <>{panelElement}</>;

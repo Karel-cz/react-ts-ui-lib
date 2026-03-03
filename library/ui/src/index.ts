@@ -38,6 +38,9 @@ export { getColorScheme, getBorderColor, getRgbaFromScheme, hexToRgba, getModern
 export type { ColorScheme } from "./tools/colors";
 export { getLabelSize } from "./tools/labelSize";
 export type { LabelSizeToken } from "./tools/labelSize";
+// Radius utilities
+export { getRadiusValue, radiusKeyList } from "./tools/radius";
+export type { RadiusToken } from "./tools/radius";
 
 // Prop Names (for docs)
 export { BUTTON_PROP_NAMES } from "./basic-components/Button";
