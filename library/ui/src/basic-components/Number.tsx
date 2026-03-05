@@ -34,6 +34,7 @@ export type NumberProps = {
   tooltip?: string;
   wholeLengthNumberInTooltip?: boolean;
   minDecimalDigits?: number;
+  maxDecimalDigits?: number;
   colorScheme?: ColorScheme;
   darkMode?: boolean;
   style?: React.CSSProperties;
@@ -44,6 +45,7 @@ export const NUMBER_PROP_NAMES = [
   "tooltip",
   "wholeLengthNumberInTooltip",
   "minDecimalDigits",
+  "maxDecimalDigits",
   "colorScheme",
   "darkMode",
   "style",
@@ -55,6 +57,7 @@ const Number: React.FC<NumberProps> = ({
   tooltip,
   wholeLengthNumberInTooltip,
   minDecimalDigits = 0,
+  maxDecimalDigits,
   colorScheme = "background",
   darkMode = true,
   style,
@@ -62,7 +65,7 @@ const Number: React.FC<NumberProps> = ({
   //!#visualComponent: start
   const formattedValue = new Intl.NumberFormat(undefined, {
     minimumFractionDigits: minDecimalDigits,
-    maximumFractionDigits: minDecimalDigits,
+    maximumFractionDigits: maxDecimalDigits ?? Math.max(minDecimalDigits, 20),
   }).format(value);
 
   const tooltipContent =

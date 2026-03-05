@@ -105,6 +105,23 @@ const CopyToClipboardDoc = () => {
         },
       ],
     },
+    {
+      category: t("copyToClipboard.categories.tooltip"),
+      itemList: [
+        {
+          label: t("copyToClipboard.examples.withTooltip"),
+          components: (
+            <CopyToClipboard
+              text="With tooltip"
+              onCopy={copyToClipboard}
+              label="Hover me"
+              darkMode={darkMode}
+              tooltip="Click to copy this text"
+            />
+          ),
+        },
+      ],
+    },
   ];
 
   const pageTitle = t("copyToClipboard.title");

@@ -134,6 +134,19 @@ const NumberDoc = () => {
         },
       ],
     },
+    {
+      category: t("number.examples.limitDecimals"),
+      itemList: [
+        {
+          label: "maxDecimalDigits={2}",
+          components: <Number value={12345.6789} maxDecimalDigits={2} />,
+        },
+        {
+          label: "min={1}, max={3}",
+          components: <Number value={12345.6} minDecimalDigits={1} maxDecimalDigits={3} />,
+        },
+      ],
+    },
   ];
   //!#visualComponent: end
 

@@ -1,6 +1,6 @@
 //!#Imports: start
 import { useState, useRef } from "react";
-import { Block, Button, Icon, Number, Pending, Badge, ThemeToggle, Label, CopyToClipboard, InfoGroup, ProfileCard, Popover } from "@react-ts-ui-lib/ui";
+import { Block, Button, Icon, Number, Pending, Badge, ThemeToggle, Title, CopyToClipboard, InfoGroup, ProfileCard, Popover } from "@react-ts-ui-lib/ui";
 import type { InfoGroupItem } from "@react-ts-ui-lib/ui";
 import { copyToClipboard } from "@react-ts-ui-lib/utilities";
 import { useTranslation } from "../i18n/useTranslation";
@@ -112,12 +112,12 @@ const BasicComponents = () => {
           </div>
         </Block>
 
-        <Block card="full" darkMode={darkMode} header={t("basicComponentsPage.components.labels")}>
+        <Block card="full" darkMode={darkMode} header={t("basicComponentsPage.components.titles")}>
           <div style={styles.blockContent}>
-            <Label size="s" darkMode={darkMode}>Small</Label>
-            <Label size="m" darkMode={darkMode}>Medium</Label>
-            <Label size="l" colorScheme="primary" darkMode={darkMode}>Primary</Label>
-            <Label size="xl" darkMode={darkMode}>Large</Label>
+            <Title size="s" darkMode={darkMode}>Small</Title>
+            <Title size="m" darkMode={darkMode}>Medium</Title>
+            <Title size="l" colorScheme="primary" darkMode={darkMode}>Primary</Title>
+            <Title size="xl" darkMode={darkMode}>Large</Title>
           </div>
         </Block>
 

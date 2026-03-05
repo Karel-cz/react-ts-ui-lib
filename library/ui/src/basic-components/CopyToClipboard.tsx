@@ -48,6 +48,7 @@ export type CopyToClipboardProps = {
   removeDefaultStyle?: boolean;
   borderRadius?: RadiusToken;
   backgroundColorScheme?: ColorScheme | null;
+  tooltip?: string;
 };
 
 export const COPY_TO_CLIPBOARD_PROP_NAMES = [
@@ -60,6 +61,7 @@ export const COPY_TO_CLIPBOARD_PROP_NAMES = [
   "removeDefaultStyle",
   "borderRadius",
   "backgroundColorScheme",
+  "tooltip",
 ] as const;
 //!#propTypes: end
 
@@ -73,6 +75,7 @@ const CopyToClipboard = ({
   removeDefaultStyle = false,
   borderRadius = "md",
   backgroundColorScheme = "background",
+  tooltip,
 }: CopyToClipboardProps) => {
   //!#visualComponent: start
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
@@ -134,6 +137,7 @@ const CopyToClipboard = ({
         aria-label={typeof label === "string" ? label : "Copy to clipboard"}
         role="button"
         onClick={handleClick}
+        title={tooltip}
       >
         {children ?? (
           <>
@@ -158,6 +162,7 @@ const CopyToClipboard = ({
       aria-label={typeof label === "string" ? label : "Copy to clipboard"}
       role="button"
       onClick={handleClick}
+      title={tooltip}
     >
       {content}
     </span>
