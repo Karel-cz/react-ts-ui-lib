@@ -486,6 +486,11 @@
         "description": "Controls the speed of the animation (multiplier).",
         "type": "number",
         "required": "false"
+      },
+      "image": {
+        "description": "In circular pending: the image appears centered inside the indicator, In horizontal pending: the image appears above the bar",
+        "type": "string",
+        "required": "false"
       }
     },
     "categories": {
@@ -942,9 +947,9 @@
         "required": "false"
       },
       "borderTop": {
-      "description": "Show top border.",
-      "type": "boolean",
-      "required": "false"
+        "description": "Show top border.",
+        "type": "boolean",
+        "required": "false"
       },
       "borderRight": {
         "description": "Show right border.",
@@ -1649,7 +1654,7 @@
         "description": "Whether to show a border on the left edge of the tab bar.",
         "type": "boolean",
         "required": "false"
-      },      
+      },
       "noPrint": {
         "description": "Hides the component when printing (adds no-print class).",
         "type": "boolean",
@@ -1671,9 +1676,9 @@
         "required": "false"
       },
       "borderRadius": {
-      "description": "Border radius token applied only to the top-left and top-right corners of the tab bar.",
-      "type": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"full\"",
-      "required": "false"
+        "description": "Border radius token applied only to the top-left and top-right corners of the tab bar.",
+        "type": "\"xs\" | \"sm\" | \"md\" | \"lg\" | \"full\"",
+        "required": "false"
       }
     },
     "categories": {
