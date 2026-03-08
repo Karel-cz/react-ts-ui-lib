@@ -70,6 +70,7 @@ const Css = {
       boxShadow: "none",
       backgroundColor: scheme.color,
       color: scheme.textColor,
+      colorScheme: darkMode ? "dark" : "light",
       cursor: disabled ? "not-allowed" : "pointer",
       opacity: disabled ? 0.6 : 1,
     };

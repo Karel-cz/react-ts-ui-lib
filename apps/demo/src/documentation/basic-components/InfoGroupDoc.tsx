@@ -219,6 +219,15 @@ const InfoGroupDoc = () => {
             />
           ),
         },
+        {
+          label: t("infogroup.examples.lines"),
+          components: (
+            <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+              <InfoGroup itemList={basicItems} lines darkMode={darkMode} />
+              <InfoGroup itemList={basicItems} direction="horizontal" lines darkMode={darkMode} />
+            </div>
+          ),
+        },
       ],
     },
   ];
@@ -236,8 +245,8 @@ const InfoGroupDoc = () => {
             <InfoGroup
               itemList={basicItems}
               itemDirection="vertical"
-              titleAlign ="center"
-              subtitleAlign ="right"
+              titleAlign="center"
+              subtitleAlign="right"
               darkMode={darkMode}
             />
           ),

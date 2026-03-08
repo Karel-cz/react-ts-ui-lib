@@ -38,8 +38,8 @@ const Css = {
     if (removeDefaultStyle) {
       return {};
     }
-    
-    const borderStyle = borderColor? `1px solid ${borderColor}`: undefined;
+
+    const borderStyle = borderColor ? `1px solid ${borderColor}` : undefined;
 
     const baseStyle: React.CSSProperties = {
       backgroundColor: background,
@@ -92,6 +92,7 @@ const Css = {
       alignItems: "center",
       justifyContent: "space-between",
       width: "100%",
+      boxSizing: "border-box",
     };
 
     if (cardType === "full") {
@@ -428,20 +429,6 @@ const Block = ({
       {hasHeader && (
         <div style={Css.header(removeDefaultStyle, padding, card)}>
           <div style={Css.headerLeft()}>
-            {collapsible && (
-              <button
-                type="button"
-                onClick={toggleCollapse}
-                style={Css.collapsibleButton()}
-                aria-expanded={!isCollapsed}
-              >
-                <Icon
-                  icon={isCollapsed ? "mdi-chevron-right" : "mdi-chevron-down"}
-                  size="sm"
-                  darkMode={darkMode}
-                />
-              </button>
-            )}
             {typeof header === "string" ? (
               <h3 style={Css.headerTitle()}>{header}</h3>
             ) : (
@@ -454,7 +441,7 @@ const Block = ({
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: 8,
+                  gap: 12,
                   flexShrink: 0,
                 }}
               >
@@ -487,6 +474,20 @@ const Block = ({
                   </div>
                 )}
               </div>
+            )}
+            {collapsible && (
+              <button
+                type="button"
+                onClick={toggleCollapse}
+                style={Css.collapsibleButton()}
+                aria-expanded={!isCollapsed}
+              >
+                <Icon
+                  icon={isCollapsed ? "mdi-chevron-down" : "mdi-chevron-up"}
+                  size="sm"
+                  darkMode={darkMode}
+                />
+              </button>
             )}
           </div>
         </div>
