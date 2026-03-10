@@ -71,8 +71,8 @@ const componentMap: { [key: string]: React.LazyExoticComponent<React.FC> } = {
   Radios: React.lazy(
     () => import("../../documentation/basic-components/RadiosDoc"),
   ),
-  Label: React.lazy(
-    () => import("../../documentation/basic-components/LabelDoc"),
+  Title: React.lazy(
+    () => import("../../documentation/basic-components/TitleDoc"),
   ),
   Popover: React.lazy(
     () => import("../../documentation/basic-components/PopoverDoc"),

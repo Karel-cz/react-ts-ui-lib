@@ -735,7 +735,7 @@
       "date": "Date",
       "select": "Select",
       "radios": "Radios",
-      "label": "Label",
+      "title": "Title",
       "breadcrumb": "Breadcrumb",
       "popover": "Popover",
       "copyToClipboard": "Copy to Clipboard"
@@ -1029,6 +1029,11 @@
         "type": "number",
         "required": "false"
       },
+      "maxDecimalDigits": {
+        "description": "The maximum number of decimal digits.",
+        "type": "number",
+        "required": "false"
+      },
       "style": {
         "description": "Optional inline styles (React.CSSProperties) merged with default styles.",
         "type": "React.CSSProperties",
@@ -1050,7 +1055,8 @@
       "decimals": "With Decimals",
       "tooltip": "With Tooltip",
       "customTooltip": "With Custom Tooltip",
-      "color": "With Color Prop"
+      "color": "With Color Prop",
+      "limitDecimals": "Limit Decimal Digits"
     }
   },
   "auth": {
@@ -2197,10 +2203,10 @@
       "grape": "Grape"
     }
   },
-  "label": {
-    "title": "Label Component",
+  "title": {
+    "title": "Title Component",
     "basicInfo": {
-      "description": "Text label with optional emphasis. Used for section headings, field labels or section titles."
+      "description": "Text title with optional emphasis. Used for section headings, titles or section headers."
     },
     "props": {
       "style": {
@@ -2229,13 +2235,13 @@
         "required": "false"
       },
       "children": {
-        "description": "Label content (string or React node).",
+        "description": "Title content (string or React node).",
         "type": "ReactNode",
         "required": "false"
       },
       "size": {
         "description": "Typography size: xxs, xs, s, m, l, xl, xxl.",
-        "type": "LabelSizeToken",
+        "type": "TitleSizeToken",
         "required": "false"
       },
       "colorScheme": {
@@ -2249,7 +2255,7 @@
         "required": "false"
       },
       "block": {
-        "description": "If true, label is rendered as a full-width block with border; text stays left-aligned.",
+        "description": "If true, title is rendered as a full-width block with border; text stays left-aligned.",
         "type": "boolean",
         "required": "false"
       }
@@ -2382,7 +2388,7 @@
   },
   "basicComponentsPage": {
     "title": "Basic Components",
-    "description": "Primitive UI building blocks: buttons, icons, badges, labels, and more. Expand the left menu and select a component for full documentation.",
+    "description": "Primitive UI building blocks: buttons, icons, badges, titles, and more. Expand the left menu and select a component for full documentation.",
     "instructions": "Select a component from the Basic Components section in the left menu to view its documentation.",
     "components": {
       "buttons": "Buttons",
@@ -2390,7 +2396,7 @@
       "numbers": "Numbers",
       "pending": "Pending",
       "badges": "Badges",
-      "labels": "Labels",
+      "titles": "Titles",
       "themeToggle": "Theme Toggle",
       "copyToClipboard": "Copy to Clipboard",
       "infogroup": "Info Group",
@@ -2471,7 +2477,8 @@
     "error": "Copying failed.",
     "categories": {
       "basic": "Basic",
-      "styling": "Styling"
+      "styling": "Styling",
+      "tooltip": "Tooltip"
     },
     "examples": {
       "default": "Default",
@@ -2479,7 +2486,8 @@
       "customLabel": "Custom label",
       "light": "Light mode",
       "noDefault": "No default style",
-      "iconOnly": "Icon only"
+      "iconOnly": "Icon only",
+      "withTooltip": "With tooltip"
     },
     "props": {
       "text": {
@@ -2525,6 +2533,11 @@
       "backgroundColorScheme": {
         "description": "Background color scheme for the icon wrapper. Uses \"background\" by default; set to null to render without any background.",
         "type": "ColorScheme | null",
+        "required": "false"
+      },
+      "tooltip": {
+        "description": "Native tooltip on hover.",
+        "type": "string",
         "required": "false"
       }
     },

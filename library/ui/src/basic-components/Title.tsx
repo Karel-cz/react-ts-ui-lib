@@ -1,7 +1,7 @@
 //!#Imports: start
 import React from "react";
 import { getColorScheme, getBorderColor, type ColorScheme } from "../tools/colors";
-import { getLabelSize, type LabelSizeToken } from "../tools/labelSize";
+import { getTitleSize, type TitleSizeToken } from "../tools/titleSize";
 //!#Imports: end
 
 //!#Constants: start
@@ -9,10 +9,10 @@ import { getLabelSize, type LabelSizeToken } from "../tools/labelSize";
 
 //!#Styles: start
 const Css = {
-  label: (
+  title: (
     removeDefaultStyle?: boolean,
     darkMode = true,
-    sizeToken?: LabelSizeToken,
+    sizeToken?: TitleSizeToken,
     colorScheme?: ColorScheme,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
@@ -20,7 +20,7 @@ const Css = {
     }
 
     const scheme = getColorScheme(colorScheme ?? "background", darkMode);
-    const size = getLabelSize(sizeToken ?? "m");
+    const size = getTitleSize(sizeToken ?? "m");
     const isNeutral = colorScheme === "background" || colorScheme === "surface";
     const textColor = isNeutral ? scheme.textColor : scheme.color;
 
@@ -50,21 +50,21 @@ const Css = {
 //!#helpers: end
 
 //!#propTypes: start
-export type LabelProps = {
+export type TitleProps = {
   style?: React.CSSProperties;
   noPrint?: boolean;
   hidden?: boolean;
   removeDefaultStyle?: boolean;
   darkMode?: boolean;
   children?: React.ReactNode;
-  size?: LabelSizeToken;
+  size?: TitleSizeToken;
   colorScheme?: ColorScheme;
   tooltip?: string;
   block?: boolean;
 };
 
 // Const array for runtime prop extraction in Documentation
-export const LABEL_PROP_NAMES = [
+export const TITLE_PROP_NAMES = [
   "style",
   "noPrint",
   "hidden",
@@ -78,7 +78,7 @@ export const LABEL_PROP_NAMES = [
 ] as const;
 //!#propTypes: end
 
-const Label = ({
+const Title = ({
   style,
   noPrint = false,
   hidden = false,
@@ -89,13 +89,13 @@ const Label = ({
   colorScheme = "background",
   tooltip,
   block = false,
-}: LabelProps) => {
+}: TitleProps) => {
   //!#visualComponent: start
   if (hidden) return null;
 
-  const labelStyle = Css.label(removeDefaultStyle, darkMode, size, colorScheme);
+  const titleStyle = Css.title(removeDefaultStyle, darkMode, size, colorScheme);
   const span = (
-    <span style={labelStyle}>
+    <span style={titleStyle}>
       {children}
     </span>
   );
@@ -115,7 +115,7 @@ const Label = ({
   return (
     <span
       className={noPrint ? "no-print" : undefined}
-      style={{ ...labelStyle, ...style }}
+      style={{ ...titleStyle, ...style }}
       title={tooltip}
     >
       {children}
@@ -126,6 +126,6 @@ const Label = ({
 };
 
 //!#export: start
-export { Label };
-export default Label;
+export { Title };
+export default Title;
 //!#export: end

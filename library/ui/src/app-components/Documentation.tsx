@@ -2,7 +2,7 @@
 //!#Imports: start
 import React, { useState } from "react";
 import Block from "../basic-components/Block";
-import Label from "../basic-components/Label";
+import Title from "../basic-components/Title";
 import Box from "../basic-components/Box";
 import Badge from "../basic-components/Badge";
 import UnderConstruction from "./UnderConstruction";
@@ -338,8 +338,8 @@ const Documentation = ({
       onClick: () => {
         setActiveTab(USAGE);
       },
-      
-    
+
+
     },
     {
       title: tabPropTypesLabel,
@@ -382,7 +382,7 @@ const Documentation = ({
   return (
     <div>
       <Box darkMode={darkMode} style={Css.box()} borderRadius="none" borderTop={false} borderLeft={false} borderRight={false}   >
-        <Label darkMode={darkMode} style={{ width: "auto", flex: "0 1 auto" }}>{title}</Label>
+        <Title darkMode={darkMode} style={{ width: "auto", flex: "0 1 auto" }}>{title}</Title>
         <Badge colorScheme={STATES[state]} darkMode={darkMode}>{state}</Badge>
       </Box>
       <TabGroup
