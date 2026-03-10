@@ -1560,6 +1560,21 @@
         "description": "Renderuje komponentu pomocí tmavé palety barev.",
         "type": "boolean",
         "required": "false"
+      },
+      "titleAlign": {
+        "description": "Zarovnání textu pro titulky položek (left, center, right, justify).",
+        "type": "string",
+        "required": "false"
+      },
+      "subtitleAlign": {
+        "description": "Zarovnání textu pro podtitulky položek (left, center, right, justify).",
+        "type": "string",
+        "required": "false"
+      },
+      "lines": {
+        "description": "Přidá dělící čáry mezi položky pro lepší vizuální oddělení.",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "categories": {
@@ -1586,7 +1601,8 @@
       "item2Title": "Položka 2",
       "item2Subtitle": "Popis pro položku 2",
       "item3Title": "Položka 3",
-      "item3Subtitle": "Popis pro položku 3"
+      "item3Subtitle": "Popis pro položku 3",
+      "lines": "S dělícími čárami"
     }
   },
   "tabgroup": {

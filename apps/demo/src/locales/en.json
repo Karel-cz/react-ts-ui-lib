@@ -1560,6 +1560,21 @@
         "description": "Renders the component using dark mode palette.",
         "type": "boolean",
         "required": "false"
+      },
+      "titleAlign": {
+        "description": "Text alignment for item titles (left, center, right, justify).",
+        "type": "string",
+        "required": "false"
+      },
+      "subtitleAlign": {
+        "description": "Text alignment for item subtitles (left, center, right, justify).",
+        "type": "string",
+        "required": "false"
+      },
+      "lines": {
+        "description": "Adds dividing lines between items for better visual separation.",
+        "type": "boolean",
+        "required": "false"
       }
     },
     "categories": {
@@ -1586,7 +1601,8 @@
       "item2Title": "Item 2",
       "item2Subtitle": "Description for item 2",
       "item3Title": "Item 3",
-      "item3Subtitle": "Description for item 3"
+      "item3Subtitle": "Description for item 3",
+      "lines": "With dividing lines"
     }
   },
   "tabgroup": {

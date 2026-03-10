@@ -73,6 +73,7 @@ export type InfoGroupProps = {
   darkMode?: boolean;
   titleAlign?: TextAlignOptions;
   subtitleAlign?: TextAlignOptions;
+  lines?: boolean;
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -88,6 +89,7 @@ export const INFO_GROUP_PROP_NAMES = [
   "darkMode",
   "titleAlign",
   "subtitleAlign",
+  "lines",
 ] as const;
 //!#propTypes: end
 
@@ -103,6 +105,7 @@ const InfoGroup = ({
   darkMode = true,
   titleAlign = "left",
   subtitleAlign = "left",
+  lines = false,
 }: InfoGroupProps) => {
   //!#visualComponent: start
   if (hidden) return null;
@@ -118,25 +121,42 @@ const InfoGroup = ({
       style={{ ...Css.container(removeDefaultStyle, direction), ...style }}
     >
       {itemList.map((item, index) => (
-        <div
-          key={index}
-          style={Css.item(removeDefaultStyle, itemDirection)}
-        >
-          {item.icon && (
-            <Icon icon={item.icon} size="md" darkMode={darkMode} />
-          )}
-          <div style={Css.itemContent()}>
-            <div style = {{ textAlign : titleAlign, width : "100%"}}>
-              {item.title}
-            </div>
-
-            {item.subtitle && (
-              <div style = {{fontSize : "0.875rem", opacity : 0.8, textAlign : subtitleAlign, width: "100%",}}>
-                {item.subtitle}
-              </div>
+        <React.Fragment key={index}>
+          <div style={Css.item(removeDefaultStyle, itemDirection)}>
+            {item.icon && (
+              <Icon icon={item.icon} size="md" darkMode={darkMode} />
             )}
+            <div style={Css.itemContent()}>
+              <div style={{ textAlign: titleAlign, width: "100%" }}>
+                {item.title}
+              </div>
+
+              {item.subtitle && (
+                <div
+                  style={{
+                    fontSize: "0.875rem",
+                    opacity: 0.8,
+                    textAlign: subtitleAlign,
+                    width: "100%",
+                  }}
+                >
+                  {item.subtitle}
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+          {lines && index < itemList.length - 1 && (
+            <div
+              style={{
+                borderBottom: direction === "vertical" ? "1px solid rgba(128, 128, 128, 0.2)" : "none",
+                borderRight: direction === "horizontal" ? "1px solid rgba(128, 128, 128, 0.2)" : "none",
+                height: direction === "horizontal" ? "100%" : "0",
+                width: direction === "vertical" ? "100%" : "0",
+                margin: direction === "vertical" ? "0.5rem 0" : "0 0.5rem",
+              }}
+            />
+          )}
+        </React.Fragment>
       ))}
     </div>
   );
