@@ -25,7 +25,11 @@ const DocSeo = ({ title, description }: DocSeoProps) => {
   const location = useLocation();
   const { language } = useLanguage();
 
-  const canonicalPath = location.pathname.toLowerCase();
+  const canonicalPath = location.pathname;
+  const canonicalUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}${canonicalPath}`
+      : canonicalPath;
   const htmlLang = language === "cz" ? "cs" : "en";
 
   const jsonLd = {
@@ -33,10 +37,7 @@ const DocSeo = ({ title, description }: DocSeoProps) => {
     "@type": "TechArticle",
     headline: title,
     description,
-    url:
-      typeof window !== "undefined"
-        ? `${window.location.origin}${canonicalPath}`
-        : canonicalPath,
+    url: canonicalUrl,
     inLanguage: htmlLang,
   };
 
@@ -45,7 +46,8 @@ const DocSeo = ({ title, description }: DocSeoProps) => {
     <Helmet>
       <title>{`React TS Kit – ${title}`}</title>
       <meta name="description" content={description} />
-      <link rel="canonical" href={canonicalPath} />
+      <link rel="canonical" href={canonicalUrl} />
+      <meta property="og:url" content={canonicalUrl} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
