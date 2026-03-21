@@ -2193,12 +2193,19 @@
         "description": "Layout direction of options: row or column.",
         "type": "\"row\" | \"column\"",
         "required": "false"
+      },
+      "colorScheme": {
+        "description": "Determines visual look of the radio based on predefined color palette (primary, success, danger…).",
+        "type": "string",
+        "required": "false"
       }
     },
     "categories": {
       "basic": "Basic",
       "states": "States",
-      "styling": "Styling"
+      "styling": "Styling",
+      "color":"Colors Scheme"
+      
     },
     "examples": {
       "basic": "Basic",

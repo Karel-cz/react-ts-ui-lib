@@ -49,6 +49,220 @@ const RadiosDoc = () => {
 
   const componentList = [
     {
+    category: t("radios.categories.color"),
+    itemList: [
+      {
+        label: "Primary",
+        components: (
+          <Radios
+            name="radio-primary"
+            itemList={[{ label: "Primary", value: "primary" }]}
+            value="primary"
+            colorScheme="primary"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Success",
+        components: (
+          <Radios
+            name="radio-success"
+            itemList={[{ label: "Success", value: "success" }]}
+            value="success"
+            colorScheme="success"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Danger",
+        components: (
+          <Radios
+            name="radio-danger"
+            itemList={[{ label: "Danger", value: "danger" }]}
+            value="danger"
+            colorScheme="danger"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Warning",
+        components: (
+          <Radios
+            name="radio-warning"
+            itemList={[{ label: "Warning", value: "warning" }]}
+            value="warning"
+            colorScheme="warning"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+
+      {
+        label: "Purple",
+        components: (
+          <Radios
+            name="radio-purple"
+            itemList={[{ label: "Purple", value: "purple" }]}
+            value="purple"
+            colorScheme="purple"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Purple Dark",
+        components: (
+          <Radios
+            name="radio-purple-dark"
+            itemList={[{ label: "Purple Dark", value: "purpleDark" }]}
+            value="purpleDark"
+            colorScheme="purpleDark"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Teal",
+        components: (
+          <Radios
+            name="radio-teal"
+            itemList={[{ label: "Teal", value: "teal" }]}
+            value="teal"
+            colorScheme="teal"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Teal Dark",
+        components: (
+          <Radios
+            name="radio-teal-dark"
+            itemList={[{ label: "Teal Dark", value: "tealDark" }]}
+            value="tealDark"
+            colorScheme="tealDark"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Pink",
+        components: (
+          <Radios
+            name="radio-pink"
+            itemList={[{ label: "Pink", value: "pink" }]}
+            value="pink"
+            colorScheme="pink"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Pink Dark",
+        components: (
+          <Radios
+            name="radio-pink-dark"
+            itemList={[{ label: "Pink Dark", value: "pinkDark" }]}
+            value="pinkDark"
+            colorScheme="pinkDark"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Indigo",
+        components: (
+          <Radios
+            name="radio-indigo"
+            itemList={[{ label: "Indigo", value: "indigo" }]}
+            value="indigo"
+            colorScheme="indigo"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Indigo Dark",
+        components: (
+          <Radios
+            name="radio-indigo-dark"
+            itemList={[{ label: "Indigo Dark", value: "indigoDark" }]}
+            value="indigoDark"
+            colorScheme="indigoDark"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Orange",
+        components: (
+          <Radios
+            name="radio-orange"
+            itemList={[{ label: "Orange", value: "orange" }]}
+            value="orange"
+            colorScheme="orange"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Orange Dark",
+        components: (
+          <Radios
+            name="radio-orange-dark"
+            itemList={[{ label: "Orange Dark", value: "orangeDark" }]}
+            value="orangeDark"
+            colorScheme="orangeDark"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Cyan",
+        components: (
+          <Radios
+            name="radio-cyan"
+            itemList={[{ label: "Cyan", value: "cyan" }]}
+            value="cyan"
+            colorScheme="cyan"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+      {
+        label: "Cyan Dark",
+        components: (
+          <Radios
+            name="radio-cyan-dark"
+            itemList={[{ label: "Cyan Dark", value: "cyanDark" }]}
+            value="cyanDark"
+            colorScheme="cyanDark"
+            darkMode={darkMode}
+            readOnly
+          />
+        ),
+      },
+    ]
+    },
+    {
       category: t("radios.categories.basic"),
       itemList: [
         {

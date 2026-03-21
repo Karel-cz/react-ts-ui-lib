@@ -1,6 +1,6 @@
 //!#Imports: start
 import React from "react";
-import { getColorScheme } from "../tools/colors";
+import { getColorScheme, type ColorScheme } from "../tools/colors";
 //!#Imports: end
 
 //!#Constants: start
@@ -43,12 +43,13 @@ const Css = {
     removeDefaultStyle?: boolean,
     darkMode = true,
     readOnly?: boolean,
+    color?:ColorScheme,
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
     }
 
-    const scheme = getColorScheme("primary", darkMode);
+    const scheme = getColorScheme(color ? color : "primary", darkMode);
 
     return {
       width: "1.125rem",
@@ -103,6 +104,7 @@ export type RadiosProps = {
   name?: string;
   id?: string;
   direction?: "row" | "column";
+  colorScheme?:ColorScheme
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -121,6 +123,7 @@ export const RADIOS_PROP_NAMES = [
   "name",
   "id",
   "direction",
+  "colorScheme"
 ] as const;
 //!#propTypes: end
 
@@ -139,6 +142,7 @@ const Radios = ({
   name,
   id,
   direction = "column",
+  colorScheme
 }: RadiosProps) => {
   //!#visualComponent: start
   if (hidden) return null;
@@ -173,7 +177,7 @@ const Radios = ({
               onChange={readOnly ? undefined : onChange}
               onFocus={onFocus}
               onBlur={onBlur}
-              style={Css.radio(removeDefaultStyle, darkMode, readOnly)}
+              style={Css.radio(removeDefaultStyle, darkMode, readOnly, colorScheme)}
               onClick={readOnly ? (e) => e.preventDefault() : undefined}
             />
             <span style={Css.labelText(removeDefaultStyle, darkMode, readOnly)}>
