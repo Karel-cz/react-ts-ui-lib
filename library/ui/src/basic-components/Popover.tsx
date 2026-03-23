@@ -11,11 +11,11 @@ const GAP = 8;
 
 //!#Styles: start
 const Css = {
-  panelPosition: (position: { top: number; left: number }): React.CSSProperties => ({
+  panelPosition: (position: { top: number; left: number; zIndex:number }): React.CSSProperties => ({
     position: "fixed",
     top: position.top,
     left: position.left,
-    zIndex: 9999,
+    zIndex: position.zIndex,
   }),
 
   panelStyle: (removeDefaultStyle?: boolean, darkMode = true, borderRadiusValue = 8): React.CSSProperties => {
@@ -63,6 +63,7 @@ export type PopoverProps = {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   borderRadius?: RadiusToken | number;
+  zIndex?:number;
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -77,6 +78,7 @@ export const POPOVER_PROP_NAMES = [
   "open",
   "onOpenChange",
   "borderRadius",
+  "zIndex"
 ] as const;
 //!#propTypes: end
 
@@ -91,9 +93,10 @@ const Popover = ({
   open,
   onOpenChange,
   borderRadius = "md",
+  zIndex=1000
 }: PopoverProps) => {
   //!#visualComponent: start
-  const [panelPosition, setPanelPosition] = useState<{ top: number; left: number } | undefined>(undefined);
+  const [panelPosition, setPanelPosition] = useState<{ top: number; left: number; zIndex:number } | undefined>(undefined);
   const panelRef = useRef<HTMLDivElement>(null);
 
   const updatePosition = useCallback(() => {
@@ -102,21 +105,22 @@ const Popover = ({
       setPanelPosition({
         top: rect.bottom + GAP,
         left: rect.left,
+        zIndex:zIndex,
       });
     } else {
       setPanelPosition(undefined);
     }
-  }, [triggerRef]);
+  }, [triggerRef,zIndex]);
 
   useLayoutEffect(() => {
     if (!open || content == null) return;
     const rect = triggerRef?.current?.getBoundingClientRect();
     if (rect) {
-      const position = { top: rect.bottom + GAP, left: rect.left };
+      const position = { top: rect.bottom + GAP, left: rect.left, zIndex:zIndex };
       const id = requestAnimationFrame(() => setPanelPosition(position));
       return () => cancelAnimationFrame(id);
     }
-  }, [open, content, triggerRef]);
+  }, [open, content, triggerRef, zIndex]);
 
   useEffect(() => {
     if (!open) return;
