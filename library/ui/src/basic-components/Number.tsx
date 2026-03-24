@@ -38,6 +38,7 @@ export type NumberProps = {
   colorScheme?: ColorScheme;
   darkMode?: boolean;
   style?: React.CSSProperties;
+  fixDecimalDigits?:number;
 };
 
 export const NUMBER_PROP_NAMES = [
@@ -49,6 +50,7 @@ export const NUMBER_PROP_NAMES = [
   "colorScheme",
   "darkMode",
   "style",
+  "fixDecimalDigits"
 ] as const;
 //!#propTypes: end
 
@@ -61,11 +63,18 @@ const Number: React.FC<NumberProps> = ({
   colorScheme = "background",
   darkMode = true,
   style,
+  fixDecimalDigits
 }) => {
   //!#visualComponent: start
   const formattedValue = new Intl.NumberFormat(undefined, {
-    minimumFractionDigits: minDecimalDigits,
-    maximumFractionDigits: maxDecimalDigits ?? Math.max(minDecimalDigits, 20),
+    minimumFractionDigits:
+      fixDecimalDigits !== undefined ? fixDecimalDigits : minDecimalDigits,
+
+
+    maximumFractionDigits:
+      fixDecimalDigits !== undefined
+        ? fixDecimalDigits
+        : maxDecimalDigits ?? Math.max(minDecimalDigits, 20),
   }).format(value);
 
   const tooltipContent =
