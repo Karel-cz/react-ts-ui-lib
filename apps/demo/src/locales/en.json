@@ -2345,6 +2345,11 @@
         "description": "Predefined border radius token (none, xs, sm, md, lg, full) or a custom number (px).",
         "type": "string | number",
         "required": "false"
+      },
+      "zIndex": {
+        "description": "Controls the stacking order of the Popover. Higher values will render the popover above other elements.",
+        "type": "number",
+        "required": "false"
       }
     },
     "categories": {
