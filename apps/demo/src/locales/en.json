@@ -1117,6 +1117,11 @@
         "type": "string",
         "required": "false"
       },
+      "darkMode": {
+        "description": "Renders the component using dark mode palette.",
+        "type": "boolean",
+        "required": "false"
+      },
       "onChange": {
         "description": "Called when the input value changes.",
         "type": "function",

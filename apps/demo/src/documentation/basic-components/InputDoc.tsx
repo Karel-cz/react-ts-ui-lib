@@ -23,6 +23,7 @@ const INPUT_EXAMPLE_CODE = `<Input
   label="Email"
   value={value}
   onChange={(e) => setValue(e.target.value)}
+  darkMode={true}
 />`;
 
 const InputDoc = () => {
@@ -47,6 +48,7 @@ const InputDoc = () => {
               placeholder="Type something..."
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -62,6 +64,7 @@ const InputDoc = () => {
               placeholder="Search..."
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -78,6 +81,7 @@ const InputDoc = () => {
               placeholder="Enter your name"
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -95,6 +99,7 @@ const InputDoc = () => {
               required
               value={requiredValue}
               onChange={(e) => setRequiredValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -111,6 +116,7 @@ const InputDoc = () => {
               disabled
               value={disabledValue}
               onChange={(e) => setDisabledValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -127,6 +133,7 @@ const InputDoc = () => {
               placeholder="No default styling"
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -143,6 +150,7 @@ const InputDoc = () => {
               borderRadius="xs"
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -154,6 +162,7 @@ const InputDoc = () => {
               borderRadius="sm"
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -165,6 +174,7 @@ const InputDoc = () => {
               borderRadius="md"
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -176,6 +186,7 @@ const InputDoc = () => {
               borderRadius="lg"
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -187,6 +198,7 @@ const InputDoc = () => {
               borderRadius="full"
               value={basicValue}
               onChange={(e) => setBasicValue(e.target.value)}
+              darkMode={darkMode}
             />
           ),
         },
@@ -213,6 +225,7 @@ const InputDoc = () => {
               label="Email"
               value="example@mail.com"
               onChange={() => {}}
+              darkMode={darkMode}
             />
           ),
         }}

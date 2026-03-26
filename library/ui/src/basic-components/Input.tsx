@@ -1,6 +1,7 @@
 //!#Imports: start
 import React from "react";
 import { getRadiusValue, type RadiusToken } from "../tools/radius";
+import { getColorScheme } from "../tools/colors";
 //!#Imports: end
 
 //!#Constants: start
@@ -13,11 +14,15 @@ const Css = {
     flexDirection: "column",
     gap: "0.5rem",
   }),
-  label: (): React.CSSProperties => ({
-    fontSize: "0.875rem",
-    fontWeight: 600,
-    color: "#333",
-  }),
+  label: (darkMode: boolean): React.CSSProperties => {
+    const scheme = getColorScheme("background", darkMode);
+
+    return {
+      fontSize: "0.875rem",
+      fontWeight: 600,
+      color: scheme.textColor,
+    };
+  },
   input: (removeDefaultStyle?: boolean, borderRadiusValue?: number): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -57,6 +62,7 @@ export type InputProps = {
   id?: string;
   name?: string;
   borderRadius?: RadiusToken;
+  darkMode:boolean,
 };
 
 export const INPUT_PROP_NAMES = [
@@ -66,6 +72,7 @@ export const INPUT_PROP_NAMES = [
   "value",
   "required",
   "label",
+  "darkMode",
   "onChange",
   "onBlur",
   "onFocus",
@@ -90,6 +97,7 @@ const Input: React.FC<InputProps> = ({
   id,
   name,
   borderRadius = "md",
+  darkMode = true,
 }) => {
   //!#visualComponent: start
   const borderRadiusValue = getRadiusValue(borderRadius);
@@ -97,8 +105,7 @@ const Input: React.FC<InputProps> = ({
   return (
     <div style={{ ...Css.wrapper(), ...style }}>
       {label && (
-        <label htmlFor={id} style={Css.label()}>
-          {label}
+        <label htmlFor={id} style={Css.label(darkMode)}>{label}
           {required && <span style={{ color: "#d32f2f" }}> *</span>}
         </label>
       )}
