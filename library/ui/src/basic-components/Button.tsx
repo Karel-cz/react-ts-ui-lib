@@ -35,6 +35,7 @@ const Css = {
     modernHoverBackground?: string,
     shadow?: string,
     hoverShadow?: string,
+    pressed?: boolean
   ): React.CSSProperties => {
     if (removeDefaultStyle) {
       return {};
@@ -59,14 +60,30 @@ const Css = {
       backgroundSize: useModern ? "200% 200%" : undefined,
       backgroundPosition: useModern ? (hover ? "100% 0%" : "0% 50%") : undefined,
       color: textColor,
-      cursor: isDisabled ? "not-allowed" : "pointer",
+      cursor: isDisabled ? "default" : "pointer",
       fontWeight: 600,
       fontSize: fontSize,
       height: height,
       width: width,
       transition:
         "background-position 260ms ease, background 160ms ease, color 160ms ease, box-shadow 180ms ease",
-      boxShadow: useModern ? (hover ? hoverShadow : shadow) : undefined,
+      //boxShadow: useModern ? (hover ? hoverShadow : shadow) : undefined,
+      boxShadow: pressed
+  ? "inset 0 2px 6px rgba(0,0,0,0.4)"
+  : useModern
+    ? (hover ? hoverShadow : shadow)
+    : undefined,
+      transform: pressed
+  ? "scale(0.96)"
+  : isDisabled
+    ? "scale(0.98)"
+    : undefined,
+
+opacity: pressed
+  ? 0.95
+  : isDisabled
+    ? 0.85
+    : 1,
       outline: "none",
       WebkitTapHighlightColor: "transparent",
       position: "relative",
@@ -116,6 +133,7 @@ export type ButtonProps = {
   modern?: boolean;
   hidden?: boolean;
   width?: string;
+  pressed?: boolean;
 };
 
 // Const array for runtime prop extraction in Documentation
@@ -140,7 +158,8 @@ export const BUTTON_PROP_NAMES = [
   "noPrint",
   "modern",
   "hidden",
-  "width"
+  "width",
+  "pressed"
 ] as const;
 //!#propTypes: end
 
@@ -164,7 +183,8 @@ const Button = ({
   noPrint = false,
   modern = false,
   hidden = false,
-  width
+  width,
+  pressed = false
 }: ButtonProps) => {
   //!#visualComponent: start
   const [hover, setHover] = useState(false);
@@ -174,9 +194,24 @@ const Button = ({
   const disabledBg = getColorScheme("surface", darkMode).color;
   const disabledText = getColorScheme("muted", darkMode).color;
 
-  const isDisabled = disabled || isPending;
-  const background = isDisabled ? disabledBg : scheme.color;
-  const textColor = isDisabled ? disabledText : scheme.textColor;
+  const isDisabled = disabled || isPending || pressed;
+  //const background = isDisabled ? disabledBg : scheme.color;
+  //const textColor = isDisabled ? disabledText : scheme.textColor;
+  const pressedBg = getColorScheme("primaryDark", darkMode).color;
+const pressedText = scheme.textColor;
+
+const background = pressed
+  ? pressedBg
+  : isDisabled
+    ? disabledBg
+    : scheme.color;
+
+const textColor = pressed
+  ? pressedText
+  : isDisabled
+    ? disabledText
+    : scheme.textColor;
+
   const borderRadiusValue = getRadiusValue(borderRadius);
 
   const buttonSize = getButtonSize(size);
@@ -208,6 +243,7 @@ const Button = ({
 
   const content = children || label;
   const useModernGradient = modern && significance !== "distinct";
+
   //!#render components: start
   const buttonStyle = Css.button(
     removeDefaultStyle,
@@ -245,7 +281,7 @@ const Button = ({
       aria-busy={isPending || undefined}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      onClick={onClick}
+      onClick={pressed ? undefined : onClick}
     >
       <span style={Css.content(isPending)}>
         {iconPosition === "left" && (
