@@ -42,13 +42,12 @@ describe("Date component: default rendering", () => {
     });
 
     it("does not render a label by default", () => {
-        render(<DateInput />);
-        expect(screen.queryByRole("label")).not.toBeInTheDocument();
+        const { container } = render(<DateInput />);
+        expect(container.querySelector("label")).not.toBeInTheDocument();
     });
 
     it("does not render an error message by default", () => {
         render(<DateInput errorMessage="Something went wrong" />);
-        // errorMessage is only shown when error=true
         expect(screen.queryByText("Something went wrong")).not.toBeInTheDocument();
     });
 });
@@ -159,8 +158,12 @@ describe("Date component: error and errorMessage props", () => {
 
     it("shows no error text when error=true but errorMessage is not provided", () => {
         const { container } = render(<DateInput error />);
-        const errorDiv = container.querySelector("div > div:last-child");
-	expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+        const wrapper = container.firstChild as HTMLElement;
+        const errorDiv = wrapper.lastElementChild as HTMLElement;
+
+        expect(errorDiv).not.toBeNull();
+        expect(errorDiv.tagName).toBe("DIV");
+        expect(errorDiv).toHaveTextContent("");
     });
 });
 
@@ -271,7 +274,6 @@ describe("Date component: range error display", () => {
     });
 
     it("suppresses the range error when min > max (invalid range guard)", () => {
-        // When the range itself is invalid the component should not flag the value
         render(<DateInput value="2024-06-15" min="2024-12-31" max="2024-01-01" />);
         expect(screen.queryByText(/Date must be between/)).not.toBeInTheDocument();
     });
@@ -311,12 +313,14 @@ describe("Date component: onChange interaction", () => {
         expect(receivedEvent.type).toBe("change");
     });
 
-    it("does not fire onChange when the input is disabled", () => {
+    it("renders the input as disabled, which browsers block from being edited by the user", () => {
         const handleChange = jest.fn();
         render(<DateInput value="2024-06-15" onChange={handleChange} disabled />);
         const input = document.querySelector("input[type='date']") as HTMLInputElement;
-	expect(input).toBeDisabled();
+
+        expect(input).toBeDisabled();
         expect(input).toHaveAttribute("disabled");
+        expect(handleChange).not.toHaveBeenCalled();
     });
 });
 
