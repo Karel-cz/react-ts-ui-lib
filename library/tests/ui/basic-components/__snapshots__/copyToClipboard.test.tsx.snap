@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`CopyToClipboard component snapshots matches snapshot for default rendering 1`] = `
+<DocumentFragment>
+  <span
+    aria-label="Copy"
+    role="button"
+    style="display: inline-flex; align-items: center; gap: 8px;"
+  >
+    <div
+      style="display: inline-flex; align-items: center; justify-content: center; padding: 6px; border-radius: 8px; background: rgb(20, 20, 20); color: rgb(229, 229, 229); cursor: pointer; transition: background 0.2s ease, color 0.2s ease;"
+    >
+      <span
+        style="cursor: pointer; display: inline-flex; align-items: center; gap: 4px;"
+      >
+        <svg
+          data-color="#e5e5e5"
+          data-path="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"
+          data-size="1"
+          data-testid="mdi-icon"
+          style="display: flex;"
+        />
+      </span>
+    </div>
+    <span>
+      Copy
+    </span>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`CopyToClipboard component snapshots matches snapshot with custom children 1`] = `
+<DocumentFragment>
+  <span
+    aria-label="Copy"
+    role="button"
+    style="display: inline-flex; align-items: center; gap: 8px;"
+  >
+    <span>
+      Copy something
+    </span>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`CopyToClipboard component snapshots matches snapshot with removeDefaultStyle 1`] = `
+<DocumentFragment>
+  <span
+    aria-label="Copy"
+    role="button"
+  >
+    <span
+      style="cursor: pointer; display: inline-flex; align-items: center; gap: 4px;"
+    >
+      <svg
+        data-color="#e5e5e5"
+        data-path="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"
+        data-size="1"
+        data-testid="mdi-icon"
+        style="display: flex;"
+      />
+    </span>
+    <span>
+      Copy
+    </span>
+  </span>
+</DocumentFragment>
+`;
